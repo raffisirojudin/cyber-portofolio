@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio | Web Developer</title>
+    <title>Portofolio | Raffi Sirojudin</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap"
@@ -44,7 +44,7 @@
           <span class="c-purple">const</span> <span class="c-blue">dev</span> =
           {<br />
           &nbsp;&nbsp;<span class="c-green">name</span>:
-          <span class="c-yellow">"Nama Kamu"</span>,<br />
+          <span class="c-yellow">"Raffi Sirojudin"</span>,<br />
           &nbsp;&nbsp;<span class="c-green">role</span>:
           <span class="c-yellow">"Web Developer"</span>,<br />
           &nbsp;&nbsp;<span class="c-green">open</span>:
@@ -63,8 +63,9 @@
           <div class="about-photo">
             <img
               src="assets/foto.jpg"
-              alt="Foto Nama Kamu"
+              alt="Foto Raffi Sirojudin"
               class="about-photo-img"
+              onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span><span style=\'font-size:.8rem\'>Foto</span></div>'"
             />
           </div>
           <div class="about-text">
@@ -75,20 +76,20 @@
             </p>
             <p>
               Saat ini saya aktif belajar dan terus mengasah kemampuan di bidang
-              front-end development.
+              front-end development, serta mengembangkan aplikasi bisnis nyata.
             </p>
             <div class="about-stats">
               <div class="stat-item">
-                <span class="stat-num">10+</span
-                ><span class="stat-lbl">Proyek</span>
+                <span class="stat-num">10+</span>
+                <span class="stat-lbl">Proyek</span>
               </div>
               <div class="stat-item">
-                <span class="stat-num">3+</span
-                ><span class="stat-lbl">Teknologi</span>
+                <span class="stat-num">3+</span>
+                <span class="stat-lbl">Teknologi</span>
               </div>
               <div class="stat-item">
-                <span class="stat-num">1+</span
-                ><span class="stat-lbl">Tahun</span>
+                <span class="stat-num">1+</span>
+                <span class="stat-lbl">Tahun</span>
               </div>
             </div>
           </div>
@@ -113,7 +114,6 @@
               <div class="skill-bar" data-width="90"></div>
             </div>
           </div>
-
           <div class="skill-card" data-skill="css" data-level="80">
             <div class="skill-top">
               <span class="skill-emoji">🎨</span>
@@ -124,7 +124,6 @@
               <div class="skill-bar" data-width="80"></div>
             </div>
           </div>
-
           <div class="skill-card" data-skill="js" data-level="70">
             <div class="skill-top">
               <span class="skill-emoji">⚡</span>
@@ -135,7 +134,6 @@
               <div class="skill-bar" data-width="70"></div>
             </div>
           </div>
-
           <div class="skill-card" data-skill="react" data-level="60">
             <div class="skill-top">
               <span class="skill-emoji">⚛️</span>
@@ -146,7 +144,6 @@
               <div class="skill-bar" data-width="60"></div>
             </div>
           </div>
-
           <div class="skill-card" data-skill="git" data-level="75">
             <div class="skill-top">
               <span class="skill-emoji">🐙</span>
@@ -157,7 +154,6 @@
               <div class="skill-bar" data-width="75"></div>
             </div>
           </div>
-
           <div class="skill-card" data-skill="figma" data-level="65">
             <div class="skill-top">
               <span class="skill-emoji">✏️</span>
@@ -176,10 +172,7 @@
     <div id="modal-overlay">
       <div id="modal-box">
         <button id="modal-close">✕</button>
-        <p
-          id="modal-emoji"
-          style="font-size: 2.5rem; margin-bottom: 0.5rem"
-        ></p>
+        <p id="modal-emoji" style="font-size:2.5rem;margin-bottom:.5rem"></p>
         <h3 id="modal-title"></h3>
         <p id="modal-level"></p>
         <p id="modal-desc"></p>
@@ -193,15 +186,51 @@
         <p class="section-tag">03. projects</p>
         <h2 class="section-title">Proyek Saya</h2>
         <div class="projects-grid">
+
+          <!-- CURTAINBIZ — FEATURED FULL WIDTH -->
+          <div class="project-card featured curtainbiz-card">
+            <div class="project-header">
+              <span class="project-num">01 ⭐ Unggulan</span>
+              <div class="project-links">
+                <a href="https://raffisirojudin.github.io/curtainbiz-manager" target="_blank" rel="noopener noreferrer">🚀 Live Demo</a>
+                <a href="https://github.com/raffisirojudin/curtainbiz-manager" target="_blank" rel="noopener noreferrer">📂 GitHub</a>
+              </div>
+            </div>
+            <div class="project-badge">🪟 Business Management App</div>
+            <h3>CurtainBiz Manager</h3>
+            <p>
+              Sistem manajemen bisnis curtain & furnitur berbasis web — dirancang
+              untuk wirausaha yang ingin mengelola operasional toko dalam satu
+              dasbor. Mencakup pencatatan pesanan multi-channel, inventori stok
+              otomatis, laporan keuangan real-time, dan kalkulator HPP produksi.
+            </p>
+            <div class="project-highlights">
+              <span class="highlight-item">📊 Dashboard KPI</span>
+              <span class="highlight-item">🛒 Order Management</span>
+              <span class="highlight-item">📦 Inventory & Alert</span>
+              <span class="highlight-item">💰 Laporan Laba/Rugi</span>
+              <span class="highlight-item">🧮 Kalkulator HPP</span>
+              <span class="highlight-item">👥 Data Pelanggan</span>
+            </div>
+            <div class="project-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Chart.js</span>
+              <span>Supabase</span>
+            </div>
+          </div>
+
+          <!-- PROJECT 2 -->
           <div class="project-card">
             <div class="project-header">
-              <span class="project-num">01</span>
+              <span class="project-num">02</span>
               <div class="project-links">
                 <a href="#">Demo</a>
                 <a href="#">GitHub</a>
               </div>
             </div>
-            <h3>Nama Proyek Satu</h3>
+            <h3>Nama Proyek Dua</h3>
             <p>
               Deskripsi singkat proyek. Apa yang dibangun dan masalah apa yang
               diselesaikan.
@@ -211,22 +240,7 @@
             </div>
           </div>
 
-          <div class="project-card featured">
-            <div class="project-header">
-              <span class="project-num">02 ⭐</span>
-              <div class="project-links">
-                <a href="#">Demo</a>
-                <a href="#">GitHub</a>
-              </div>
-            </div>
-            <h3>Nama Proyek Dua</h3>
-            <p>
-              Ini proyek unggulan. Ceritakan lebih detail fitur dan teknologi
-              yang digunakan.
-            </p>
-            <div class="project-stack"><span>React</span><span>CSS</span></div>
-          </div>
-
+          <!-- PROJECT 3 -->
           <div class="project-card">
             <div class="project-header">
               <span class="project-num">03</span>
@@ -244,6 +258,7 @@
               <span>JavaScript</span><span>API</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -257,9 +272,9 @@
           Punya proyek atau ingin berkolaborasi? Jangan ragu untuk menghubungi
           saya.
         </p>
-        <a href="mailto:email@kamu.com" class="contact-email">email@kamu.com</a>
+        <a href="mailto:raffisirojudin@gmail.com" class="contact-email">raffisirojudin@gmail.com</a>
         <div class="socials">
-          <a href="#">GitHub</a>
+          <a href="https://github.com/raffisirojudin" target="_blank" rel="noopener">GitHub</a>
           <a href="#">LinkedIn</a>
           <a href="#">Instagram</a>
         </div>
@@ -267,7 +282,7 @@
     </section>
 
     <footer>
-      <p>Dibuat dengan ❤️ oleh <strong>Nama Kamu</strong> &copy; 2025</p>
+      <p>Dibuat dengan ❤️ oleh <strong>Raffi Sirojudin</strong> &copy; 2025</p>
     </footer>
 
     <script src="script.js"></script>
