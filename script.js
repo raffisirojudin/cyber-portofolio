@@ -2,24 +2,24 @@
 var burger = document.getElementById("burger");
 var navMenu = document.querySelector(".nav-menu");
 
-burger.onclick = function () {
-  navMenu.classList.toggle("open");
-};
-
-navMenu.querySelectorAll("a").forEach(function (a) {
-  a.onclick = function () {
-    navMenu.classList.remove("open");
+if (burger && navMenu) {
+  burger.onclick = function () {
+    navMenu.classList.toggle("open");
   };
-});
+  navMenu.querySelectorAll("a").forEach(function (a) {
+    a.onclick = function () {
+      navMenu.classList.remove("open");
+    };
+  });
+}
 
 // ── SKILL BAR ANIMASI ──────────────────────
-// Jalankan setelah halaman sepenuhnya siap
-window.onload = function () {
+window.addEventListener("load", function () {
   document.querySelectorAll(".skill-bar").forEach(function (bar) {
     var w = bar.getAttribute("data-width");
-    bar.style.width = w + "%";
+    if (w) bar.style.width = w + "%";
   });
-};
+});
 
 // ── DATA MODAL SKILL ───────────────────────
 var skillInfo = {
@@ -73,7 +73,7 @@ var modalClose = document.getElementById("modal-close");
 
 function bukaModal(key) {
   var data = skillInfo[key];
-  if (!data) return;
+  if (!data || !overlay) return;
 
   document.getElementById("modal-emoji").textContent = data.emoji;
   document.getElementById("modal-title").textContent = data.title;
@@ -93,6 +93,7 @@ function bukaModal(key) {
 }
 
 function tutupModal() {
+  if (!overlay) return;
   overlay.classList.remove("show");
   document.body.style.overflow = "";
 }
@@ -106,14 +107,15 @@ document.querySelectorAll(".skill-card").forEach(function (card) {
 });
 
 // Tutup modal
-modalClose.onclick = tutupModal;
+if (modalClose) modalClose.onclick = tutupModal;
+if (overlay) {
+  overlay.onclick = function (e) {
+    if (e.target === overlay) tutupModal();
+  };
+}
 
-overlay.onclick = function (e) {
-  if (e.target === overlay) tutupModal();
-};
-
-document.onkeydown = function (e) {
+document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") tutupModal();
-};
+});
 
-console.log("Script OK");
+console.log("✅ Script berjalan dengan baik");
