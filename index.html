@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio | Raffi Sirojudin</title>
+    <title>Portofolio | Web Developer</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap"
@@ -44,7 +44,7 @@
           <span class="c-purple">const</span> <span class="c-blue">dev</span> =
           {<br />
           &nbsp;&nbsp;<span class="c-green">name</span>:
-          <span class="c-yellow">"Raffi Sirojudin"</span>,<br />
+          <span class="c-yellow">"Nama Kamu"</span>,<br />
           &nbsp;&nbsp;<span class="c-green">role</span>:
           <span class="c-yellow">"Web Developer"</span>,<br />
           &nbsp;&nbsp;<span class="c-green">open</span>:
@@ -57,18 +57,18 @@
     <!-- ABOUT -->
     <section id="about">
       <div class="section-inner">
-        <p class="section-tag">01. about</p>
-        <h2 class="section-title">Tentang Saya</h2>
+        <p class="section-tag reveal">01. about</p>
+        <h2 class="section-title reveal reveal-delay-1">Tentang Saya</h2>
         <div class="about-grid">
-          <div class="about-photo">
+          <div class="about-photo reveal-left">
             <img
               src="assets/foto.jpg"
-              alt="Foto Raffi Sirojudin"
+              alt="Foto Nama Kamu"
               class="about-photo-img"
-              onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span>📷</span><span style=\'font-size:.8rem\'>Foto</span></div>'"
+              onerror="this.parentElement.innerHTML='<div class=&quot;photo-placeholder&quot;><span>📷</span><span style=&quot;font-size:.8rem&quot;>Foto</span></div>'"
             />
           </div>
-          <div class="about-text">
+          <div class="about-text reveal-right">
             <p>
               Saya adalah seorang web developer yang sedang berkembang, dengan
               fokus pada pembuatan tampilan web yang bersih dan responsif. Saya
@@ -76,7 +76,7 @@
             </p>
             <p>
               Saat ini saya aktif belajar dan terus mengasah kemampuan di bidang
-              front-end development, serta mengembangkan aplikasi bisnis nyata.
+              front-end development.
             </p>
             <div class="about-stats">
               <div class="stat-item">
@@ -100,11 +100,11 @@
     <!-- SKILLS -->
     <section id="skills">
       <div class="section-inner">
-        <p class="section-tag">02. skills</p>
-        <h2 class="section-title">Keahlian Saya</h2>
-        <p class="skills-hint">Klik kartu untuk melihat penjelasan</p>
+        <p class="section-tag reveal">02. skills</p>
+        <h2 class="section-title reveal reveal-delay-1">Keahlian Saya</h2>
+        <p class="skills-hint reveal reveal-delay-2">Klik kartu untuk melihat penjelasan</p>
         <div class="skills-grid">
-          <div class="skill-card" data-skill="html" data-level="90">
+          <div class="skill-card reveal-scale reveal-delay-1" data-skill="html" data-level="90">
             <div class="skill-top">
               <span class="skill-emoji">🌐</span>
               <span class="skill-label">HTML</span>
@@ -114,7 +114,8 @@
               <div class="skill-bar" data-width="90"></div>
             </div>
           </div>
-          <div class="skill-card" data-skill="css" data-level="80">
+
+          <div class="skill-card reveal-scale reveal-delay-2" data-skill="css" data-level="80">
             <div class="skill-top">
               <span class="skill-emoji">🎨</span>
               <span class="skill-label">CSS</span>
@@ -124,7 +125,8 @@
               <div class="skill-bar" data-width="80"></div>
             </div>
           </div>
-          <div class="skill-card" data-skill="js" data-level="70">
+
+          <div class="skill-card reveal-scale reveal-delay-3" data-skill="js" data-level="70">
             <div class="skill-top">
               <span class="skill-emoji">⚡</span>
               <span class="skill-label">JavaScript</span>
@@ -134,7 +136,8 @@
               <div class="skill-bar" data-width="70"></div>
             </div>
           </div>
-          <div class="skill-card" data-skill="react" data-level="60">
+
+          <div class="skill-card reveal-scale reveal-delay-4" data-skill="react" data-level="60">
             <div class="skill-top">
               <span class="skill-emoji">⚛️</span>
               <span class="skill-label">React</span>
@@ -144,7 +147,8 @@
               <div class="skill-bar" data-width="60"></div>
             </div>
           </div>
-          <div class="skill-card" data-skill="git" data-level="75">
+
+          <div class="skill-card reveal-scale reveal-delay-5" data-skill="git" data-level="75">
             <div class="skill-top">
               <span class="skill-emoji">🐙</span>
               <span class="skill-label">Git</span>
@@ -154,7 +158,8 @@
               <div class="skill-bar" data-width="75"></div>
             </div>
           </div>
-          <div class="skill-card" data-skill="figma" data-level="65">
+
+          <div class="skill-card reveal-scale reveal-delay-6" data-skill="figma" data-level="65">
             <div class="skill-top">
               <span class="skill-emoji">✏️</span>
               <span class="skill-label">Figma</span>
@@ -172,7 +177,7 @@
     <div id="modal-overlay">
       <div id="modal-box">
         <button id="modal-close">✕</button>
-        <p id="modal-emoji" style="font-size:2.5rem;margin-bottom:.5rem"></p>
+        <p id="modal-emoji" style="font-size: 2.5rem; margin-bottom: 0.5rem"></p>
         <h3 id="modal-title"></h3>
         <p id="modal-level"></p>
         <p id="modal-desc"></p>
@@ -183,12 +188,12 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="section-inner">
-        <p class="section-tag">03. projects</p>
-        <h2 class="section-title">Proyek Saya</h2>
+        <p class="section-tag reveal">03. projects</p>
+        <h2 class="section-title reveal reveal-delay-1">Proyek Saya</h2>
         <div class="projects-grid">
 
-          <!-- CURTAINBIZ — FEATURED FULL WIDTH -->
-          <div class="project-card featured curtainbiz-card">
+          <!-- CURTAINBIZ — FEATURED -->
+          <div class="project-card featured curtainbiz-card reveal reveal-delay-2">
             <div class="project-header">
               <span class="project-num">01 ⭐ Unggulan</span>
               <div class="project-links">
@@ -222,7 +227,7 @@
           </div>
 
           <!-- PROJECT 2 -->
-          <div class="project-card">
+          <div class="project-card reveal-scale reveal-delay-3">
             <div class="project-header">
               <span class="project-num">02</span>
               <div class="project-links">
@@ -241,7 +246,7 @@
           </div>
 
           <!-- PROJECT 3 -->
-          <div class="project-card">
+          <div class="project-card reveal-scale reveal-delay-4">
             <div class="project-header">
               <span class="project-num">03</span>
               <div class="project-links">
@@ -266,15 +271,15 @@
     <!-- CONTACT -->
     <section id="contact">
       <div class="section-inner contact-inner">
-        <p class="section-tag">04. contact</p>
-        <h2 class="section-title">Hubungi Saya</h2>
-        <p class="contact-desc">
+        <p class="section-tag reveal">04. contact</p>
+        <h2 class="section-title reveal reveal-delay-1">Hubungi Saya</h2>
+        <p class="contact-desc reveal reveal-delay-2">
           Punya proyek atau ingin berkolaborasi? Jangan ragu untuk menghubungi
           saya.
         </p>
-        <a href="mailto:raffisirojudin@gmail.com" class="contact-email">raffisirojudin@gmail.com</a>
-        <div class="socials">
-          <a href="https://github.com/raffisirojudin" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:email@kamu.com" class="contact-email reveal reveal-delay-3">email@kamu.com</a>
+        <div class="socials reveal reveal-delay-4">
+          <a href="#">GitHub</a>
           <a href="#">LinkedIn</a>
           <a href="#">Instagram</a>
         </div>
@@ -282,7 +287,7 @@
     </section>
 
     <footer>
-      <p>Dibuat dengan ❤️ oleh <strong>Raffi Sirojudin</strong> &copy; 2025</p>
+      <p>Dibuat dengan ❤️ oleh <strong>Nama Kamu</strong> &copy; 2025</p>
     </footer>
 
     <script src="script.js"></script>
