@@ -1,121 +1,687 @@
-// ── NAVBAR BURGER ──────────────────────────
-var burger = document.getElementById("burger");
-var navMenu = document.querySelector(".nav-menu");
-
-if (burger && navMenu) {
-  burger.onclick = function () {
-    navMenu.classList.toggle("open");
-  };
-  navMenu.querySelectorAll("a").forEach(function (a) {
-    a.onclick = function () {
-      navMenu.classList.remove("open");
-    };
-  });
+/* === RESET === */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-// ── SKILL BAR ANIMASI ──────────────────────
-window.addEventListener("load", function () {
-  document.querySelectorAll(".skill-bar").forEach(function (bar) {
-    var w = bar.getAttribute("data-width");
-    if (w) bar.style.width = w + "%";
-  });
-});
-
-// ── DATA MODAL SKILL ───────────────────────
-var skillInfo = {
-  html: {
-    emoji: "🌐",
-    title: "HTML",
-    level: "90% — Mahir",
-    desc: "HyperText Markup Language adalah bahasa dasar pembentuk struktur setiap halaman web. Semua elemen yang kamu lihat — teks, gambar, form, tombol — semuanya ditulis dengan HTML. Ini adalah skill pertama yang harus dikuasai setiap web developer.",
-    tags: ["Struktur", "Semantik", "Form", "Aksesibilitas", "SEO"],
-  },
-  css: {
-    emoji: "🎨",
-    title: "CSS",
-    level: "80% — Mahir",
-    desc: "Cascading Style Sheets mengatur tampilan visual halaman web. Dengan CSS kamu bisa mengatur warna, font, layout, animasi, dan membuat tampilan yang responsif di semua ukuran layar mulai dari HP hingga desktop.",
-    tags: ["Flexbox", "Grid", "Animasi", "Responsif", "Variables"],
-  },
-  js: {
-    emoji: "⚡",
-    title: "JavaScript",
-    level: "70% — Menengah",
-    desc: "JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif. Dengan JS kamu bisa merespons klik, mengambil data dari API, membuat animasi, validasi form, dan membangun fitur-fitur dinamis lainnya.",
-    tags: ["DOM", "ES6+", "Fetch", "Event", "Async/Await"],
-  },
-  react: {
-    emoji: "⚛️",
-    title: "React",
-    level: "60% — Menengah",
-    desc: "React adalah library JavaScript buatan Meta untuk membangun UI berbasis komponen. Dengan React kamu bisa memecah tampilan menjadi bagian-bagian kecil yang bisa dipakai ulang, sehingga kode lebih terorganisir dan mudah dikembangkan.",
-    tags: ["Component", "Hooks", "State", "Props", "JSX"],
-  },
-  git: {
-    emoji: "🐙",
-    title: "Git",
-    level: "75% — Mahir",
-    desc: "Git adalah sistem version control untuk mencatat setiap perubahan kode. Dengan Git kamu bisa bekerja sama dengan tim, menyimpan riwayat perubahan, membuat branch untuk fitur baru, dan rollback jika ada kesalahan.",
-    tags: ["Commit", "Branch", "Merge", "GitHub", "Pull Request"],
-  },
-  figma: {
-    emoji: "✏️",
-    title: "Figma",
-    level: "65% — Menengah",
-    desc: "Figma adalah aplikasi desain UI/UX berbasis web yang digunakan untuk membuat wireframe, mockup, dan prototipe interaktif. Memahami Figma sangat membantu developer untuk membaca desain dan mengimplementasikannya ke kode secara akurat.",
-    tags: ["Wireframe", "Mockup", "Prototipe", "Komponen", "Auto Layout"],
-  },
-};
-
-// ── MODAL LOGIC ────────────────────────────
-var overlay = document.getElementById("modal-overlay");
-var modalClose = document.getElementById("modal-close");
-
-function bukaModal(key) {
-  var data = skillInfo[key];
-  if (!data || !overlay) return;
-
-  document.getElementById("modal-emoji").textContent = data.emoji;
-  document.getElementById("modal-title").textContent = data.title;
-  document.getElementById("modal-level").textContent = data.level;
-  document.getElementById("modal-desc").textContent = data.desc;
-
-  var tagsEl = document.getElementById("modal-tags");
-  tagsEl.innerHTML = "";
-  data.tags.forEach(function (tag) {
-    var span = document.createElement("span");
-    span.textContent = tag;
-    tagsEl.appendChild(span);
-  });
-
-  overlay.classList.add("show");
-  document.body.style.overflow = "hidden";
+/* === VARIABLES === */
+:root {
+  --bg: #0d0d0d;
+  --bg2: #141414;
+  --bg3: #1a1a1a;
+  --accent: #00ff87;
+  --accent2: #00cc6a;
+  --text: #efefef;
+  --muted: #777;
+  --border: #2a2a2a;
+  --font: "Space Grotesk", sans-serif;
+  --mono: "Fira Code", monospace;
 }
 
-function tutupModal() {
-  if (!overlay) return;
-  overlay.classList.remove("show");
-  document.body.style.overflow = "";
+html {
+  scroll-behavior: smooth;
 }
 
-// Pasang klik ke setiap skill card
-document.querySelectorAll(".skill-card").forEach(function (card) {
-  card.onclick = function () {
-    var key = card.getAttribute("data-skill");
-    bukaModal(key);
-  };
-});
-
-// Tutup modal
-if (modalClose) modalClose.onclick = tutupModal;
-if (overlay) {
-  overlay.onclick = function (e) {
-    if (e.target === overlay) tutupModal();
-  };
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
 }
 
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") tutupModal();
-});
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-console.log("✅ Script berjalan dengan baik");
+/* === NAVBAR === */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(13, 13, 13, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--mono);
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-menu a {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.nav-menu a:hover {
+  color: var(--accent);
+}
+
+#burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* === HERO === */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 7rem 2rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-greeting {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-name {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.hero-role {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.hero-desc {
+  color: var(--muted);
+  max-width: 420px;
+  margin-bottom: 2rem;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-solid {
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  padding: 0.75rem 1.8rem;
+  border-radius: 8px;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.btn-solid:hover {
+  background: var(--accent2);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  border: 1px solid var(--border);
+  padding: 0.75rem 1.8rem;
+  border-radius: 8px;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.code-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.8rem;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  line-height: 2;
+  white-space: nowrap;
+  min-width: 280px;
+}
+
+.c-grey {
+  color: #555;
+}
+.c-purple {
+  color: #c084fc;
+}
+.c-blue {
+  color: #60a5fa;
+}
+.c-green {
+  color: var(--accent);
+}
+.c-yellow {
+  color: #fbbf24;
+}
+
+/* === SECTION BASE === */
+section:not(#hero) {
+  padding: 5rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 2.5rem;
+}
+
+/* === ABOUT === */
+.about-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: var(--bg2);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--muted);
+  gap: 0.5rem;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.about-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.stat-lbl {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* === SKILLS === */
+#skills {
+  background: var(--bg2);
+}
+
+.skills-hint {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: -1.5rem;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.skill-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+  user-select: none;
+}
+
+.skill-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.skill-top {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.skill-emoji {
+  font-size: 1.3rem;
+}
+
+.skill-label {
+  font-weight: 700;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.skill-pct {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+/* === SKILL BAR === */
+.skill-track {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.skill-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 100px;
+  transition: width 1s ease;
+}
+
+/* === MODAL === */
+#modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#modal-overlay.show {
+  display: flex;
+}
+
+#modal-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  animation: popIn 0.25s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+#modal-close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+#modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+#modal-level {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+#modal-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+#modal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#modal-tags span {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+/* === PROJECTS === */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.project-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.project-card.featured {
+  border-color: rgba(0, 255, 135, 0.3);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-links a {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.project-links a:hover {
+  color: var(--accent);
+}
+
+.project-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-stack span {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* === CONTACT === */
+#contact {
+  background: var(--bg2);
+  text-align: center;
+}
+
+.contact-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-desc {
+  color: var(--muted);
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-email {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+  margin-bottom: 2rem;
+  transition: opacity 0.2s;
+}
+
+.contact-email:hover {
+  opacity: 0.7;
+}
+
+.socials {
+  display: flex;
+  gap: 2rem;
+}
+
+.socials a {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.socials a:hover {
+  color: var(--accent);
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* === SCROLL ANIMATIONS === */
+
+/* Semua elemen yang akan dianimasi — mulai tidak terlihat */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Ketika elemen masuk layar — muncul perlahan */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variasi delay supaya tidak muncul bersamaan */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+
+/* Variasi arah — dari kiri */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Variasi arah — dari kanan */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale up — untuk kartu */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  #hero {
+    flex-direction: column;
+    padding-top: 6rem;
+    text-align: center;
+  }
+  .hero-desc {
+    margin: 0 auto 2rem;
+  }
+  .hero-btns {
+    justify-content: center;
+  }
+  .code-block {
+    display: none;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .photo-placeholder {
+    max-width: 180px;
+    margin: 0 auto;
+  }
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    gap: 1rem;
+  }
+  .nav-menu.open {
+    display: flex;
+  }
+  #burger {
+    display: block;
+  }
+  .about-stats {
+    gap: 1.2rem;
+  }
+}
