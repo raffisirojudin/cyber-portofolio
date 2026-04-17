@@ -234,30 +234,44 @@
    6. SCROLL REVEAL
 ────────────────────────────────────── */
 (function initReveal() {
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry, i) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var delay = el.dataset.delay || 0;
-        setTimeout(function () {
-          el.classList.add("visible");
-        }, parseInt(delay));
-        observer.unobserve(el);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: "0px 0px -40px 0px"
-  });
-
   // Stagger reveals in grid/list
   document.querySelectorAll(".skills-grid .skill-card, .projects-other .proj-card, .about-stats .stat-box").forEach(function (el, i) {
     el.dataset.delay = i * 80;
   });
 
-  document.querySelectorAll(".reveal").forEach(function (el) {
-    observer.observe(el);
-  });
+  var allReveal = document.querySelectorAll(".reveal");
+
+  // Check & show elements already in viewport (fixes GitHub Pages blank hero)
+  function checkVisible() {
+    allReveal.forEach(function (el) {
+      if (el.classList.contains("visible")) return;
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        var delay = el.dataset.delay || 0;
+        setTimeout(function () { el.classList.add("visible"); }, parseInt(delay));
+      }
+    });
+  }
+
+  // Run immediately on load
+  checkVisible();
+  window.addEventListener("scroll", checkVisible, { passive: true });
+
+  // IntersectionObserver as extra support with loose settings
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var delay = el.dataset.delay || 0;
+          setTimeout(function () { el.classList.add("visible"); }, parseInt(delay));
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0, rootMargin: "0px" });
+
+    allReveal.forEach(function (el) { observer.observe(el); });
+  }
 })();
 
 /* ──────────────────────────────────────
