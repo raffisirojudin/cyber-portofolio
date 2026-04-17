@@ -357,6 +357,15 @@ section {
   transform: translateY(0);
 }
 
+/* Fallback: if JS is slow, hero still shows after 0.5s */
+#hero .reveal {
+  animation: heroFallback 0s 0.8s forwards;
+}
+
+@keyframes heroFallback {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ═══════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════ */
