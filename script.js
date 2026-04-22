@@ -137,7 +137,6 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ── 9. NAV ACTIVE LINK ── */
 var sections = document.querySelectorAll("section[id]");
-var navLinks = document.querySelectorAll(".nav-links a");
 window.addEventListener("scroll", function () {
   var pos = window.scrollY + 100;
   sections.forEach(function (s) {
@@ -146,22 +145,38 @@ window.addEventListener("scroll", function () {
   });
 }, { passive: true });
 
-/* ── 10. KINETIC SOUL — Live Canvas Preview ── */
+/* ── 10. KINETIC SOUL — Live Canvas Preview ──
+   FIX: canvas diisi background hitam #050508 sejak awal
+   FIX: IntersectionObserver trigger langsung resize + fill background
+   sehingga tidak ada "layar hitam kosong" sebelum partikel muncul
+── */
 (function () {
   var canvas = document.getElementById("ks-canvas");
   if (!canvas) return;
+
   var ctx = canvas.getContext("2d");
-  var W, H, dpr, particles = [], noiseT = 0, rafId;
+  var W = 0, H = 0, dpr = 1;
+  var particles = [], noiseT = 0, rafId = null, started = false;
   var PALETTE = ["#ff006e","#ff4da6","#8338ec","#a855f7","#3a86ff","#60a5fa","#ff85c2"];
   var MAX = 120;
+
+  /* FIX: isi canvas dengan warna background sebelum animasi mulai */
+  function fillBg() {
+    ctx.fillStyle = "#050508";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     var wrap = canvas.parentElement;
-    W = wrap.clientWidth; H = wrap.clientHeight;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + "px"; canvas.style.height = H + "px";
+    W = wrap.clientWidth || 400;
+    H = wrap.clientHeight || 200;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
     ctx.scale(dpr, dpr);
+    fillBg(); /* FIX: isi background langsung setelah resize */
   }
 
   function noise(x, y) {
@@ -170,70 +185,116 @@ window.addEventListener("scroll", function () {
     var u = xf*xf*xf*(xf*(xf*6-15)+10), v = yf*yf*yf*(yf*(yf*6-15)+10);
     var h1=(X*374761393+Y*668265263)&0x7FFFFFFF, h2=((X+1)*374761393+Y*668265263)&0x7FFFFFFF;
     var h3=(X*374761393+(Y+1)*668265263)&0x7FFFFFFF, h4=((X+1)*374761393+(Y+1)*668265263)&0x7FFFFFFF;
-    var g=function(h,px,py){h=h&3;var gx=h<2?(h===0?1:-1):0,gy=h>=2?(h===2?1:-1):0;return gx*px+gy*py;};
-    return (1-u)*(1-v)*g(h1,xf,yf)+u*(1-v)*g(h2,xf-1,yf)+(1-u)*v*g(h3,xf,yf-1)+u*v*g(h4,xf-1,yf-1);
+    var g = function(h, px, py) {
+      h = h & 3;
+      var gx = h < 2 ? (h === 0 ? 1 : -1) : 0;
+      var gy = h >= 2 ? (h === 2 ? 1 : -1) : 0;
+      return gx * px + gy * py;
+    };
+    return (1-u)*(1-v)*g(h1,xf,yf) + u*(1-v)*g(h2,xf-1,yf) + (1-u)*v*g(h3,xf,yf-1) + u*v*g(h4,xf-1,yf-1);
   }
 
   function Particle() { this.reset(); }
   Particle.prototype.reset = function () {
-    this.x = Math.random()*(W||400); this.y = Math.random()*(H||200);
+    this.x = Math.random() * W; this.y = Math.random() * H;
     this.vx = 0; this.vy = 0;
-    this.color = PALETTE[Math.floor(Math.random()*PALETTE.length)];
-    this.alpha = 0.5+Math.random()*0.5; this.r = 1+Math.random()*2;
-    this.noiseOff = Math.random()*1000; this.trail = [];
-    this.orbitA = Math.random()*Math.PI*2;
-    this.orbitR = 30+Math.random()*Math.min(W||200,H||100)*0.35;
-    this.orbitSpd = (0.0004+Math.random()*0.0007)*(Math.random()<0.5?1:-1);
+    this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    this.alpha = 0.5 + Math.random() * 0.5;
+    this.r = 1 + Math.random() * 2;
+    this.noiseOff = Math.random() * 1000;
+    this.trail = [];
+    this.orbitA = Math.random() * Math.PI * 2;
+    this.orbitR = 30 + Math.random() * Math.min(W, H) * 0.35;
+    this.orbitSpd = (0.0004 + Math.random() * 0.0007) * (Math.random() < 0.5 ? 1 : -1);
   };
 
   function init() {
-    resize(); particles = [];
+    resize();
+    particles = [];
     for (var i = 0; i < MAX; i++) particles.push(new Particle());
   }
 
   var lastT = 0;
   function loop(ts) {
     rafId = requestAnimationFrame(loop);
-    var dt = Math.min((ts-lastT)/16.67, 3); lastT = ts; noiseT += 0.0015;
+    var dt = Math.min((ts - lastT) / 16.67, 3);
+    lastT = ts;
+    noiseT += 0.0015;
+
     ctx.globalCompositeOperation = "source-over";
-    ctx.fillStyle = "rgba(5,5,8,0.18)"; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle = "rgba(5,5,8,0.18)";
+    ctx.fillRect(0, 0, W, H);
     ctx.globalCompositeOperation = "lighter";
-    var cx = W/2, cy = H/2;
+
+    var cx = W / 2, cy = H / 2;
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
-      p.orbitA += p.orbitSpd*dt;
-      var n = noise((p.x/W)*3+noiseT+p.noiseOff,(p.y/H)*3+noiseT*0.7);
-      var flowA = n*Math.PI*4;
-      var tx = cx+Math.cos(p.orbitA)*p.orbitR, ty = cy+Math.sin(p.orbitA)*p.orbitR;
-      p.vx += (tx-p.x)*0.016*dt+Math.cos(flowA)*0.25;
-      p.vy += (ty-p.y)*0.016*dt+Math.sin(flowA)*0.25;
+      p.orbitA += p.orbitSpd * dt;
+      var n = noise((p.x/W)*3 + noiseT + p.noiseOff, (p.y/H)*3 + noiseT * 0.7);
+      var flowA = n * Math.PI * 4;
+      var tx = cx + Math.cos(p.orbitA) * p.orbitR;
+      var ty = cy + Math.sin(p.orbitA) * p.orbitR;
+      p.vx += (tx - p.x) * 0.016 * dt + Math.cos(flowA) * 0.25;
+      p.vy += (ty - p.y) * 0.016 * dt + Math.sin(flowA) * 0.25;
       p.vx *= 0.93; p.vy *= 0.93;
-      p.trail.push({x:p.x,y:p.y}); if (p.trail.length>12) p.trail.shift();
-      p.x += p.vx*dt; p.y += p.vy*dt;
+      p.trail.push({ x: p.x, y: p.y });
+      if (p.trail.length > 12) p.trail.shift();
+      p.x += p.vx * dt; p.y += p.vy * dt;
+
       if (p.trail.length > 1) {
-        ctx.beginPath(); ctx.moveTo(p.trail[0].x,p.trail[0].y);
-        for (var t=1;t<p.trail.length;t++) ctx.lineTo(p.trail[t].x,p.trail[t].y);
-        ctx.strokeStyle=p.color; ctx.globalAlpha=p.alpha*0.45;
-        ctx.lineWidth=p.r*0.7; ctx.lineCap="round"; ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(p.trail[0].x, p.trail[0].y);
+        for (var t = 1; t < p.trail.length; t++) ctx.lineTo(p.trail[t].x, p.trail[t].y);
+        ctx.strokeStyle = p.color;
+        ctx.globalAlpha = p.alpha * 0.45;
+        ctx.lineWidth = p.r * 0.7;
+        ctx.lineCap = "round";
+        ctx.stroke();
       }
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=p.color; ctx.globalAlpha=p.alpha; ctx.fill();
-      ctx.globalAlpha=1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
     }
   }
 
-  var started = false;
+  /* FIX: langsung resize + fillBg saat load agar tidak blank hitam */
+  (function earlyInit() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var wrap = canvas.parentElement;
+    if (wrap && wrap.clientWidth > 0) {
+      W = wrap.clientWidth; H = wrap.clientHeight || 220;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + "px"; canvas.style.height = H + "px";
+      ctx.scale(dpr, dpr);
+      fillBg();
+    }
+  })();
+
   if ("IntersectionObserver" in window) {
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting && !started) { started=true; init(); rafId=requestAnimationFrame(loop); }
-        else if (!e.isIntersecting && started) { cancelAnimationFrame(rafId); started=false; }
+        if (e.isIntersecting && !started) {
+          started = true;
+          init(); /* re-init dengan ukuran yang sudah benar */
+          rafId = requestAnimationFrame(loop);
+        } else if (!e.isIntersecting && started) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+          started = false;
+        }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 }); /* FIX: threshold lebih kecil agar trigger lebih awal */
     obs.observe(canvas);
-  } else { init(); rafId = requestAnimationFrame(loop); }
+  } else {
+    init();
+    rafId = requestAnimationFrame(loop);
+  }
 
   window.addEventListener("resize", function () {
-    if (started) { cancelAnimationFrame(rafId); resize(); rafId=requestAnimationFrame(loop); }
+    if (started && rafId) { cancelAnimationFrame(rafId); init(); rafId = requestAnimationFrame(loop); }
+    else { fillBg(); } /* FIX: tetap isi background saat resize meski belum started */
   }, { passive: true });
 })();
