@@ -356,8 +356,11 @@ section{padding:var(--section-pad) clamp(1.5rem,5vw,3rem);position:relative;z-in
 .pf-mock-url--ns{color:rgba(0,212,255,.6);font-size:.6rem}
 .pf-link-primary--ns{background:#00d4ff;color:#050b14}
 .pf-link-primary--ns:hover{background:#33ddff;transform:translateY(-2px)}
+/* Force preview pane to show full height on desktop */
+.pf-preview--ns{min-height:400px;display:flex;flex-direction:column}
+.pf-preview-inner--ns{flex:1;display:flex;flex-direction:column;min-height:400px}
 
-.ns-live-preview{flex:1;display:flex;overflow:hidden;background:#070b12;min-height:340px;position:relative}
+.ns-live-preview{flex:1;display:flex;overflow:hidden;background:#070b12;min-height:340px;position:relative;height:340px}
 .ns-sidebar{width:110px;background:#0d1523;border-right:1px solid #1a2d46;display:flex;flex-direction:column;padding:10px 8px;gap:4px;flex-shrink:0;overflow:hidden}
 .ns-logo{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#00d4ff;text-align:center;padding:4px 0 8px;border-bottom:1px solid #1a2d46;margin-bottom:6px;letter-spacing:.15em}
 .ns-sb-divider{height:1px;background:#1a2d46;margin:4px 0}
@@ -368,7 +371,7 @@ section{padding:var(--section-pad) clamp(1.5rem,5vw,3rem);position:relative;z-in
 .ns-sb-item{display:flex;align-items:center;gap:5px;padding:4px 6px;border-radius:4px;font-size:7.5px;color:#94a3b8;border:1px solid transparent}
 .ns-sb-item--active{background:rgba(0,212,255,.08);border-color:#00d4ff;color:#e2e8f0}
 .ns-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.ns-graph-area{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.ns-graph-area{flex:1;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:340px}
 .ns-dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,#1a2d46 1px,transparent 1px);background-size:22px 22px;opacity:.5;pointer-events:none}
 .ns-topbar{position:relative;z-index:2;height:32px;background:#0d1523;border-bottom:1px solid #1a2d46;display:flex;align-items:center;padding:0 10px;gap:8px;flex-shrink:0}
 .ns-topbar-logo{font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:#00d4ff;letter-spacing:.1em;white-space:nowrap}
@@ -378,7 +381,7 @@ section{padding:var(--section-pad) clamp(1.5rem,5vw,3rem);position:relative;z-in
 .ns-tbtn--accent{color:#00d4ff;border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.07)}
 .ns-stats-mini{font-family:'JetBrains Mono',monospace;font-size:7px;color:#64748b;white-space:nowrap;margin-left:auto}
 .ns-stats-mini b{color:#00d4ff}
-.ns-svg{position:absolute;top:32px;left:0;right:0;bottom:0;width:100%;height:calc(100% - 32px)}
+.ns-svg{position:absolute;top:32px;left:0;right:0;bottom:0;width:100%;height:calc(100% - 32px);min-height:308px}
 .ns-minimap{position:absolute;bottom:38px;right:8px;background:rgba(7,11,18,.92);border:1px solid #1a2d46;border-radius:6px;overflow:hidden;z-index:5}
 .ns-mm-label{font-family:'JetBrains Mono',monospace;font-size:6px;color:#64748b;padding:3px 6px;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid #1a2d46}
 .ns-legend{position:absolute;bottom:8px;left:8px;background:rgba(13,21,35,.92);border:1px solid #1a2d46;border-radius:6px;padding:6px 9px;z-index:5;display:flex;flex-direction:column;gap:3px}
