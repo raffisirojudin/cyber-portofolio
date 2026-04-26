@@ -469,3 +469,565 @@ footer{border-top:1px solid var(--stroke);padding:1.8rem clamp(1.5rem,5vw,3rem)}
   .cb-kpi-row{grid-template-columns:1fr 1fr}
   .ns-sidebar{display:none}
 }
+
+/* ═══════════════════════════════════════════
+   PAGE LOADER
+═══════════════════════════════════════════ */
+#page-loader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+#page-loader.loader-done{opacity:0;pointer-events:none}
+.loader-inner{display:flex;flex-direction:column;align-items:center;gap:1.4rem}
+.loader-logo{
+  font-family:var(--font-display);font-size:3.5rem;font-weight:800;
+  color:var(--accent);letter-spacing:-3px;
+  animation:loader-pop .6s var(--ease) both;
+}
+.loader-dot{
+  display:inline-block;color:var(--teal);
+  animation:loader-dot-blink .8s ease-in-out infinite;
+}
+@keyframes loader-pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes loader-dot-blink{0%,100%{opacity:1;transform:translateY(0)}50%{opacity:.3;transform:translateY(-6px)}}
+.loader-bar-track{
+  width:160px;height:2px;
+  background:var(--stroke-2);border-radius:2px;overflow:hidden;
+}
+.loader-bar{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,var(--accent),var(--teal));
+  border-radius:2px;
+  transition:width .12s linear;
+}
+.loader-text{
+  font-family:var(--font-mono);font-size:.7rem;
+  color:var(--text-3);letter-spacing:.12em;
+  animation:loader-fade 1s ease infinite alternate;
+}
+@keyframes loader-fade{from{opacity:.4}to{opacity:1}}
+
+/* ═══════════════════════════════════════════
+   BACK TO TOP PROGRESS RING
+═══════════════════════════════════════════ */
+#back-top-ring{
+  position:fixed;bottom:2rem;right:2rem;z-index:400;
+  width:48px;height:48px;
+  background:var(--ink-2);border:none;border-radius:50%;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.35);
+  opacity:0;transform:translateY(16px) scale(.85);
+  transition:opacity .3s var(--ease),transform .3s var(--ease);
+  pointer-events:none;
+}
+#back-top-ring.btr-visible{
+  opacity:1;transform:translateY(0) scale(1);pointer-events:all;
+}
+#back-top-ring:hover{transform:translateY(-3px) scale(1.08)!important}
+.btr-svg{
+  position:absolute;inset:0;width:100%;height:100%;
+  transform:rotate(-90deg);
+}
+.btr-track{
+  fill:none;stroke:var(--stroke-2);stroke-width:2.5;
+}
+.btr-fill{
+  fill:none;stroke:var(--accent);stroke-width:2.5;
+  stroke-linecap:round;
+  transition:stroke-dashoffset .1s linear;
+}
+.btr-arrow{
+  position:relative;z-index:1;
+  font-size:1rem;color:var(--text-2);
+  transition:color .2s,transform .2s;
+}
+#back-top-ring:hover .btr-arrow{color:var(--accent);transform:translateY(-2px)}
+
+/* ═══════════════════════════════════════════
+   CASE STUDY MODAL
+═══════════════════════════════════════════ */
+#cs-modal{
+  position:fixed;inset:0;z-index:900;
+  display:flex;align-items:center;justify-content:flex-end;
+  pointer-events:none;
+}
+#cs-modal.cs-open{pointer-events:all}
+.cs-backdrop{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .35s var(--ease);
+}
+#cs-modal.cs-open .cs-backdrop{opacity:1}
+.cs-panel{
+  position:relative;z-index:1;
+  width:min(680px,100vw);height:100vh;
+  background:var(--ink-2);
+  border-left:1px solid var(--stroke-2);
+  display:flex;flex-direction:column;overflow:hidden;
+  transform:translateX(100%);
+  transition:transform .35s cubic-bezier(.32,0,.67,0);
+  box-shadow:-20px 0 60px rgba(0,0,0,.4);
+}
+.cs-panel.cs-panel-in{
+  transform:translateX(0);
+  transition:transform .4s cubic-bezier(.16,1,.3,1);
+}
+
+/* Header */
+.cs-header{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding:1.8rem 2rem 1.4rem;
+  border-bottom:1px solid var(--stroke);flex-shrink:0;
+}
+.cs-header-left{display:flex;flex-direction:column;gap:.4rem}
+.cs-tag{
+  font-family:var(--font-mono);font-size:.7rem;
+  text-transform:uppercase;letter-spacing:.12em;
+  padding:.2rem .7rem;border-radius:100px;border:1px solid;
+  display:inline-block;width:fit-content;
+}
+.cs-title{
+  font-family:var(--font-display);font-size:1.7rem;
+  font-weight:800;letter-spacing:-1px;line-height:1.1;
+}
+.cs-close{
+  background:var(--ink-3);border:1px solid var(--stroke-2);
+  color:var(--text-2);width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;cursor:pointer;flex-shrink:0;
+  transition:color .2s,border-color .2s,transform .2s;
+}
+.cs-close:hover{color:var(--accent);border-color:var(--accent);transform:rotate(90deg)}
+
+/* Body */
+.cs-body{overflow-y:auto;flex:1;padding:1.6rem 2rem 2rem;display:flex;flex-direction:column;gap:1.4rem}
+.cs-body::-webkit-scrollbar{width:4px}
+.cs-body::-webkit-scrollbar-thumb{background:var(--stroke-2);border-radius:2px}
+
+/* Preview box */
+.cs-preview-wrap{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--stroke)}
+.cs-preview-box{
+  height:130px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:.5rem;
+}
+.cs-preview-emoji{font-size:2.8rem;line-height:1}
+.cs-preview-name{
+  font-family:var(--font-display);font-size:1rem;font-weight:700;
+  color:rgba(255,255,255,.6);letter-spacing:-.5px;
+}
+
+/* Problem / Solution / Result */
+.cs-sections{display:flex;flex-direction:column;gap:1rem}
+.cs-section{
+  display:grid;grid-template-columns:32px 1fr;gap:.75rem;
+  align-items:start;padding:1rem;
+  background:var(--ink-3);border-radius:var(--r-md);
+  border:1px solid var(--stroke);
+}
+.cs-section-icon{font-size:1.1rem;margin-top:.1rem}
+.cs-section-title{
+  font-family:var(--font-display);font-size:.85rem;
+  font-weight:700;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:.3rem;
+}
+.cs-section-text{font-size:.875rem;color:var(--text-2);line-height:1.75}
+
+/* Features grid */
+.cs-features{
+  display:grid;grid-template-columns:1fr 1fr;gap:.4rem;
+}
+.cs-feat-item{
+  background:var(--ink-3);border:1px solid var(--stroke);
+  border-radius:var(--r-sm);padding:.4rem .75rem;
+  font-size:.78rem;color:var(--text-2);
+  display:flex;align-items:center;gap:.4rem;
+}
+
+/* Tech row */
+.cs-tech-row{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.cs-tech-lbl{
+  font-family:var(--font-mono);font-size:.7rem;
+  color:var(--text-3);text-transform:uppercase;
+  letter-spacing:.1em;white-space:nowrap;
+}
+.cs-tech-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.cs-tech-tag{
+  background:rgba(var(--accent-rgb),.1);
+  border:1px solid rgba(var(--accent-rgb),.25);
+  color:var(--accent-2);border-radius:var(--r-sm);
+  padding:.2rem .6rem;font-family:var(--font-mono);font-size:.7rem;
+}
+
+/* CTA row */
+.cs-cta-row{display:flex;gap:.8rem;padding-top:.4rem;flex-wrap:wrap}
+.cs-btn-primary{
+  background:var(--accent);color:#fff;font-size:.9rem;
+  font-weight:500;padding:.7rem 1.6rem;border-radius:var(--r-md);
+  transition:opacity .2s,transform .2s;display:inline-flex;
+  align-items:center;gap:.4rem;
+}
+.cs-btn-primary:hover{opacity:.85;transform:translateY(-2px)}
+.cs-btn-ghost{
+  border:1px solid var(--stroke-2);color:var(--text-2);
+  font-size:.9rem;padding:.7rem 1.6rem;border-radius:var(--r-md);
+  transition:border-color .2s,color .2s;
+}
+.cs-btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Case study open button on cards */
+.cs-open-btn{
+  background:transparent;border:1px solid var(--stroke-2);
+  color:var(--text-2);font-family:var(--font-mono);font-size:.75rem;
+  padding:.5rem 1rem;border-radius:var(--r-md);cursor:pointer;
+  transition:border-color .2s,color .2s,background .2s;
+  white-space:nowrap;
+}
+.cs-open-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.cs-open-btn--ks:hover{border-color:#ff006e;color:#ff006e;background:rgba(255,0,110,.08)}
+.cs-open-btn--lk:hover{border-color:#f97316;color:#f97316;background:rgba(249,115,22,.08)}
+.cs-open-btn--es:hover{border-color:#38d9a9;color:#38d9a9;background:rgba(56,217,169,.08)}
+.cs-open-btn--ns:hover{border-color:#00d4ff;color:#00d4ff;background:rgba(0,212,255,.08)}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .cs-panel{width:100vw;height:100vh;border-left:none}
+  .cs-header{padding:1.2rem 1.2rem 1rem}
+  .cs-body{padding:1.2rem}
+  .cs-title{font-size:1.3rem}
+  .cs-features{grid-template-columns:1fr}
+  #back-top-ring{bottom:1.2rem;right:1.2rem}
+}
+
+/* ═══════════════════════════════════════════
+   CASE STUDY — Scroll Hint & CTA Bottom
+═══════════════════════════════════════════ */
+
+/* Scroll hint bar di atas cs-body */
+.cs-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  background: var(--accent-glow);
+  border: 1px solid rgba(var(--accent-rgb),.2);
+  border-radius: var(--r-md);
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--accent-2);
+  letter-spacing: .06em;
+  transition: opacity .4s var(--ease), transform .4s var(--ease), max-height .4s var(--ease);
+  max-height: 48px;
+  overflow: hidden;
+}
+.cs-scroll-hint.cs-hint-hidden {
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  pointer-events: none;
+}
+.cs-scroll-arrow {
+  animation: cs-bounce .9s ease-in-out infinite;
+  font-size: .9rem;
+}
+@keyframes cs-bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Divider sebelum CTA */
+.cs-cta-divider {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: .4rem;
+}
+.cs-cta-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--stroke-2);
+  border-radius: 1px;
+}
+.cs-cta-divider-text {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--text-3);
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: .06em;
+}
+
+/* CTA row tweak */
+.cs-cta-row {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+.cs-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.cs-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+/* Note di bawah CTA */
+.cs-cta-note {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--text-3);
+  text-align: center;
+  padding-bottom: .5rem;
+}
+.cs-cta-note kbd {
+  background: var(--ink-3);
+  border: 1px solid var(--stroke-2);
+  border-radius: 4px;
+  padding: .1rem .35rem;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--text-2);
+}
+
+@media(max-width:640px) {
+  .cs-cta-divider-text { display: none; }
+  .cs-cta-divider { gap: .5rem; }
+  .cs-cta-note { font-size: .65rem; }
+}
+
+/* ═══════════════════════════════════════════
+   CASE STUDY — Reveal Button & Hidden Links
+═══════════════════════════════════════════ */
+
+/* Tombol "Lihat Proyek" — harus diklik sadar */
+.cs-reveal-btn {
+  width: 100%;
+  padding: .9rem 1.5rem;
+  background: var(--ink-3);
+  border: 1.5px dashed var(--stroke-2);
+  border-radius: var(--r-md);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  transition: background .2s, border-color .2s, color .2s, transform .15s;
+}
+.cs-reveal-btn:hover {
+  background: var(--accent-glow);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+.cs-reveal-btn:hover .cs-reveal-arrow {
+  transform: translateX(4px);
+}
+.cs-reveal-btn.cs-reveal-done {
+  opacity: .35;
+  cursor: default;
+  transform: none;
+}
+.cs-reveal-arrow {
+  display: inline-block;
+  transition: transform .2s;
+}
+
+/* Link Demo & GitHub — tersembunyi sampai reveal btn diklik */
+.cs-links-hidden {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .45s cubic-bezier(.16,1,.3,1),
+              opacity .35s var(--ease),
+              margin .35s var(--ease);
+  margin-top: 0;
+}
+.cs-links-hidden.cs-links-visible {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: .2rem;
+}
+.cs-links-inner {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
+@media(max-width:640px) {
+  .cs-links-inner { flex-direction: column; }
+  .cs-btn-primary, .cs-btn-ghost { width: 100%; justify-content: center; }
+  .cs-reveal-btn { font-size: .75rem; }
+}
+
+/* ═══════════════════════════════════════════
+   CASE STUDY — Separated Demo & GitHub Buttons
+═══════════════════════════════════════════ */
+
+/* cs-links-hidden sekarang column stack */
+.cs-links-hidden {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .5s cubic-bezier(.16,1,.3,1),
+              opacity .4s var(--ease);
+}
+.cs-links-hidden.cs-links-visible {
+  max-height: 280px;
+  opacity: 1;
+}
+
+/* Demo Live — full width, bold, primary */
+.cs-btn-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .9rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: .92rem;
+  font-weight: 600;
+  border-radius: var(--r-md);
+  transition: opacity .2s, transform .2s;
+  position: relative;
+}
+.cs-btn-demo:hover { opacity: .88; transform: translateY(-2px); }
+
+/* Separator antara demo dan github */
+.cs-btn-separator {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .1rem 0;
+}
+.cs-btn-sep-line {
+  flex: 1;
+  height: 1px;
+  background: var(--stroke-2);
+}
+.cs-btn-sep-txt {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--text-3);
+  white-space: nowrap;
+  letter-spacing: .04em;
+}
+
+/* GitHub — full width, tapi lebih subtle/secondary */
+.cs-btn-github {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .75rem 1.5rem;
+  background: var(--ink-3);
+  border: 1px solid var(--stroke-2);
+  color: var(--text-2);
+  font-size: .85rem;
+  font-weight: 500;
+  border-radius: var(--r-md);
+  transition: border-color .2s, color .2s, background .2s, transform .2s;
+}
+.cs-btn-github:hover {
+  border-color: var(--text-3);
+  color: var(--text);
+  background: var(--ink-4);
+  transform: translateY(-1px);
+}
+
+/* Ext arrow icon */
+.cs-btn-ext {
+  font-size: .8rem;
+  opacity: .6;
+  margin-left: auto;
+}
+
+/* ═══════════════════════════════════════════
+   PROJECT CARD — 3 Button Row
+═══════════════════════════════════════════ */
+.pf-links-3 {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-top: .5rem;
+}
+
+/* Base shared style untuk semua 3 tombol */
+.pf-btn-3 {
+  flex: 1;
+  padding: .6rem .5rem;
+  border-radius: var(--r-md);
+  font-size: .78rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  font-family: var(--font);
+  white-space: nowrap;
+  transition: opacity .2s, transform .15s, background .2s, border-color .2s, color .2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+}
+.pf-btn-3:hover { transform: translateY(-2px); }
+
+/* Case Study — outline style, netral */
+.pf-btn-cs {
+  background: transparent;
+  border: 1px solid var(--stroke-2);
+  color: var(--text-2);
+}
+.pf-btn-cs:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-glow);
+}
+.pf-btn-cs--ks:hover { border-color:#ff006e; color:#ff006e; background:rgba(255,0,110,.08); }
+.pf-btn-cs--lk:hover { border-color:#f97316; color:#f97316; background:rgba(249,115,22,.08); }
+.pf-btn-cs--es:hover { border-color:#38d9a9; color:#38d9a9; background:rgba(56,217,169,.08); }
+.pf-btn-cs--ns:hover { border-color:#00d4ff; color:#00d4ff; background:rgba(0,212,255,.08); }
+
+/* GitHub — paling subtle, abu-abu */
+.pf-btn-gh {
+  background: var(--ink-3);
+  border: 1px solid var(--stroke);
+  color: var(--text-3);
+  flex: 0 0 auto;
+  padding: .6rem .8rem;
+}
+.pf-btn-gh:hover {
+  background: var(--ink-4);
+  border-color: var(--stroke-2);
+  color: var(--text-2);
+}
+
+@media(max-width:900px) {
+  .pf-links-3 { flex-wrap: wrap; }
+  .pf-btn-gh  { flex: 1; }
+}
+@media(max-width:400px) {
+  .pf-links-3 { flex-direction: column; }
+  .pf-btn-3, .pf-btn-gh { flex: unset; width: 100%; }
+}
