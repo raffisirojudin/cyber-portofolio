@@ -199,6 +199,21 @@
             <div class="cs-scroll-arrow">↓</div>
           </div>
 
+          <!-- Mobile desktop notice — hanya muncul untuk kinetic & neuroshelf di HP -->
+          <div class="cs-mobile-notice" id="cs-mobile-notice">
+            <div class="cs-mn-icon">🖥</div>
+            <div class="cs-mn-text">
+              <strong>Disarankan Mode Desktop</strong>
+              <span>Proyek ini dirancang untuk layar lebar. Aktifkan <em>Mode Situs Desktop</em> di browser HP-mu:</span>
+              <div class="cs-mn-steps">
+                <div class="cs-mn-step">Chrome: Menu (⋮) → <em>Situs Desktop</em></div>
+                <div class="cs-mn-step">Safari: AA → <em>Minta Situs Desktop</em></div>
+                <div class="cs-mn-step">Samsung: Menu → <em>Versi Desktop</em></div>
+              </div>
+            </div>
+            <button class="cs-mn-close" onclick="document.getElementById('cs-mobile-notice').style.display='none'">✕</button>
+          </div>
+
           <div class="cs-preview-wrap">
             <div class="cs-preview-box" id="cs-preview-box"></div>
           </div>
@@ -376,7 +391,10 @@
         <!-- Kinetic Soul -->
         <div class="project-featured reveal">
           <div class="pf-meta">
-            <span class="pf-tag pf-tag--ks">Gen-Art Engine</span>
+            <div class="pf-meta-top">
+              <span class="pf-tag pf-tag--ks">Gen-Art Engine</span>
+              <span class="pf-desktop-badge">🖥 Best on Desktop</span>
+            </div>
             <h3 class="pf-title">Kinetic<span class="pf-title-accent pf-title-accent--ks">·</span>Soul</h3>
           </div>
           <div class="pf-card pf-card--ks">
@@ -586,7 +604,10 @@
         ═══════════════════════════════════════ -->
         <div class="project-featured reveal">
           <div class="pf-meta">
-            <span class="pf-tag pf-tag--ns">Knowledge Graph</span>
+            <div class="pf-meta-top">
+              <span class="pf-tag pf-tag--ns">Knowledge Graph</span>
+              <span class="pf-desktop-badge">🖥 Best on Desktop</span>
+            </div>
             <h3 class="pf-title">Neuro<span class="pf-title-accent pf-title-accent--ns">·</span>Shelf</h3>
           </div>
           <div class="pf-card pf-card--ns">
@@ -1157,6 +1178,14 @@ window.addEventListener("scroll", function () {
     techEl.innerHTML = d.tech.map(function(t) {
       return '<span class="cs-tech-tag">' + t + '</span>';
     }).join('');
+
+    // Show desktop notice for kinetic & neuroshelf
+    // Visibility on desktop is hidden via CSS media query
+    var mobileNotice = document.getElementById('cs-mobile-notice');
+    if (mobileNotice) {
+      var needsDesktop = (key === 'kinetic' || key === 'neuroshelf');
+      mobileNotice.style.display = needsDesktop ? 'flex' : 'none';
+    }
 
     csModal.classList.add('cs-open');
     document.body.style.overflow = 'hidden';
