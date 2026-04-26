@@ -1031,3 +1031,122 @@ footer{border-top:1px solid var(--stroke);padding:1.8rem clamp(1.5rem,5vw,3rem)}
   .pf-links-3 { flex-direction: column; }
   .pf-btn-3, .pf-btn-gh { flex: unset; width: 100%; }
 }
+
+/* ═══════════════════════════════════════════
+   DESKTOP BADGE — Project Card
+═══════════════════════════════════════════ */
+.pf-meta-top {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-bottom: .5rem;
+}
+
+.pf-desktop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 600;
+  color: #f59e0b;
+  background: rgba(245,158,11,.1);
+  border: 1px solid rgba(245,158,11,.3);
+  border-radius: 100px;
+  padding: .2rem .65rem;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE DESKTOP NOTICE — Case Study Modal
+═══════════════════════════════════════════ */
+.cs-mobile-notice {
+  display: none; /* default hidden — JS sets to flex for kinetic/neuroshelf */
+  align-items: flex-start;
+  gap: .8rem;
+  padding: .9rem 1rem;
+  background: rgba(245,158,11,.08);
+  border: 1px solid rgba(245,158,11,.3);
+  border-radius: var(--r-md);
+  position: relative;
+}
+/* On desktop (>=768px): always hide the notice via !important */
+@media (min-width: 768px) {
+  .cs-mobile-notice {
+    display: none !important;
+  }
+}
+
+.cs-mn-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+
+.cs-mn-text {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  flex: 1;
+}
+
+.cs-mn-text strong {
+  font-size: .82rem;
+  font-weight: 700;
+  color: #f59e0b;
+  font-family: var(--font-display);
+}
+
+.cs-mn-text span {
+  font-size: .78rem;
+  color: var(--text-2);
+  line-height: 1.55;
+}
+
+.cs-mn-text em {
+  font-style: normal;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.cs-mn-close {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  background: none;
+  border: none;
+  color: var(--text-3);
+  font-size: .75rem;
+  cursor: pointer;
+  padding: .2rem .4rem;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+.cs-mn-close:hover {
+  color: #f59e0b;
+  background: rgba(245,158,11,.1);
+}
+
+/* Panduan singkat cara aktifkan desktop mode */
+.cs-mn-steps {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  margin-top: .4rem;
+  padding-top: .4rem;
+  border-top: 1px solid rgba(245,158,11,.15);
+}
+.cs-mn-step {
+  font-size: .72rem;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.cs-mn-step::before {
+  content: '›';
+  color: #f59e0b;
+}
