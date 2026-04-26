@@ -199,20 +199,6 @@
             <div class="cs-scroll-arrow">↓</div>
           </div>
 
-          <!-- Mobile desktop notice — hanya muncul untuk kinetic & neuroshelf di HP -->
-          <div class="cs-mobile-notice" id="cs-mobile-notice">
-            <div class="cs-mn-icon">🖥</div>
-            <div class="cs-mn-text">
-              <strong>Disarankan Mode Desktop</strong>
-              <span>Proyek ini dirancang untuk layar lebar. Aktifkan <em>Mode Situs Desktop</em> di browser HP-mu:</span>
-              <div class="cs-mn-steps">
-                <div class="cs-mn-step">Chrome: Menu (⋮) → <em>Situs Desktop</em></div>
-                <div class="cs-mn-step">Safari: AA → <em>Minta Situs Desktop</em></div>
-                <div class="cs-mn-step">Samsung: Menu → <em>Versi Desktop</em></div>
-              </div>
-            </div>
-            <button class="cs-mn-close" onclick="document.getElementById('cs-mobile-notice').style.display='none'">✕</button>
-          </div>
 
           <div class="cs-preview-wrap">
             <div class="cs-preview-box" id="cs-preview-box"></div>
@@ -442,6 +428,7 @@
             </div>
             <div class="pf-info">
               <p class="pf-desc">Mesin generative art interaktif berbasis canvas — sistem partikel real-time dengan fisika inverse square law, Perlin noise flow field, tiga visual mode (Galaxy, Web, Explosion), efek bloom, dan enam palette warna. Fully adaptive FPS.</p>
+              <p class="pf-desktop-note">🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>✦</span> 3 Visual Modes</div>
                 <div class="pf-hl"><span>🎨</span> 6 Color Palettes</div>
@@ -772,6 +759,7 @@
               <p class="pf-desc">
                 Sistem visualisasi pengetahuan berbasis <strong>Force-Directed Graph</strong> — mengubah catatan dan topik menjadi jaringan node interaktif yang terhubung otomatis lewat keyword matching. Eksplorasi koneksi antar ilmu secara visual dengan BFS path finder, undo/redo, minimap, dan export PNG.
               </p>
+              <p class="pf-desktop-note">🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>🕸</span> Force-Directed Graph</div>
                 <div class="pf-hl"><span>🔗</span> BFS Path Finder</div>
@@ -1178,14 +1166,6 @@ window.addEventListener("scroll", function () {
     techEl.innerHTML = d.tech.map(function(t) {
       return '<span class="cs-tech-tag">' + t + '</span>';
     }).join('');
-
-    // Show desktop notice for kinetic & neuroshelf
-    // Visibility on desktop is hidden via CSS media query
-    var mobileNotice = document.getElementById('cs-mobile-notice');
-    if (mobileNotice) {
-      var needsDesktop = (key === 'kinetic' || key === 'neuroshelf');
-      mobileNotice.style.display = needsDesktop ? 'flex' : 'none';
-    }
 
     csModal.classList.add('cs-open');
     document.body.style.overflow = 'hidden';
