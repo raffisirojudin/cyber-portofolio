@@ -14,6 +14,15 @@
   </head>
   <body>
 
+    <!-- PAGE LOADER -->
+    <div id="page-loader">
+      <div class="loader-inner">
+        <div class="loader-logo">RS<span class="loader-dot">.</span></div>
+        <div class="loader-bar-track"><div class="loader-bar"></div></div>
+        <div class="loader-text">Loading portfolio&hellip;</div>
+      </div>
+    </div>
+
     <nav id="navbar">
       <a href="#hero" class="nav-logo">RS.</a>
       <ul class="nav-links">
@@ -171,6 +180,66 @@
       </div>
     </div>
 
+
+    <!-- CASE STUDY MODAL -->
+    <div id="cs-modal" role="dialog" aria-modal="true" aria-label="Case Study">
+      <div class="cs-backdrop" id="cs-backdrop"></div>
+      <div class="cs-panel" id="cs-panel">
+        <div class="cs-header">
+          <div class="cs-header-left">
+            <span class="cs-tag" id="cs-tag"></span>
+            <h2 class="cs-title" id="cs-title"></h2>
+          </div>
+          <button class="cs-close" id="cs-close" aria-label="Tutup">✕</button>
+        </div>
+        <div class="cs-body">
+          <!-- scroll hint -->
+          <div class="cs-scroll-hint" id="cs-scroll-hint">
+            <span>Scroll untuk membaca breakdown</span>
+            <div class="cs-scroll-arrow">↓</div>
+          </div>
+
+          <div class="cs-preview-wrap">
+            <div class="cs-preview-box" id="cs-preview-box"></div>
+          </div>
+
+          <div class="cs-sections">
+            <div class="cs-section">
+              <div class="cs-section-icon">🎯</div>
+              <div>
+                <h3 class="cs-section-title">Problem</h3>
+                <p class="cs-section-text" id="cs-problem"></p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-icon">⚡</div>
+              <div>
+                <h3 class="cs-section-title">Solution</h3>
+                <p class="cs-section-text" id="cs-solution"></p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-icon">✅</div>
+              <div>
+                <h3 class="cs-section-title">Result</h3>
+                <p class="cs-section-text" id="cs-result"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cs-features" id="cs-features"></div>
+
+          <div class="cs-tech-row">
+            <span class="cs-tech-lbl">Tech Stack</span>
+            <div class="cs-tech-tags" id="cs-tech"></div>
+          </div>
+
+          <!-- Close note -->
+          <p class="cs-cta-note">Tekan <kbd>Esc</kbd> atau klik area gelap untuk menutup</p>
+        </div>
+      </div>
+    </div>
+
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-wrap">
@@ -295,9 +364,10 @@
                 <div class="pf-hl"><span>📦</span> Stok Alert</div>
               </div>
               <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Chart.js</span><span>Supabase</span></div>
-              <div class="pf-links">
-                <a href="https://raffisirojudin.github.io/curtainbiz-manager" target="_blank" rel="noopener" class="pf-link-primary">Demo Live →</a>
-                <a href="https://github.com/raffisirojudin/curtainbiz-manager" target="_blank" rel="noopener" class="pf-link-ghost">GitHub</a>
+              <div class="pf-links pf-links-3">
+                <a href="https://raffisirojudin.github.io/curtainbiz-manager" target="_blank" rel="noopener" class="pf-link-primary pf-btn-3">🚀 Demo</a>
+                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs" data-project="curtainbiz">📖 Case Study</button>
+                <a href="https://github.com/raffisirojudin/curtainbiz-manager" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
               </div>
             </div>
           </div>
@@ -361,9 +431,10 @@
                 <div class="pf-hl"><span>🔊</span> Procedural Audio</div>
               </div>
               <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Canvas API</span><span>Web Audio API</span></div>
-              <div class="pf-links">
-                <a href="https://raffisirojudin.github.io/kinetic-soul" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ks">Demo Live →</a>
-                <a href="https://github.com/raffisirojudin/kinetic-soul" target="_blank" rel="noopener" class="pf-link-ghost">GitHub</a>
+              <div class="pf-links pf-links-3">
+                <a href="https://raffisirojudin.github.io/kinetic-soul" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ks pf-btn-3">🚀 Demo</a>
+                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--ks" data-project="kinetic">📖 Case Study</button>
+                <a href="https://github.com/raffisirojudin/kinetic-soul" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
               </div>
             </div>
           </div>
@@ -434,9 +505,10 @@
                 <div class="pf-hl"><span>⭐</span> Progress & Reward</div>
               </div>
               <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Web Audio API</span><span>SVG</span></div>
-              <div class="pf-links">
-                <a href="https://raffisirojudin.github.io/lentera-kecil" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--lk">Demo Live →</a>
-                <a href="https://github.com/raffisirojudin/lentera-kecil" target="_blank" rel="noopener" class="pf-link-ghost">GitHub</a>
+              <div class="pf-links pf-links-3">
+                <a href="https://raffisirojudin.github.io/lentera-kecil" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--lk pf-btn-3">🚀 Demo</a>
+                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--lk" data-project="lentera">📖 Case Study</button>
+                <a href="https://github.com/raffisirojudin/lentera-kecil" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
               </div>
             </div>
           </div>
@@ -500,9 +572,10 @@
                 <div class="pf-hl"><span>⚡</span> Render KaTeX</div>
               </div>
               <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>KaTeX</span></div>
-              <div class="pf-links">
-                <a href="https://raffisirojudin.github.io/easysolve/" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--es">Demo Live →</a>
-                <a href="https://github.com/raffisirojudin/easysolve" target="_blank" rel="noopener" class="pf-link-ghost">GitHub</a>
+              <div class="pf-links pf-links-3">
+                <a href="https://raffisirojudin.github.io/easysolve/" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--es pf-btn-3">🚀 Demo</a>
+                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--es" data-project="easysolve">📖 Case Study</button>
+                <a href="https://github.com/raffisirojudin/easysolve" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
               </div>
             </div>
           </div>
@@ -689,9 +762,10 @@
               <div class="pf-stack">
                 <span>HTML</span><span>CSS</span><span>JavaScript</span><span>D3.js v7</span><span>localStorage</span>
               </div>
-              <div class="pf-links">
-                <a href="https://raffisirojudin.github.io/neuro-shelf" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ns">Demo Live →</a>
-                <a href="https://github.com/raffisirojudin/neuro-shelf" target="_blank" rel="noopener" class="pf-link-ghost">GitHub</a>
+              <div class="pf-links pf-links-3">
+                <a href="https://raffisirojudin.github.io/neuro-shelf" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ns pf-btn-3">🚀 Demo</a>
+                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--ns" data-project="neuroshelf">📖 Case Study</button>
+                <a href="https://github.com/raffisirojudin/neuro-shelf" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
               </div>
             </div>
           </div>
@@ -747,6 +821,15 @@
       </div>
     </section>
 
+    <!-- BACK TO TOP PROGRESS RING -->
+    <button id="back-top-ring" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"> 
+      <svg class="btr-svg" viewBox="0 0 36 36">
+        <circle class="btr-track" cx="18" cy="18" r="15.9"/>
+        <circle class="btr-fill" id="btr-fill" cx="18" cy="18" r="15.9"/>
+      </svg>
+      <span class="btr-arrow">↑</span>
+    </button>
+
     <footer>
       <div class="footer-inner">
         <span class="footer-logo">RS.</span>
@@ -758,7 +841,35 @@
     <script>
 "use strict";
 
-/* ── 1. THEME TOGGLE ── */
+/* ═══════════════════════════════════
+   PAGE LOADER
+═══════════════════════════════════ */
+(function() {
+  var loader = document.getElementById('page-loader');
+  var bar = document.querySelector('.loader-bar');
+  if (!loader) return;
+  var prog = 0;
+  var iv = setInterval(function() {
+    prog += Math.random() * 18;
+    if (prog > 90) prog = 90;
+    if (bar) bar.style.width = prog + '%';
+  }, 80);
+  function hideLoader() {
+    clearInterval(iv);
+    if (bar) bar.style.width = '100%';
+    setTimeout(function() {
+      loader.classList.add('loader-done');
+      setTimeout(function() { loader.style.display = 'none'; }, 600);
+    }, 300);
+  }
+  if (document.readyState === 'complete') { hideLoader(); }
+  else { window.addEventListener('load', hideLoader); }
+  setTimeout(hideLoader, 3000);
+})();
+
+/* ═══════════════════════════════════
+   THEME TOGGLE
+═══════════════════════════════════ */
 var html = document.documentElement;
 var themeBtn = document.getElementById("theme-toggle");
 var saved = localStorage.getItem("theme");
@@ -771,7 +882,9 @@ if (themeBtn) {
   });
 }
 
-/* ── 2. NAVBAR SCROLL & BURGER ── */
+/* ═══════════════════════════════════
+   NAVBAR SCROLL & BURGER
+═══════════════════════════════════ */
 var navbar = document.getElementById("navbar");
 var burger = document.getElementById("burger");
 var mobileMenu = document.getElementById("mobile-menu");
@@ -791,7 +904,9 @@ if (burger && mobileMenu) {
   });
 }
 
-/* ── 3. REVEAL ON SCROLL ── */
+/* ═══════════════════════════════════
+   REVEAL ON SCROLL
+═══════════════════════════════════ */
 var reveals = document.querySelectorAll(".reveal");
 function doReveal() {
   var vh = window.innerHeight;
@@ -803,7 +918,9 @@ doReveal();
 window.addEventListener("scroll", doReveal, { passive: true });
 window.addEventListener("load", doReveal);
 
-/* ── 4. TYPING ANIMATION ── */
+/* ═══════════════════════════════════
+   TYPING ANIMATION
+═══════════════════════════════════ */
 var typedEl = document.getElementById("typed-text");
 if (typedEl) {
   var phrases = ["web experiences.", "clean interfaces.", "fast frontends.", "modern UIs."];
@@ -819,10 +936,12 @@ if (typedEl) {
     }
     setTimeout(tick, del ? 55 : 95);
   }
-  setTimeout(tick, 800);
+  setTimeout(tick, 1200);
 }
 
-/* ── 5. SKILL BARS ── */
+/* ═══════════════════════════════════
+   SKILL BARS
+═══════════════════════════════════ */
 function animateBars() {
   document.querySelectorAll(".skill-bar-fill").forEach(function (bar) {
     if (bar.getBoundingClientRect().top < window.innerHeight) {
@@ -833,7 +952,9 @@ function animateBars() {
 animateBars();
 window.addEventListener("scroll", animateBars, { passive: true });
 
-/* ── 6. SKILL MODAL ── */
+/* ═══════════════════════════════════
+   SKILL MODAL
+═══════════════════════════════════ */
 var modal = document.getElementById("skill-modal");
 var modalClose = document.getElementById("modal-close");
 var SKILLS = {
@@ -863,18 +984,20 @@ if (modal && modalClose) {
   function closeModal() { modal.classList.remove("open"); document.body.style.overflow = ""; }
   modalClose.addEventListener("click", closeModal);
   modal.querySelector(".modal-backdrop").addEventListener("click", closeModal);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeModal(); closeCaseStudy(); } });
 }
 
-/* ── 7. CONTACT FORM ── */
+/* ═══════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════ */
 var form = document.getElementById("contact-form");
 var note = document.getElementById("form-note");
 if (form && note) {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var name = form.querySelector('[name="name"]').value.trim();
-    var email = form.querySelector('[name="email"]').value.trim();
-    var msg = form.querySelector('[name="message"]').value.trim();
+    var name = form.querySelector("[name=\"name\"]").value.trim();
+    var email = form.querySelector("[name=\"email\"]").value.trim();
+    var msg = form.querySelector("[name=\"message\"]").value.trim();
     if (!name || !email || !msg) { note.style.color = "var(--coral)"; note.textContent = "Mohon isi semua kolom."; return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.style.color = "var(--coral)"; note.textContent = "Format email tidak valid."; return; }
     var btn = form.querySelector(".form-submit");
@@ -883,27 +1006,202 @@ if (form && note) {
       note.style.color = "var(--teal)";
       note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
       form.reset();
-      btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
+      btn.innerHTML = "Kirim Pesan <span class=\"btn-arrow\">→</span>";
       btn.disabled = false;
     }, 1200);
   });
 }
 
-/* ── 8. FOOTER YEAR ── */
+/* ═══════════════════════════════════
+   FOOTER YEAR & NAV ACTIVE
+═══════════════════════════════════ */
 var yearEl = document.getElementById("footer-year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ── 9. NAV ACTIVE LINK ── */
 var sections = document.querySelectorAll("section[id]");
 window.addEventListener("scroll", function () {
   var pos = window.scrollY + 100;
   sections.forEach(function (s) {
-    var link = document.querySelector('.nav-links a[href="#' + s.id + '"]');
+    var link = document.querySelector(".nav-links a[href=\"#" + s.id + "\"]");
     if (link) link.classList.toggle("active", pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight);
   });
 }, { passive: true });
 
-/* ── 10. KINETIC SOUL CANVAS ── */
+/* ═══════════════════════════════════
+   BACK TO TOP PROGRESS RING
+═══════════════════════════════════ */
+(function() {
+  var btn = document.getElementById('back-top-ring');
+  var fill = document.getElementById('btr-fill');
+  if (!btn || !fill) return;
+  var C = 2 * Math.PI * 15.9;
+  fill.style.strokeDasharray = C;
+  fill.style.strokeDashoffset = C;
+  function updateRing() {
+    var scrolled = window.scrollY;
+    var total = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = total > 0 ? scrolled / total : 0;
+    fill.style.strokeDashoffset = C - (C * progress);
+    btn.classList.toggle('btr-visible', scrolled > 200);
+  }
+  window.addEventListener('scroll', updateRing, { passive: true });
+  updateRing();
+})();
+
+/* ═══════════════════════════════════
+   CASE STUDY MODAL
+═══════════════════════════════════ */
+(function() {
+  var CASE_STUDIES = {
+    curtainbiz: {
+      tag: 'Featured Project',
+      tagColor: 'var(--accent)',
+      title: 'CurtainBiz Manager',
+      demo: 'https://raffisirojudin.github.io/curtainbiz-manager',
+      github: 'https://github.com/raffisirojudin/curtainbiz-manager',
+      problem: 'Pemilik bisnis curtain kesulitan melacak pesanan, stok, dan keuangan secara manual menggunakan spreadsheet. Data tercecer, laporan HPP tidak akurat, dan tidak ada visibilitas real-time.',
+      solution: 'Membangun sistem manajemen berbasis web dengan dashboard KPI real-time, manajemen pesanan multi-channel, alert stok otomatis, dan kalkulator HPP terintegrasi menggunakan HTML, CSS, JavaScript, dan Supabase sebagai backend.',
+      result: 'Pemilik bisnis dapat memantau 4 KPI utama sekaligus, mengelola 100+ order tanpa spreadsheet, dan mendapatkan laporan keuangan otomatis. Waktu rekap bulanan berkurang dari 4 jam menjadi under 10 menit.',
+      features: ['📊 Dashboard KPI Real-time', '🛒 Order Management Multi-channel', '💰 Kalkulator HPP Otomatis', '📦 Alert Stok Rendah', '📈 Grafik Penjualan Bulanan', '🔐 Auth & Multi-user'],
+      tech: ['HTML', 'CSS', 'JavaScript', 'Chart.js', 'Supabase'],
+      previewBg: 'linear-gradient(135deg,#0f0f1a,#13131a)',
+      previewEmoji: '📊'
+    },
+    kinetic: {
+      tag: 'Gen-Art Engine',
+      tagColor: '#ff006e',
+      title: 'Kinetic·Soul',
+      demo: 'https://raffisirojudin.github.io/kinetic-soul',
+      github: 'https://github.com/raffisirojudin/kinetic-soul',
+      problem: 'Tidak ada tool generative art berbasis browser yang ringan, open-source, dan bisa dikustomisasi tanpa pengetahuan coding mendalam. Tool yang ada terlalu kompleks atau berbayar.',
+      solution: 'Membangun mesin generative art interaktif di atas Canvas API dengan sistem partikel fisika inverse square law, Perlin noise flow field, 3 visual mode, efek bloom, dan 6 palette warna. Fully client-side, zero dependency.',
+      result: 'Aplikasi berjalan smooth 60 FPS dengan 120+ partikel aktif di browser manapun. User bisa menghasilkan karya unik setiap saat dengan kombinasi mode dan palette yang berbeda.',
+      features: ['✦ 3 Visual Modes (Galaxy, Web, Explosion)', '🎨 6 Color Palettes', '⚡ Perlin Noise Physics', '🔊 Procedural Audio', '📸 Export PNG', '🎛 Parameter Sliders'],
+      tech: ['HTML', 'CSS', 'JavaScript', 'Canvas API', 'Web Audio API'],
+      previewBg: 'linear-gradient(135deg,#050508,#1a0a2e)',
+      previewEmoji: '✦'
+    },
+    lentera: {
+      tag: 'Interactive Storytelling',
+      tagColor: '#f97316',
+      title: 'Lentera Kecil',
+      demo: 'https://raffisirojudin.github.io/lentera-kecil',
+      github: 'https://github.com/raffisirojudin/lentera-kecil',
+      problem: 'Anak-anak Indonesia kehilangan akses ke dongeng tradisional Nusantara yang interaktif. Konten digital anak yang ada mayoritas berformat video pasif dan tidak adaptif.',
+      solution: 'Mesin dongeng interaktif dengan 17 cerita rakyat Nusantara, karakter SVG animasi original, background scene dinamis, ambient sound procedural, dan sistem progress berbintang untuk memotivasi anak terus membaca.',
+      result: 'Platform yang dapat dinikmati anak usia 4–10 tahun tanpa koneksi internet, dengan 17 cerita lengkap dengan pesan moral, sistem bintang yang mendorong engagement, dan pengalaman audio-visual yang imersif.',
+      features: ['📚 17 Dongeng Nusantara', '🎭 Karakter SVG Animasi Original', '🔊 Ambient Sound Engine', '⭐ Sistem Progress & Reward', '🔍 Filter & Pencarian Cerita', '💾 Offline-capable'],
+      tech: ['HTML', 'CSS', 'JavaScript', 'Web Audio API', 'SVG Animation'],
+      previewBg: 'linear-gradient(180deg,#87ceeb,#66bb6a)',
+      previewEmoji: '🏮'
+    },
+    easysolve: {
+      tag: 'Science Calculator',
+      tagColor: '#38d9a9',
+      title: 'EasySolve',
+      demo: 'https://raffisirojudin.github.io/easysolve/',
+      github: 'https://github.com/raffisirojudin/easysolve',
+      problem: 'Pelajar sering kesulitan memahami langkah-langkah pengerjaan soal sains. Kalkulator biasa hanya memberikan jawaban tanpa penjelasan, sehingga tidak membantu pemahaman konsep.',
+      solution: 'Platform kalkulator sains komprehensif dengan 100+ rumus dari 7 mata pelajaran yang tidak hanya memberikan hasil, tetapi juga menampilkan langkah pengerjaan step-by-step yang jelas dengan render KaTeX.',
+      result: 'Pelajar dapat mengerjakan soal dari 7 mata pelajaran berbeda dalam satu platform, memahami proses perhitungan secara visual, dan menggunakan sebagai referensi belajar mandiri yang efektif.',
+      features: ['🔢 100+ Rumus Lengkap', '📚 7 Mata Pelajaran', '📝 Step-by-step Explanation', '⚡ Render KaTeX', '🔍 Pencarian Rumus', '📱 Responsive Design'],
+      tech: ['HTML', 'CSS', 'JavaScript', 'KaTeX'],
+      previewBg: 'linear-gradient(135deg,#0a1a14,#0d1e17)',
+      previewEmoji: '∑'
+    },
+    neuroshelf: {
+      tag: 'Knowledge Graph',
+      tagColor: '#00d4ff',
+      title: 'Neuro·Shelf',
+      demo: 'https://raffisirojudin.github.io/neuro-shelf',
+      github: 'https://github.com/raffisirojudin/neuro-shelf',
+      problem: 'Pengelolaan catatan tradisional (linear) tidak mencerminkan bagaimana otak manusia benar-benar menyimpan informasi — dalam jaringan koneksi, bukan daftar. Orang kehilangan hubungan antar topik yang sudah dipelajari.',
+      solution: 'Sistem visualisasi pengetahuan berbasis Force-Directed Graph menggunakan D3.js dengan auto-linking berbasis keyword matching, BFS path finder, Convex Hull grouping, minimap, undo/redo, dan export PNG — semua tersimpan di localStorage.',
+      result: 'User dapat memvisualisasikan 100+ node pengetahuan dalam jaringan interaktif, menemukan koneksi tersembunyi antar topik secara otomatis, dan mengeksplorasi jalur terpendek antar konsep menggunakan BFS algorithm.',
+      features: ['🕸 Force-Directed Graph D3.js', '🔗 BFS Path Finder', '✦ Auto-Link by Keyword Tags', '🗺 Minimap + Convex Hull', '↩ Undo / Redo 40 Steps', '🖼 Export PNG & JSON'],
+      tech: ['HTML', 'CSS', 'JavaScript', 'D3.js v7', 'localStorage'],
+      previewBg: 'linear-gradient(135deg,#070b12,#0d1523)',
+      previewEmoji: '🕸'
+    }
+  };
+
+  var csModal = document.getElementById('cs-modal');
+  var csPanel = document.getElementById('cs-panel');
+  var csBackdrop = document.getElementById('cs-backdrop');
+  var csClose = document.getElementById('cs-close');
+  if (!csModal) return;
+
+  function openCaseStudy(key) {
+    var d = CASE_STUDIES[key];
+    if (!d) return;
+    document.getElementById('cs-tag').textContent = d.tag;
+    document.getElementById('cs-tag').style.color = d.tagColor;
+    document.getElementById('cs-tag').style.borderColor = d.tagColor;
+    document.getElementById('cs-tag').style.background = d.tagColor + '15';
+    document.getElementById('cs-title').textContent = d.title;
+    document.getElementById('cs-problem').textContent = d.problem;
+    document.getElementById('cs-solution').textContent = d.solution;
+    document.getElementById('cs-result').textContent = d.result;
+    // demo/github links now live on the project cards directly
+
+    var previewBox = document.getElementById('cs-preview-box');
+    previewBox.style.background = d.previewBg;
+    previewBox.innerHTML = '<div class="cs-preview-emoji">' + d.previewEmoji + '</div><div class="cs-preview-name">' + d.title + '</div>';
+
+    var featEl = document.getElementById('cs-features');
+    featEl.innerHTML = d.features.map(function(f) {
+      return '<div class="cs-feat-item">' + f + '</div>';
+    }).join('');
+
+    var techEl = document.getElementById('cs-tech');
+    techEl.innerHTML = d.tech.map(function(t) {
+      return '<span class="cs-tech-tag">' + t + '</span>';
+    }).join('');
+
+    csModal.classList.add('cs-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function() { csPanel.classList.add('cs-panel-in'); }, 10);
+
+    // Reset scroll hint
+    var body = document.querySelector('.cs-body');
+    var hint = document.getElementById('cs-scroll-hint');
+    if (body) {
+      body.scrollTop = 0;
+      if (hint) hint.classList.remove('cs-hint-hidden');
+      body.addEventListener('scroll', function onScroll() {
+        if (body.scrollTop > 40) {
+          if (hint) hint.classList.add('cs-hint-hidden');
+          body.removeEventListener('scroll', onScroll);
+        }
+      }, { passive: true });
+    }
+  }
+
+  function closeCaseStudy() {
+    csPanel.classList.remove('cs-panel-in');
+    setTimeout(function() {
+      csModal.classList.remove('cs-open');
+      document.body.style.overflow = '';
+    }, 350);
+  }
+  window.closeCaseStudy = closeCaseStudy;
+
+
+
+  document.querySelectorAll('.cs-open-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openCaseStudy(btn.dataset.project);
+    });
+  });
+
+  if (csClose) csClose.addEventListener('click', closeCaseStudy);
+  if (csBackdrop) csBackdrop.addEventListener('click', closeCaseStudy);
+})();
+
+/* ═══════════════════════════════════
+   KINETIC SOUL CANVAS
+═══════════════════════════════════ */
 (function () {
   var canvas = document.getElementById("ks-canvas");
   if (!canvas) return;
@@ -912,9 +1210,7 @@ window.addEventListener("scroll", function () {
   var particles = [], noiseT = 0, rafId = null, started = false;
   var PALETTE = ["#ff006e","#ff4da6","#8338ec","#a855f7","#3a86ff","#60a5fa","#ff85c2"];
   var MAX = 120;
-
   function fillBg() { ctx.fillStyle = "#050508"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
-
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     var wrap = canvas.parentElement;
@@ -923,70 +1219,64 @@ window.addEventListener("scroll", function () {
     canvas.style.width = W + "px"; canvas.style.height = H + "px";
     ctx.scale(dpr, dpr); fillBg();
   }
-
   function noise(x, y) {
     var X = Math.floor(x) & 255, Y = Math.floor(y) & 255;
     var xf = x - Math.floor(x), yf = y - Math.floor(y);
     var u = xf*xf*xf*(xf*(xf*6-15)+10), v = yf*yf*yf*(yf*(yf*6-15)+10);
     var h1=(X*374761393+Y*668265263)&0x7FFFFFFF, h2=((X+1)*374761393+Y*668265263)&0x7FFFFFFF;
     var h3=(X*374761393+(Y+1)*668265263)&0x7FFFFFFF, h4=((X+1)*374761393+(Y+1)*668265263)&0x7FFFFFFF;
-    var g = function(h, px, py) { h=h&3; var gx=h<2?(h===0?1:-1):0; var gy=h>=2?(h===2?1:-1):0; return gx*px+gy*py; };
+    var g = function(h,px,py){h=h&3;var gx=h<2?(h===0?1:-1):0;var gy=h>=2?(h===2?1:-1):0;return gx*px+gy*py;};
     return (1-u)*(1-v)*g(h1,xf,yf)+u*(1-v)*g(h2,xf-1,yf)+(1-u)*v*g(h3,xf,yf-1)+u*v*g(h4,xf-1,yf-1);
   }
-
-  function Particle() { this.reset(); }
-  Particle.prototype.reset = function () {
-    this.x=Math.random()*W; this.y=Math.random()*H; this.vx=0; this.vy=0;
+  function Particle(){this.reset();}
+  Particle.prototype.reset=function(){
+    this.x=Math.random()*W;this.y=Math.random()*H;this.vx=0;this.vy=0;
     this.color=PALETTE[Math.floor(Math.random()*PALETTE.length)];
-    this.alpha=0.5+Math.random()*0.5; this.r=1+Math.random()*2;
-    this.noiseOff=Math.random()*1000; this.trail=[];
+    this.alpha=0.5+Math.random()*0.5;this.r=1+Math.random()*2;
+    this.noiseOff=Math.random()*1000;this.trail=[];
     this.orbitA=Math.random()*Math.PI*2;
     this.orbitR=30+Math.random()*Math.min(W,H)*0.35;
     this.orbitSpd=(0.0004+Math.random()*0.0007)*(Math.random()<0.5?1:-1);
   };
-
-  function init() { resize(); particles=[]; for(var i=0;i<MAX;i++) particles.push(new Particle()); }
-
+  function init(){resize();particles=[];for(var i=0;i<MAX;i++)particles.push(new Particle());}
   var lastT=0;
-  function loop(ts) {
+  function loop(ts){
     rafId=requestAnimationFrame(loop);
-    var dt=Math.min((ts-lastT)/16.67,3); lastT=ts; noiseT+=0.0015;
+    var dt=Math.min((ts-lastT)/16.67,3);lastT=ts;noiseT+=0.0015;
     ctx.globalCompositeOperation="source-over";
-    ctx.fillStyle="rgba(5,5,8,0.18)"; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle="rgba(5,5,8,0.18)";ctx.fillRect(0,0,W,H);
     ctx.globalCompositeOperation="lighter";
     var cx=W/2,cy=H/2;
     for(var i=0;i<particles.length;i++){
-      var p=particles[i]; p.orbitA+=p.orbitSpd*dt;
+      var p=particles[i];p.orbitA+=p.orbitSpd*dt;
       var n=noise((p.x/W)*3+noiseT+p.noiseOff,(p.y/H)*3+noiseT*0.7);
       var flowA=n*Math.PI*4;
-      var tx=cx+Math.cos(p.orbitA)*p.orbitR, ty=cy+Math.sin(p.orbitA)*p.orbitR;
+      var tx=cx+Math.cos(p.orbitA)*p.orbitR,ty=cy+Math.sin(p.orbitA)*p.orbitR;
       p.vx+=(tx-p.x)*0.016*dt+Math.cos(flowA)*0.25;
       p.vy+=(ty-p.y)*0.016*dt+Math.sin(flowA)*0.25;
-      p.vx*=0.93; p.vy*=0.93;
-      p.trail.push({x:p.x,y:p.y}); if(p.trail.length>12) p.trail.shift();
-      p.x+=p.vx*dt; p.y+=p.vy*dt;
+      p.vx*=0.93;p.vy*=0.93;
+      p.trail.push({x:p.x,y:p.y});if(p.trail.length>12)p.trail.shift();
+      p.x+=p.vx*dt;p.y+=p.vy*dt;
       if(p.trail.length>1){
-        ctx.beginPath(); ctx.moveTo(p.trail[0].x,p.trail[0].y);
-        for(var t=1;t<p.trail.length;t++) ctx.lineTo(p.trail[t].x,p.trail[t].y);
-        ctx.strokeStyle=p.color; ctx.globalAlpha=p.alpha*0.45;
-        ctx.lineWidth=p.r*0.7; ctx.lineCap="round"; ctx.stroke();
+        ctx.beginPath();ctx.moveTo(p.trail[0].x,p.trail[0].y);
+        for(var t=1;t<p.trail.length;t++)ctx.lineTo(p.trail[t].x,p.trail[t].y);
+        ctx.strokeStyle=p.color;ctx.globalAlpha=p.alpha*0.45;
+        ctx.lineWidth=p.r*0.7;ctx.lineCap="round";ctx.stroke();
       }
-      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=p.color; ctx.globalAlpha=p.alpha; ctx.fill(); ctx.globalAlpha=1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=p.color;ctx.globalAlpha=p.alpha;ctx.fill();ctx.globalAlpha=1;
     }
   }
-
   (function earlyInit(){
     dpr=Math.min(window.devicePixelRatio||1,2);
     var wrap=canvas.parentElement;
     if(wrap&&wrap.clientWidth>0){
-      W=wrap.clientWidth; H=wrap.clientHeight||220;
-      canvas.width=W*dpr; canvas.height=H*dpr;
-      canvas.style.width=W+"px"; canvas.style.height=H+"px";
-      ctx.scale(dpr,dpr); fillBg();
+      W=wrap.clientWidth;H=wrap.clientHeight||220;
+      canvas.width=W*dpr;canvas.height=H*dpr;
+      canvas.style.width=W+"px";canvas.style.height=H+"px";
+      ctx.scale(dpr,dpr);fillBg();
     }
   })();
-
   if("IntersectionObserver" in window){
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -995,8 +1285,7 @@ window.addEventListener("scroll", function () {
       });
     },{threshold:0.05});
     obs.observe(canvas);
-  } else { init(); rafId=requestAnimationFrame(loop); }
-
+  }else{init();rafId=requestAnimationFrame(loop);}
   window.addEventListener("resize",function(){
     if(started&&rafId){cancelAnimationFrame(rafId);init();rafId=requestAnimationFrame(loop);}
     else{fillBg();}
