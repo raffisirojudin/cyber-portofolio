@@ -4,16 +4,328 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rafi Sirojudin — Web Developer</title>
-    <meta name="description" content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan." />
+    <meta
+      name="description"
+      content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan."
+    />
     <meta property="og:title" content="Rafi Sirojudin — Web Developer" />
-    <meta property="og:description" content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan." />
+    <meta
+      property="og:description"
+      content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan."
+    />
     <meta property="og:type" content="website" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
+
+    <!-- ═══════════════════════════════════════
+         BASECALC INSIGHT — Preview Styles
+         (scoped to .bc-* so no conflicts with style.css)
+    ═══════════════════════════════════════ -->
+    <style>
+      /* ── Card accent ── */
+      .pf-card--bc {
+        --pf-accent: #22d3ee;
+      }
+      .pf-tag--bc {
+        color: #22d3ee;
+        border-color: rgba(34, 211, 238, 0.35);
+        background: rgba(34, 211, 238, 0.08);
+      }
+      .pf-title-accent--bc {
+        color: #22d3ee;
+      }
+      .pf-link-primary--bc {
+        background: linear-gradient(135deg, #0e7490, #22d3ee) !important;
+      }
+      .pf-btn-cs--bc {
+        border-color: rgba(34, 211, 238, 0.3) !important;
+        color: #22d3ee !important;
+      }
+      .pf-preview--bc {
+        background: #080b10;
+      }
+      .pf-preview-inner--bc {
+        border-color: rgba(34, 211, 238, 0.12);
+      }
+      .pf-mock-url--bc {
+        color: rgba(34, 211, 238, 0.6);
+        font-size: 0.6rem;
+      }
+
+      /* ── Live preview shell ── */
+      .bc-live-preview {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: #080b10;
+        font-family: "JetBrains Mono", "Courier New", monospace;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* scanline overlay */
+      .bc-live-preview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 10;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(0, 229, 255, 0.025) 3px,
+          rgba(0, 229, 255, 0.025) 4px
+        );
+      }
+
+      /* ── Header bar ── */
+      .bc-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 10px;
+        border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+        background: rgba(34, 211, 238, 0.04);
+        flex-shrink: 0;
+      }
+      .bc-logo {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #e0f2fe;
+      }
+      .bc-dot {
+        color: #22d3ee;
+      }
+      .bc-badge {
+        font-size: 8px;
+        letter-spacing: 2px;
+        color: #22d3ee;
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        padding: 1px 5px;
+        border-radius: 2px;
+        background: rgba(34, 211, 238, 0.06);
+      }
+
+      /* ── Status bar ── */
+      .bc-status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        background: rgba(0, 0, 0, 0.25);
+        font-size: 8px;
+        color: rgba(34, 211, 238, 0.6);
+        flex-shrink: 0;
+        border-bottom: 1px solid rgba(34, 211, 238, 0.08);
+      }
+      .bc-status-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #22d3ee;
+        box-shadow: 0 0 6px #22d3ee;
+        animation: bcPulse 2s infinite;
+      }
+      @keyframes bcPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      /* ── Converter grid ── */
+      .bc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        padding: 8px 8px 5px;
+        flex-shrink: 0;
+      }
+      .bc-card {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 4px;
+        padding: 5px 7px;
+        transition: border-color 0.2s;
+      }
+      .bc-card-label {
+        font-size: 7px;
+        letter-spacing: 2px;
+        margin-bottom: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .bc-base-pill {
+        font-size: 6px;
+        padding: 1px 4px;
+        border-radius: 2px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .bc-value {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        line-height: 1.2;
+      }
+      .bc-groups {
+        margin-top: 3px;
+        display: flex;
+        gap: 2px;
+        flex-wrap: wrap;
+      }
+      .bc-grp {
+        font-size: 7px;
+        padding: 1px 3px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.06);
+        letter-spacing: 1px;
+      }
+
+      /* card themes */
+      .bc-card--bin {
+        border-color: rgba(57, 255, 20, 0.2);
+      }
+      .bc-card--bin .bc-card-label {
+        color: rgba(57, 255, 20, 0.7);
+      }
+      .bc-card--bin .bc-base-pill {
+        background: rgba(57, 255, 20, 0.12);
+        color: #39ff14;
+        border: 1px solid rgba(57, 255, 20, 0.2);
+      }
+      .bc-card--bin .bc-value {
+        color: #39ff14;
+        text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
+      }
+      .bc-card--bin .bc-grp {
+        background: rgba(57, 255, 20, 0.08);
+        color: rgba(57, 255, 20, 0.8);
+        border: 1px solid rgba(57, 255, 20, 0.15);
+      }
+
+      .bc-card--oct {
+        border-color: rgba(255, 179, 0, 0.2);
+      }
+      .bc-card--oct .bc-card-label {
+        color: rgba(255, 179, 0, 0.7);
+      }
+      .bc-card--oct .bc-base-pill {
+        background: rgba(255, 179, 0, 0.12);
+        color: #ffb300;
+        border: 1px solid rgba(255, 179, 0, 0.2);
+      }
+      .bc-card--oct .bc-value {
+        color: #ffb300;
+        text-shadow: 0 0 8px rgba(255, 179, 0, 0.4);
+      }
+
+      .bc-card--dec {
+        border-color: rgba(34, 211, 238, 0.3);
+        background: rgba(34, 211, 238, 0.04);
+      }
+      .bc-card--dec .bc-card-label {
+        color: rgba(34, 211, 238, 0.8);
+      }
+      .bc-card--dec .bc-base-pill {
+        background: rgba(34, 211, 238, 0.15);
+        color: #22d3ee;
+        border: 1px solid rgba(34, 211, 238, 0.3);
+      }
+      .bc-card--dec .bc-value {
+        color: #fff;
+        font-size: 15px;
+        text-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+      }
+
+      .bc-card--hex {
+        border-color: rgba(255, 45, 120, 0.2);
+      }
+      .bc-card--hex .bc-card-label {
+        color: rgba(255, 45, 120, 0.7);
+      }
+      .bc-card--hex .bc-base-pill {
+        background: rgba(255, 45, 120, 0.12);
+        color: #ff2d78;
+        border: 1px solid rgba(255, 45, 120, 0.2);
+      }
+      .bc-card--hex .bc-value {
+        color: #ff2d78;
+        text-shadow: 0 0 8px rgba(255, 45, 120, 0.4);
+      }
+
+      /* ── Steps breakdown ── */
+      .bc-steps {
+        flex: 1;
+        margin: 0 8px 8px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(34, 211, 238, 0.1);
+        border-radius: 4px;
+        padding: 6px 8px;
+        overflow: hidden;
+        min-height: 0;
+      }
+      .bc-steps-title {
+        font-size: 7px;
+        letter-spacing: 3px;
+        color: rgba(34, 211, 238, 0.5);
+        margin-bottom: 5px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+      }
+      .bc-step-row {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        margin-bottom: 3px;
+      }
+      .bc-step-n {
+        font-size: 7px;
+        color: rgba(34, 211, 238, 0.4);
+        min-width: 10px;
+        flex-shrink: 0;
+      }
+      .bc-step-txt {
+        font-size: 8px;
+        color: rgba(200, 216, 232, 0.7);
+      }
+      .bc-step-txt em {
+        font-style: normal;
+        color: #ffb300;
+      }
+      .bc-step-txt strong {
+        font-style: normal;
+        color: #22d3ee;
+        font-weight: 700;
+      }
+      .bc-step-result {
+        margin-top: 5px;
+        padding: 4px 6px;
+        background: rgba(34, 211, 238, 0.06);
+        border: 1px solid rgba(34, 211, 238, 0.15);
+        border-radius: 3px;
+        font-size: 9px;
+        color: #22d3ee;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-
     <!-- PAGE LOADER -->
     <div id="page-loader">
       <div class="loader-inner">
@@ -57,31 +369,69 @@
     <section id="hero">
       <div class="hero-wrap">
         <div class="hero-left">
-          <div class="hero-badge reveal"><span class="badge-dot"></span>Available for work</div>
-          <h1 class="hero-name reveal"><span>Rafi </span><span class="name-accent">Sirojudin</span></h1>
-          <p class="hero-role reveal"><span class="role-prefix">I build </span><span id="typed-text" class="typed"></span><span class="typed-cursor">|</span></p>
-          <p class="hero-desc reveal">Web developer yang fokus pada tampilan bersih, performa tinggi, dan pengalaman pengguna yang menyenangkan.</p>
+          <div class="hero-badge reveal">
+            <span class="badge-dot"></span>Available for work
+          </div>
+          <h1 class="hero-name reveal">
+            <span>Rafi </span><span class="name-accent">Sirojudin</span>
+          </h1>
+          <p class="hero-role reveal">
+            <span class="role-prefix">I build </span
+            ><span id="typed-text" class="typed"></span
+            ><span class="typed-cursor">|</span>
+          </p>
+          <p class="hero-desc reveal">
+            Web developer yang fokus pada tampilan bersih, performa tinggi, dan
+            pengalaman pengguna yang menyenangkan.
+          </p>
           <div class="hero-cta reveal">
-            <a href="#projects" class="btn-primary">Lihat Proyek <span class="btn-arrow">→</span></a>
+            <a href="#projects" class="btn-primary"
+              >Lihat Proyek <span class="btn-arrow">→</span></a
+            >
             <a href="#contact" class="btn-outline">Hubungi Saya</a>
           </div>
-          <div class="hero-scroll reveal"><span>Scroll</span><div class="scroll-line"></div></div>
+          <div class="hero-scroll reveal">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+          </div>
         </div>
         <div class="hero-right reveal">
           <div class="hero-card">
             <div class="hcard-header">
-              <div class="hcard-dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
+              <div class="hcard-dots">
+                <span class="dot dot-r"></span><span class="dot dot-y"></span
+                ><span class="dot dot-g"></span>
+              </div>
               <span class="hcard-file">profile.ts</span>
             </div>
             <div class="hcard-body">
-              <p><span class="t-kw">const</span> <span class="t-var">dev</span> = {</p>
-              <p>&nbsp;&nbsp;<span class="t-prop">name</span>: <span class="t-str">"Rafi Sirojudin"</span>,</p>
-              <p>&nbsp;&nbsp;<span class="t-prop">role</span>: <span class="t-str">"Frontend Dev"</span>,</p>
-              <p>&nbsp;&nbsp;<span class="t-prop">location</span>: <span class="t-str">"Indonesia 🇮🇩"</span>,</p>
+              <p>
+                <span class="t-kw">const</span> <span class="t-var">dev</span> =
+                {
+              </p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">name</span>:
+                <span class="t-str">"Rafi Sirojudin"</span>,
+              </p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">role</span>:
+                <span class="t-str">"Frontend Dev"</span>,
+              </p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">location</span>:
+                <span class="t-str">"Indonesia 🇮🇩"</span>,
+              </p>
               <p>&nbsp;&nbsp;<span class="t-prop">stack</span>: [</p>
-              <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HTML"</span>, <span class="t-str">"CSS"</span>, <span class="t-str">"JS"</span></p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HTML"</span>,
+                <span class="t-str">"CSS"</span>,
+                <span class="t-str">"JS"</span>
+              </p>
               <p>&nbsp;&nbsp;],</p>
-              <p>&nbsp;&nbsp;<span class="t-prop">openToWork</span>: <span class="t-bool">true</span></p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">openToWork</span>:
+                <span class="t-bool">true</span>
+              </p>
               <p>}</p>
             </div>
           </div>
@@ -93,12 +443,18 @@
     <section id="about">
       <div class="section-wrap">
         <div class="section-label reveal">
-          <span class="label-num">01</span><span class="label-line"></span><span class="label-text">About</span>
+          <span class="label-num">01</span><span class="label-line"></span
+          ><span class="label-text">About</span>
         </div>
         <div class="about-grid">
           <div class="about-photo-wrap reveal">
             <div class="about-photo-frame">
-              <img src="assets/foto.jpg" alt="Rafi Sirojudin" class="about-img" onerror="this.parentElement.classList.add('no-img')" />
+              <img
+                src="assets/foto.jpg"
+                alt="Rafi Sirojudin"
+                class="about-img"
+                onerror="this.parentElement.classList.add('no-img')"
+              />
               <div class="about-img-placeholder"><span>RS</span></div>
             </div>
             <div class="about-tags">
@@ -109,12 +465,30 @@
           </div>
           <div class="about-content reveal">
             <h2 class="section-title">Tentang Saya</h2>
-            <p>Saya adalah seorang web developer yang sedang berkembang, dengan fokus pada pembuatan tampilan web yang bersih dan responsif. Saya percaya kode yang baik adalah kode yang mudah dibaca dan dipelihara.</p>
-            <p>Saat ini saya aktif belajar dan terus mengasah kemampuan di bidang front-end development — dari desain sistem hingga optimasi performa.</p>
+            <p>
+              Saya adalah seorang web developer yang sedang berkembang, dengan
+              fokus pada pembuatan tampilan web yang bersih dan responsif. Saya
+              percaya kode yang baik adalah kode yang mudah dibaca dan
+              dipelihara.
+            </p>
+            <p>
+              Saat ini saya aktif belajar dan terus mengasah kemampuan di bidang
+              front-end development — dari desain sistem hingga optimasi
+              performa.
+            </p>
             <div class="about-stats">
-              <div class="stat-box reveal"><span class="stat-n">10<span class="stat-plus">+</span></span><span class="stat-l">Proyek</span></div>
-              <div class="stat-box reveal"><span class="stat-n">3<span class="stat-plus">+</span></span><span class="stat-l">Teknologi</span></div>
-              <div class="stat-box reveal"><span class="stat-n">1<span class="stat-plus">+</span></span><span class="stat-l">Tahun</span></div>
+              <div class="stat-box reveal">
+                <span class="stat-n">10<span class="stat-plus">+</span></span
+                ><span class="stat-l">Proyek</span>
+              </div>
+              <div class="stat-box reveal">
+                <span class="stat-n">3<span class="stat-plus">+</span></span
+                ><span class="stat-l">Teknologi</span>
+              </div>
+              <div class="stat-box reveal">
+                <span class="stat-n">1<span class="stat-plus">+</span></span
+                ><span class="stat-l">Tahun</span>
+              </div>
             </div>
           </div>
         </div>
@@ -124,54 +498,124 @@
     <!-- SKILLS -->
     <section id="skills">
       <div class="section-wrap">
-        <div class="section-label reveal"><span class="label-num">02</span><span class="label-line"></span><span class="label-text">Skills</span></div>
+        <div class="section-label reveal">
+          <span class="label-num">02</span><span class="label-line"></span
+          ><span class="label-text">Skills</span>
+        </div>
         <h2 class="section-title reveal">Keahlian Saya</h2>
         <p class="section-sub reveal">Klik kartu untuk melihat detail</p>
         <div class="skills-grid">
-          <div class="skill-card reveal" data-skill="html" tabindex="0" role="button">
+          <div
+            class="skill-card reveal"
+            data-skill="html"
+            tabindex="0"
+            role="button"
+          >
             <div class="skill-icon">🌐</div>
-            <div class="skill-info"><span class="skill-name">HTML</span><span class="skill-level">90%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+            <div class="skill-info">
+              <span class="skill-name">HTML</span
+              ><span class="skill-level">90%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="90"></div>
+            </div>
             <span class="skill-badge">Mahir</span>
           </div>
-          <div class="skill-card reveal" data-skill="css" tabindex="0" role="button">
+          <div
+            class="skill-card reveal"
+            data-skill="css"
+            tabindex="0"
+            role="button"
+          >
             <div class="skill-icon">🎨</div>
-            <div class="skill-info"><span class="skill-name">CSS</span><span class="skill-level">80%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+            <div class="skill-info">
+              <span class="skill-name">CSS</span
+              ><span class="skill-level">80%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="80"></div>
+            </div>
             <span class="skill-badge">Mahir</span>
           </div>
-          <div class="skill-card reveal" data-skill="js" tabindex="0" role="button">
+          <div
+            class="skill-card reveal"
+            data-skill="js"
+            tabindex="0"
+            role="button"
+          >
             <div class="skill-icon">⚡</div>
-            <div class="skill-info"><span class="skill-name">JavaScript</span><span class="skill-level">70%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+            <div class="skill-info">
+              <span class="skill-name">JavaScript</span
+              ><span class="skill-level">70%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="70"></div>
+            </div>
             <span class="skill-badge">Menengah</span>
           </div>
-          <div class="skill-card reveal" data-skill="react" tabindex="0" role="button">
+          <div
+            class="skill-card reveal"
+            data-skill="react"
+            tabindex="0"
+            role="button"
+          >
             <div class="skill-icon">⚛️</div>
-            <div class="skill-info"><span class="skill-name">React</span><span class="skill-level">60%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div>
+            <div class="skill-info">
+              <span class="skill-name">React</span
+              ><span class="skill-level">60%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="60"></div>
+            </div>
             <span class="skill-badge">Menengah</span>
           </div>
-          <div class="skill-card reveal" data-skill="git" tabindex="0" role="button">
+          <div
+            class="skill-card reveal"
+            data-skill="git"
+            tabindex="0"
+            role="button"
+          >
             <div class="skill-icon">🐙</div>
-            <div class="skill-info"><span class="skill-name">Git</span><span class="skill-level">75%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+            <div class="skill-info">
+              <span class="skill-name">Git</span
+              ><span class="skill-level">75%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="75"></div>
+            </div>
             <span class="skill-badge">Mahir</span>
           </div>
-          <div class="skill-card reveal" data-skill="figma" tabindex="0" role="button">
+          <div
+            class="skill-card reveal"
+            data-skill="figma"
+            tabindex="0"
+            role="button"
+          >
             <div class="skill-icon">✏️</div>
-            <div class="skill-info"><span class="skill-name">Figma</span><span class="skill-level">65%</span></div>
-            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+            <div class="skill-info">
+              <span class="skill-name">Figma</span
+              ><span class="skill-level">65%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-width="65"></div>
+            </div>
             <span class="skill-badge">Menengah</span>
           </div>
         </div>
       </div>
     </section>
 
-    <div id="skill-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+    <div
+      id="skill-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title-text"
+    >
       <div class="modal-backdrop"></div>
       <div class="modal-card">
-        <button class="modal-close" id="modal-close" aria-label="Tutup modal">✕</button>
+        <button class="modal-close" id="modal-close" aria-label="Tutup modal">
+          ✕
+        </button>
         <div class="modal-icon" id="modal-icon"></div>
         <h3 class="modal-title" id="modal-title-text"></h3>
         <p class="modal-level" id="modal-level"></p>
@@ -179,7 +623,6 @@
         <div class="modal-tags" id="modal-tags"></div>
       </div>
     </div>
-
 
     <!-- CASE STUDY MODAL -->
     <div id="cs-modal" role="dialog" aria-modal="true" aria-label="Case Study">
@@ -193,17 +636,13 @@
           <button class="cs-close" id="cs-close" aria-label="Tutup">✕</button>
         </div>
         <div class="cs-body">
-          <!-- scroll hint -->
           <div class="cs-scroll-hint" id="cs-scroll-hint">
             <span>Scroll untuk membaca breakdown</span>
             <div class="cs-scroll-arrow">↓</div>
           </div>
-
-
           <div class="cs-preview-wrap">
             <div class="cs-preview-box" id="cs-preview-box"></div>
           </div>
-
           <div class="cs-sections">
             <div class="cs-section">
               <div class="cs-section-icon">🎯</div>
@@ -227,16 +666,14 @@
               </div>
             </div>
           </div>
-
           <div class="cs-features" id="cs-features"></div>
-
           <div class="cs-tech-row">
             <span class="cs-tech-lbl">Tech Stack</span>
             <div class="cs-tech-tags" id="cs-tech"></div>
           </div>
-
-          <!-- Close note -->
-          <p class="cs-cta-note">Tekan <kbd>Esc</kbd> atau klik area gelap untuk menutup</p>
+          <p class="cs-cta-note">
+            Tekan <kbd>Esc</kbd> atau klik area gelap untuk menutup
+          </p>
         </div>
       </div>
     </div>
@@ -244,29 +681,49 @@
     <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-wrap">
-        <div class="section-label reveal"><span class="label-num">03</span><span class="label-line"></span><span class="label-text">Experience</span></div>
+        <div class="section-label reveal">
+          <span class="label-num">03</span><span class="label-line"></span
+          ><span class="label-text">Experience</span>
+        </div>
         <h2 class="section-title reveal">Perjalanan Saya</h2>
         <div class="timeline">
           <div class="tl-item reveal">
-            <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-connector">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
             <div class="tl-right">
               <span class="tl-date-inline">2024 — Sekarang</span>
               <span class="tl-tag">Freelance</span>
               <h3 class="tl-title">Frontend Developer</h3>
               <p class="tl-place">Independen</p>
-              <p class="tl-desc">Membangun website untuk klien dan proyek pribadi. Fokus pada performa, aksesibilitas, dan pengalaman pengguna yang baik.</p>
-              <div class="tl-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <p class="tl-desc">
+                Membangun website untuk klien dan proyek pribadi. Fokus pada
+                performa, aksesibilitas, dan pengalaman pengguna yang baik.
+              </p>
+              <div class="tl-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
             </div>
           </div>
           <div class="tl-item reveal">
-            <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
+            <div class="tl-connector">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
             <div class="tl-right">
               <span class="tl-date-inline">2023 — 2024</span>
               <span class="tl-tag">Belajar</span>
               <h3 class="tl-title">Mulai Belajar Web Development</h3>
               <p class="tl-place">Self-taught</p>
-              <p class="tl-desc">Memulai perjalanan belajar web development dari nol. Mempelajari HTML, CSS, dan JavaScript secara mandiri melalui berbagai sumber online.</p>
-              <div class="tl-stack"><span>HTML</span><span>CSS</span><span>JavaScript Dasar</span></div>
+              <p class="tl-desc">
+                Memulai perjalanan belajar web development dari nol. Mempelajari
+                HTML, CSS, dan JavaScript secara mandiri melalui berbagai sumber
+                online.
+              </p>
+              <div class="tl-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript Dasar</span>
+              </div>
             </div>
           </div>
           <div class="tl-item reveal">
@@ -276,7 +733,10 @@
               <span class="tl-tag">Milestone</span>
               <h3 class="tl-title">Proyek Pertama</h3>
               <p class="tl-place">Personal Project</p>
-              <p class="tl-desc">Menyelesaikan proyek web pertama secara mandiri dan mulai membangun portofolio.</p>
+              <p class="tl-desc">
+                Menyelesaikan proyek web pertama secara mandiri dan mulai
+                membangun portofolio.
+              </p>
               <div class="tl-stack"><span>HTML</span><span>CSS</span></div>
             </div>
           </div>
@@ -287,10 +747,15 @@
     <!-- PROJECTS -->
     <section id="projects">
       <div class="section-wrap">
-        <div class="section-label reveal"><span class="label-num">04</span><span class="label-line"></span><span class="label-text">Projects</span></div>
+        <div class="section-label reveal">
+          <span class="label-num">04</span><span class="label-line"></span
+          ><span class="label-text">Projects</span>
+        </div>
         <h2 class="section-title reveal">Proyek Saya</h2>
 
-        <!-- CurtainBiz -->
+        <!-- ─────────────────────────────────────────
+             1. CurtainBiz Manager
+        ───────────────────────────────────────── -->
         <div class="project-featured reveal">
           <div class="pf-meta">
             <span class="pf-tag">Featured Project</span>
@@ -301,11 +766,15 @@
               <div class="pf-preview-inner pf-preview-inner--cb">
                 <div class="pf-mock-header pf-mock-header--dark">
                   <div class="pf-mock-dots">
-                    <span style="background:#ff5f57"></span>
-                    <span style="background:#febc2e"></span>
-                    <span style="background:#28c840"></span>
+                    <span style="background: #ff5f57"></span>
+                    <span style="background: #febc2e"></span>
+                    <span style="background: #28c840"></span>
                   </div>
-                  <span class="pf-mock-url" style="color:rgba(123,110,246,.7);font-size:.6rem">curtainbiz-manager · dashboard</span>
+                  <span
+                    class="pf-mock-url"
+                    style="color: rgba(123, 110, 246, 0.7); font-size: 0.6rem"
+                    >curtainbiz-manager · dashboard</span
+                  >
                 </div>
                 <div class="cb-live-preview">
                   <div class="cb-sidebar">
@@ -327,29 +796,100 @@
                       </div>
                     </div>
                     <div class="cb-kpi-row">
-                      <div class="cb-kpi cb-kpi-1"><div class="cb-kpi-icon">💰</div><div class="cb-kpi-val">Rp 24.5jt</div><div class="cb-kpi-lbl">Total Omzet</div><div class="cb-kpi-trend cb-trend-up">▲ 12.4%</div></div>
-                      <div class="cb-kpi cb-kpi-2"><div class="cb-kpi-icon">🛒</div><div class="cb-kpi-val">142</div><div class="cb-kpi-lbl">Total Order</div><div class="cb-kpi-trend cb-trend-up">▲ 8.1%</div></div>
-                      <div class="cb-kpi cb-kpi-3"><div class="cb-kpi-icon">📦</div><div class="cb-kpi-val">38</div><div class="cb-kpi-lbl">Stok Rendah</div><div class="cb-kpi-trend cb-trend-down">▼ Perlu restock</div></div>
-                      <div class="cb-kpi cb-kpi-4"><div class="cb-kpi-icon">📈</div><div class="cb-kpi-val">68.2%</div><div class="cb-kpi-lbl">Margin HPP</div><div class="cb-kpi-trend cb-trend-up">▲ 3.5%</div></div>
+                      <div class="cb-kpi cb-kpi-1">
+                        <div class="cb-kpi-icon">💰</div>
+                        <div class="cb-kpi-val">Rp 24.5jt</div>
+                        <div class="cb-kpi-lbl">Total Omzet</div>
+                        <div class="cb-kpi-trend cb-trend-up">▲ 12.4%</div>
+                      </div>
+                      <div class="cb-kpi cb-kpi-2">
+                        <div class="cb-kpi-icon">🛒</div>
+                        <div class="cb-kpi-val">142</div>
+                        <div class="cb-kpi-lbl">Total Order</div>
+                        <div class="cb-kpi-trend cb-trend-up">▲ 8.1%</div>
+                      </div>
+                      <div class="cb-kpi cb-kpi-3">
+                        <div class="cb-kpi-icon">📦</div>
+                        <div class="cb-kpi-val">38</div>
+                        <div class="cb-kpi-lbl">Stok Rendah</div>
+                        <div class="cb-kpi-trend cb-trend-down">
+                          ▼ Perlu restock
+                        </div>
+                      </div>
+                      <div class="cb-kpi cb-kpi-4">
+                        <div class="cb-kpi-icon">📈</div>
+                        <div class="cb-kpi-val">68.2%</div>
+                        <div class="cb-kpi-lbl">Margin HPP</div>
+                        <div class="cb-kpi-trend cb-trend-up">▲ 3.5%</div>
+                      </div>
                     </div>
                     <div class="cb-chart-row">
                       <div class="cb-chart">
                         <div class="cb-chart-title">Penjualan Bulanan</div>
                         <div class="cb-bar-chart">
-                          <div class="cb-bar-group"><div class="cb-bar" style="height:45%"></div><span>Jan</span></div>
-                          <div class="cb-bar-group"><div class="cb-bar" style="height:60%"></div><span>Feb</span></div>
-                          <div class="cb-bar-group"><div class="cb-bar" style="height:40%"></div><span>Mar</span></div>
-                          <div class="cb-bar-group"><div class="cb-bar cb-bar-active" style="height:80%"></div><span>Apr</span></div>
-                          <div class="cb-bar-group"><div class="cb-bar" style="height:65%"></div><span>Mei</span></div>
-                          <div class="cb-bar-group"><div class="cb-bar" style="height:70%"></div><span>Jun</span></div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 45%"></div>
+                            <span>Jan</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 60%"></div>
+                            <span>Feb</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 40%"></div>
+                            <span>Mar</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div
+                              class="cb-bar cb-bar-active"
+                              style="height: 80%"
+                            ></div>
+                            <span>Apr</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 65%"></div>
+                            <span>Mei</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 70%"></div>
+                            <span>Jun</span>
+                          </div>
                         </div>
                       </div>
                       <div class="cb-orders">
                         <div class="cb-chart-title">Order Terbaru</div>
-                        <div class="cb-order-row"><span class="cb-order-dot" style="background:#38d9a9"></span><span class="cb-order-name">Gorden Blackout</span><span class="cb-order-val">Rp 850k</span></div>
-                        <div class="cb-order-row"><span class="cb-order-dot" style="background:#7b6ef6"></span><span class="cb-order-name">Vitrase Premium</span><span class="cb-order-val">Rp 420k</span></div>
-                        <div class="cb-order-row"><span class="cb-order-dot" style="background:#f5c842"></span><span class="cb-order-name">Roller Blind</span><span class="cb-order-val">Rp 1.2jt</span></div>
-                        <div class="cb-order-row"><span class="cb-order-dot" style="background:#f87171"></span><span class="cb-order-name">Gordyn Motif</span><span class="cb-order-val">Rp 680k</span></div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #38d9a9"
+                          ></span
+                          ><span class="cb-order-name">Gorden Blackout</span
+                          ><span class="cb-order-val">Rp 850k</span>
+                        </div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #7b6ef6"
+                          ></span
+                          ><span class="cb-order-name">Vitrase Premium</span
+                          ><span class="cb-order-val">Rp 420k</span>
+                        </div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #f5c842"
+                          ></span
+                          ><span class="cb-order-name">Roller Blind</span
+                          ><span class="cb-order-val">Rp 1.2jt</span>
+                        </div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #f87171"
+                          ></span
+                          ><span class="cb-order-name">Gordyn Motif</span
+                          ><span class="cb-order-val">Rp 680k</span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -357,49 +897,93 @@
               </div>
             </div>
             <div class="pf-info">
-              <p class="pf-desc">Sistem manajemen bisnis curtain berbasis web — mencakup dasbor kinerja real-time, manajemen pesanan multi-channel, inventori stok dengan alert otomatis, laporan keuangan & kalkulator HPP, serta statistik penjualan lengkap.</p>
+              <p class="pf-desc">
+                Sistem manajemen bisnis curtain berbasis web — mencakup dasbor
+                kinerja real-time, manajemen pesanan multi-channel, inventori
+                stok dengan alert otomatis, laporan keuangan &amp; kalkulator
+                HPP, serta statistik penjualan lengkap.
+              </p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>📊</span> Dashboard KPI</div>
                 <div class="pf-hl"><span>🛒</span> Order Management</div>
                 <div class="pf-hl"><span>💰</span> HPP Calculator</div>
                 <div class="pf-hl"><span>📦</span> Stok Alert</div>
               </div>
-              <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Chart.js</span><span>Supabase</span></div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Chart.js</span><span>Supabase</span>
+              </div>
               <div class="pf-links pf-links-3">
-                <a href="https://raffisirojudin.github.io/curtainbiz-manager" target="_blank" rel="noopener" class="pf-link-primary pf-btn-3">🚀 Demo</a>
-                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs" data-project="curtainbiz">📖 Case Study</button>
-                <a href="https://github.com/raffisirojudin/curtainbiz-manager" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+                <a
+                  href="https://raffisirojudin.github.io/curtainbiz-manager"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-link-primary pf-btn-3"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs"
+                  data-project="curtainbiz"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/curtainbiz-manager"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-btn-3 pf-btn-gh"
+                  >GitHub ↗</a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Kinetic Soul -->
+        <!-- ─────────────────────────────────────────
+             2. Kinetic Soul
+        ───────────────────────────────────────── -->
         <div class="project-featured reveal">
           <div class="pf-meta">
             <div class="pf-meta-top">
               <span class="pf-tag pf-tag--ks">Gen-Art Engine</span>
               <span class="pf-desktop-badge">🖥 Best on Desktop</span>
             </div>
-            <h3 class="pf-title">Kinetic<span class="pf-title-accent pf-title-accent--ks">·</span>Soul</h3>
+            <h3 class="pf-title">
+              Kinetic<span class="pf-title-accent pf-title-accent--ks">·</span
+              >Soul
+            </h3>
           </div>
           <div class="pf-card pf-card--ks">
             <div class="pf-preview pf-preview--ks">
               <div class="pf-preview-inner pf-preview-inner--ks">
                 <div class="pf-mock-header pf-mock-header--dark">
                   <div class="pf-mock-dots">
-                    <span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span>
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
                   </div>
-                  <span class="pf-mock-url pf-mock-url--ks">kinetic-soul · gen-art-engine</span>
+                  <span class="pf-mock-url pf-mock-url--ks"
+                    >kinetic-soul · gen-art-engine</span
+                  >
                 </div>
                 <div class="ks-live-preview">
                   <canvas id="ks-canvas"></canvas>
                   <div class="ks-hud-overlay">
                     <div class="ks-hud-top">
-                      <span class="ks-logo-txt"><span style="color:#e8e8f0">KINETIC</span><span style="color:#8338ec">·</span><span style="color:#ff006e">SOUL</span></span>
+                      <span class="ks-logo-txt"
+                        ><span style="color: #e8e8f0">KINETIC</span
+                        ><span style="color: #8338ec">·</span
+                        ><span style="color: #ff006e">SOUL</span></span
+                      >
                       <div class="ks-stats">
-                        <div class="ks-stat"><span class="ks-stat-lbl">FPS</span><span class="ks-stat-val" id="ks-fps">60</span></div>
-                        <div class="ks-stat"><span class="ks-stat-lbl">MODE</span><span class="ks-stat-val">GALAXY</span></div>
+                        <div class="ks-stat">
+                          <span class="ks-stat-lbl">FPS</span
+                          ><span class="ks-stat-val" id="ks-fps">60</span>
+                        </div>
+                        <div class="ks-stat">
+                          <span class="ks-stat-lbl">MODE</span
+                          ><span class="ks-stat-val">GALAXY</span>
+                        </div>
                       </div>
                     </div>
                     <div class="ks-panel-left">
@@ -407,62 +991,147 @@
                       <div class="ks-mode-btn ks-mode-active">✦ GALAXY</div>
                       <div class="ks-mode-btn">⬡ WEB</div>
                       <div class="ks-mode-btn">◈ EXPLOSION</div>
-                      <div class="ks-panel-lbl" style="margin-top:8px">PALETTE</div>
+                      <div class="ks-panel-lbl" style="margin-top: 8px">
+                        PALETTE
+                      </div>
                       <div class="ks-palette-row">
-                        <span class="ks-pal" style="background:linear-gradient(135deg,#ff006e,#8338ec,#3a86ff)"></span>
-                        <span class="ks-pal" style="background:linear-gradient(135deg,#00f5d4,#9b5de5)"></span>
-                        <span class="ks-pal ks-pal-active" style="background:linear-gradient(135deg,#ffbe0b,#ff006e)"></span>
+                        <span
+                          class="ks-pal"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #ff006e,
+                              #8338ec,
+                              #3a86ff
+                            );
+                          "
+                        ></span>
+                        <span
+                          class="ks-pal"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #00f5d4,
+                              #9b5de5
+                            );
+                          "
+                        ></span>
+                        <span
+                          class="ks-pal ks-pal-active"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #ffbe0b,
+                              #ff006e
+                            );
+                          "
+                        ></span>
                       </div>
                     </div>
                     <div class="ks-panel-right">
                       <div class="ks-panel-lbl">GRAVITY</div>
-                      <div class="ks-slider-mini"><div class="ks-slider-fill-mini" style="width:45%"></div></div>
+                      <div class="ks-slider-mini">
+                        <div
+                          class="ks-slider-fill-mini"
+                          style="width: 45%"
+                        ></div>
+                      </div>
                       <div class="ks-panel-lbl">SPEED</div>
-                      <div class="ks-slider-mini"><div class="ks-slider-fill-mini" style="width:60%"></div></div>
+                      <div class="ks-slider-mini">
+                        <div
+                          class="ks-slider-fill-mini"
+                          style="width: 60%"
+                        ></div>
+                      </div>
                       <div class="ks-panel-lbl">BLOOM</div>
-                      <div class="ks-slider-mini"><div class="ks-slider-fill-mini" style="width:70%"></div></div>
+                      <div class="ks-slider-mini">
+                        <div
+                          class="ks-slider-fill-mini"
+                          style="width: 70%"
+                        ></div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="pf-info">
-              <p class="pf-desc">Mesin generative art interaktif berbasis canvas — sistem partikel real-time dengan fisika inverse square law, Perlin noise flow field, tiga visual mode (Galaxy, Web, Explosion), efek bloom, dan enam palette warna. Fully adaptive FPS.</p>
-              <p class="pf-desktop-note">🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
+              <p class="pf-desc">
+                Mesin generative art interaktif berbasis canvas — sistem
+                partikel real-time dengan fisika inverse square law, Perlin
+                noise flow field, tiga visual mode (Galaxy, Web, Explosion),
+                efek bloom, dan enam palette warna. Fully adaptive FPS.
+              </p>
+              <p class="pf-desktop-note">
+                🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP
+                untuk pengalaman terbaik.
+              </p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>✦</span> 3 Visual Modes</div>
                 <div class="pf-hl"><span>🎨</span> 6 Color Palettes</div>
                 <div class="pf-hl"><span>⚡</span> Perlin Noise Physics</div>
                 <div class="pf-hl"><span>🔊</span> Procedural Audio</div>
               </div>
-              <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Canvas API</span><span>Web Audio API</span></div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Canvas API</span><span>Web Audio API</span>
+              </div>
               <div class="pf-links pf-links-3">
-                <a href="https://raffisirojudin.github.io/kinetic-soul" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ks pf-btn-3">🚀 Demo</a>
-                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--ks" data-project="kinetic">📖 Case Study</button>
-                <a href="https://github.com/raffisirojudin/kinetic-soul" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+                <a
+                  href="https://raffisirojudin.github.io/kinetic-soul"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-link-primary pf-link-primary--ks pf-btn-3"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--ks"
+                  data-project="kinetic"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/kinetic-soul"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-btn-3 pf-btn-gh"
+                  >GitHub ↗</a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Lentera Kecil -->
+        <!-- ─────────────────────────────────────────
+             3. Lentera Kecil
+        ───────────────────────────────────────── -->
         <div class="project-featured reveal">
           <div class="pf-meta">
             <span class="pf-tag pf-tag--lk">Interactive Storytelling</span>
-            <h3 class="pf-title">Lentera <span class="pf-title-accent pf-title-accent--lk">Kecil</span></h3>
+            <h3 class="pf-title">
+              Lentera
+              <span class="pf-title-accent pf-title-accent--lk">Kecil</span>
+            </h3>
           </div>
           <div class="pf-card pf-card--lk">
             <div class="pf-preview pf-preview--lk">
               <div class="pf-preview-inner pf-preview-inner--lk">
                 <div class="pf-mock-header pf-mock-header--warm">
                   <div class="pf-mock-dots">
-                    <span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span>
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
                   </div>
-                  <span class="pf-mock-url pf-mock-url--lk">lentera-kecil · dongeng-nusantara</span>
+                  <span class="pf-mock-url pf-mock-url--lk"
+                    >lentera-kecil · dongeng-nusantara</span
+                  >
                 </div>
                 <div class="lk-live-preview">
                   <div class="lk-lib-preview">
-                    <div class="lk-lib-header"><span class="lk-lib-logo">🏮 Lentera Kecil</span><span class="lk-lib-badge">⭐ 12</span></div>
+                    <div class="lk-lib-header">
+                      <span class="lk-lib-logo">🏮 Lentera Kecil</span
+                      ><span class="lk-lib-badge">⭐ 12</span>
+                    </div>
                     <div class="lk-lib-search">🔍 Cari cerita...</div>
                     <div class="lk-lib-tags">
                       <span class="lk-tag lk-tag-active">🌈 Semua</span>
@@ -471,68 +1140,223 @@
                       <span class="lk-tag">💛 Kebaikan</span>
                     </div>
                     <div class="lk-lib-grid">
-                      <div class="lk-card"><div class="lk-card-top" style="background:#f59e0b22">🦌</div><div class="lk-card-bot"><div class="lk-card-name">Kancil dan Buaya</div><span class="lk-diff lk-easy">Easy</span></div></div>
-                      <div class="lk-card lk-card-done"><div class="lk-card-top" style="background:#22c55e22">🥒</div><div class="lk-card-bot"><div class="lk-card-name">Timun Mas</div><span class="lk-diff lk-med">Med</span></div><div class="lk-done-badge">⭐</div></div>
-                      <div class="lk-card lk-card-done"><div class="lk-card-top" style="background:#ef444422">🌋</div><div class="lk-card-bot"><div class="lk-card-name">Sangkuriang</div><span class="lk-diff lk-med">Med</span></div><div class="lk-done-badge">⭐</div></div>
-                      <div class="lk-card"><div class="lk-card-top" style="background:#a855f722">🧅</div><div class="lk-card-bot"><div class="lk-card-name">Bawang Merah</div><span class="lk-diff lk-easy">Easy</span></div></div>
+                      <div class="lk-card">
+                        <div class="lk-card-top" style="background: #f59e0b22">
+                          🦌
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Kancil dan Buaya</div>
+                          <span class="lk-diff lk-easy">Easy</span>
+                        </div>
+                      </div>
+                      <div class="lk-card lk-card-done">
+                        <div class="lk-card-top" style="background: #22c55e22">
+                          🥒
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Timun Mas</div>
+                          <span class="lk-diff lk-med">Med</span>
+                        </div>
+                        <div class="lk-done-badge">⭐</div>
+                      </div>
+                      <div class="lk-card lk-card-done">
+                        <div class="lk-card-top" style="background: #ef444422">
+                          🌋
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Sangkuriang</div>
+                          <span class="lk-diff lk-med">Med</span>
+                        </div>
+                        <div class="lk-done-badge">⭐</div>
+                      </div>
+                      <div class="lk-card">
+                        <div class="lk-card-top" style="background: #a855f722">
+                          🧅
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Bawang Merah</div>
+                          <span class="lk-diff lk-easy">Easy</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="lk-reader-peek">
-                    <div class="lk-scene-bg"><div class="lk-sky"></div><div class="lk-trees">🌳🌲🌳</div><div class="lk-ground"></div></div>
+                    <div class="lk-scene-bg">
+                      <div class="lk-sky"></div>
+                      <div class="lk-trees">🌳🌲🌳</div>
+                      <div class="lk-ground"></div>
+                    </div>
                     <div class="lk-char-peek">
                       <svg viewBox="0 0 100 140" width="70" height="98">
-                        <ellipse cx="50" cy="95" rx="22" ry="18" fill="#d97706"/>
-                        <ellipse cx="50" cy="78" rx="12" ry="9" fill="#d97706"/>
-                        <ellipse cx="50" cy="60" rx="18" ry="16" fill="#d97706"/>
-                        <ellipse cx="36" cy="46" rx="5" ry="11" fill="#92400e" transform="rotate(-20 36 46)"/>
-                        <ellipse cx="64" cy="46" rx="5" ry="11" fill="#92400e" transform="rotate(20 64 46)"/>
-                        <circle cx="43" cy="59" r="4" fill="#1c1917"/><circle cx="57" cy="59" r="4" fill="#1c1917"/>
-                        <circle cx="44" cy="58" r="1.3" fill="white"/><circle cx="58" cy="58" r="1.3" fill="white"/>
-                        <path d="M43 67 Q50 74 57 67" stroke="#92400e" stroke-width="1.8" fill="#fca5a5" stroke-linecap="round"/>
-                        <ellipse cx="50" cy="63" rx="4" ry="2.5" fill="#92400e"/>
-                        <rect x="32" y="108" width="8" height="18" rx="4" fill="#92400e"/>
-                        <rect x="44" y="108" width="8" height="18" rx="4" fill="#92400e"/>
-                        <rect x="56" y="108" width="8" height="18" rx="4" fill="#92400e"/>
+                        <ellipse
+                          cx="50"
+                          cy="95"
+                          rx="22"
+                          ry="18"
+                          fill="#d97706"
+                        />
+                        <ellipse
+                          cx="50"
+                          cy="78"
+                          rx="12"
+                          ry="9"
+                          fill="#d97706"
+                        />
+                        <ellipse
+                          cx="50"
+                          cy="60"
+                          rx="18"
+                          ry="16"
+                          fill="#d97706"
+                        />
+                        <ellipse
+                          cx="36"
+                          cy="46"
+                          rx="5"
+                          ry="11"
+                          fill="#92400e"
+                          transform="rotate(-20 36 46)"
+                        />
+                        <ellipse
+                          cx="64"
+                          cy="46"
+                          rx="5"
+                          ry="11"
+                          fill="#92400e"
+                          transform="rotate(20 64 46)"
+                        />
+                        <circle cx="43" cy="59" r="4" fill="#1c1917" />
+                        <circle cx="57" cy="59" r="4" fill="#1c1917" />
+                        <circle cx="44" cy="58" r="1.3" fill="white" />
+                        <circle cx="58" cy="58" r="1.3" fill="white" />
+                        <path
+                          d="M43 67 Q50 74 57 67"
+                          stroke="#92400e"
+                          stroke-width="1.8"
+                          fill="#fca5a5"
+                          stroke-linecap="round"
+                        />
+                        <ellipse
+                          cx="50"
+                          cy="63"
+                          rx="4"
+                          ry="2.5"
+                          fill="#92400e"
+                        />
+                        <rect
+                          x="32"
+                          y="108"
+                          width="8"
+                          height="18"
+                          rx="4"
+                          fill="#92400e"
+                        />
+                        <rect
+                          x="44"
+                          y="108"
+                          width="8"
+                          height="18"
+                          rx="4"
+                          fill="#92400e"
+                        />
+                        <rect
+                          x="56"
+                          y="108"
+                          width="8"
+                          height="18"
+                          rx="4"
+                          fill="#92400e"
+                        />
                       </svg>
                     </div>
-                    <div class="lk-narr-peek"><span class="lk-narr-icon">📖</span><p>Di dalam hutan yang lebat, hiduplah seekor Kancil yang sangat cerdik...</p></div>
-                    <div class="lk-nav-peek"><span>‹</span><div class="lk-dots-peek"><span class="lk-dot lk-dot-active"></span><span class="lk-dot"></span><span class="lk-dot"></span><span class="lk-dot"></span></div><span>›</span></div>
+                    <div class="lk-narr-peek">
+                      <span class="lk-narr-icon">📖</span>
+                      <p>
+                        Di dalam hutan yang lebat, hiduplah seekor Kancil yang
+                        sangat cerdik...
+                      </p>
+                    </div>
+                    <div class="lk-nav-peek">
+                      <span>‹</span>
+                      <div class="lk-dots-peek">
+                        <span class="lk-dot lk-dot-active"></span
+                        ><span class="lk-dot"></span><span class="lk-dot"></span
+                        ><span class="lk-dot"></span>
+                      </div>
+                      <span>›</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="pf-info">
-              <p class="pf-desc">Mesin dongeng interaktif untuk anak usia 4–10 tahun — 38 cerita rakyat Nusantara dengan karakter SVG animasi, background dinamis berlayer, ambient sound procedural, sistem bintang & progress, filter & pencarian cerita, serta end-card berisi pesan moral.</p>
+              <p class="pf-desc">
+                Mesin dongeng interaktif untuk anak usia 4–10 tahun — 38 cerita
+                rakyat Nusantara dengan karakter SVG animasi, background dinamis
+                berlayer, ambient sound procedural, sistem bintang &amp;
+                progress, filter &amp; pencarian cerita, serta end-card berisi
+                pesan moral.
+              </p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>📚</span> 38 Dongeng Nusantara</div>
                 <div class="pf-hl"><span>🎭</span> Karakter SVG Animasi</div>
                 <div class="pf-hl"><span>🔊</span> Ambient Sound Engine</div>
-                <div class="pf-hl"><span>⭐</span> Progress & Reward</div>
+                <div class="pf-hl"><span>⭐</span> Progress &amp; Reward</div>
               </div>
-              <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Web Audio API</span><span>SVG</span></div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Web Audio API</span><span>SVG</span>
+              </div>
               <div class="pf-links pf-links-3">
-                <a href="https://raffisirojudin.github.io/lentera-kecil" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--lk pf-btn-3">🚀 Demo</a>
-                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--lk" data-project="lentera">📖 Case Study</button>
-                <a href="https://github.com/raffisirojudin/lentera-kecil" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+                <a
+                  href="https://raffisirojudin.github.io/lentera-kecil"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-link-primary pf-link-primary--lk pf-btn-3"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--lk"
+                  data-project="lentera"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/lentera-kecil"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-btn-3 pf-btn-gh"
+                  >GitHub ↗</a
+                >
               </div>
             </div>
           </div>
         </div>
 
-        <!-- EasySolve -->
+        <!-- ─────────────────────────────────────────
+             4. EasySolve
+        ───────────────────────────────────────── -->
         <div class="project-featured reveal">
           <div class="pf-meta">
             <span class="pf-tag pf-tag--es">Science Calculator</span>
-            <h3 class="pf-title">Easy<span class="pf-title-accent pf-title-accent--es">Solve</span></h3>
+            <h3 class="pf-title">
+              Easy<span class="pf-title-accent pf-title-accent--es">Solve</span>
+            </h3>
           </div>
           <div class="pf-card pf-card--es">
             <div class="pf-preview pf-preview--es">
               <div class="pf-preview-inner pf-preview-inner--es">
                 <div class="pf-mock-header pf-mock-header--dark">
                   <div class="pf-mock-dots">
-                    <span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span>
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
                   </div>
-                  <span class="pf-mock-url" style="color:rgba(56,217,169,.7);font-size:.6rem">easysolve · kalkulator-sains</span>
+                  <span
+                    class="pf-mock-url"
+                    style="color: rgba(56, 217, 169, 0.7); font-size: 0.6rem"
+                    >easysolve · kalkulator-sains</span
+                  >
                 </div>
                 <div class="es-live-preview">
                   <div class="es-sidebar">
@@ -548,46 +1372,257 @@
                     </div>
                   </div>
                   <div class="es-main">
-                    <div class="es-header-bar"><span class="es-title">Kalkulator Fisika</span><span class="es-counter">100+ Rumus</span></div>
+                    <div class="es-header-bar">
+                      <span class="es-title">Kalkulator Fisika</span
+                      ><span class="es-counter">100+ Rumus</span>
+                    </div>
                     <div class="es-formula-card">
                       <div class="es-formula-name">Hukum Newton II</div>
                       <div class="es-formula-tex">F = m × a</div>
                       <div class="es-inputs">
-                        <div class="es-input-group"><label>Massa (m)</label><div class="es-input-box">10 kg</div></div>
-                        <div class="es-input-group"><label>Percepatan (a)</label><div class="es-input-box">5 m/s²</div></div>
+                        <div class="es-input-group">
+                          <label>Massa (m)</label>
+                          <div class="es-input-box">10 kg</div>
+                        </div>
+                        <div class="es-input-group">
+                          <label>Percepatan (a)</label>
+                          <div class="es-input-box">5 m/s²</div>
+                        </div>
                       </div>
-                      <div class="es-result"><span class="es-result-lbl">Hasil</span><span class="es-result-val">F = <strong>50 N</strong></span></div>
+                      <div class="es-result">
+                        <span class="es-result-lbl">Hasil</span
+                        ><span class="es-result-val"
+                          >F = <strong>50 N</strong></span
+                        >
+                      </div>
                     </div>
                     <div class="es-steps">
                       <div class="es-steps-title">📝 Langkah Pengerjaan</div>
-                      <div class="es-step">1. Diketahui: m = 10 kg, a = 5 m/s²</div>
+                      <div class="es-step">
+                        1. Diketahui: m = 10 kg, a = 5 m/s²
+                      </div>
                       <div class="es-step">2. Rumus: F = m × a</div>
-                      <div class="es-step es-step-result">3. F = 10 × 5 = <strong>50 Newton</strong></div>
+                      <div class="es-step es-step-result">
+                        3. F = 10 × 5 = <strong>50 Newton</strong>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="pf-info">
-              <p class="pf-desc">Platform kalkulator sains komprehensif dengan 100+ rumus dari 7 mata pelajaran — Matematika, Fisika, Kimia, Biologi, Konversi, Keuangan & Geografi. Setiap perhitungan dilengkapi langkah pengerjaan step-by-step yang jelas menggunakan render KaTeX.</p>
+              <p class="pf-desc">
+                Platform kalkulator sains komprehensif dengan 100+ rumus dari 7
+                mata pelajaran — Matematika, Fisika, Kimia, Biologi, Konversi,
+                Keuangan &amp; Geografi. Setiap perhitungan dilengkapi langkah
+                pengerjaan step-by-step yang jelas menggunakan render KaTeX.
+              </p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>🔢</span> 100+ Rumus</div>
                 <div class="pf-hl"><span>📚</span> 7 Mata Pelajaran</div>
                 <div class="pf-hl"><span>📝</span> Step-by-step</div>
                 <div class="pf-hl"><span>⚡</span> Render KaTeX</div>
               </div>
-              <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>KaTeX</span></div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>KaTeX</span>
+              </div>
               <div class="pf-links pf-links-3">
-                <a href="https://raffisirojudin.github.io/easysolve/" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--es pf-btn-3">🚀 Demo</a>
-                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--es" data-project="easysolve">📖 Case Study</button>
-                <a href="https://github.com/raffisirojudin/easysolve" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+                <a
+                  href="https://raffisirojudin.github.io/easysolve/"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-link-primary pf-link-primary--es pf-btn-3"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--es"
+                  data-project="easysolve"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/easysolve"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-btn-3 pf-btn-gh"
+                  >GitHub ↗</a
+                >
               </div>
             </div>
           </div>
         </div>
 
         <!-- ═══════════════════════════════════════
-             NEURO-SHELF — Knowledge Graph Project
+             5. BaseCalc Insight ← PROJECT BARU
+        ═══════════════════════════════════════ -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <span class="pf-tag pf-tag--bc">Number Base Converter</span>
+            <h3 class="pf-title">
+              BaseCalc<span class="pf-title-accent pf-title-accent--bc">·</span
+              >Insight
+            </h3>
+          </div>
+          <div class="pf-card pf-card--bc">
+            <div class="pf-preview pf-preview--bc">
+              <div class="pf-preview-inner pf-preview-inner--bc">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span>
+                    <span style="background: #febc2e"></span>
+                    <span style="background: #28c840"></span>
+                  </div>
+                  <span class="pf-mock-url pf-mock-url--bc"
+                    >basecalc-insight · konverter-bilangan</span
+                  >
+                </div>
+
+                <!-- Live preview area -->
+                <div class="bc-live-preview">
+                  <div class="bc-header">
+                    <span class="bc-logo"
+                      >BASECALC<span class="bc-dot">·</span>INSIGHT</span
+                    >
+                    <span class="bc-badge">v1.0</span>
+                  </div>
+
+                  <div class="bc-status">
+                    <div class="bc-status-dot"></div>
+                    <span
+                      >Konversi berhasil · DEC=255 · BIN=11111111 · OCT=377 ·
+                      HEX=FF</span
+                    >
+                  </div>
+
+                  <div class="bc-grid">
+                    <!-- BIN -->
+                    <div class="bc-card bc-card--bin">
+                      <div class="bc-card-label">
+                        <span>BINER</span>
+                        <span class="bc-base-pill">BASE 2</span>
+                      </div>
+                      <div class="bc-value">11111111</div>
+                      <div class="bc-groups">
+                        <span class="bc-grp">1111</span>
+                        <span class="bc-grp">1111</span>
+                      </div>
+                    </div>
+                    <!-- OCT -->
+                    <div class="bc-card bc-card--oct">
+                      <div class="bc-card-label">
+                        <span>OKTAL</span>
+                        <span class="bc-base-pill">BASE 8</span>
+                      </div>
+                      <div class="bc-value">377</div>
+                      <div class="bc-groups">
+                        <span class="bc-grp">011</span>
+                        <span class="bc-grp">111</span>
+                        <span class="bc-grp">111</span>
+                      </div>
+                    </div>
+                    <!-- DEC -->
+                    <div class="bc-card bc-card--dec">
+                      <div class="bc-card-label">
+                        <span>DESIMAL ✦</span>
+                        <span class="bc-base-pill">BASE 10</span>
+                      </div>
+                      <div class="bc-value">255</div>
+                    </div>
+                    <!-- HEX -->
+                    <div class="bc-card bc-card--hex">
+                      <div class="bc-card-label">
+                        <span>HEKSADESIMAL</span>
+                        <span class="bc-base-pill">BASE 16</span>
+                      </div>
+                      <div class="bc-value">FF</div>
+                      <div class="bc-groups">
+                        <span class="bc-grp">1111</span>
+                        <span class="bc-grp">1111</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Steps breakdown mini -->
+                  <div class="bc-steps">
+                    <div class="bc-steps-title">
+                      LANGKAH DEMI LANGKAH · Desimal → Biner (÷2)
+                    </div>
+                    <div class="bc-step-row">
+                      <span class="bc-step-n">1.</span>
+                      <span class="bc-step-txt"
+                        >255 ÷ 2 = 127 sisa <em>1</em></span
+                      >
+                    </div>
+                    <div class="bc-step-row">
+                      <span class="bc-step-n">2.</span>
+                      <span class="bc-step-txt"
+                        >127 ÷ 2 = 63 sisa <em>1</em> &nbsp; · · ·</span
+                      >
+                    </div>
+                    <div class="bc-step-row">
+                      <span class="bc-step-n">↑</span>
+                      <span class="bc-step-txt"
+                        >Baca sisa dari bawah ke atas</span
+                      >
+                    </div>
+                    <div class="bc-step-result">
+                      → &nbsp;11111111<sub>2</sub>
+                    </div>
+                  </div>
+                </div>
+                <!-- /bc-live-preview -->
+              </div>
+            </div>
+            <!-- /pf-preview -->
+
+            <div class="pf-info">
+              <p class="pf-desc">
+                Konverter sistem bilangan 4-basis (Biner, Oktal, Desimal,
+                Heksadesimal) dengan transparansi langkah penuh — menggunakan
+                BigInt JavaScript agar presisi terjaga untuk angka berapapun,
+                dilengkapi visualisasi pengelompokan bit 3-bit dan 4-bit secara
+                otomatis.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl"><span>🔢</span> 4 Sistem Bilangan</div>
+                <div class="pf-hl"><span>🔍</span> Step-by-step Breakdown</div>
+                <div class="pf-hl"><span>⚡</span> BigInt Presisi Penuh</div>
+                <div class="pf-hl"><span>🟦</span> Bit Grouping Visual</div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>BigInt API</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/basecalc-insight"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-link-primary pf-link-primary--bc pf-btn-3"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--bc"
+                  data-project="basecalc"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/basecalc-insight"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-btn-3 pf-btn-gh"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END BASECALC INSIGHT -->
+
+        <!-- ═══════════════════════════════════════
+             6. Neuro-Shelf
         ═══════════════════════════════════════ -->
         <div class="project-featured reveal">
           <div class="pf-meta">
@@ -595,215 +1630,774 @@
               <span class="pf-tag pf-tag--ns">Knowledge Graph</span>
               <span class="pf-desktop-badge">🖥 Best on Desktop</span>
             </div>
-            <h3 class="pf-title">Neuro<span class="pf-title-accent pf-title-accent--ns">·</span>Shelf</h3>
+            <h3 class="pf-title">
+              Neuro<span class="pf-title-accent pf-title-accent--ns">·</span
+              >Shelf
+            </h3>
           </div>
           <div class="pf-card pf-card--ns">
-
             <div class="pf-preview pf-preview--ns">
               <div class="pf-preview-inner pf-preview-inner--ns">
                 <div class="pf-mock-header pf-mock-header--dark">
                   <div class="pf-mock-dots">
-                    <span style="background:#ff5f57"></span>
-                    <span style="background:#febc2e"></span>
-                    <span style="background:#28c840"></span>
+                    <span style="background: #ff5f57"></span>
+                    <span style="background: #febc2e"></span>
+                    <span style="background: #28c840"></span>
                   </div>
-                  <span class="pf-mock-url pf-mock-url--ns">neuro-shelf · knowledge-graph · v2.0</span>
+                  <span class="pf-mock-url pf-mock-url--ns"
+                    >neuro-shelf · knowledge-graph · v2.0</span
+                  >
                 </div>
-
                 <div class="ns-live-preview">
-                  <!-- Sidebar -->
                   <div class="ns-sidebar">
                     <div class="ns-logo">NS</div>
                     <div class="ns-sb-divider"></div>
                     <div class="ns-sb-label">NODE</div>
                     <div class="ns-sb-field">JavaScript</div>
                     <div class="ns-sb-field ns-sb-field--group">Tech</div>
-                    <div class="ns-sb-field ns-sb-field--tags">javascript, web</div>
-                    <div class="ns-sb-label" style="margin-top:8px">LIST</div>
-                    <div class="ns-sb-item ns-sb-item--active"><div class="ns-dot" style="background:#00d4ff"></div>JavaScript</div>
-                    <div class="ns-sb-item"><div class="ns-dot" style="background:#7c3aed"></div>Graph Theory</div>
-                    <div class="ns-sb-item"><div class="ns-dot" style="background:#10b981"></div>Neural Net</div>
-                    <div class="ns-sb-item"><div class="ns-dot" style="background:#f59e0b"></div>Algorithm</div>
-                    <div class="ns-sb-item"><div class="ns-dot" style="background:#ef4444"></div>Python</div>
+                    <div class="ns-sb-field ns-sb-field--tags">
+                      javascript, web
+                    </div>
+                    <div class="ns-sb-label" style="margin-top: 8px">LIST</div>
+                    <div class="ns-sb-item ns-sb-item--active">
+                      <div class="ns-dot" style="background: #00d4ff"></div>
+                      JavaScript
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #7c3aed"></div>
+                      Graph Theory
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #10b981"></div>
+                      Neural Net
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #f59e0b"></div>
+                      Algorithm
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #ef4444"></div>
+                      Python
+                    </div>
                   </div>
-
-                  <!-- Graph area -->
                   <div class="ns-graph-area">
                     <div class="ns-dot-grid"></div>
-
-                    <!-- In-app topbar -->
                     <div class="ns-topbar">
-                      <span class="ns-topbar-logo">NEURO-SHELF <em>v2.0</em></span>
+                      <span class="ns-topbar-logo"
+                        >NEURO-SHELF <em>v2.0</em></span
+                      >
                       <div class="ns-topbar-btns">
                         <span class="ns-tbtn">↩</span>
                         <span class="ns-tbtn">↪</span>
                         <span class="ns-tbtn ns-tbtn--accent">🔗 Path</span>
                         <span class="ns-tbtn">🖼 PNG</span>
                       </div>
-                      <div class="ns-stats-mini">N <b>14</b> &nbsp;L <b>11</b> &nbsp;G <b>5</b></div>
+                      <div class="ns-stats-mini">
+                        N <b>14</b> &nbsp;L <b>11</b> &nbsp;G <b>5</b>
+                      </div>
                     </div>
-
-                    <!-- SVG Force Graph -->
-                    <svg class="ns-svg" viewBox="0 0 520 290" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                    <svg
+                      class="ns-svg"
+                      viewBox="0 0 520 290"
+                      xmlns="http://www.w3.org/2000/svg"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
                       <defs>
                         <filter id="glow-ns">
-                          <feGaussianBlur stdDeviation="3.5" result="b"/>
-                          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                          <feGaussianBlur stdDeviation="3.5" result="b" />
+                          <feMerge>
+                            <feMergeNode in="b" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
                         </filter>
                       </defs>
-                      <!-- Convex Hulls -->
-                      <ellipse cx="160" cy="148" rx="95" ry="72" fill="#00d4ff" fill-opacity=".05" stroke="#00d4ff" stroke-opacity=".09" stroke-width="20" stroke-linejoin="round"/>
-                      <ellipse cx="348" cy="120" rx="75" ry="60" fill="#7c3aed" fill-opacity=".05" stroke="#7c3aed" stroke-opacity=".09" stroke-width="20"/>
-                      <ellipse cx="392" cy="232" rx="60" ry="44" fill="#10b981" fill-opacity=".05" stroke="#10b981" stroke-opacity=".09" stroke-width="20"/>
-                      <!-- Edges -->
-                      <path d="M160,118 Q180,82 224,90" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                      <path d="M148,158 Q122,188 110,214" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                      <path d="M168,138 Q222,132 264,108" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                      <path d="M158,163 Q168,204 178,228" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                      <path d="M332,100 Q354,70 392,76" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                      <path d="M342,136 Q372,166 386,192" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                      <path d="M62,150 Q112,148 138,148" fill="none" stroke="#1e3a5f" stroke-width="1" stroke-opacity=".45"/>
-                      <path d="M300,238 Q320,200 342,138" fill="none" stroke="#1e3a5f" stroke-width="1" stroke-opacity=".4"/>
-                      <!-- PATH highlighted (yellow BFS) -->
-                      <path d="M168,138 Q222,132 264,108" fill="none" stroke="#f59e0b" stroke-width="2.8" stroke-opacity=".85"/>
-                      <path d="M278,108 Q360,112 430,150" fill="none" stroke="#f59e0b" stroke-width="2.8" stroke-opacity=".85"/>
-                      <path d="M432,168 Q412,194 396,196" fill="none" stroke="#f59e0b" stroke-width="2.8" stroke-opacity=".85"/>
-                      <!-- Relation labels -->
-                      <text x="192" y="102" text-anchor="middle" font-family="monospace" font-size="6.5" fill="#2a4a6a">library</text>
-                      <text x="214" y="128" text-anchor="middle" font-family="monospace" font-size="6.5" fill="#2a4a6a">runtime</text>
-                      <text x="360" y="91" text-anchor="middle" font-family="monospace" font-size="6.5" fill="#2a4a6a">applied</text>
-                      <text x="348" y="178" text-anchor="middle" font-family="monospace" font-size="6.5" fill="#2a4a6a">basis-of</text>
-                      <text x="350" y="122" text-anchor="middle" font-family="monospace" font-size="6" fill="#f59e0b88">shared:js</text>
-                      <!-- Nodes -->
-                      <circle cx="160" cy="145" r="23" fill="#00d4ff15" stroke="#00d4ff" stroke-width="2.5" filter="url(#glow-ns)"/>
-                      <text x="160" y="149" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" font-weight="600">JavaScript</text>
-                      <circle cx="224" cy="88" r="15" fill="#00d4ff10" stroke="#00d4ff" stroke-width="1.8"/>
-                      <text x="224" y="92" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">React</text>
-                      <circle cx="110" cy="216" r="12" fill="#00d4ff08" stroke="#00d4ff" stroke-width="1.4"/>
-                      <text x="110" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">D3.js</text>
-                      <circle cx="265" cy="106" r="14" fill="#00d4ff10" stroke="#00d4ff" stroke-width="1.8"/>
-                      <text x="265" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">Node.js</text>
-                      <circle cx="180" cy="230" r="11" fill="#00d4ff08" stroke="#00d4ff" stroke-width="1.4"/>
-                      <text x="180" y="234" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">TypeScript</text>
-                      <circle cx="62" cy="150" r="9" fill="#00d4ff06" stroke="#00d4ff" stroke-width="1" stroke-opacity=".5"/>
-                      <text x="62" y="154" text-anchor="middle" font-family="Inter,sans-serif" font-size="6" fill="#64748b">CSS</text>
-                      <circle cx="332" cy="112" r="19" fill="#7c3aed15" stroke="#7c3aed" stroke-width="2"/>
-                      <text x="332" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#a78bfa">Graph Theory</text>
-                      <circle cx="394" cy="75" r="13" fill="#7c3aed10" stroke="#7c3aed" stroke-width="1.5"/>
-                      <text x="394" y="79" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">Force Sim</text>
-                      <circle cx="388" cy="196" r="16" fill="#10b98115" stroke="#10b981" stroke-width="2"/>
-                      <text x="388" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#34d399">Neural Net</text>
-                      <circle cx="300" cy="238" r="13" fill="#ef444415" stroke="#ef4444" stroke-width="1.5"/>
-                      <text x="300" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#f87171">Algorithm</text>
-                      <!-- ML node (path endpoint) — orange ring -->
-                      <circle cx="434" cy="152" r="18" fill="#f59e0b15" stroke="#f59e0b" stroke-width="2.5"/>
-                      <circle cx="434" cy="152" r="18" fill="none" stroke="#f59e0b" stroke-width="2" stroke-opacity=".6"/>
-                      <text x="434" y="149" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#fbbf24">Machine</text>
-                      <text x="434" y="159" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#fbbf24">Learning</text>
-                      <circle cx="462" cy="232" r="11" fill="#10b98110" stroke="#10b981" stroke-width="1.5"/>
-                      <text x="462" y="236" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">Python</text>
+                      <ellipse
+                        cx="160"
+                        cy="148"
+                        rx="95"
+                        ry="72"
+                        fill="#00d4ff"
+                        fill-opacity=".05"
+                        stroke="#00d4ff"
+                        stroke-opacity=".09"
+                        stroke-width="20"
+                        stroke-linejoin="round"
+                      />
+                      <ellipse
+                        cx="348"
+                        cy="120"
+                        rx="75"
+                        ry="60"
+                        fill="#7c3aed"
+                        fill-opacity=".05"
+                        stroke="#7c3aed"
+                        stroke-opacity=".09"
+                        stroke-width="20"
+                      />
+                      <ellipse
+                        cx="392"
+                        cy="232"
+                        rx="60"
+                        ry="44"
+                        fill="#10b981"
+                        fill-opacity=".05"
+                        stroke="#10b981"
+                        stroke-opacity=".09"
+                        stroke-width="20"
+                      />
+                      <path
+                        d="M160,118 Q180,82 224,90"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M148,158 Q122,188 110,214"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M168,138 Q222,132 264,108"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M158,163 Q168,204 178,228"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M332,100 Q354,70 392,76"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M342,136 Q372,166 386,192"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M62,150 Q112,148 138,148"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1"
+                        stroke-opacity=".45"
+                      />
+                      <path
+                        d="M300,238 Q320,200 342,138"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1"
+                        stroke-opacity=".4"
+                      />
+                      <path
+                        d="M168,138 Q222,132 264,108"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2.8"
+                        stroke-opacity=".85"
+                      />
+                      <path
+                        d="M278,108 Q360,112 430,150"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2.8"
+                        stroke-opacity=".85"
+                      />
+                      <path
+                        d="M432,168 Q412,194 396,196"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2.8"
+                        stroke-opacity=".85"
+                      />
+                      <text
+                        x="192"
+                        y="102"
+                        text-anchor="middle"
+                        font-family="monospace"
+                        font-size="6.5"
+                        fill="#2a4a6a"
+                      >
+                        library
+                      </text>
+                      <text
+                        x="214"
+                        y="128"
+                        text-anchor="middle"
+                        font-family="monospace"
+                        font-size="6.5"
+                        fill="#2a4a6a"
+                      >
+                        runtime
+                      </text>
+                      <text
+                        x="360"
+                        y="91"
+                        text-anchor="middle"
+                        font-family="monospace"
+                        font-size="6.5"
+                        fill="#2a4a6a"
+                      >
+                        applied
+                      </text>
+                      <text
+                        x="348"
+                        y="178"
+                        text-anchor="middle"
+                        font-family="monospace"
+                        font-size="6.5"
+                        fill="#2a4a6a"
+                      >
+                        basis-of
+                      </text>
+                      <text
+                        x="350"
+                        y="122"
+                        text-anchor="middle"
+                        font-family="monospace"
+                        font-size="6"
+                        fill="#f59e0b88"
+                      >
+                        shared:js
+                      </text>
+                      <circle
+                        cx="160"
+                        cy="145"
+                        r="23"
+                        fill="#00d4ff15"
+                        stroke="#00d4ff"
+                        stroke-width="2.5"
+                        filter="url(#glow-ns)"
+                      />
+                      <text
+                        x="160"
+                        y="149"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="8"
+                        fill="#00d4ff"
+                        font-weight="600"
+                      >
+                        JavaScript
+                      </text>
+                      <circle
+                        cx="224"
+                        cy="88"
+                        r="15"
+                        fill="#00d4ff10"
+                        stroke="#00d4ff"
+                        stroke-width="1.8"
+                      />
+                      <text
+                        x="224"
+                        y="92"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        React
+                      </text>
+                      <circle
+                        cx="110"
+                        cy="216"
+                        r="12"
+                        fill="#00d4ff08"
+                        stroke="#00d4ff"
+                        stroke-width="1.4"
+                      />
+                      <text
+                        x="110"
+                        y="220"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        D3.js
+                      </text>
+                      <circle
+                        cx="265"
+                        cy="106"
+                        r="14"
+                        fill="#00d4ff10"
+                        stroke="#00d4ff"
+                        stroke-width="1.8"
+                      />
+                      <text
+                        x="265"
+                        y="110"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        Node.js
+                      </text>
+                      <circle
+                        cx="180"
+                        cy="230"
+                        r="11"
+                        fill="#00d4ff08"
+                        stroke="#00d4ff"
+                        stroke-width="1.4"
+                      />
+                      <text
+                        x="180"
+                        y="234"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        TypeScript
+                      </text>
+                      <circle
+                        cx="62"
+                        cy="150"
+                        r="9"
+                        fill="#00d4ff06"
+                        stroke="#00d4ff"
+                        stroke-width="1"
+                        stroke-opacity=".5"
+                      />
+                      <text
+                        x="62"
+                        y="154"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="6"
+                        fill="#64748b"
+                      >
+                        CSS
+                      </text>
+                      <circle
+                        cx="332"
+                        cy="112"
+                        r="19"
+                        fill="#7c3aed15"
+                        stroke="#7c3aed"
+                        stroke-width="2"
+                      />
+                      <text
+                        x="332"
+                        y="116"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7.5"
+                        fill="#a78bfa"
+                      >
+                        Graph Theory
+                      </text>
+                      <circle
+                        cx="394"
+                        cy="75"
+                        r="13"
+                        fill="#7c3aed10"
+                        stroke="#7c3aed"
+                        stroke-width="1.5"
+                      />
+                      <text
+                        x="394"
+                        y="79"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        Force Sim
+                      </text>
+                      <circle
+                        cx="388"
+                        cy="196"
+                        r="16"
+                        fill="#10b98115"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      />
+                      <text
+                        x="388"
+                        y="200"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#34d399"
+                      >
+                        Neural Net
+                      </text>
+                      <circle
+                        cx="300"
+                        cy="238"
+                        r="13"
+                        fill="#ef444415"
+                        stroke="#ef4444"
+                        stroke-width="1.5"
+                      />
+                      <text
+                        x="300"
+                        y="242"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#f87171"
+                      >
+                        Algorithm
+                      </text>
+                      <circle
+                        cx="434"
+                        cy="152"
+                        r="18"
+                        fill="#f59e0b15"
+                        stroke="#f59e0b"
+                        stroke-width="2.5"
+                      />
+                      <circle
+                        cx="434"
+                        cy="152"
+                        r="18"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2"
+                        stroke-opacity=".6"
+                      />
+                      <text
+                        x="434"
+                        y="149"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#fbbf24"
+                      >
+                        Machine
+                      </text>
+                      <text
+                        x="434"
+                        y="159"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#fbbf24"
+                      >
+                        Learning
+                      </text>
+                      <circle
+                        cx="462"
+                        cy="232"
+                        r="11"
+                        fill="#10b98110"
+                        stroke="#10b981"
+                        stroke-width="1.5"
+                      />
+                      <text
+                        x="462"
+                        y="236"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        Python
+                      </text>
                     </svg>
-
-                    <!-- Minimap -->
                     <div class="ns-minimap">
                       <div class="ns-mm-label">MINIMAP</div>
-                      <svg viewBox="0 0 100 68" width="100" height="68" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100" height="68" fill="#070b12"/>
-                        <line x1="29" y1="40" x2="41" y2="24" stroke="#1e3a5f" stroke-width=".8"/>
-                        <line x1="29" y1="42" x2="20" y2="60" stroke="#1e3a5f" stroke-width=".8"/>
-                        <line x1="31" y1="38" x2="50" y2="28" stroke="#f59e0b" stroke-width="1.4"/>
-                        <line x1="64" y1="30" x2="74" y2="20" stroke="#1e3a5f" stroke-width=".8"/>
-                        <line x1="64" y1="36" x2="72" y2="56" stroke="#1e3a5f" stroke-width=".8"/>
-                        <line x1="80" y1="44" x2="72" y2="56" stroke="#f59e0b" stroke-width="1.4"/>
-                        <circle cx="29" cy="40" r="4.5" fill="#00d4ff20" stroke="#00d4ff" stroke-width="1"/>
-                        <circle cx="41" cy="23" r="3" fill="#00d4ff15" stroke="#00d4ff" stroke-width=".8"/>
-                        <circle cx="20" cy="61" r="2" fill="#00d4ff10" stroke="#00d4ff" stroke-width=".6"/>
-                        <circle cx="50" cy="27" r="3" fill="#00d4ff15" stroke="#00d4ff" stroke-width=".8"/>
-                        <circle cx="64" cy="32" r="4" fill="#7c3aed20" stroke="#7c3aed" stroke-width="1"/>
-                        <circle cx="74" cy="19" r="2.5" fill="#7c3aed15" stroke="#7c3aed" stroke-width=".7"/>
-                        <circle cx="72" cy="57" r="3" fill="#10b98120" stroke="#10b981" stroke-width=".8"/>
-                        <circle cx="81" cy="44" r="3.5" fill="#f59e0b20" stroke="#f59e0b" stroke-width="1"/>
-                        <circle cx="87" cy="63" r="2" fill="#10b98110" stroke="#10b981" stroke-width=".6"/>
-                        <rect x="14" y="16" width="52" height="36" fill="none" stroke="rgba(0,212,255,.45)" stroke-width=".9"/>
+                      <svg
+                        viewBox="0 0 100 68"
+                        width="100"
+                        height="68"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect width="100" height="68" fill="#070b12" />
+                        <line
+                          x1="29"
+                          y1="40"
+                          x2="41"
+                          y2="24"
+                          stroke="#1e3a5f"
+                          stroke-width=".8"
+                        />
+                        <line
+                          x1="29"
+                          y1="42"
+                          x2="20"
+                          y2="60"
+                          stroke="#1e3a5f"
+                          stroke-width=".8"
+                        />
+                        <line
+                          x1="31"
+                          y1="38"
+                          x2="50"
+                          y2="28"
+                          stroke="#f59e0b"
+                          stroke-width="1.4"
+                        />
+                        <line
+                          x1="64"
+                          y1="30"
+                          x2="74"
+                          y2="20"
+                          stroke="#1e3a5f"
+                          stroke-width=".8"
+                        />
+                        <line
+                          x1="64"
+                          y1="36"
+                          x2="72"
+                          y2="56"
+                          stroke="#1e3a5f"
+                          stroke-width=".8"
+                        />
+                        <line
+                          x1="80"
+                          y1="44"
+                          x2="72"
+                          y2="56"
+                          stroke="#f59e0b"
+                          stroke-width="1.4"
+                        />
+                        <circle
+                          cx="29"
+                          cy="40"
+                          r="4.5"
+                          fill="#00d4ff20"
+                          stroke="#00d4ff"
+                          stroke-width="1"
+                        />
+                        <circle
+                          cx="41"
+                          cy="23"
+                          r="3"
+                          fill="#00d4ff15"
+                          stroke="#00d4ff"
+                          stroke-width=".8"
+                        />
+                        <circle
+                          cx="20"
+                          cy="61"
+                          r="2"
+                          fill="#00d4ff10"
+                          stroke="#00d4ff"
+                          stroke-width=".6"
+                        />
+                        <circle
+                          cx="50"
+                          cy="27"
+                          r="3"
+                          fill="#00d4ff15"
+                          stroke="#00d4ff"
+                          stroke-width=".8"
+                        />
+                        <circle
+                          cx="64"
+                          cy="32"
+                          r="4"
+                          fill="#7c3aed20"
+                          stroke="#7c3aed"
+                          stroke-width="1"
+                        />
+                        <circle
+                          cx="74"
+                          cy="19"
+                          r="2.5"
+                          fill="#7c3aed15"
+                          stroke="#7c3aed"
+                          stroke-width=".7"
+                        />
+                        <circle
+                          cx="72"
+                          cy="57"
+                          r="3"
+                          fill="#10b98120"
+                          stroke="#10b981"
+                          stroke-width=".8"
+                        />
+                        <circle
+                          cx="81"
+                          cy="44"
+                          r="3.5"
+                          fill="#f59e0b20"
+                          stroke="#f59e0b"
+                          stroke-width="1"
+                        />
+                        <circle
+                          cx="87"
+                          cy="63"
+                          r="2"
+                          fill="#10b98110"
+                          stroke="#10b981"
+                          stroke-width=".6"
+                        />
+                        <rect
+                          x="14"
+                          y="16"
+                          width="52"
+                          height="36"
+                          fill="none"
+                          stroke="rgba(0,212,255,.45)"
+                          stroke-width=".9"
+                        />
                       </svg>
                     </div>
-
-                    <!-- Legend -->
                     <div class="ns-legend">
-                      <div class="ns-leg-item"><div class="ns-dot" style="background:#00d4ff"></div><span>Tech</span></div>
-                      <div class="ns-leg-item"><div class="ns-dot" style="background:#7c3aed"></div><span>Math</span></div>
-                      <div class="ns-leg-item"><div class="ns-dot" style="background:#10b981"></div><span>AI</span></div>
-                      <div class="ns-leg-item"><div class="ns-dot" style="background:#f59e0b"></div><span>Physics</span></div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #00d4ff"></div>
+                        <span>Tech</span>
+                      </div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #7c3aed"></div>
+                        <span>Math</span>
+                      </div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #10b981"></div>
+                        <span>AI</span>
+                      </div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #f59e0b"></div>
+                        <span>Physics</span>
+                      </div>
                     </div>
-
-                    <!-- Context menu preview -->
                     <div class="ns-ctx">
                       <div class="ns-cx-item ns-cx-primary">👁 Focus Node</div>
                       <div class="ns-cx-item">✎ Edit Node</div>
                       <div class="ns-cx-sep"></div>
-                      <div class="ns-cx-item"><span style="color:#10b981">▶</span> Set Path Start</div>
-                      <div class="ns-cx-item"><span style="color:#ef4444">◀</span> Set Path End</div>
+                      <div class="ns-cx-item">
+                        <span style="color: #10b981">▶</span> Set Path Start
+                      </div>
+                      <div class="ns-cx-item">
+                        <span style="color: #ef4444">◀</span> Set Path End
+                      </div>
                       <div class="ns-cx-sep"></div>
                       <div class="ns-cx-item">📌 Pin Node</div>
                     </div>
-
-                    <!-- Path Finder badge -->
-                    <div class="ns-pf-badge">🔗 Path: JS → Node.js → ML &nbsp;·&nbsp; 2 hops</div>
-
-                  </div><!-- /ns-graph-area -->
-                </div><!-- /ns-live-preview -->
+                    <div class="ns-pf-badge">
+                      🔗 Path: JS → Node.js → ML &nbsp;·&nbsp; 2 hops
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div><!-- /pf-preview -->
-
+            </div>
             <div class="pf-info">
               <p class="pf-desc">
-                Sistem visualisasi pengetahuan berbasis <strong>Force-Directed Graph</strong> — mengubah catatan dan topik menjadi jaringan node interaktif yang terhubung otomatis lewat keyword matching. Eksplorasi koneksi antar ilmu secara visual dengan BFS path finder, undo/redo, minimap, dan export PNG.
+                Sistem visualisasi pengetahuan berbasis
+                <strong>Force-Directed Graph</strong> — mengubah catatan dan
+                topik menjadi jaringan node interaktif yang terhubung otomatis
+                lewat keyword matching. Eksplorasi koneksi antar ilmu secara
+                visual dengan BFS path finder, undo/redo, minimap, dan export
+                PNG.
               </p>
-              <p class="pf-desktop-note">🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
+              <p class="pf-desktop-note">
+                🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP
+                untuk pengalaman terbaik.
+              </p>
               <div class="pf-highlights">
                 <div class="pf-hl"><span>🕸</span> Force-Directed Graph</div>
                 <div class="pf-hl"><span>🔗</span> BFS Path Finder</div>
                 <div class="pf-hl"><span>✦</span> Auto-Link by Tags</div>
                 <div class="pf-hl"><span>🗺</span> Minimap + Convex Hull</div>
                 <div class="pf-hl"><span>↩</span> Undo / Redo History</div>
-                <div class="pf-hl"><span>🖼</span> Export PNG & JSON</div>
+                <div class="pf-hl"><span>🖼</span> Export PNG &amp; JSON</div>
               </div>
               <div class="pf-stack">
-                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>D3.js v7</span><span>localStorage</span>
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>D3.js v7</span><span>localStorage</span>
               </div>
               <div class="pf-links pf-links-3">
-                <a href="https://raffisirojudin.github.io/neuro-shelf" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ns pf-btn-3">🚀 Demo</a>
-                <button class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--ns" data-project="neuroshelf">📖 Case Study</button>
-                <a href="https://github.com/raffisirojudin/neuro-shelf" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+                <a
+                  href="https://raffisirojudin.github.io/neuro-shelf"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-link-primary pf-link-primary--ns pf-btn-3"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn pf-btn-cs pf-btn-cs--ns"
+                  data-project="neuroshelf"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/neuro-shelf"
+                  target="_blank"
+                  rel="noopener"
+                  class="pf-btn-3 pf-btn-gh"
+                  >GitHub ↗</a
+                >
               </div>
             </div>
           </div>
         </div>
         <!-- END NEURO-SHELF -->
-
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
       <div class="section-wrap">
-        <div class="section-label reveal"><span class="label-num">05</span><span class="label-line"></span><span class="label-text">Contact</span></div>
+        <div class="section-label reveal">
+          <span class="label-num">05</span><span class="label-line"></span
+          ><span class="label-text">Contact</span>
+        </div>
         <div class="contact-grid">
           <div class="contact-left reveal">
-            <h2 class="section-title">Mari Bekerja<br><em>Bersama</em></h2>
-            <p class="contact-desc">Punya proyek menarik atau ingin berkolaborasi? Saya selalu terbuka untuk diskusi dan peluang baru.</p>
-            <a href="mailto:raffisirojudin@gmail.com" class="contact-email-link">raffisirojudin@gmail.com</a>
+            <h2 class="section-title">Mari Bekerja<br /><em>Bersama</em></h2>
+            <p class="contact-desc">
+              Punya proyek menarik atau ingin berkolaborasi? Saya selalu terbuka
+              untuk diskusi dan peluang baru.
+            </p>
+            <a href="mailto:raffisirojudin@gmail.com" class="contact-email-link"
+              >raffisirojudin@gmail.com</a
+            >
             <div class="socials-wrap">
-              <a href="https://github.com/raffisirojudin" class="social-btn" target="_blank" rel="noopener">
-                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              <a
+                href="https://github.com/raffisirojudin"
+                class="social-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  />
+                </svg>
                 GitHub
               </a>
-              <a href="https://www.instagram.com/sozudigi/" class="social-btn" target="_blank" rel="noopener">
-                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <a
+                href="https://www.instagram.com/sozudigi/"
+                class="social-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
                 Instagram
               </a>
-              <a href="https://wa.me/62895405424200" class="social-btn" target="_blank" rel="noopener">
-                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <a
+                href="https://wa.me/62895405424200"
+                class="social-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  />
+                </svg>
                 WhatsApp
               </a>
             </div>
@@ -812,17 +2406,39 @@
             <form class="contact-form" id="contact-form" novalidate>
               <div class="form-group">
                 <label for="cf-name">Nama</label>
-                <input type="text" id="cf-name" name="name" placeholder="Nama kamu" autocomplete="name" required />
+                <input
+                  type="text"
+                  id="cf-name"
+                  name="name"
+                  placeholder="Nama kamu"
+                  autocomplete="name"
+                  required
+                />
               </div>
               <div class="form-group">
                 <label for="cf-email">Email</label>
-                <input type="email" id="cf-email" name="email" placeholder="raffisirojudin@gmail.com" autocomplete="email" required />
+                <input
+                  type="email"
+                  id="cf-email"
+                  name="email"
+                  placeholder="raffisirojudin@gmail.com"
+                  autocomplete="email"
+                  required
+                />
               </div>
               <div class="form-group">
                 <label for="cf-msg">Pesan</label>
-                <textarea id="cf-msg" name="message" rows="5" placeholder="Ceritakan proyekmu..." required></textarea>
+                <textarea
+                  id="cf-msg"
+                  name="message"
+                  rows="5"
+                  placeholder="Ceritakan proyekmu..."
+                  required
+                ></textarea>
               </div>
-              <button type="submit" class="form-submit">Kirim Pesan <span class="btn-arrow">→</span></button>
+              <button type="submit" class="form-submit">
+                Kirim Pesan <span class="btn-arrow">→</span>
+              </button>
               <p class="form-note" id="form-note"></p>
             </form>
           </div>
@@ -831,10 +2447,14 @@
     </section>
 
     <!-- BACK TO TOP PROGRESS RING -->
-    <button id="back-top-ring" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"> 
+    <button
+      id="back-top-ring"
+      aria-label="Back to top"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
       <svg class="btr-svg" viewBox="0 0 36 36">
-        <circle class="btr-track" cx="18" cy="18" r="15.9"/>
-        <circle class="btr-fill" id="btr-fill" cx="18" cy="18" r="15.9"/>
+        <circle class="btr-track" cx="18" cy="18" r="15.9" />
+        <circle class="btr-fill" id="btr-fill" cx="18" cy="18" r="15.9" />
       </svg>
       <span class="btr-arrow">↑</span>
     </button>
@@ -842,464 +2462,732 @@
     <footer>
       <div class="footer-inner">
         <span class="footer-logo">RS.</span>
-        <p>Dibuat dengan ❤️ oleh Rafi Sirojudin · <span id="footer-year"></span></p>
+        <p>
+          Dibuat dengan ❤️ oleh Rafi Sirojudin · <span id="footer-year"></span>
+        </p>
         <a href="#hero" class="back-top">↑ Top</a>
       </div>
     </footer>
 
     <script>
-"use strict";
+      "use strict";
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    PAGE LOADER
 ═══════════════════════════════════ */
-(function() {
-  var loader = document.getElementById('page-loader');
-  var bar = document.querySelector('.loader-bar');
-  if (!loader) return;
-  var prog = 0;
-  var iv = setInterval(function() {
-    prog += Math.random() * 18;
-    if (prog > 90) prog = 90;
-    if (bar) bar.style.width = prog + '%';
-  }, 80);
-  function hideLoader() {
-    clearInterval(iv);
-    if (bar) bar.style.width = '100%';
-    setTimeout(function() {
-      loader.classList.add('loader-done');
-      setTimeout(function() { loader.style.display = 'none'; }, 600);
-    }, 300);
-  }
-  if (document.readyState === 'complete') { hideLoader(); }
-  else { window.addEventListener('load', hideLoader); }
-  setTimeout(hideLoader, 3000);
-})();
+      (function () {
+        var loader = document.getElementById("page-loader");
+        var bar = document.querySelector(".loader-bar");
+        if (!loader) return;
+        var prog = 0;
+        var iv = setInterval(function () {
+          prog += Math.random() * 18;
+          if (prog > 90) prog = 90;
+          if (bar) bar.style.width = prog + "%";
+        }, 80);
+        function hideLoader() {
+          clearInterval(iv);
+          if (bar) bar.style.width = "100%";
+          setTimeout(function () {
+            loader.classList.add("loader-done");
+            setTimeout(function () {
+              loader.style.display = "none";
+            }, 600);
+          }, 300);
+        }
+        if (document.readyState === "complete") {
+          hideLoader();
+        } else {
+          window.addEventListener("load", hideLoader);
+        }
+        setTimeout(hideLoader, 3000);
+      })();
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    THEME TOGGLE
 ═══════════════════════════════════ */
-var html = document.documentElement;
-var themeBtn = document.getElementById("theme-toggle");
-var saved = localStorage.getItem("theme");
-if (saved) html.setAttribute("data-theme", saved);
-if (themeBtn) {
-  themeBtn.addEventListener("click", function () {
-    var next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    html.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  });
-}
+      var html = document.documentElement;
+      var themeBtn = document.getElementById("theme-toggle");
+      var saved = localStorage.getItem("theme");
+      if (saved) html.setAttribute("data-theme", saved);
+      if (themeBtn) {
+        themeBtn.addEventListener("click", function () {
+          var next =
+            html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+        });
+      }
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    NAVBAR SCROLL & BURGER
 ═══════════════════════════════════ */
-var navbar = document.getElementById("navbar");
-var burger = document.getElementById("burger");
-var mobileMenu = document.getElementById("mobile-menu");
-window.addEventListener("scroll", function () {
-  if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 30);
-}, { passive: true });
-if (burger && mobileMenu) {
-  burger.addEventListener("click", function () {
-    burger.classList.toggle("open");
-    mobileMenu.classList.toggle("open");
-  });
-  mobileMenu.querySelectorAll("a").forEach(function (a) {
-    a.addEventListener("click", function () {
-      burger.classList.remove("open");
-      mobileMenu.classList.remove("open");
-    });
-  });
-}
+      var navbar = document.getElementById("navbar");
+      var burger = document.getElementById("burger");
+      var mobileMenu = document.getElementById("mobile-menu");
+      window.addEventListener(
+        "scroll",
+        function () {
+          if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 30);
+        },
+        { passive: true },
+      );
+      if (burger && mobileMenu) {
+        burger.addEventListener("click", function () {
+          burger.classList.toggle("open");
+          mobileMenu.classList.toggle("open");
+        });
+        mobileMenu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            burger.classList.remove("open");
+            mobileMenu.classList.remove("open");
+          });
+        });
+      }
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    REVEAL ON SCROLL
 ═══════════════════════════════════ */
-var reveals = document.querySelectorAll(".reveal");
-function doReveal() {
-  var vh = window.innerHeight;
-  reveals.forEach(function (el) {
-    if (el.getBoundingClientRect().top < vh - 40) el.classList.add("visible");
-  });
-}
-doReveal();
-window.addEventListener("scroll", doReveal, { passive: true });
-window.addEventListener("load", doReveal);
+      var reveals = document.querySelectorAll(".reveal");
+      function doReveal() {
+        var vh = window.innerHeight;
+        reveals.forEach(function (el) {
+          if (el.getBoundingClientRect().top < vh - 40)
+            el.classList.add("visible");
+        });
+      }
+      doReveal();
+      window.addEventListener("scroll", doReveal, { passive: true });
+      window.addEventListener("load", doReveal);
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    TYPING ANIMATION
 ═══════════════════════════════════ */
-var typedEl = document.getElementById("typed-text");
-if (typedEl) {
-  var phrases = ["web experiences.", "clean interfaces.", "fast frontends.", "modern UIs."];
-  var ci = 0, pi = 0, del = false;
-  function tick() {
-    var phrase = phrases[pi];
-    if (!del) {
-      typedEl.textContent = phrase.slice(0, ++ci);
-      if (ci === phrase.length) { del = true; setTimeout(tick, 1800); return; }
-    } else {
-      typedEl.textContent = phrase.slice(0, --ci);
-      if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; }
-    }
-    setTimeout(tick, del ? 55 : 95);
-  }
-  setTimeout(tick, 1200);
-}
+      var typedEl = document.getElementById("typed-text");
+      if (typedEl) {
+        var phrases = [
+          "web experiences.",
+          "clean interfaces.",
+          "fast frontends.",
+          "modern UIs.",
+        ];
+        var ci = 0,
+          pi = 0,
+          del = false;
+        function tick() {
+          var phrase = phrases[pi];
+          if (!del) {
+            typedEl.textContent = phrase.slice(0, ++ci);
+            if (ci === phrase.length) {
+              del = true;
+              setTimeout(tick, 1800);
+              return;
+            }
+          } else {
+            typedEl.textContent = phrase.slice(0, --ci);
+            if (ci === 0) {
+              del = false;
+              pi = (pi + 1) % phrases.length;
+            }
+          }
+          setTimeout(tick, del ? 55 : 95);
+        }
+        setTimeout(tick, 1200);
+      }
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    SKILL BARS
 ═══════════════════════════════════ */
-function animateBars() {
-  document.querySelectorAll(".skill-bar-fill").forEach(function (bar) {
-    if (bar.getBoundingClientRect().top < window.innerHeight) {
-      bar.style.width = bar.dataset.width + "%";
-    }
-  });
-}
-animateBars();
-window.addEventListener("scroll", animateBars, { passive: true });
+      function animateBars() {
+        document.querySelectorAll(".skill-bar-fill").forEach(function (bar) {
+          if (bar.getBoundingClientRect().top < window.innerHeight) {
+            bar.style.width = bar.dataset.width + "%";
+          }
+        });
+      }
+      animateBars();
+      window.addEventListener("scroll", animateBars, { passive: true });
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    SKILL MODAL
 ═══════════════════════════════════ */
-var modal = document.getElementById("skill-modal");
-var modalClose = document.getElementById("modal-close");
-var SKILLS = {
-  html:  { emoji:"🌐", title:"HTML",       level:"90% — Mahir",    desc:"Bahasa dasar struktur setiap halaman web. Fondasi utama seorang web developer.", tags:["Semantik","Form","SEO","Aksesibilitas"] },
-  css:   { emoji:"🎨", title:"CSS",        level:"80% — Mahir",    desc:"Mengatur tampilan visual: warna, layout, animasi, dan responsivitas di semua layar.", tags:["Flexbox","Grid","Animasi","Responsif"] },
-  js:    { emoji:"⚡", title:"JavaScript", level:"70% — Menengah", desc:"Membuat halaman interaktif: klik, API, validasi form, dan fitur dinamis lainnya.", tags:["DOM","ES6+","Fetch","Async/Await"] },
-  react: { emoji:"⚛️", title:"React",      level:"60% — Menengah", desc:"Library UI berbasis komponen dari Meta. Kode lebih terorganisir dan bisa dipakai ulang.", tags:["Hooks","State","Props","JSX"] },
-  git:   { emoji:"🐙", title:"Git",        level:"75% — Mahir",    desc:"Version control untuk kolaborasi tim, riwayat perubahan, branching, dan rollback.", tags:["Commit","Branch","Merge","GitHub"] },
-  figma: { emoji:"✏️", title:"Figma",      level:"65% — Menengah", desc:"Desain UI/UX untuk wireframe, mockup, dan prototipe. Membantu mengimplementasi desain ke kode.", tags:["Wireframe","Mockup","Prototipe","Auto Layout"] }
-};
-if (modal && modalClose) {
-  document.querySelectorAll(".skill-card").forEach(function (card) {
-    card.addEventListener("click", function () {
-      var d = SKILLS[card.dataset.skill];
-      if (!d) return;
-      document.getElementById("modal-icon").textContent = d.emoji;
-      document.getElementById("modal-title-text").textContent = d.title;
-      document.getElementById("modal-level").textContent = d.level;
-      document.getElementById("modal-desc").textContent = d.desc;
-      var tags = document.getElementById("modal-tags");
-      tags.innerHTML = "";
-      d.tags.forEach(function (t) { var s = document.createElement("span"); s.textContent = t; tags.appendChild(s); });
-      modal.classList.add("open");
-      document.body.style.overflow = "hidden";
-    });
-  });
-  function closeModal() { modal.classList.remove("open"); document.body.style.overflow = ""; }
-  modalClose.addEventListener("click", closeModal);
-  modal.querySelector(".modal-backdrop").addEventListener("click", closeModal);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeModal(); closeCaseStudy(); } });
-}
+      var modal = document.getElementById("skill-modal");
+      var modalClose = document.getElementById("modal-close");
+      var SKILLS = {
+        html: {
+          emoji: "🌐",
+          title: "HTML",
+          level: "90% — Mahir",
+          desc: "Bahasa dasar struktur setiap halaman web. Fondasi utama seorang web developer.",
+          tags: ["Semantik", "Form", "SEO", "Aksesibilitas"],
+        },
+        css: {
+          emoji: "🎨",
+          title: "CSS",
+          level: "80% — Mahir",
+          desc: "Mengatur tampilan visual: warna, layout, animasi, dan responsivitas di semua layar.",
+          tags: ["Flexbox", "Grid", "Animasi", "Responsif"],
+        },
+        js: {
+          emoji: "⚡",
+          title: "JavaScript",
+          level: "70% — Menengah",
+          desc: "Membuat halaman interaktif: klik, API, validasi form, dan fitur dinamis lainnya.",
+          tags: ["DOM", "ES6+", "Fetch", "Async/Await"],
+        },
+        react: {
+          emoji: "⚛️",
+          title: "React",
+          level: "60% — Menengah",
+          desc: "Library UI berbasis komponen dari Meta. Kode lebih terorganisir dan bisa dipakai ulang.",
+          tags: ["Hooks", "State", "Props", "JSX"],
+        },
+        git: {
+          emoji: "🐙",
+          title: "Git",
+          level: "75% — Mahir",
+          desc: "Version control untuk kolaborasi tim, riwayat perubahan, branching, dan rollback.",
+          tags: ["Commit", "Branch", "Merge", "GitHub"],
+        },
+        figma: {
+          emoji: "✏️",
+          title: "Figma",
+          level: "65% — Menengah",
+          desc: "Desain UI/UX untuk wireframe, mockup, dan prototipe. Membantu mengimplementasi desain ke kode.",
+          tags: ["Wireframe", "Mockup", "Prototipe", "Auto Layout"],
+        },
+      };
+      if (modal && modalClose) {
+        document.querySelectorAll(".skill-card").forEach(function (card) {
+          card.addEventListener("click", function () {
+            var d = SKILLS[card.dataset.skill];
+            if (!d) return;
+            document.getElementById("modal-icon").textContent = d.emoji;
+            document.getElementById("modal-title-text").textContent = d.title;
+            document.getElementById("modal-level").textContent = d.level;
+            document.getElementById("modal-desc").textContent = d.desc;
+            var tags = document.getElementById("modal-tags");
+            tags.innerHTML = "";
+            d.tags.forEach(function (t) {
+              var s = document.createElement("span");
+              s.textContent = t;
+              tags.appendChild(s);
+            });
+            modal.classList.add("open");
+            document.body.style.overflow = "hidden";
+          });
+        });
+        function closeModal() {
+          modal.classList.remove("open");
+          document.body.style.overflow = "";
+        }
+        modalClose.addEventListener("click", closeModal);
+        modal
+          .querySelector(".modal-backdrop")
+          .addEventListener("click", closeModal);
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            closeModal();
+            closeCaseStudy();
+          }
+        });
+      }
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    CONTACT FORM
 ═══════════════════════════════════ */
-var form = document.getElementById("contact-form");
-var note = document.getElementById("form-note");
-if (form && note) {
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var name = form.querySelector("[name=\"name\"]").value.trim();
-    var email = form.querySelector("[name=\"email\"]").value.trim();
-    var msg = form.querySelector("[name=\"message\"]").value.trim();
-    if (!name || !email || !msg) { note.style.color = "var(--coral)"; note.textContent = "Mohon isi semua kolom."; return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { note.style.color = "var(--coral)"; note.textContent = "Format email tidak valid."; return; }
-    var btn = form.querySelector(".form-submit");
-    btn.textContent = "Mengirim..."; btn.disabled = true;
-    setTimeout(function () {
-      note.style.color = "var(--teal)";
-      note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
-      form.reset();
-      btn.innerHTML = "Kirim Pesan <span class=\"btn-arrow\">→</span>";
-      btn.disabled = false;
-    }, 1200);
-  });
-}
+      var form = document.getElementById("contact-form");
+      var note = document.getElementById("form-note");
+      if (form && note) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var name = form.querySelector('[name="name"]').value.trim();
+          var email = form.querySelector('[name="email"]').value.trim();
+          var msg = form.querySelector('[name="message"]').value.trim();
+          if (!name || !email || !msg) {
+            note.style.color = "var(--coral)";
+            note.textContent = "Mohon isi semua kolom.";
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            note.style.color = "var(--coral)";
+            note.textContent = "Format email tidak valid.";
+            return;
+          }
+          var btn = form.querySelector(".form-submit");
+          btn.textContent = "Mengirim...";
+          btn.disabled = true;
+          setTimeout(function () {
+            note.style.color = "var(--teal)";
+            note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
+            form.reset();
+            btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
+            btn.disabled = false;
+          }, 1200);
+        });
+      }
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    FOOTER YEAR & NAV ACTIVE
 ═══════════════════════════════════ */
-var yearEl = document.getElementById("footer-year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+      var yearEl = document.getElementById("footer-year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-var sections = document.querySelectorAll("section[id]");
-window.addEventListener("scroll", function () {
-  var pos = window.scrollY + 100;
-  sections.forEach(function (s) {
-    var link = document.querySelector(".nav-links a[href=\"#" + s.id + "\"]");
-    if (link) link.classList.toggle("active", pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight);
-  });
-}, { passive: true });
+      var sections = document.querySelectorAll("section[id]");
+      window.addEventListener(
+        "scroll",
+        function () {
+          var pos = window.scrollY + 100;
+          sections.forEach(function (s) {
+            var link = document.querySelector(
+              '.nav-links a[href="#' + s.id + '"]',
+            );
+            if (link)
+              link.classList.toggle(
+                "active",
+                pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight,
+              );
+          });
+        },
+        { passive: true },
+      );
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    BACK TO TOP PROGRESS RING
 ═══════════════════════════════════ */
-(function() {
-  var btn = document.getElementById('back-top-ring');
-  var fill = document.getElementById('btr-fill');
-  if (!btn || !fill) return;
-  var C = 2 * Math.PI * 15.9;
-  fill.style.strokeDasharray = C;
-  fill.style.strokeDashoffset = C;
-  function updateRing() {
-    var scrolled = window.scrollY;
-    var total = document.documentElement.scrollHeight - window.innerHeight;
-    var progress = total > 0 ? scrolled / total : 0;
-    fill.style.strokeDashoffset = C - (C * progress);
-    btn.classList.toggle('btr-visible', scrolled > 200);
-  }
-  window.addEventListener('scroll', updateRing, { passive: true });
-  updateRing();
-})();
+      (function () {
+        var btn = document.getElementById("back-top-ring");
+        var fill = document.getElementById("btr-fill");
+        if (!btn || !fill) return;
+        var C = 2 * Math.PI * 15.9;
+        fill.style.strokeDasharray = C;
+        fill.style.strokeDashoffset = C;
+        function updateRing() {
+          var scrolled = window.scrollY;
+          var total =
+            document.documentElement.scrollHeight - window.innerHeight;
+          var progress = total > 0 ? scrolled / total : 0;
+          fill.style.strokeDashoffset = C - C * progress;
+          btn.classList.toggle("btr-visible", scrolled > 200);
+        }
+        window.addEventListener("scroll", updateRing, { passive: true });
+        updateRing();
+      })();
 
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    CASE STUDY MODAL
 ═══════════════════════════════════ */
-(function() {
-  var CASE_STUDIES = {
-    curtainbiz: {
-      tag: 'Featured Project',
-      tagColor: 'var(--accent)',
-      title: 'CurtainBiz Manager',
-      demo: 'https://raffisirojudin.github.io/curtainbiz-manager',
-      github: 'https://github.com/raffisirojudin/curtainbiz-manager',
-      problem: 'Pemilik bisnis curtain kesulitan melacak pesanan, stok, dan keuangan secara manual menggunakan spreadsheet. Data tercecer, laporan HPP tidak akurat, dan tidak ada visibilitas real-time.',
-      solution: 'Membangun sistem manajemen berbasis web dengan dashboard KPI real-time, manajemen pesanan multi-channel, alert stok otomatis, dan kalkulator HPP terintegrasi menggunakan HTML, CSS, JavaScript, dan Supabase sebagai backend.',
-      result: 'Pemilik bisnis dapat memantau 4 KPI utama sekaligus, mengelola 100+ order tanpa spreadsheet, dan mendapatkan laporan keuangan otomatis. Waktu rekap bulanan berkurang dari 4 jam menjadi under 10 menit.',
-      features: ['📊 Dashboard KPI Real-time', '🛒 Order Management Multi-channel', '💰 Kalkulator HPP Otomatis', '📦 Alert Stok Rendah', '📈 Grafik Penjualan Bulanan', '🔐 Auth & Multi-user'],
-      tech: ['HTML', 'CSS', 'JavaScript', 'Chart.js', 'Supabase'],
-      previewBg: 'linear-gradient(135deg,#0f0f1a,#13131a)',
-      previewEmoji: '📊'
-    },
-    kinetic: {
-      tag: 'Gen-Art Engine',
-      tagColor: '#ff006e',
-      title: 'Kinetic·Soul',
-      demo: 'https://raffisirojudin.github.io/kinetic-soul',
-      github: 'https://github.com/raffisirojudin/kinetic-soul',
-      problem: 'Tidak ada tool generative art berbasis browser yang ringan, open-source, dan bisa dikustomisasi tanpa pengetahuan coding mendalam. Tool yang ada terlalu kompleks atau berbayar.',
-      solution: 'Membangun mesin generative art interaktif di atas Canvas API dengan sistem partikel fisika inverse square law, Perlin noise flow field, 3 visual mode, efek bloom, dan 6 palette warna. Fully client-side, zero dependency.',
-      result: 'Aplikasi berjalan smooth 60 FPS dengan 120+ partikel aktif di browser manapun. User bisa menghasilkan karya unik setiap saat dengan kombinasi mode dan palette yang berbeda.',
-      features: ['✦ 3 Visual Modes (Galaxy, Web, Explosion)', '🎨 6 Color Palettes', '⚡ Perlin Noise Physics', '🔊 Procedural Audio', '📸 Export PNG', '🎛 Parameter Sliders'],
-      tech: ['HTML', 'CSS', 'JavaScript', 'Canvas API', 'Web Audio API'],
-      previewBg: 'linear-gradient(135deg,#050508,#1a0a2e)',
-      previewEmoji: '✦'
-    },
-    lentera: {
-      tag: 'Interactive Storytelling',
-      tagColor: '#f97316',
-      title: 'Lentera Kecil',
-      demo: 'https://raffisirojudin.github.io/lentera-kecil',
-      github: 'https://github.com/raffisirojudin/lentera-kecil',
-      problem: 'Anak-anak Indonesia kehilangan akses ke dongeng tradisional Nusantara yang interaktif. Konten digital anak yang ada mayoritas berformat video pasif dan tidak adaptif.',
-      solution: 'Mesin dongeng interaktif dengan 17 cerita rakyat Nusantara, karakter SVG animasi original, background scene dinamis, ambient sound procedural, dan sistem progress berbintang untuk memotivasi anak terus membaca.',
-      result: 'Platform yang dapat dinikmati anak usia 4–10 tahun tanpa koneksi internet, dengan 17 cerita lengkap dengan pesan moral, sistem bintang yang mendorong engagement, dan pengalaman audio-visual yang imersif.',
-      features: ['📚 17 Dongeng Nusantara', '🎭 Karakter SVG Animasi Original', '🔊 Ambient Sound Engine', '⭐ Sistem Progress & Reward', '🔍 Filter & Pencarian Cerita', '💾 Offline-capable'],
-      tech: ['HTML', 'CSS', 'JavaScript', 'Web Audio API', 'SVG Animation'],
-      previewBg: 'linear-gradient(180deg,#87ceeb,#66bb6a)',
-      previewEmoji: '🏮'
-    },
-    easysolve: {
-      tag: 'Science Calculator',
-      tagColor: '#38d9a9',
-      title: 'EasySolve',
-      demo: 'https://raffisirojudin.github.io/easysolve/',
-      github: 'https://github.com/raffisirojudin/easysolve',
-      problem: 'Pelajar sering kesulitan memahami langkah-langkah pengerjaan soal sains. Kalkulator biasa hanya memberikan jawaban tanpa penjelasan, sehingga tidak membantu pemahaman konsep.',
-      solution: 'Platform kalkulator sains komprehensif dengan 100+ rumus dari 7 mata pelajaran yang tidak hanya memberikan hasil, tetapi juga menampilkan langkah pengerjaan step-by-step yang jelas dengan render KaTeX.',
-      result: 'Pelajar dapat mengerjakan soal dari 7 mata pelajaran berbeda dalam satu platform, memahami proses perhitungan secara visual, dan menggunakan sebagai referensi belajar mandiri yang efektif.',
-      features: ['🔢 100+ Rumus Lengkap', '📚 7 Mata Pelajaran', '📝 Step-by-step Explanation', '⚡ Render KaTeX', '🔍 Pencarian Rumus', '📱 Responsive Design'],
-      tech: ['HTML', 'CSS', 'JavaScript', 'KaTeX'],
-      previewBg: 'linear-gradient(135deg,#0a1a14,#0d1e17)',
-      previewEmoji: '∑'
-    },
-    neuroshelf: {
-      tag: 'Knowledge Graph',
-      tagColor: '#00d4ff',
-      title: 'Neuro·Shelf',
-      demo: 'https://raffisirojudin.github.io/neuro-shelf',
-      github: 'https://github.com/raffisirojudin/neuro-shelf',
-      problem: 'Pengelolaan catatan tradisional (linear) tidak mencerminkan bagaimana otak manusia benar-benar menyimpan informasi — dalam jaringan koneksi, bukan daftar. Orang kehilangan hubungan antar topik yang sudah dipelajari.',
-      solution: 'Sistem visualisasi pengetahuan berbasis Force-Directed Graph menggunakan D3.js dengan auto-linking berbasis keyword matching, BFS path finder, Convex Hull grouping, minimap, undo/redo, dan export PNG — semua tersimpan di localStorage.',
-      result: 'User dapat memvisualisasikan 100+ node pengetahuan dalam jaringan interaktif, menemukan koneksi tersembunyi antar topik secara otomatis, dan mengeksplorasi jalur terpendek antar konsep menggunakan BFS algorithm.',
-      features: ['🕸 Force-Directed Graph D3.js', '🔗 BFS Path Finder', '✦ Auto-Link by Keyword Tags', '🗺 Minimap + Convex Hull', '↩ Undo / Redo 40 Steps', '🖼 Export PNG & JSON'],
-      tech: ['HTML', 'CSS', 'JavaScript', 'D3.js v7', 'localStorage'],
-      previewBg: 'linear-gradient(135deg,#070b12,#0d1523)',
-      previewEmoji: '🕸'
-    }
-  };
+      (function () {
+        var CASE_STUDIES = {
+          curtainbiz: {
+            tag: "Featured Project",
+            tagColor: "var(--accent)",
+            title: "CurtainBiz Manager",
+            problem:
+              "Pemilik bisnis curtain kesulitan melacak pesanan, stok, dan keuangan secara manual menggunakan spreadsheet. Data tercecer, laporan HPP tidak akurat, dan tidak ada visibilitas real-time.",
+            solution:
+              "Membangun sistem manajemen berbasis web dengan dashboard KPI real-time, manajemen pesanan multi-channel, alert stok otomatis, dan kalkulator HPP terintegrasi menggunakan HTML, CSS, JavaScript, dan Supabase sebagai backend.",
+            result:
+              "Pemilik bisnis dapat memantau 4 KPI utama sekaligus, mengelola 100+ order tanpa spreadsheet, dan mendapatkan laporan keuangan otomatis. Waktu rekap bulanan berkurang dari 4 jam menjadi under 10 menit.",
+            features: [
+              "📊 Dashboard KPI Real-time",
+              "🛒 Order Management Multi-channel",
+              "💰 Kalkulator HPP Otomatis",
+              "📦 Alert Stok Rendah",
+              "📈 Grafik Penjualan Bulanan",
+              "🔐 Auth & Multi-user",
+            ],
+            tech: ["HTML", "CSS", "JavaScript", "Chart.js", "Supabase"],
+            previewBg: "linear-gradient(135deg,#0f0f1a,#13131a)",
+            previewEmoji: "📊",
+          },
+          kinetic: {
+            tag: "Gen-Art Engine",
+            tagColor: "#ff006e",
+            title: "Kinetic·Soul",
+            problem:
+              "Tidak ada tool generative art berbasis browser yang ringan, open-source, dan bisa dikustomisasi tanpa pengetahuan coding mendalam. Tool yang ada terlalu kompleks atau berbayar.",
+            solution:
+              "Membangun mesin generative art interaktif di atas Canvas API dengan sistem partikel fisika inverse square law, Perlin noise flow field, 3 visual mode, efek bloom, dan 6 palette warna. Fully client-side, zero dependency.",
+            result:
+              "Aplikasi berjalan smooth 60 FPS dengan 120+ partikel aktif di browser manapun. User bisa menghasilkan karya unik setiap saat dengan kombinasi mode dan palette yang berbeda.",
+            features: [
+              "✦ 3 Visual Modes (Galaxy, Web, Explosion)",
+              "🎨 6 Color Palettes",
+              "⚡ Perlin Noise Physics",
+              "🔊 Procedural Audio",
+              "📸 Export PNG",
+              "🎛 Parameter Sliders",
+            ],
+            tech: ["HTML", "CSS", "JavaScript", "Canvas API", "Web Audio API"],
+            previewBg: "linear-gradient(135deg,#050508,#1a0a2e)",
+            previewEmoji: "✦",
+          },
+          lentera: {
+            tag: "Interactive Storytelling",
+            tagColor: "#f97316",
+            title: "Lentera Kecil",
+            problem:
+              "Anak-anak Indonesia kehilangan akses ke dongeng tradisional Nusantara yang interaktif. Konten digital anak yang ada mayoritas berformat video pasif dan tidak adaptif.",
+            solution:
+              "Mesin dongeng interaktif dengan 17 cerita rakyat Nusantara, karakter SVG animasi original, background scene dinamis, ambient sound procedural, dan sistem progress berbintang untuk memotivasi anak terus membaca.",
+            result:
+              "Platform yang dapat dinikmati anak usia 4–10 tahun tanpa koneksi internet, dengan 17 cerita lengkap dengan pesan moral, sistem bintang yang mendorong engagement, dan pengalaman audio-visual yang imersif.",
+            features: [
+              "📚 17 Dongeng Nusantara",
+              "🎭 Karakter SVG Animasi Original",
+              "🔊 Ambient Sound Engine",
+              "⭐ Sistem Progress & Reward",
+              "🔍 Filter & Pencarian Cerita",
+              "💾 Offline-capable",
+            ],
+            tech: [
+              "HTML",
+              "CSS",
+              "JavaScript",
+              "Web Audio API",
+              "SVG Animation",
+            ],
+            previewBg: "linear-gradient(180deg,#87ceeb,#66bb6a)",
+            previewEmoji: "🏮",
+          },
+          easysolve: {
+            tag: "Science Calculator",
+            tagColor: "#38d9a9",
+            title: "EasySolve",
+            problem:
+              "Pelajar sering kesulitan memahami langkah-langkah pengerjaan soal sains. Kalkulator biasa hanya memberikan jawaban tanpa penjelasan, sehingga tidak membantu pemahaman konsep.",
+            solution:
+              "Platform kalkulator sains komprehensif dengan 100+ rumus dari 7 mata pelajaran yang tidak hanya memberikan hasil, tetapi juga menampilkan langkah pengerjaan step-by-step yang jelas dengan render KaTeX.",
+            result:
+              "Pelajar dapat mengerjakan soal dari 7 mata pelajaran berbeda dalam satu platform, memahami proses perhitungan secara visual, dan menggunakan sebagai referensi belajar mandiri yang efektif.",
+            features: [
+              "🔢 100+ Rumus Lengkap",
+              "📚 7 Mata Pelajaran",
+              "📝 Step-by-step Explanation",
+              "⚡ Render KaTeX",
+              "🔍 Pencarian Rumus",
+              "📱 Responsive Design",
+            ],
+            tech: ["HTML", "CSS", "JavaScript", "KaTeX"],
+            previewBg: "linear-gradient(135deg,#0a1a14,#0d1e17)",
+            previewEmoji: "∑",
+          },
 
-  var csModal = document.getElementById('cs-modal');
-  var csPanel = document.getElementById('cs-panel');
-  var csBackdrop = document.getElementById('cs-backdrop');
-  var csClose = document.getElementById('cs-close');
-  if (!csModal) return;
+          /* ── BaseCalc Insight ─────────────────────── */
+          basecalc: {
+            tag: "Number Base Converter",
+            tagColor: "#22d3ee",
+            title: "BaseCalc·Insight",
+            problem:
+              "Pelajar seringkali kesulitan memahami konversi antar sistem bilangan karena alat yang tersedia hanya menampilkan hasil akhir tanpa menjelaskan prosesnya, sehingga tidak mendukung pemahaman konsep secara mendalam.",
+            solution:
+              "Konverter 4-basis (Biner, Oktal, Desimal, Heksadesimal) berbasis web yang menampilkan setiap langkah perhitungan secara transparan — menggunakan metode Weighted Sum untuk input dan Repeated Division untuk output, dilengkapi visualisasi pengelompokan bit otomatis dan BigInt untuk akurasi penuh.",
+            result:
+              "Alat edukasi yang tidak hanya mengkonversi angka secara instan, tapi juga mengajarkan cara berpikirnya. Mendukung angka hingga tak terbatas dengan BigInt, validasi karakter real-time, dan breakdown langkah yang bisa dibuka/tutup.",
+            features: [
+              "🔢 Konversi 4 Sistem Bilangan Sekaligus",
+              "🔍 Step-by-step Breakdown Interaktif",
+              "⚡ BigInt — Presisi Tanpa Batas",
+              "🟦 Bit Grouping Visual (3-bit & 4-bit)",
+              "✅ Validasi Input Real-time",
+              "🎨 Terminal / Cyberpunk UI",
+            ],
+            tech: ["HTML", "CSS", "JavaScript", "BigInt API"],
+            previewBg: "linear-gradient(135deg,#080b10,#0d1523)",
+            previewEmoji: "⌗",
+          },
 
-  function openCaseStudy(key) {
-    var d = CASE_STUDIES[key];
-    if (!d) return;
-    document.getElementById('cs-tag').textContent = d.tag;
-    document.getElementById('cs-tag').style.color = d.tagColor;
-    document.getElementById('cs-tag').style.borderColor = d.tagColor;
-    document.getElementById('cs-tag').style.background = d.tagColor + '15';
-    document.getElementById('cs-title').textContent = d.title;
-    document.getElementById('cs-problem').textContent = d.problem;
-    document.getElementById('cs-solution').textContent = d.solution;
-    document.getElementById('cs-result').textContent = d.result;
-    // demo/github links now live on the project cards directly
+          neuroshelf: {
+            tag: "Knowledge Graph",
+            tagColor: "#00d4ff",
+            title: "Neuro·Shelf",
+            problem:
+              "Pengelolaan catatan tradisional (linear) tidak mencerminkan bagaimana otak manusia benar-benar menyimpan informasi — dalam jaringan koneksi, bukan daftar. Orang kehilangan hubungan antar topik yang sudah dipelajari.",
+            solution:
+              "Sistem visualisasi pengetahuan berbasis Force-Directed Graph menggunakan D3.js dengan auto-linking berbasis keyword matching, BFS path finder, Convex Hull grouping, minimap, undo/redo, dan export PNG — semua tersimpan di localStorage.",
+            result:
+              "User dapat memvisualisasikan 100+ node pengetahuan dalam jaringan interaktif, menemukan koneksi tersembunyi antar topik secara otomatis, dan mengeksplorasi jalur terpendek antar konsep menggunakan BFS algorithm.",
+            features: [
+              "🕸 Force-Directed Graph D3.js",
+              "🔗 BFS Path Finder",
+              "✦ Auto-Link by Keyword Tags",
+              "🗺 Minimap + Convex Hull",
+              "↩ Undo / Redo 40 Steps",
+              "🖼 Export PNG & JSON",
+            ],
+            tech: ["HTML", "CSS", "JavaScript", "D3.js v7", "localStorage"],
+            previewBg: "linear-gradient(135deg,#070b12,#0d1523)",
+            previewEmoji: "🕸",
+          },
+        };
 
-    var previewBox = document.getElementById('cs-preview-box');
-    previewBox.style.background = d.previewBg;
-    previewBox.innerHTML = '<div class="cs-preview-emoji">' + d.previewEmoji + '</div><div class="cs-preview-name">' + d.title + '</div>';
+        var csModal = document.getElementById("cs-modal");
+        var csPanel = document.getElementById("cs-panel");
+        var csBackdrop = document.getElementById("cs-backdrop");
+        var csClose = document.getElementById("cs-close");
+        if (!csModal) return;
 
-    var featEl = document.getElementById('cs-features');
-    featEl.innerHTML = d.features.map(function(f) {
-      return '<div class="cs-feat-item">' + f + '</div>';
-    }).join('');
-
-    var techEl = document.getElementById('cs-tech');
-    techEl.innerHTML = d.tech.map(function(t) {
-      return '<span class="cs-tech-tag">' + t + '</span>';
-    }).join('');
-
-    csModal.classList.add('cs-open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(function() { csPanel.classList.add('cs-panel-in'); }, 10);
-
-    // Reset scroll hint
-    var body = document.querySelector('.cs-body');
-    var hint = document.getElementById('cs-scroll-hint');
-    if (body) {
-      body.scrollTop = 0;
-      if (hint) hint.classList.remove('cs-hint-hidden');
-      body.addEventListener('scroll', function onScroll() {
-        if (body.scrollTop > 40) {
-          if (hint) hint.classList.add('cs-hint-hidden');
-          body.removeEventListener('scroll', onScroll);
+        function openCaseStudy(key) {
+          var d = CASE_STUDIES[key];
+          if (!d) return;
+          document.getElementById("cs-tag").textContent = d.tag;
+          document.getElementById("cs-tag").style.color = d.tagColor;
+          document.getElementById("cs-tag").style.borderColor = d.tagColor;
+          document.getElementById("cs-tag").style.background =
+            d.tagColor + "15";
+          document.getElementById("cs-title").textContent = d.title;
+          document.getElementById("cs-problem").textContent = d.problem;
+          document.getElementById("cs-solution").textContent = d.solution;
+          document.getElementById("cs-result").textContent = d.result;
+          var previewBox = document.getElementById("cs-preview-box");
+          previewBox.style.background = d.previewBg;
+          previewBox.innerHTML =
+            '<div class="cs-preview-emoji">' +
+            d.previewEmoji +
+            '</div><div class="cs-preview-name">' +
+            d.title +
+            "</div>";
+          var featEl = document.getElementById("cs-features");
+          featEl.innerHTML = d.features
+            .map(function (f) {
+              return '<div class="cs-feat-item">' + f + "</div>";
+            })
+            .join("");
+          var techEl = document.getElementById("cs-tech");
+          techEl.innerHTML = d.tech
+            .map(function (t) {
+              return '<span class="cs-tech-tag">' + t + "</span>";
+            })
+            .join("");
+          csModal.classList.add("cs-open");
+          document.body.style.overflow = "hidden";
+          setTimeout(function () {
+            csPanel.classList.add("cs-panel-in");
+          }, 10);
+          var body = document.querySelector(".cs-body");
+          var hint = document.getElementById("cs-scroll-hint");
+          if (body) {
+            body.scrollTop = 0;
+            if (hint) hint.classList.remove("cs-hint-hidden");
+            body.addEventListener(
+              "scroll",
+              function onScroll() {
+                if (body.scrollTop > 40) {
+                  if (hint) hint.classList.add("cs-hint-hidden");
+                  body.removeEventListener("scroll", onScroll);
+                }
+              },
+              { passive: true },
+            );
+          }
         }
-      }, { passive: true });
-    }
-  }
 
-  function closeCaseStudy() {
-    csPanel.classList.remove('cs-panel-in');
-    setTimeout(function() {
-      csModal.classList.remove('cs-open');
-      document.body.style.overflow = '';
-    }, 350);
-  }
-  window.closeCaseStudy = closeCaseStudy;
+        function closeCaseStudy() {
+          csPanel.classList.remove("cs-panel-in");
+          setTimeout(function () {
+            csModal.classList.remove("cs-open");
+            document.body.style.overflow = "";
+          }, 350);
+        }
+        window.closeCaseStudy = closeCaseStudy;
 
+        document.querySelectorAll(".cs-open-btn").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openCaseStudy(btn.dataset.project);
+          });
+        });
+        if (csClose) csClose.addEventListener("click", closeCaseStudy);
+        if (csBackdrop) csBackdrop.addEventListener("click", closeCaseStudy);
+      })();
 
-
-  document.querySelectorAll('.cs-open-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      openCaseStudy(btn.dataset.project);
-    });
-  });
-
-  if (csClose) csClose.addEventListener('click', closeCaseStudy);
-  if (csBackdrop) csBackdrop.addEventListener('click', closeCaseStudy);
-})();
-
-/* ═══════════════════════════════════
+      /* ═══════════════════════════════════
    KINETIC SOUL CANVAS
 ═══════════════════════════════════ */
-(function () {
-  var canvas = document.getElementById("ks-canvas");
-  if (!canvas) return;
-  var ctx = canvas.getContext("2d");
-  var W = 0, H = 0, dpr = 1;
-  var particles = [], noiseT = 0, rafId = null, started = false;
-  var PALETTE = ["#ff006e","#ff4da6","#8338ec","#a855f7","#3a86ff","#60a5fa","#ff85c2"];
-  var MAX = 120;
-  function fillBg() { ctx.fillStyle = "#050508"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var wrap = canvas.parentElement;
-    W = wrap.clientWidth || 400; H = wrap.clientHeight || 200;
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + "px"; canvas.style.height = H + "px";
-    ctx.scale(dpr, dpr); fillBg();
-  }
-  function noise(x, y) {
-    var X = Math.floor(x) & 255, Y = Math.floor(y) & 255;
-    var xf = x - Math.floor(x), yf = y - Math.floor(y);
-    var u = xf*xf*xf*(xf*(xf*6-15)+10), v = yf*yf*yf*(yf*(yf*6-15)+10);
-    var h1=(X*374761393+Y*668265263)&0x7FFFFFFF, h2=((X+1)*374761393+Y*668265263)&0x7FFFFFFF;
-    var h3=(X*374761393+(Y+1)*668265263)&0x7FFFFFFF, h4=((X+1)*374761393+(Y+1)*668265263)&0x7FFFFFFF;
-    var g = function(h,px,py){h=h&3;var gx=h<2?(h===0?1:-1):0;var gy=h>=2?(h===2?1:-1):0;return gx*px+gy*py;};
-    return (1-u)*(1-v)*g(h1,xf,yf)+u*(1-v)*g(h2,xf-1,yf)+(1-u)*v*g(h3,xf,yf-1)+u*v*g(h4,xf-1,yf-1);
-  }
-  function Particle(){this.reset();}
-  Particle.prototype.reset=function(){
-    this.x=Math.random()*W;this.y=Math.random()*H;this.vx=0;this.vy=0;
-    this.color=PALETTE[Math.floor(Math.random()*PALETTE.length)];
-    this.alpha=0.5+Math.random()*0.5;this.r=1+Math.random()*2;
-    this.noiseOff=Math.random()*1000;this.trail=[];
-    this.orbitA=Math.random()*Math.PI*2;
-    this.orbitR=30+Math.random()*Math.min(W,H)*0.35;
-    this.orbitSpd=(0.0004+Math.random()*0.0007)*(Math.random()<0.5?1:-1);
-  };
-  function init(){resize();particles=[];for(var i=0;i<MAX;i++)particles.push(new Particle());}
-  var lastT=0;
-  function loop(ts){
-    rafId=requestAnimationFrame(loop);
-    var dt=Math.min((ts-lastT)/16.67,3);lastT=ts;noiseT+=0.0015;
-    ctx.globalCompositeOperation="source-over";
-    ctx.fillStyle="rgba(5,5,8,0.18)";ctx.fillRect(0,0,W,H);
-    ctx.globalCompositeOperation="lighter";
-    var cx=W/2,cy=H/2;
-    for(var i=0;i<particles.length;i++){
-      var p=particles[i];p.orbitA+=p.orbitSpd*dt;
-      var n=noise((p.x/W)*3+noiseT+p.noiseOff,(p.y/H)*3+noiseT*0.7);
-      var flowA=n*Math.PI*4;
-      var tx=cx+Math.cos(p.orbitA)*p.orbitR,ty=cy+Math.sin(p.orbitA)*p.orbitR;
-      p.vx+=(tx-p.x)*0.016*dt+Math.cos(flowA)*0.25;
-      p.vy+=(ty-p.y)*0.016*dt+Math.sin(flowA)*0.25;
-      p.vx*=0.93;p.vy*=0.93;
-      p.trail.push({x:p.x,y:p.y});if(p.trail.length>12)p.trail.shift();
-      p.x+=p.vx*dt;p.y+=p.vy*dt;
-      if(p.trail.length>1){
-        ctx.beginPath();ctx.moveTo(p.trail[0].x,p.trail[0].y);
-        for(var t=1;t<p.trail.length;t++)ctx.lineTo(p.trail[t].x,p.trail[t].y);
-        ctx.strokeStyle=p.color;ctx.globalAlpha=p.alpha*0.45;
-        ctx.lineWidth=p.r*0.7;ctx.lineCap="round";ctx.stroke();
-      }
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=p.color;ctx.globalAlpha=p.alpha;ctx.fill();ctx.globalAlpha=1;
-    }
-  }
-  (function earlyInit(){
-    dpr=Math.min(window.devicePixelRatio||1,2);
-    var wrap=canvas.parentElement;
-    if(wrap&&wrap.clientWidth>0){
-      W=wrap.clientWidth;H=wrap.clientHeight||220;
-      canvas.width=W*dpr;canvas.height=H*dpr;
-      canvas.style.width=W+"px";canvas.style.height=H+"px";
-      ctx.scale(dpr,dpr);fillBg();
-    }
-  })();
-  if("IntersectionObserver" in window){
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting&&!started){started=true;init();rafId=requestAnimationFrame(loop);}
-        else if(!e.isIntersecting&&started){cancelAnimationFrame(rafId);rafId=null;started=false;}
-      });
-    },{threshold:0.05});
-    obs.observe(canvas);
-  }else{init();rafId=requestAnimationFrame(loop);}
-  window.addEventListener("resize",function(){
-    if(started&&rafId){cancelAnimationFrame(rafId);init();rafId=requestAnimationFrame(loop);}
-    else{fillBg();}
-  },{passive:true});
-})();
+      (function () {
+        var canvas = document.getElementById("ks-canvas");
+        if (!canvas) return;
+        var ctx = canvas.getContext("2d");
+        var W = 0,
+          H = 0,
+          dpr = 1;
+        var particles = [],
+          noiseT = 0,
+          rafId = null,
+          started = false;
+        var PALETTE = [
+          "#ff006e",
+          "#ff4da6",
+          "#8338ec",
+          "#a855f7",
+          "#3a86ff",
+          "#60a5fa",
+          "#ff85c2",
+        ];
+        var MAX = 120;
+        function fillBg() {
+          ctx.fillStyle = "#050508";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        function resize() {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          var wrap = canvas.parentElement;
+          W = wrap.clientWidth || 400;
+          H = wrap.clientHeight || 200;
+          canvas.width = W * dpr;
+          canvas.height = H * dpr;
+          canvas.style.width = W + "px";
+          canvas.style.height = H + "px";
+          ctx.scale(dpr, dpr);
+          fillBg();
+        }
+        function noise(x, y) {
+          var X = Math.floor(x) & 255,
+            Y = Math.floor(y) & 255;
+          var xf = x - Math.floor(x),
+            yf = y - Math.floor(y);
+          var u = xf * xf * xf * (xf * (xf * 6 - 15) + 10),
+            v = yf * yf * yf * (yf * (yf * 6 - 15) + 10);
+          var h1 = (X * 374761393 + Y * 668265263) & 0x7fffffff,
+            h2 = ((X + 1) * 374761393 + Y * 668265263) & 0x7fffffff;
+          var h3 = (X * 374761393 + (Y + 1) * 668265263) & 0x7fffffff,
+            h4 = ((X + 1) * 374761393 + (Y + 1) * 668265263) & 0x7fffffff;
+          var g = function (h, px, py) {
+            h = h & 3;
+            var gx = h < 2 ? (h === 0 ? 1 : -1) : 0;
+            var gy = h >= 2 ? (h === 2 ? 1 : -1) : 0;
+            return gx * px + gy * py;
+          };
+          return (
+            (1 - u) * (1 - v) * g(h1, xf, yf) +
+            u * (1 - v) * g(h2, xf - 1, yf) +
+            (1 - u) * v * g(h3, xf, yf - 1) +
+            u * v * g(h4, xf - 1, yf - 1)
+          );
+        }
+        function Particle() {
+          this.reset();
+        }
+        Particle.prototype.reset = function () {
+          this.x = Math.random() * W;
+          this.y = Math.random() * H;
+          this.vx = 0;
+          this.vy = 0;
+          this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+          this.alpha = 0.5 + Math.random() * 0.5;
+          this.r = 1 + Math.random() * 2;
+          this.noiseOff = Math.random() * 1000;
+          this.trail = [];
+          this.orbitA = Math.random() * Math.PI * 2;
+          this.orbitR = 30 + Math.random() * Math.min(W, H) * 0.35;
+          this.orbitSpd =
+            (0.0004 + Math.random() * 0.0007) * (Math.random() < 0.5 ? 1 : -1);
+        };
+        function init() {
+          resize();
+          particles = [];
+          for (var i = 0; i < MAX; i++) particles.push(new Particle());
+        }
+        var lastT = 0;
+        function loop(ts) {
+          rafId = requestAnimationFrame(loop);
+          var dt = Math.min((ts - lastT) / 16.67, 3);
+          lastT = ts;
+          noiseT += 0.0015;
+          ctx.globalCompositeOperation = "source-over";
+          ctx.fillStyle = "rgba(5,5,8,0.18)";
+          ctx.fillRect(0, 0, W, H);
+          ctx.globalCompositeOperation = "lighter";
+          var cx = W / 2,
+            cy = H / 2;
+          for (var i = 0; i < particles.length; i++) {
+            var p = particles[i];
+            p.orbitA += p.orbitSpd * dt;
+            var n = noise(
+              (p.x / W) * 3 + noiseT + p.noiseOff,
+              (p.y / H) * 3 + noiseT * 0.7,
+            );
+            var flowA = n * Math.PI * 4;
+            var tx = cx + Math.cos(p.orbitA) * p.orbitR,
+              ty = cy + Math.sin(p.orbitA) * p.orbitR;
+            p.vx += (tx - p.x) * 0.016 * dt + Math.cos(flowA) * 0.25;
+            p.vy += (ty - p.y) * 0.016 * dt + Math.sin(flowA) * 0.25;
+            p.vx *= 0.93;
+            p.vy *= 0.93;
+            p.trail.push({ x: p.x, y: p.y });
+            if (p.trail.length > 12) p.trail.shift();
+            p.x += p.vx * dt;
+            p.y += p.vy * dt;
+            if (p.trail.length > 1) {
+              ctx.beginPath();
+              ctx.moveTo(p.trail[0].x, p.trail[0].y);
+              for (var t = 1; t < p.trail.length; t++)
+                ctx.lineTo(p.trail[t].x, p.trail[t].y);
+              ctx.strokeStyle = p.color;
+              ctx.globalAlpha = p.alpha * 0.45;
+              ctx.lineWidth = p.r * 0.7;
+              ctx.lineCap = "round";
+              ctx.stroke();
+            }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          }
+        }
+        (function earlyInit() {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          var wrap = canvas.parentElement;
+          if (wrap && wrap.clientWidth > 0) {
+            W = wrap.clientWidth;
+            H = wrap.clientHeight || 220;
+            canvas.width = W * dpr;
+            canvas.height = H * dpr;
+            canvas.style.width = W + "px";
+            canvas.style.height = H + "px";
+            ctx.scale(dpr, dpr);
+            fillBg();
+          }
+        })();
+        if ("IntersectionObserver" in window) {
+          var obs = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting && !started) {
+                  started = true;
+                  init();
+                  rafId = requestAnimationFrame(loop);
+                } else if (!e.isIntersecting && started) {
+                  cancelAnimationFrame(rafId);
+                  rafId = null;
+                  started = false;
+                }
+              });
+            },
+            { threshold: 0.05 },
+          );
+          obs.observe(canvas);
+        } else {
+          init();
+          rafId = requestAnimationFrame(loop);
+        }
+        window.addEventListener(
+          "resize",
+          function () {
+            if (started && rafId) {
+              cancelAnimationFrame(rafId);
+              init();
+              rafId = requestAnimationFrame(loop);
+            } else {
+              fillBg();
+            }
+          },
+          { passive: true },
+        );
+      })();
     </script>
   </body>
 </html>
