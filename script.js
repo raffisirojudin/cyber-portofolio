@@ -183,8 +183,6 @@ window.addEventListener("scroll",function(){
       tech:["HTML","CSS","JavaScript","D3.js v7","localStorage"],
       previewBg:"linear-gradient(135deg,#070b12,#0d1523)",previewEmoji:"🕸"
     },
-
-    /* ── STRIVE PRO ── */
     strivepro:{
       tag:"Habit-Building Engine",tagColor:"#4a8c62",title:"Strive·Pro",
       problem:"Mayoritas habit tracker menggunakan logika biner: berhasil atau gagal. Ini menciptakan efek 'ah sudahlah' — sekali gagal, motivasi langsung runtuh. Tidak ada mekanisme yang memperingatkan pengguna saat mengambil terlalu banyak kebiasaan baru sekaligus, berujung pada cognitive overload dan kegagalan massal.",
@@ -193,6 +191,15 @@ window.addEventListener("scroll",function(){
       features:["⚡ Adaptive Momentum Engine (0–100)","🛡 Pity System — Cegah Efek 'Ah Sudahlah'","🧠 Cognitive Load Guard + Alert","🌳 SVG Arboretum Dinamis","👻 Ghost Streak Visualizer","🔗 Habit Stacking System","⏱ Focus Timer","💾 LocalStorage Persistence"],
       tech:["HTML","CSS","JavaScript","SVG","Canvas API","LocalStorage"],
       previewBg:"linear-gradient(160deg,#1c3329,#2d5040)",previewEmoji:"🌿"
+    },
+    carnival:{
+      tag:"Arcade Game Collection",tagColor:"#e8304a",title:"Carnival·Arcade",
+      problem:"Tidak ada platform browser yang mengumpulkan berbagai mini-game arcade klasik dalam satu tempat dengan sistem reward yang konsisten. Game arcade browser umumnya berdiri sendiri tanpa motivasi lintas game — pemain menyelesaikan satu game lalu pergi, bukan mengeksplorasi koleksi.",
+      solution:"Membangun platform arcade game kolektif berbasis Canvas dengan 12 mini-game: Snake, Breakout, Pong, Space Invaders, Whack-a-mole, Memory Cards, dan lainnya. Semua game terintegrasi dengan sistem tiket universal yang terakumulasi lintas sesi, Web Audio FX, papan skor persisten via localStorage, serta dukungan penuh kontrol touchscreen (swipe/tap) dan keyboard.",
+      result:"Platform arcade lengkap yang bisa dinikmati di mobile maupun desktop, dengan pengalaman bermain yang mulus dan sistem tiket yang mendorong pemain untuk terus menjelajahi semua 12 game. Skor dan tiket tersimpan antar sesi sehingga progress tidak hilang.",
+      features:["🎮 12 Mini-Games Klasik","🎫 Sistem Tiket Universal","📱 Mobile Touch Controls","🖥 Desktop Keyboard Support","🔊 Web Audio Sound FX","🏆 Papan Skor Persisten"],
+      tech:["HTML","CSS","JavaScript","Canvas API","Web Audio API","localStorage"],
+      previewBg:"linear-gradient(135deg,#1a0208,#2d0a18)",previewEmoji:"🎪"
     },
   };
 
