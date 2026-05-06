@@ -1,722 +1,2344 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id" data-theme="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rafi Sirojudin — Web Developer</title>
-  <meta name="description" content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan." />
-  <meta property="og:title" content="Rafi Sirojudin — Web Developer" />
-  <meta property="og:description" content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-<!-- PAGE LOADER -->
-<div id="page-loader">
-  <div class="loader-inner">
-    <div class="loader-logo">RS<span class="loader-dot">.</span></div>
-    <div class="loader-bar-track"><div class="loader-bar"></div></div>
-    <div class="loader-text">Loading portfolio&hellip;</div>
-  </div>
-</div>
-
-<nav id="navbar">
-  <a href="#hero" class="nav-logo">RS.</a>
-  <ul class="nav-links">
-    <li><a href="#about"      data-index="01">About</a></li>
-    <li><a href="#skills"     data-index="02">Skills</a></li>
-    <li><a href="#experience" data-index="03">Experience</a></li>
-    <li><a href="#projects"   data-index="04">Projects</a></li>
-    <li><a href="#contact"    data-index="05">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <button id="theme-toggle" aria-label="Toggle theme">
-      <span class="icon-sun">☀</span><span class="icon-moon">◐</span>
-    </button>
-    <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-
-<div id="mobile-menu">
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-wrap">
-    <div class="hero-left">
-      <div class="hero-badge reveal"><span class="badge-dot"></span>Available for work</div>
-      <h1 class="hero-name reveal"><span>Rafi </span><span class="name-accent">Sirojudin</span></h1>
-      <p class="hero-role reveal"><span class="role-prefix">I build </span><span id="typed-text" class="typed"></span><span class="typed-cursor">|</span></p>
-      <p class="hero-desc reveal">Web developer yang fokus pada tampilan bersih, performa tinggi, dan pengalaman pengguna yang menyenangkan.</p>
-      <div class="hero-cta reveal">
-        <a href="#projects" class="btn-primary">Lihat Proyek <span class="btn-arrow">→</span></a>
-        <a href="#contact"  class="btn-outline">Hubungi Saya</a>
-      </div>
-      <div class="hero-scroll reveal"><span>Scroll</span><div class="scroll-line"></div></div>
-    </div>
-    <div class="hero-right reveal">
-      <div class="hero-card">
-        <div class="hcard-header">
-          <div class="hcard-dots"><span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span></div>
-          <span class="hcard-file">profile.ts</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rafi Sirojudin — Web Developer</title>
+    <meta
+      name="description"
+      content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan."
+    />
+    <meta property="og:title" content="Rafi Sirojudin — Web Developer" />
+    <meta
+      property="og:description"
+      content="Web Developer yang membangun tampilan web bersih, cepat, dan nyaman digunakan."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- PAGE LOADER -->
+    <div id="page-loader" role="status" aria-label="Memuat halaman">
+      <div class="loader-inner">
+        <div class="loader-logo" aria-hidden="true">
+          RS<span class="loader-dot">.</span>
         </div>
-        <div class="hcard-body">
-          <p><span class="t-kw">const</span> <span class="t-var">dev</span> = {</p>
-          <p>&nbsp;&nbsp;<span class="t-prop">name</span>: <span class="t-str">"Rafi Sirojudin"</span>,</p>
-          <p>&nbsp;&nbsp;<span class="t-prop">role</span>: <span class="t-str">"Frontend Dev"</span>,</p>
-          <p>&nbsp;&nbsp;<span class="t-prop">location</span>: <span class="t-str">"Indonesia 🇮🇩"</span>,</p>
-          <p>&nbsp;&nbsp;<span class="t-prop">stack</span>: [</p>
-          <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HTML"</span>, <span class="t-str">"CSS"</span>, <span class="t-str">"JS"</span></p>
-          <p>&nbsp;&nbsp;],</p>
-          <p>&nbsp;&nbsp;<span class="t-prop">openToWork</span>: <span class="t-bool">true</span></p>
-          <p>}</p>
+        <div class="loader-bar-track" aria-hidden="true">
+          <div class="loader-bar"></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-wrap">
-    <div class="section-label reveal"><span class="label-num">01</span><span class="label-line"></span><span class="label-text">About</span></div>
-    <div class="about-grid">
-      <div class="about-photo-wrap reveal">
-        <div class="about-photo-frame">
-          <img src="assets/foto.jpg" alt="Rafi Sirojudin" class="about-img" onerror="this.parentElement.classList.add('no-img')" />
-          <div class="about-img-placeholder"><span>RS</span></div>
-        </div>
-        <div class="about-tags">
-          <span class="about-tag">Open to work</span>
-          <span class="about-tag">Frontend</span>
-          <span class="about-tag">Indonesia</span>
-        </div>
-      </div>
-      <div class="about-content reveal">
-        <h2 class="section-title">Tentang Saya</h2>
-        <p>Saya adalah seorang web developer yang sedang berkembang, dengan fokus pada pembuatan tampilan web yang bersih dan responsif. Saya percaya kode yang baik adalah kode yang mudah dibaca dan dipelihara.</p>
-        <p>Saat ini saya aktif belajar dan terus mengasah kemampuan di bidang front-end development — dari desain sistem hingga optimasi performa.</p>
-        <div class="about-stats">
-          <div class="stat-box reveal"><span class="stat-n">10<span class="stat-plus">+</span></span><span class="stat-l">Proyek</span></div>
-          <div class="stat-box reveal"><span class="stat-n">3<span class="stat-plus">+</span></span><span class="stat-l">Teknologi</span></div>
-          <div class="stat-box reveal"><span class="stat-n">1<span class="stat-plus">+</span></span><span class="stat-l">Tahun</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-wrap">
-    <div class="section-label reveal"><span class="label-num">02</span><span class="label-line"></span><span class="label-text">Skills</span></div>
-    <h2 class="section-title reveal">Keahlian Saya</h2>
-    <p class="section-sub reveal">Klik kartu untuk melihat detail</p>
-    <div class="skills-grid">
-      <div class="skill-card reveal" data-skill="html"  tabindex="0" role="button"><div class="skill-icon">🌐</div><div class="skill-info"><span class="skill-name">HTML</span><span class="skill-level">90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div><span class="skill-badge">Mahir</span></div>
-      <div class="skill-card reveal" data-skill="css"   tabindex="0" role="button"><div class="skill-icon">🎨</div><div class="skill-info"><span class="skill-name">CSS</span><span class="skill-level">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div><span class="skill-badge">Mahir</span></div>
-      <div class="skill-card reveal" data-skill="js"    tabindex="0" role="button"><div class="skill-icon">⚡</div><div class="skill-info"><span class="skill-name">JavaScript</span><span class="skill-level">70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div><span class="skill-badge">Menengah</span></div>
-      <div class="skill-card reveal" data-skill="react" tabindex="0" role="button"><div class="skill-icon">⚛️</div><div class="skill-info"><span class="skill-name">React</span><span class="skill-level">60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="60"></div></div><span class="skill-badge">Menengah</span></div>
-      <div class="skill-card reveal" data-skill="git"   tabindex="0" role="button"><div class="skill-icon">🐙</div><div class="skill-info"><span class="skill-name">Git</span><span class="skill-level">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div><span class="skill-badge">Mahir</span></div>
-      <div class="skill-card reveal" data-skill="figma" tabindex="0" role="button"><div class="skill-icon">✏️</div><div class="skill-info"><span class="skill-name">Figma</span><span class="skill-level">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div><span class="skill-badge">Menengah</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILL MODAL -->
-<div id="skill-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
-  <div class="modal-backdrop"></div>
-  <div class="modal-card">
-    <button class="modal-close" id="modal-close" aria-label="Tutup modal">✕</button>
-    <div class="modal-icon" id="modal-icon"></div>
-    <h3 class="modal-title" id="modal-title-text"></h3>
-    <p class="modal-level" id="modal-level"></p>
-    <p class="modal-desc"  id="modal-desc"></p>
-    <div class="modal-tags" id="modal-tags"></div>
-  </div>
-</div>
-
-<!-- CASE STUDY MODAL -->
-<div id="cs-modal" role="dialog" aria-modal="true" aria-label="Case Study">
-  <div class="cs-backdrop" id="cs-backdrop"></div>
-  <div class="cs-panel" id="cs-panel">
-    <div class="cs-header">
-      <div class="cs-header-left"><span class="cs-tag" id="cs-tag"></span><h2 class="cs-title" id="cs-title"></h2></div>
-      <button class="cs-close" id="cs-close" aria-label="Tutup">✕</button>
-    </div>
-    <div class="cs-body">
-      <div class="cs-scroll-hint" id="cs-scroll-hint"><span>Scroll untuk membaca breakdown</span><div class="cs-scroll-arrow">↓</div></div>
-      <div class="cs-preview-wrap"><div class="cs-preview-box" id="cs-preview-box"></div></div>
-      <div class="cs-sections">
-        <div class="cs-section"><div class="cs-section-icon">🎯</div><div><h3 class="cs-section-title">Problem</h3><p class="cs-section-text" id="cs-problem"></p></div></div>
-        <div class="cs-section"><div class="cs-section-icon">⚡</div><div><h3 class="cs-section-title">Solution</h3><p class="cs-section-text" id="cs-solution"></p></div></div>
-        <div class="cs-section"><div class="cs-section-icon">✅</div><div><h3 class="cs-section-title">Result</h3><p class="cs-section-text" id="cs-result"></p></div></div>
-      </div>
-      <div class="cs-features" id="cs-features"></div>
-      <div class="cs-tech-row"><span class="cs-tech-lbl">Tech Stack</span><div class="cs-tech-tags" id="cs-tech"></div></div>
-      <p class="cs-cta-note">Tekan <kbd>Esc</kbd> atau klik area gelap untuk menutup</p>
-    </div>
-  </div>
-</div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-wrap">
-    <div class="section-label reveal"><span class="label-num">03</span><span class="label-line"></span><span class="label-text">Experience</span></div>
-    <h2 class="section-title reveal">Perjalanan Saya</h2>
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-right">
-          <span class="tl-date-inline">2024 — Sekarang</span><span class="tl-tag">Freelance</span>
-          <h3 class="tl-title">Frontend Developer</h3>
-          <p class="tl-place">Independen</p>
-          <p class="tl-desc">Membangun website untuk klien dan proyek pribadi. Fokus pada performa, aksesibilitas, dan pengalaman pengguna yang baik.</p>
-          <div class="tl-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-        </div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-connector"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-right">
-          <span class="tl-date-inline">2023 — 2024</span><span class="tl-tag">Belajar</span>
-          <h3 class="tl-title">Mulai Belajar Web Development</h3>
-          <p class="tl-place">Self-taught</p>
-          <p class="tl-desc">Memulai perjalanan belajar web development dari nol. Mempelajari HTML, CSS, dan JavaScript secara mandiri melalui berbagai sumber online.</p>
-          <div class="tl-stack"><span>HTML</span><span>CSS</span><span>JavaScript Dasar</span></div>
-        </div>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-connector"><div class="tl-dot"></div></div>
-        <div class="tl-right">
-          <span class="tl-date-inline">2023</span><span class="tl-tag">Milestone</span>
-          <h3 class="tl-title">Proyek Pertama</h3>
-          <p class="tl-place">Personal Project</p>
-          <p class="tl-desc">Menyelesaikan proyek web pertama secara mandiri dan mulai membangun portofolio.</p>
-          <div class="tl-stack"><span>HTML</span><span>CSS</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-wrap">
-    <div class="section-label reveal"><span class="label-num">04</span><span class="label-line"></span><span class="label-text">Projects</span></div>
-    <h2 class="section-title reveal">Proyek Saya</h2>
-
-    <!-- CurtainBiz -->
-    <div class="project-featured reveal">
-      <div class="pf-meta"><span class="pf-tag">Featured Project</span><h3 class="pf-title">CurtainBiz Manager</h3></div>
-      <div class="pf-card pf-card--cb">
-        <div class="pf-preview pf-preview--cb">
-          <div class="pf-preview-inner pf-preview-inner--cb">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
-              <span class="pf-mock-url" style="color:rgba(123,110,246,0.7);font-size:0.6rem">curtainbiz-manager · dashboard</span>
-            </div>
-            <div class="cb-live-preview">
-              <div class="cb-sidebar"><div class="cb-logo-mini">CB</div><div class="cb-nav-items"><div class="cb-nav-item cb-nav-active">📊</div><div class="cb-nav-item">🛒</div><div class="cb-nav-item">📦</div><div class="cb-nav-item">💰</div><div class="cb-nav-item">📈</div></div></div>
-              <div class="cb-main">
-                <div class="cb-topbar"><span class="cb-page-title">Dashboard KPI</span><div class="cb-topbar-right"><span class="cb-badge-live">● LIVE</span><div class="cb-avatar">RS</div></div></div>
-                <div class="cb-kpi-row">
-                  <div class="cb-kpi cb-kpi-1"><div class="cb-kpi-icon">💰</div><div class="cb-kpi-val">Rp 24.5jt</div><div class="cb-kpi-lbl">Total Omzet</div><div class="cb-kpi-trend cb-trend-up">▲ 12.4%</div></div>
-                  <div class="cb-kpi cb-kpi-2"><div class="cb-kpi-icon">🛒</div><div class="cb-kpi-val">142</div><div class="cb-kpi-lbl">Total Order</div><div class="cb-kpi-trend cb-trend-up">▲ 8.1%</div></div>
-                  <div class="cb-kpi cb-kpi-3"><div class="cb-kpi-icon">📦</div><div class="cb-kpi-val">38</div><div class="cb-kpi-lbl">Stok Rendah</div><div class="cb-kpi-trend cb-trend-down">▼ Perlu restock</div></div>
-                  <div class="cb-kpi cb-kpi-4"><div class="cb-kpi-icon">📈</div><div class="cb-kpi-val">68.2%</div><div class="cb-kpi-lbl">Margin HPP</div><div class="cb-kpi-trend cb-trend-up">▲ 3.5%</div></div>
-                </div>
-                <div class="cb-chart-row">
-                  <div class="cb-chart"><div class="cb-chart-title">Penjualan Bulanan</div><div class="cb-bar-chart"><div class="cb-bar-group"><div class="cb-bar" style="height:45%"></div><span>Jan</span></div><div class="cb-bar-group"><div class="cb-bar" style="height:60%"></div><span>Feb</span></div><div class="cb-bar-group"><div class="cb-bar" style="height:40%"></div><span>Mar</span></div><div class="cb-bar-group"><div class="cb-bar cb-bar-active" style="height:80%"></div><span>Apr</span></div><div class="cb-bar-group"><div class="cb-bar" style="height:65%"></div><span>Mei</span></div><div class="cb-bar-group"><div class="cb-bar" style="height:70%"></div><span>Jun</span></div></div></div>
-                  <div class="cb-orders"><div class="cb-chart-title">Order Terbaru</div><div class="cb-order-row"><span class="cb-order-dot" style="background:#38d9a9"></span><span class="cb-order-name">Gorden Blackout</span><span class="cb-order-val">Rp 850k</span></div><div class="cb-order-row"><span class="cb-order-dot" style="background:#7b6ef6"></span><span class="cb-order-name">Vitrase Premium</span><span class="cb-order-val">Rp 420k</span></div><div class="cb-order-row"><span class="cb-order-dot" style="background:#f5c842"></span><span class="cb-order-name">Roller Blind</span><span class="cb-order-val">Rp 1.2jt</span></div><div class="cb-order-row"><span class="cb-order-dot" style="background:#f87171"></span><span class="cb-order-name">Gordyn Motif</span><span class="cb-order-val">Rp 680k</span></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">Sistem manajemen bisnis curtain berbasis web — mencakup dasbor kinerja real-time, manajemen pesanan multi-channel, inventori stok dengan alert otomatis, laporan keuangan &amp; kalkulator HPP, serta statistik penjualan lengkap.</p>
-          <div class="pf-highlights"><div class="pf-hl"><span>📊</span> Dashboard KPI</div><div class="pf-hl"><span>🛒</span> Order Management</div><div class="pf-hl"><span>💰</span> HPP Calculator</div><div class="pf-hl"><span>📦</span> Stok Alert</div></div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Chart.js</span><span>Supabase</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/curtainbiz-manager" target="_blank" rel="noopener" class="pf-link-primary pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs cs-open-btn" data-project="curtainbiz">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/curtainbiz-manager" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
-          </div>
-        </div>
+        <div class="loader-text">Loading portfolio&hellip;</div>
       </div>
     </div>
 
-    <!-- Kinetic Soul -->
-    <div class="project-featured reveal">
-      <div class="pf-meta">
-        <div class="pf-meta-top"><span class="pf-tag pf-tag--ks">Gen-Art Engine</span><span class="pf-desktop-badge">🖥 Best on Desktop</span></div>
-        <h3 class="pf-title">Kinetic<span class="pf-title-accent pf-title-accent--ks">·</span>Soul</h3>
+    <!-- NAVBAR -->
+    <nav id="navbar" aria-label="Navigasi utama">
+      <a
+        href="#hero"
+        class="nav-logo"
+        aria-label="Kembali ke atas — Rafi Sirojudin"
+        >RS.</a
+      >
+      <ul class="nav-links" role="list">
+        <li><a href="#about" data-index="01">About</a></li>
+        <li><a href="#skills" data-index="02">Skills</a></li>
+        <li><a href="#experience" data-index="03">Experience</a></li>
+        <li><a href="#projects" data-index="04">Projects</a></li>
+        <li><a href="#contact" data-index="05">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button id="theme-toggle" aria-label="Switch to light theme">
+          <span class="icon-sun" aria-hidden="true">☀</span>
+          <span class="icon-moon" aria-hidden="true">◐</span>
+        </button>
+        <button
+          id="burger"
+          aria-label="Buka menu navigasi"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
-      <div class="pf-card pf-card--ks">
-        <div class="pf-preview pf-preview--ks">
-          <div class="pf-preview-inner pf-preview-inner--ks">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
-              <span class="pf-mock-url pf-mock-url--ks">kinetic-soul · gen-art-engine</span>
-            </div>
-            <div class="ks-live-preview">
-              <canvas id="ks-canvas"></canvas>
-              <div class="ks-hud-overlay">
-                <div class="ks-hud-top"><span class="ks-logo-txt"><span style="color:#e8e8f0">KINETIC</span><span style="color:#8338ec">·</span><span style="color:#ff006e">SOUL</span></span><div class="ks-stats"><div class="ks-stat"><span class="ks-stat-lbl">FPS</span><span class="ks-stat-val" id="ks-fps">60</span></div><div class="ks-stat"><span class="ks-stat-lbl">MODE</span><span class="ks-stat-val">GALAXY</span></div></div></div>
-                <div class="ks-panel-left"><div class="ks-panel-lbl">MODE</div><div class="ks-mode-btn ks-mode-active">✦ GALAXY</div><div class="ks-mode-btn">⬡ WEB</div><div class="ks-mode-btn">◈ EXPLOSION</div><div class="ks-panel-lbl" style="margin-top:8px">PALETTE</div><div class="ks-palette-row"><span class="ks-pal" style="background:linear-gradient(135deg,#ff006e,#8338ec,#3a86ff)"></span><span class="ks-pal" style="background:linear-gradient(135deg,#00f5d4,#9b5de5)"></span><span class="ks-pal ks-pal-active" style="background:linear-gradient(135deg,#ffbe0b,#ff006e)"></span></div></div>
-                <div class="ks-panel-right"><div class="ks-panel-lbl">GRAVITY</div><div class="ks-slider-mini"><div class="ks-slider-fill-mini" style="width:45%"></div></div><div class="ks-panel-lbl">SPEED</div><div class="ks-slider-mini"><div class="ks-slider-fill-mini" style="width:60%"></div></div><div class="ks-panel-lbl">BLOOM</div><div class="ks-slider-mini"><div class="ks-slider-fill-mini" style="width:70%"></div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">Mesin generative art interaktif berbasis canvas — sistem partikel real-time dengan fisika inverse square law, Perlin noise flow field, tiga visual mode (Galaxy, Web, Explosion), efek bloom, dan enam palette warna. Fully adaptive FPS.</p>
-          <p class="pf-desktop-note">🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
-          <div class="pf-highlights"><div class="pf-hl"><span>✦</span> 3 Visual Modes</div><div class="pf-hl"><span>🎨</span> 6 Color Palettes</div><div class="pf-hl"><span>⚡</span> Perlin Noise Physics</div><div class="pf-hl"><span>🔊</span> Procedural Audio</div></div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Canvas API</span><span>Web Audio API</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/kinetic-soul" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ks pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--ks cs-open-btn" data-project="kinetic">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/kinetic-soul" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
+    </nav>
+
+    <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
 
-    <!-- Lentera Kecil -->
-    <div class="project-featured reveal">
-      <div class="pf-meta"><span class="pf-tag pf-tag--lk">Interactive Storytelling</span><h3 class="pf-title">Lentera <span class="pf-title-accent pf-title-accent--lk">Kecil</span></h3></div>
-      <div class="pf-card pf-card--lk">
-        <div class="pf-preview pf-preview--lk">
-          <div class="pf-preview-inner pf-preview-inner--lk">
-            <div class="pf-mock-header pf-mock-header--warm">
-              <div class="pf-mock-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
-              <span class="pf-mock-url pf-mock-url--lk">lentera-kecil · dongeng-nusantara</span>
-            </div>
-            <div class="lk-live-preview">
-              <div class="lk-lib-preview">
-                <div class="lk-lib-header"><span class="lk-lib-logo">🏮 Lentera Kecil</span><span class="lk-lib-badge">⭐ 12</span></div>
-                <div class="lk-lib-search">🔍 Cari cerita...</div>
-                <div class="lk-lib-tags"><span class="lk-tag lk-tag-active">🌈 Semua</span><span class="lk-tag">🐾 Hewan</span><span class="lk-tag">🏔️ Legenda</span><span class="lk-tag">💛 Kebaikan</span></div>
-                <div class="lk-lib-grid">
-                  <div class="lk-card"><div class="lk-card-top" style="background:#f59e0b22">🦌</div><div class="lk-card-bot"><div class="lk-card-name">Kancil dan Buaya</div><span class="lk-diff lk-easy">Easy</span></div></div>
-                  <div class="lk-card lk-card-done"><div class="lk-card-top" style="background:#22c55e22">🥒</div><div class="lk-card-bot"><div class="lk-card-name">Timun Mas</div><span class="lk-diff lk-med">Med</span></div><div class="lk-done-badge">⭐</div></div>
-                  <div class="lk-card lk-card-done"><div class="lk-card-top" style="background:#ef444422">🌋</div><div class="lk-card-bot"><div class="lk-card-name">Sangkuriang</div><span class="lk-diff lk-med">Med</span></div><div class="lk-done-badge">⭐</div></div>
-                  <div class="lk-card"><div class="lk-card-top" style="background:#a855f722">🧅</div><div class="lk-card-bot"><div class="lk-card-name">Bawang Merah</div><span class="lk-diff lk-easy">Easy</span></div></div>
-                </div>
-              </div>
-              <div class="lk-reader-peek">
-                <div class="lk-scene-bg"><div class="lk-sky"></div><div class="lk-trees">🌳🌲🌳</div><div class="lk-ground"></div></div>
-                <div class="lk-char-peek"><svg viewBox="0 0 100 140" width="70" height="98"><ellipse cx="50" cy="95" rx="22" ry="18" fill="#d97706"/><ellipse cx="50" cy="78" rx="12" ry="9" fill="#d97706"/><ellipse cx="50" cy="60" rx="18" ry="16" fill="#d97706"/><ellipse cx="36" cy="46" rx="5" ry="11" fill="#92400e" transform="rotate(-20 36 46)"/><ellipse cx="64" cy="46" rx="5" ry="11" fill="#92400e" transform="rotate(20 64 46)"/><circle cx="43" cy="59" r="4" fill="#1c1917"/><circle cx="57" cy="59" r="4" fill="#1c1917"/><circle cx="44" cy="58" r="1.3" fill="white"/><circle cx="58" cy="58" r="1.3" fill="white"/><path d="M43 67 Q50 74 57 67" stroke="#92400e" stroke-width="1.8" fill="#fca5a5" stroke-linecap="round"/></svg></div>
-                <div class="lk-narr-peek"><span class="lk-narr-icon">📖</span><p>Di dalam hutan yang lebat, hiduplah seekor Kancil yang sangat cerdik...</p></div>
-                <div class="lk-nav-peek"><span>‹</span><div class="lk-dots-peek"><span class="lk-dot lk-dot-active"></span><span class="lk-dot"></span><span class="lk-dot"></span><span class="lk-dot"></span></div><span>›</span></div>
-              </div>
-            </div>
+    <!-- HERO -->
+    <section id="hero" aria-label="Perkenalan">
+      <div class="hero-wrap">
+        <div class="hero-left">
+          <div class="hero-badge reveal">
+            <span class="badge-dot" aria-hidden="true"></span>Available for work
           </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">Mesin dongeng interaktif untuk anak usia 4–10 tahun — 38 cerita rakyat Nusantara dengan karakter SVG animasi, background dinamis berlayer, ambient sound procedural, sistem bintang &amp; progress, filter &amp; pencarian cerita, serta end-card berisi pesan moral.</p>
-          <div class="pf-highlights"><div class="pf-hl"><span>📚</span> 38 Dongeng Nusantara</div><div class="pf-hl"><span>🎭</span> Karakter SVG Animasi</div><div class="pf-hl"><span>🔊</span> Ambient Sound Engine</div><div class="pf-hl"><span>⭐</span> Progress &amp; Reward</div></div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Web Audio API</span><span>SVG</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/lentera-kecil" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--lk pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--lk cs-open-btn" data-project="lentera">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/lentera-kecil" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EasySolve -->
-    <div class="project-featured reveal">
-      <div class="pf-meta"><span class="pf-tag pf-tag--es">Science Calculator</span><h3 class="pf-title">Easy<span class="pf-title-accent pf-title-accent--es" style="color:#38d9a9">Solve</span></h3></div>
-      <div class="pf-card pf-card--es">
-        <div class="pf-preview pf-preview--es">
-          <div class="pf-preview-inner pf-preview-inner--es">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
-              <span class="pf-mock-url" style="color:rgba(56,217,169,0.7);font-size:0.6rem">easysolve · kalkulator-sains</span>
-            </div>
-            <div class="es-live-preview">
-              <div class="es-sidebar"><div class="es-logo-mini">∑</div><div class="es-subject-list"><div class="es-subject es-subj-active">📐 Matematika</div><div class="es-subject">⚛️ Fisika</div><div class="es-subject">🧪 Kimia</div><div class="es-subject">🧬 Biologi</div><div class="es-subject">🔄 Konversi</div><div class="es-subject">💹 Keuangan</div><div class="es-subject">🌍 Geografi</div></div></div>
-              <div class="es-main">
-                <div class="es-header-bar"><span class="es-title">Kalkulator Fisika</span><span class="es-counter">100+ Rumus</span></div>
-                <div class="es-formula-card"><div class="es-formula-name">Hukum Newton II</div><div class="es-formula-tex">F = m × a</div><div class="es-inputs"><div class="es-input-group"><label>Massa (m)</label><div class="es-input-box">10 kg</div></div><div class="es-input-group"><label>Percepatan (a)</label><div class="es-input-box">5 m/s²</div></div></div><div class="es-result"><span class="es-result-lbl">Hasil</span><span class="es-result-val">F = <strong>50 N</strong></span></div></div>
-                <div class="es-steps"><div class="es-steps-title">📝 Langkah Pengerjaan</div><div class="es-step">1. Diketahui: m = 10 kg, a = 5 m/s²</div><div class="es-step">2. Rumus: F = m × a</div><div class="es-step es-step-result">3. F = 10 × 5 = <strong>50 Newton</strong></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">Platform kalkulator sains komprehensif dengan 100+ rumus dari 7 mata pelajaran — Matematika, Fisika, Kimia, Biologi, Konversi, Keuangan &amp; Geografi. Setiap perhitungan dilengkapi langkah pengerjaan step-by-step yang jelas menggunakan render KaTeX.</p>
-          <div class="pf-highlights"><div class="pf-hl"><span>🔢</span> 100+ Rumus</div><div class="pf-hl"><span>📚</span> 7 Mata Pelajaran</div><div class="pf-hl"><span>📝</span> Step-by-step</div><div class="pf-hl"><span>⚡</span> Render KaTeX</div></div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>KaTeX</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/easysolve/" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--es pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--es cs-open-btn" data-project="easysolve">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/easysolve" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BaseCalc Insight -->
-    <div class="project-featured reveal">
-      <div class="pf-meta"><span class="pf-tag pf-tag--bc">Number Base Converter</span><h3 class="pf-title">BaseCalc<span class="pf-title-accent pf-title-accent--bc">·</span>Insight</h3></div>
-      <div class="pf-card pf-card--bc">
-        <div class="pf-preview pf-preview--bc">
-          <div class="pf-preview-inner pf-preview-inner--bc">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
-              <span class="pf-mock-url" style="color:rgba(34,211,238,0.6);font-size:0.6rem">basecalc-insight · konverter-bilangan</span>
-            </div>
-            <div class="bc-live-preview">
-              <div class="bc-header"><span class="bc-logo">BASECALC<span class="bc-dot">·</span>INSIGHT</span><span class="bc-badge">v1.0</span></div>
-              <div class="bc-status"><div class="bc-status-dot"></div><span>Konversi berhasil · DEC=255 · BIN=11111111 · OCT=377 · HEX=FF</span></div>
-              <div class="bc-grid">
-                <div class="bc-card bc-card--bin"><div class="bc-card-label"><span>BINER</span><span class="bc-base-pill">BASE 2</span></div><div class="bc-value">11111111</div><div class="bc-groups"><span class="bc-grp">1111</span><span class="bc-grp">1111</span></div></div>
-                <div class="bc-card bc-card--oct"><div class="bc-card-label"><span>OKTAL</span><span class="bc-base-pill">BASE 8</span></div><div class="bc-value">377</div><div class="bc-groups"><span class="bc-grp">011</span><span class="bc-grp">111</span><span class="bc-grp">111</span></div></div>
-                <div class="bc-card bc-card--dec"><div class="bc-card-label"><span>DESIMAL ✦</span><span class="bc-base-pill">BASE 10</span></div><div class="bc-value">255</div></div>
-                <div class="bc-card bc-card--hex"><div class="bc-card-label"><span>HEKSADESIMAL</span><span class="bc-base-pill">BASE 16</span></div><div class="bc-value">FF</div><div class="bc-groups"><span class="bc-grp">1111</span><span class="bc-grp">1111</span></div></div>
-              </div>
-              <div class="bc-steps">
-                <div class="bc-steps-title">LANGKAH DEMI LANGKAH · Desimal → Biner (÷2)</div>
-                <div class="bc-step-row"><span class="bc-step-n">1.</span><span class="bc-step-txt">255 ÷ 2 = 127 sisa <em>1</em></span></div>
-                <div class="bc-step-row"><span class="bc-step-n">2.</span><span class="bc-step-txt">127 ÷ 2 = 63 sisa <em>1</em> &nbsp; · · ·</span></div>
-                <div class="bc-step-row"><span class="bc-step-n">↑</span><span class="bc-step-txt">Baca sisa dari bawah ke atas</span></div>
-                <div class="bc-step-result">→ &nbsp;11111111<sub>2</sub></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">Konverter sistem bilangan 4-basis (Biner, Oktal, Desimal, Heksadesimal) dengan transparansi langkah penuh — menggunakan BigInt JavaScript agar presisi terjaga untuk angka berapapun, dilengkapi visualisasi pengelompokan bit 3-bit dan 4-bit secara otomatis.</p>
-          <div class="pf-highlights"><div class="pf-hl"><span>🔢</span> 4 Sistem Bilangan</div><div class="pf-hl"><span>🔍</span> Step-by-step Breakdown</div><div class="pf-hl"><span>⚡</span> BigInt Presisi Penuh</div><div class="pf-hl"><span>🟦</span> Bit Grouping Visual</div></div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>BigInt API</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/basecalc-insight" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--bc pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--bc cs-open-btn" data-project="basecalc">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/basecalc-insight" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Neuro-Shelf -->
-    <div class="project-featured reveal">
-      <div class="pf-meta">
-        <div class="pf-meta-top"><span class="pf-tag pf-tag--ns">Knowledge Graph</span><span class="pf-desktop-badge">🖥 Best on Desktop</span></div>
-        <h3 class="pf-title">Neuro<span class="pf-title-accent pf-title-accent--ns">·</span>Shelf</h3>
-      </div>
-      <div class="pf-card pf-card--ns">
-        <div class="pf-preview pf-preview--ns">
-          <div class="pf-preview-inner pf-preview-inner--ns">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>
-              <span class="pf-mock-url pf-mock-url--ns">neuro-shelf · knowledge-graph · v2.0</span>
-            </div>
-            <div class="ns-live-preview">
-              <div class="ns-sidebar">
-                <div class="ns-logo">NS</div><div class="ns-sb-divider"></div>
-                <div class="ns-sb-label">NODE</div><div class="ns-sb-field">JavaScript</div><div class="ns-sb-field ns-sb-field--group">Tech</div><div class="ns-sb-field ns-sb-field--tags">javascript, web</div>
-                <div class="ns-sb-label" style="margin-top:8px">LIST</div>
-                <div class="ns-sb-item ns-sb-item--active"><div class="ns-dot" style="background:#00d4ff"></div>JavaScript</div>
-                <div class="ns-sb-item"><div class="ns-dot" style="background:#7c3aed"></div>Graph Theory</div>
-                <div class="ns-sb-item"><div class="ns-dot" style="background:#10b981"></div>Neural Net</div>
-                <div class="ns-sb-item"><div class="ns-dot" style="background:#f59e0b"></div>Algorithm</div>
-                <div class="ns-sb-item"><div class="ns-dot" style="background:#ef4444"></div>Python</div>
-              </div>
-              <div class="ns-graph-area">
-                <div class="ns-dot-grid"></div>
-                <div class="ns-topbar">
-                  <span class="ns-topbar-logo">NEURO-SHELF <em>v2.0</em></span>
-                  <div class="ns-topbar-btns"><span class="ns-tbtn">↩</span><span class="ns-tbtn">↪</span><span class="ns-tbtn ns-tbtn--accent">🔗 Path</span><span class="ns-tbtn">🖼 PNG</span></div>
-                  <div class="ns-stats-mini">N <b>14</b> &nbsp;L <b>11</b> &nbsp;G <b>5</b></div>
-                </div>
-                <svg class="ns-svg" viewBox="0 0 520 290" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                  <defs><filter id="glow-ns"><feGaussianBlur stdDeviation="3.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-                  <ellipse cx="160" cy="148" rx="95" ry="72" fill="#00d4ff" fill-opacity=".05" stroke="#00d4ff" stroke-opacity=".09" stroke-width="20"/>
-                  <ellipse cx="348" cy="120" rx="75" ry="60" fill="#7c3aed" fill-opacity=".05" stroke="#7c3aed" stroke-opacity=".09" stroke-width="20"/>
-                  <ellipse cx="392" cy="232" rx="60" ry="44" fill="#10b981" fill-opacity=".05" stroke="#10b981" stroke-opacity=".09" stroke-width="20"/>
-                  <path d="M168,138 Q222,132 264,108" fill="none" stroke="#f59e0b" stroke-width="2.8" stroke-opacity=".85"/>
-                  <path d="M278,108 Q360,112 430,150" fill="none" stroke="#f59e0b" stroke-width="2.8" stroke-opacity=".85"/>
-                  <path d="M160,118 Q180,82 224,90" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                  <path d="M148,158 Q122,188 110,214" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                  <path d="M332,100 Q354,70 392,76" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                  <path d="M342,136 Q372,166 386,192" fill="none" stroke="#1e3a5f" stroke-width="1.4" stroke-opacity=".7"/>
-                  <circle cx="160" cy="145" r="23" fill="#00d4ff15" stroke="#00d4ff" stroke-width="2.5" filter="url(#glow-ns)"/>
-                  <text x="160" y="149" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#00d4ff" font-weight="600">JavaScript</text>
-                  <circle cx="224" cy="88" r="15" fill="#00d4ff10" stroke="#00d4ff" stroke-width="1.8"/>
-                  <text x="224" y="92" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">React</text>
-                  <circle cx="265" cy="106" r="14" fill="#00d4ff10" stroke="#00d4ff" stroke-width="1.8"/>
-                  <text x="265" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#94a3b8">Node.js</text>
-                  <circle cx="332" cy="112" r="19" fill="#7c3aed15" stroke="#7c3aed" stroke-width="2"/>
-                  <text x="332" y="116" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#a78bfa">Graph Theory</text>
-                  <circle cx="388" cy="196" r="16" fill="#10b98115" stroke="#10b981" stroke-width="2"/>
-                  <text x="388" y="200" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#34d399">Neural Net</text>
-                  <circle cx="434" cy="152" r="18" fill="#f59e0b15" stroke="#f59e0b" stroke-width="2.5"/>
-                  <text x="434" y="149" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#fbbf24">Machine</text>
-                  <text x="434" y="159" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#fbbf24">Learning</text>
-                  <circle cx="300" cy="238" r="13" fill="#ef444415" stroke="#ef4444" stroke-width="1.5"/>
-                  <text x="300" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="7" fill="#f87171">Algorithm</text>
-                </svg>
-                <div class="ns-legend">
-                  <div class="ns-leg-item"><div class="ns-dot" style="background:#00d4ff"></div><span>Tech</span></div>
-                  <div class="ns-leg-item"><div class="ns-dot" style="background:#7c3aed"></div><span>Math</span></div>
-                  <div class="ns-leg-item"><div class="ns-dot" style="background:#10b981"></div><span>AI</span></div>
-                  <div class="ns-leg-item"><div class="ns-dot" style="background:#f59e0b"></div><span>Physics</span></div>
-                </div>
-                <div class="ns-pf-badge">🔗 Path: JS → Node.js → ML &nbsp;·&nbsp; 2 hops</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">Sistem visualisasi pengetahuan berbasis <strong>Force-Directed Graph</strong> — mengubah catatan dan topik menjadi jaringan node interaktif yang terhubung otomatis lewat keyword matching. Eksplorasi koneksi antar ilmu secara visual dengan BFS path finder, undo/redo, minimap, dan export PNG.</p>
-          <p class="pf-desktop-note">🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
-          <div class="pf-highlights"><div class="pf-hl"><span>🕸</span> Force-Directed Graph</div><div class="pf-hl"><span>🔗</span> BFS Path Finder</div><div class="pf-hl"><span>✦</span> Auto-Link by Tags</div><div class="pf-hl"><span>🗺</span> Minimap + Convex Hull</div><div class="pf-hl"><span>↩</span> Undo / Redo History</div><div class="pf-hl"><span>🖼</span> Export PNG &amp; JSON</div></div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>D3.js v7</span><span>localStorage</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/neuro-shelf" target="_blank" rel="noopener" class="pf-link-primary pf-link-primary--ns pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--ns cs-open-btn" data-project="neuroshelf">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/neuro-shelf" target="_blank" rel="noopener" class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- STRIVE PRO -->
-    <div class="project-featured reveal">
-      <div class="pf-meta">
-        <div class="pf-meta-top">
-          <span class="pf-tag pf-tag--sp">Habit-Building Engine</span>
-        </div>
-        <h3 class="pf-title">Strive<span class="pf-title-accent pf-title-accent--sp">·</span>Pro</h3>
-      </div>
-      <div class="pf-card pf-card--sp">
-        <div class="pf-preview pf-preview--sp">
-          <div class="pf-preview-inner pf-preview-inner--sp">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots">
-                <span style="background:#ff5f57"></span>
-                <span style="background:#febc2e"></span>
-                <span style="background:#28c840"></span>
-              </div>
-              <span class="pf-mock-url pf-mock-url--sp">strive-pro · habit-engine · v2.0</span>
-              <a href="https://raffisirojudin.github.io/strive-pro" target="_blank" rel="noopener" class="sp-open-full" title="Buka di tab baru">⤢</a>
-            </div>
-            <iframe
-              src="https://raffisirojudin.github.io/strive-pro"
-              class="sp-iframe"
-              loading="lazy"
-              title="STRIVE PRO — Live Preview"
-              sandbox="allow-scripts allow-same-origin allow-forms"
-            ></iframe>
-          </div>
-        </div>
-        <div class="pf-info">
-          <p class="pf-desc">
-            Engine perubahan perilaku berbasis <strong>Predictive Analytics &amp; Gamifikasi</strong> —
-            Adaptive Momentum Engine (bukan logika biner), Cognitive Load Guard untuk mencegah overload mental,
-            visualisasi Arboretum SVG dinamis yang tumbuh sesuai konsistensi, dan Ghost Streak Visualizer
-            untuk kompetisi internal melawan diri sendiri.
+          <h1 class="hero-name reveal">
+            <span>Rafi </span><span class="name-accent">Sirojudin</span>
+          </h1>
+          <p class="hero-role reveal">
+            <span class="role-prefix">I build </span>
+            <span
+              id="typed-text"
+              class="typed"
+              aria-live="polite"
+              aria-atomic="true"
+            ></span>
+            <span class="typed-cursor" aria-hidden="true">|</span>
           </p>
-          <div class="pf-highlights">
-            <div class="pf-hl"><span>⚡</span> Adaptive Momentum Engine</div>
-            <div class="pf-hl"><span>🧠</span> Cognitive Load Guard</div>
-            <div class="pf-hl"><span>🌳</span> Dynamic SVG Arboretum</div>
-            <div class="pf-hl"><span>👻</span> Ghost Streak Visualizer</div>
-            <div class="pf-hl"><span>🔗</span> Habit Stacking System</div>
-            <div class="pf-hl"><span>⏱</span> Focus Timer</div>
+          <p class="hero-desc reveal">
+            Web developer yang fokus pada tampilan bersih, performa tinggi, dan
+            pengalaman pengguna yang menyenangkan.
+          </p>
+          <div class="hero-cta reveal">
+            <a href="#projects" class="btn-primary"
+              >Lihat Proyek
+              <span class="btn-arrow" aria-hidden="true">→</span></a
+            >
+            <a href="#contact" class="btn-outline">Hubungi Saya</a>
           </div>
-          <div class="pf-stack">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            <span>SVG</span><span>Canvas API</span><span>LocalStorage</span>
-          </div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/strive-pro" target="_blank" rel="noopener"
-               class="pf-link-primary pf-link-primary--sp pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--sp cs-open-btn" data-project="strivepro">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/strive-pro" target="_blank" rel="noopener"
-               class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+          <div class="hero-scroll reveal" aria-hidden="true">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
           </div>
         </div>
-      </div>
-    </div>
-    <!-- END STRIVE PRO -->
-
-    <!-- ═══════════════════════════════════════
-         CARNIVAL ARCADE
-    ════════════════════════════════════════ -->
-    <div class="project-featured reveal">
-      <div class="pf-meta">
-        <div class="pf-meta-top">
-          <span class="pf-tag pf-tag--ca">Arcade Game Collection</span>
-          <span class="pf-desktop-badge">🖥 Best on Desktop</span>
-        </div>
-        <h3 class="pf-title">Carnival<span class="pf-title-accent pf-title-accent--ca">·</span>Arcade</h3>
-      </div>
-      <div class="pf-card pf-card--ca">
-
-        <!-- Preview -->
-        <div class="pf-preview pf-preview--ca">
-          <div class="pf-preview-inner pf-preview-inner--ca">
-            <div class="pf-mock-header pf-mock-header--dark">
-              <div class="pf-mock-dots">
-                <span style="background:#ff5f57"></span>
-                <span style="background:#febc2e"></span>
-                <span style="background:#28c840"></span>
+        <div class="hero-right reveal" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hcard-header">
+              <div class="hcard-dots">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
               </div>
-              <span class="pf-mock-url pf-mock-url--ca">carnival-arcade · 12-games</span>
+              <span class="hcard-file">profile.ts</span>
             </div>
-            <div class="ca-live-preview">
-              <div class="ca-lights">
-                <span class="ca-bulb" style="--c:#e8304a;--d:0s"></span>
-                <span class="ca-bulb" style="--c:#ffd700;--d:.12s"></span>
-                <span class="ca-bulb" style="--c:#4ecdc4;--d:.24s"></span>
-                <span class="ca-bulb" style="--c:#ff6b9d;--d:.36s"></span>
-                <span class="ca-bulb" style="--c:#e8304a;--d:.48s"></span>
-                <span class="ca-bulb" style="--c:#ffd700;--d:.6s"></span>
-                <span class="ca-bulb" style="--c:#4ecdc4;--d:.72s"></span>
-                <span class="ca-bulb" style="--c:#ff6b9d;--d:.84s"></span>
-                <span class="ca-bulb" style="--c:#e8304a;--d:.96s"></span>
-                <span class="ca-bulb" style="--c:#ffd700;--d:1.08s"></span>
-                <span class="ca-bulb" style="--c:#4ecdc4;--d:1.2s"></span>
-                <span class="ca-bulb" style="--c:#ff6b9d;--d:1.32s"></span>
-              </div>
-              <div class="ca-top">
-                <div class="ca-brand">
-                  <span class="ca-brand-ico">🎪</span>
-                  <span class="ca-brand-txt">CARNIVAL ARCADE</span>
-                </div>
-                <div class="ca-ticket-pill">
-                  <span>🎫</span>
-                  <span class="ca-ticket-num">247</span>
-                </div>
-              </div>
-              <div class="ca-tagline">// 12 GAMES &nbsp;&middot;&nbsp; STEP RIGHT UP! //</div>
-              <div class="ca-grid">
-                <div class="ca-tile" style="--tc:#e8304a"><span class="ca-tile-ico">🐍</span><span class="ca-tile-lbl">Snake</span><span class="ca-tile-tag">📱+🖥</span></div>
-                <div class="ca-tile" style="--tc:#ffd700"><span class="ca-tile-ico">🧱</span><span class="ca-tile-lbl">Breakout</span><span class="ca-tile-tag">📱+🖥</span></div>
-                <div class="ca-tile" style="--tc:#4ecdc4"><span class="ca-tile-ico">🏓</span><span class="ca-tile-lbl">Pong</span><span class="ca-tile-tag">🖥</span></div>
-                <div class="ca-tile" style="--tc:#a78bfa"><span class="ca-tile-ico">🚀</span><span class="ca-tile-lbl">Space</span><span class="ca-tile-tag">🖥</span></div>
-                <div class="ca-tile" style="--tc:#f97316"><span class="ca-tile-ico">🃏</span><span class="ca-tile-lbl">Memory</span><span class="ca-tile-tag">📱+🖥</span></div>
-                <div class="ca-tile ca-tile-more" style="--tc:#475569"><span class="ca-tile-more-txt">+7</span><span class="ca-tile-lbl">More</span><span class="ca-tile-tag">•••</span></div>
-              </div>
-              <div class="ca-footer-bar">
-                <span class="ca-fb-item"><span class="ca-fb-dot" style="background:#e8304a"></span>🎫 247 Tiket</span>
-                <span class="ca-fb-item"><span class="ca-fb-dot" style="background:#ffd700"></span>🏆 1,240 Pts</span>
-                <span class="ca-fb-live">● LIVE</span>
-              </div>
-              <div class="ca-lights ca-lights-bottom">
-                <span class="ca-bulb" style="--c:#ffd700;--d:0s"></span>
-                <span class="ca-bulb" style="--c:#4ecdc4;--d:.12s"></span>
-                <span class="ca-bulb" style="--c:#e8304a;--d:.24s"></span>
-                <span class="ca-bulb" style="--c:#ff6b9d;--d:.36s"></span>
-                <span class="ca-bulb" style="--c:#ffd700;--d:.48s"></span>
-                <span class="ca-bulb" style="--c:#4ecdc4;--d:.6s"></span>
-                <span class="ca-bulb" style="--c:#e8304a;--d:.72s"></span>
-                <span class="ca-bulb" style="--c:#ffd700;--d:.84s"></span>
-                <span class="ca-bulb" style="--c:#4ecdc4;--d:.96s"></span>
-                <span class="ca-bulb" style="--c:#ff6b9d;--d:1.08s"></span>
-                <span class="ca-bulb" style="--c:#e8304a;--d:1.2s"></span>
-                <span class="ca-bulb" style="--c:#ffd700;--d:1.32s"></span>
-              </div>
+            <div class="hcard-body">
+              <p>
+                <span class="t-kw">const</span> <span class="t-var">dev</span> =
+                {
+              </p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">name</span>:
+                <span class="t-str">"Rafi Sirojudin"</span>,
+              </p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">role</span>:
+                <span class="t-str">"Frontend Dev"</span>,
+              </p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">location</span>:
+                <span class="t-str">"Indonesia 🇮🇩"</span>,
+              </p>
+              <p>&nbsp;&nbsp;<span class="t-prop">stack</span>: [</p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="t-str">"HTML"</span>,
+                <span class="t-str">"CSS"</span>,
+                <span class="t-str">"JS"</span>
+              </p>
+              <p>&nbsp;&nbsp;],</p>
+              <p>
+                &nbsp;&nbsp;<span class="t-prop">openToWork</span>:
+                <span class="t-bool">true</span>
+              </p>
+              <p>}</p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Info -->
-        <div class="pf-info">
-          <p class="pf-desc">Koleksi 12 mini-game arcade klasik dalam satu platform berbasis Canvas &mdash; Snake, Breakout, Pong, Space Invaders, Whack-a-mole, Memory Cards, dan lebih banyak lagi. Dilengkapi sistem tiket universal yang terakumulasi lintas game, papan skor persisten, Web Audio FX, serta dukungan penuh kontrol touchscreen dan keyboard.</p>
-          <p class="pf-desktop-note">🖥 Beberapa game memerlukan <strong>Mode Situs Desktop</strong> di browser HP untuk pengalaman terbaik.</p>
-          <div class="pf-highlights">
-            <div class="pf-hl"><span>🎮</span> 12 Mini-Games Klasik</div>
-            <div class="pf-hl"><span>🎫</span> Sistem Tiket Universal</div>
-            <div class="pf-hl"><span>📱</span> Mobile &amp; Desktop</div>
-            <div class="pf-hl"><span>🔊</span> Web Audio Sound FX</div>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-wrap">
+        <div class="section-label reveal" aria-hidden="true">
+          <span class="label-num">01</span>
+          <span class="label-line"></span>
+          <span class="label-text">About</span>
+        </div>
+        <div class="about-grid">
+          <div class="about-photo-wrap reveal">
+            <div class="about-photo-frame">
+              <img
+                src="assets/foto.jpg"
+                alt="Foto profil Rafi Sirojudin, web developer asal Indonesia"
+                class="about-img"
+                onerror="this.parentElement.classList.add('no-img')"
+              />
+              <div class="about-img-placeholder" aria-hidden="true">
+                <span>RS</span>
+              </div>
+            </div>
+            <div class="about-tags" aria-label="Label profil">
+              <span class="about-tag">Open to work</span>
+              <span class="about-tag">Frontend</span>
+              <span class="about-tag">Indonesia</span>
+            </div>
           </div>
-          <div class="pf-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Canvas API</span><span>Web Audio API</span></div>
-          <div class="pf-links pf-links-3">
-            <a href="https://raffisirojudin.github.io/carnival-arcade/" target="_blank" rel="noopener"
-               class="pf-link-primary pf-link-primary--ca pf-btn-3">🚀 Demo</a>
-            <button class="pf-btn-3 pf-btn-cs pf-btn-cs--ca cs-open-btn" data-project="carnival">📖 Case Study</button>
-            <a href="https://github.com/raffisirojudin/carnival-arcade" target="_blank" rel="noopener"
-               class="pf-btn-3 pf-btn-gh">GitHub ↗</a>
+          <div class="about-content reveal">
+            <h2 class="section-title">Tentang Saya</h2>
+            <p>
+              Saya adalah seorang web developer yang sedang berkembang, dengan
+              fokus pada pembuatan tampilan web yang bersih dan responsif. Saya
+              percaya kode yang baik adalah kode yang mudah dibaca dan
+              dipelihara.
+            </p>
+            <p>
+              Saat ini saya aktif belajar dan terus mengasah kemampuan di bidang
+              front-end development — dari desain sistem hingga optimasi
+              performa.
+            </p>
+            <div class="about-stats" aria-label="Statistik">
+              <div class="stat-box reveal">
+                <span class="stat-n">10<span class="stat-plus">+</span></span>
+                <span class="stat-l">Proyek</span>
+              </div>
+              <div class="stat-box reveal">
+                <span class="stat-n">3<span class="stat-plus">+</span></span>
+                <span class="stat-l">Teknologi</span>
+              </div>
+              <div class="stat-box reveal">
+                <span class="stat-n">1<span class="stat-plus">+</span></span>
+                <span class="stat-l">Tahun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-wrap">
+        <div class="section-label reveal" aria-hidden="true">
+          <span class="label-num">02</span>
+          <span class="label-line"></span>
+          <span class="label-text">Skills</span>
+        </div>
+        <h2 class="section-title reveal">Keahlian Saya</h2>
+        <p class="section-sub reveal">Klik kartu untuk melihat detail</p>
+        <div class="skills-grid" role="list" aria-label="Daftar keahlian">
+          <div
+            class="skill-card reveal"
+            data-skill="html"
+            tabindex="0"
+            role="button"
+            aria-label="HTML, 90%, Mahir. Klik untuk detail."
+          >
+            <div class="skill-icon" aria-hidden="true">🌐</div>
+            <div class="skill-info">
+              <span class="skill-name">HTML</span
+              ><span class="skill-level" aria-hidden="true">90%</span>
+            </div>
+            <div
+              class="skill-bar-track"
+              role="progressbar"
+              aria-valuenow="90"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="HTML 90%"
+            >
+              <div class="skill-bar-fill" data-width="90"></div>
+            </div>
+            <span class="skill-badge">Mahir</span>
+          </div>
+          <div
+            class="skill-card reveal"
+            data-skill="css"
+            tabindex="0"
+            role="button"
+            aria-label="CSS, 80%, Mahir. Klik untuk detail."
+          >
+            <div class="skill-icon" aria-hidden="true">🎨</div>
+            <div class="skill-info">
+              <span class="skill-name">CSS</span
+              ><span class="skill-level" aria-hidden="true">80%</span>
+            </div>
+            <div
+              class="skill-bar-track"
+              role="progressbar"
+              aria-valuenow="80"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="CSS 80%"
+            >
+              <div class="skill-bar-fill" data-width="80"></div>
+            </div>
+            <span class="skill-badge">Mahir</span>
+          </div>
+          <div
+            class="skill-card reveal"
+            data-skill="js"
+            tabindex="0"
+            role="button"
+            aria-label="JavaScript, 70%, Menengah. Klik untuk detail."
+          >
+            <div class="skill-icon" aria-hidden="true">⚡</div>
+            <div class="skill-info">
+              <span class="skill-name">JavaScript</span
+              ><span class="skill-level" aria-hidden="true">70%</span>
+            </div>
+            <div
+              class="skill-bar-track"
+              role="progressbar"
+              aria-valuenow="70"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="JavaScript 70%"
+            >
+              <div class="skill-bar-fill" data-width="70"></div>
+            </div>
+            <span class="skill-badge">Menengah</span>
+          </div>
+          <div
+            class="skill-card reveal"
+            data-skill="react"
+            tabindex="0"
+            role="button"
+            aria-label="React, 60%, Menengah. Klik untuk detail."
+          >
+            <div class="skill-icon" aria-hidden="true">⚛️</div>
+            <div class="skill-info">
+              <span class="skill-name">React</span
+              ><span class="skill-level" aria-hidden="true">60%</span>
+            </div>
+            <div
+              class="skill-bar-track"
+              role="progressbar"
+              aria-valuenow="60"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="React 60%"
+            >
+              <div class="skill-bar-fill" data-width="60"></div>
+            </div>
+            <span class="skill-badge">Menengah</span>
+          </div>
+          <div
+            class="skill-card reveal"
+            data-skill="git"
+            tabindex="0"
+            role="button"
+            aria-label="Git, 75%, Mahir. Klik untuk detail."
+          >
+            <div class="skill-icon" aria-hidden="true">🐙</div>
+            <div class="skill-info">
+              <span class="skill-name">Git</span
+              ><span class="skill-level" aria-hidden="true">75%</span>
+            </div>
+            <div
+              class="skill-bar-track"
+              role="progressbar"
+              aria-valuenow="75"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Git 75%"
+            >
+              <div class="skill-bar-fill" data-width="75"></div>
+            </div>
+            <span class="skill-badge">Mahir</span>
+          </div>
+          <div
+            class="skill-card reveal"
+            data-skill="figma"
+            tabindex="0"
+            role="button"
+            aria-label="Figma, 65%, Menengah. Klik untuk detail."
+          >
+            <div class="skill-icon" aria-hidden="true">✏️</div>
+            <div class="skill-info">
+              <span class="skill-name">Figma</span
+              ><span class="skill-level" aria-hidden="true">65%</span>
+            </div>
+            <div
+              class="skill-bar-track"
+              role="progressbar"
+              aria-valuenow="65"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-label="Figma 65%"
+            >
+              <div class="skill-bar-fill" data-width="65"></div>
+            </div>
+            <span class="skill-badge">Menengah</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILL MODAL -->
+    <div
+      id="skill-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title-text"
+    >
+      <div class="modal-backdrop"></div>
+      <div class="modal-card">
+        <button class="modal-close" id="modal-close" aria-label="Tutup modal">
+          ✕
+        </button>
+        <div class="modal-icon" id="modal-icon" aria-hidden="true"></div>
+        <h3 class="modal-title" id="modal-title-text"></h3>
+        <p class="modal-level" id="modal-level"></p>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-tags" id="modal-tags" aria-label="Tag terkait"></div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY MODAL -->
+    <div id="cs-modal" role="dialog" aria-modal="true" aria-label="Case Study">
+      <div class="cs-backdrop" id="cs-backdrop"></div>
+      <div class="cs-panel" id="cs-panel">
+        <div class="cs-header">
+          <div class="cs-header-left">
+            <span class="cs-tag" id="cs-tag"></span>
+            <h2 class="cs-title" id="cs-title"></h2>
+          </div>
+          <button class="cs-close" id="cs-close" aria-label="Tutup case study">
+            ✕
+          </button>
+        </div>
+        <div class="cs-body">
+          <div class="cs-scroll-hint" id="cs-scroll-hint" aria-hidden="true">
+            <span>Scroll untuk membaca breakdown</span>
+            <div class="cs-scroll-arrow">↓</div>
+          </div>
+          <div class="cs-preview-wrap">
+            <div class="cs-preview-box" id="cs-preview-box"></div>
+          </div>
+          <div class="cs-sections">
+            <div class="cs-section">
+              <div class="cs-section-icon" aria-hidden="true">🎯</div>
+              <div>
+                <h3 class="cs-section-title">Problem</h3>
+                <p class="cs-section-text" id="cs-problem"></p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-icon" aria-hidden="true">⚡</div>
+              <div>
+                <h3 class="cs-section-title">Solution</h3>
+                <p class="cs-section-text" id="cs-solution"></p>
+              </div>
+            </div>
+            <div class="cs-section">
+              <div class="cs-section-icon" aria-hidden="true">✅</div>
+              <div>
+                <h3 class="cs-section-title">Result</h3>
+                <p class="cs-section-text" id="cs-result"></p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cs-features"
+            id="cs-features"
+            aria-label="Fitur utama"
+          ></div>
+          <div class="cs-tech-row">
+            <span class="cs-tech-lbl">Tech Stack</span>
+            <div
+              class="cs-tech-tags"
+              id="cs-tech"
+              aria-label="Teknologi yang digunakan"
+            ></div>
+          </div>
+          <p class="cs-cta-note">
+            Tekan <kbd>Esc</kbd> atau klik area gelap untuk menutup
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-wrap">
+        <div class="section-label reveal" aria-hidden="true">
+          <span class="label-num">03</span>
+          <span class="label-line"></span>
+          <span class="label-text">Experience</span>
+        </div>
+        <h2 class="section-title reveal">Perjalanan Saya</h2>
+        <div class="timeline" aria-label="Timeline pengalaman">
+          <div class="tl-item reveal">
+            <div class="tl-connector" aria-hidden="true">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-right">
+              <span class="tl-date-inline">2024 — Sekarang</span
+              ><span class="tl-tag">Freelance</span>
+              <h3 class="tl-title">Frontend Developer</h3>
+              <p class="tl-place">Independen</p>
+              <p class="tl-desc">
+                Membangun website untuk klien dan proyek pribadi. Fokus pada
+                performa, aksesibilitas, dan pengalaman pengguna yang baik.
+              </p>
+              <div class="tl-stack" aria-label="Teknologi">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-connector" aria-hidden="true">
+              <div class="tl-dot"></div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-right">
+              <span class="tl-date-inline">2023 — 2024</span
+              ><span class="tl-tag">Belajar</span>
+              <h3 class="tl-title">Mulai Belajar Web Development</h3>
+              <p class="tl-place">Self-taught</p>
+              <p class="tl-desc">
+                Memulai perjalanan belajar web development dari nol. Mempelajari
+                HTML, CSS, dan JavaScript secara mandiri melalui berbagai sumber
+                online.
+              </p>
+              <div class="tl-stack" aria-label="Teknologi">
+                <span>HTML</span><span>CSS</span><span>JavaScript Dasar</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-connector" aria-hidden="true">
+              <div class="tl-dot"></div>
+            </div>
+            <div class="tl-right">
+              <span class="tl-date-inline">2023</span
+              ><span class="tl-tag">Milestone</span>
+              <h3 class="tl-title">Proyek Pertama</h3>
+              <p class="tl-place">Personal Project</p>
+              <p class="tl-desc">
+                Menyelesaikan proyek web pertama secara mandiri dan mulai
+                membangun portofolio.
+              </p>
+              <div class="tl-stack" aria-label="Teknologi">
+                <span>HTML</span><span>CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-wrap">
+        <div class="section-label reveal" aria-hidden="true">
+          <span class="label-num">04</span><span class="label-line"></span
+          ><span class="label-text">Projects</span>
+        </div>
+        <h2 class="section-title reveal">Proyek Saya</h2>
+
+        <!-- CurtainBiz -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <span class="pf-tag">Featured Project</span>
+            <h3 class="pf-title">CurtainBiz Manager</h3>
+          </div>
+          <div class="pf-card pf-card--cb">
+            <div class="pf-preview pf-preview--cb" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--cb">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span
+                    class="pf-mock-url"
+                    style="color: rgba(123, 110, 246, 0.7); font-size: 0.6rem"
+                    >curtainbiz-manager · dashboard</span
+                  >
+                </div>
+                <div class="cb-live-preview">
+                  <div class="cb-sidebar">
+                    <div class="cb-logo-mini">CB</div>
+                    <div class="cb-nav-items">
+                      <div class="cb-nav-item cb-nav-active">📊</div>
+                      <div class="cb-nav-item">🛒</div>
+                      <div class="cb-nav-item">📦</div>
+                      <div class="cb-nav-item">💰</div>
+                      <div class="cb-nav-item">📈</div>
+                    </div>
+                  </div>
+                  <div class="cb-main">
+                    <div class="cb-topbar">
+                      <span class="cb-page-title">Dashboard KPI</span>
+                      <div class="cb-topbar-right">
+                        <span class="cb-badge-live">● LIVE</span>
+                        <div class="cb-avatar">RS</div>
+                      </div>
+                    </div>
+                    <div class="cb-kpi-row">
+                      <div class="cb-kpi">
+                        <div class="cb-kpi-icon">💰</div>
+                        <div class="cb-kpi-val">Rp 24.5jt</div>
+                        <div class="cb-kpi-lbl">Total Omzet</div>
+                        <div class="cb-kpi-trend cb-trend-up">▲ 12.4%</div>
+                      </div>
+                      <div class="cb-kpi">
+                        <div class="cb-kpi-icon">🛒</div>
+                        <div class="cb-kpi-val">142</div>
+                        <div class="cb-kpi-lbl">Total Order</div>
+                        <div class="cb-kpi-trend cb-trend-up">▲ 8.1%</div>
+                      </div>
+                      <div class="cb-kpi">
+                        <div class="cb-kpi-icon">📦</div>
+                        <div class="cb-kpi-val">38</div>
+                        <div class="cb-kpi-lbl">Stok Rendah</div>
+                        <div class="cb-kpi-trend cb-trend-down">
+                          ▼ Perlu restock
+                        </div>
+                      </div>
+                      <div class="cb-kpi">
+                        <div class="cb-kpi-icon">📈</div>
+                        <div class="cb-kpi-val">68.2%</div>
+                        <div class="cb-kpi-lbl">Margin HPP</div>
+                        <div class="cb-kpi-trend cb-trend-up">▲ 3.5%</div>
+                      </div>
+                    </div>
+                    <div class="cb-chart-row">
+                      <div class="cb-chart">
+                        <div class="cb-chart-title">Penjualan Bulanan</div>
+                        <div class="cb-bar-chart">
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 45%"></div>
+                            <span>Jan</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 60%"></div>
+                            <span>Feb</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 40%"></div>
+                            <span>Mar</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div
+                              class="cb-bar cb-bar-active"
+                              style="height: 80%"
+                            ></div>
+                            <span>Apr</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 65%"></div>
+                            <span>Mei</span>
+                          </div>
+                          <div class="cb-bar-group">
+                            <div class="cb-bar" style="height: 70%"></div>
+                            <span>Jun</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cb-orders">
+                        <div class="cb-chart-title">Order Terbaru</div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #38d9a9"
+                          ></span
+                          ><span class="cb-order-name">Gorden Blackout</span
+                          ><span class="cb-order-val">Rp 850k</span>
+                        </div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #7b6ef6"
+                          ></span
+                          ><span class="cb-order-name">Vitrase Premium</span
+                          ><span class="cb-order-val">Rp 420k</span>
+                        </div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #f5c842"
+                          ></span
+                          ><span class="cb-order-name">Roller Blind</span
+                          ><span class="cb-order-val">Rp 1.2jt</span>
+                        </div>
+                        <div class="cb-order-row">
+                          <span
+                            class="cb-order-dot"
+                            style="background: #f87171"
+                          ></span
+                          ><span class="cb-order-name">Gordyn Motif</span
+                          ><span class="cb-order-val">Rp 680k</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Sistem manajemen bisnis curtain berbasis web — mencakup dasbor
+                kinerja real-time, manajemen pesanan multi-channel, inventori
+                stok dengan alert otomatis, laporan keuangan &amp; kalkulator
+                HPP, serta statistik penjualan lengkap.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">📊</span> Dashboard KPI
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🛒</span> Order Management
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">💰</span> HPP Calculator
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">📦</span> Stok Alert
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Chart.js</span><span>Supabase</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/curtainbiz-manager"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-btn-3"
+                  aria-label="Demo CurtainBiz Manager (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs cs-open-btn"
+                  data-project="curtainbiz"
+                  aria-label="Buka Case Study CurtainBiz Manager"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/curtainbiz-manager"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub CurtainBiz Manager (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
-    <!-- END CARNIVAL ARCADE -->
+        <!-- Kinetic Soul -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <div class="pf-meta-top">
+              <span class="pf-tag pf-tag--ks">Gen-Art Engine</span
+              ><span class="pf-desktop-badge">🖥 Best on Desktop</span>
+            </div>
+            <h3 class="pf-title">
+              Kinetic<span class="pf-title-accent pf-title-accent--ks">·</span
+              >Soul
+            </h3>
+          </div>
+          <div class="pf-card pf-card--ks">
+            <div class="pf-preview pf-preview--ks" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--ks">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span class="pf-mock-url pf-mock-url--ks"
+                    >kinetic-soul · gen-art-engine</span
+                  >
+                </div>
+                <div class="ks-live-preview">
+                  <canvas id="ks-canvas"></canvas>
+                  <div class="ks-hud-overlay">
+                    <div class="ks-hud-top">
+                      <span class="ks-logo-txt"
+                        ><span style="color: #e8e8f0">KINETIC</span
+                        ><span style="color: #8338ec">·</span
+                        ><span style="color: #ff006e">SOUL</span></span
+                      >
+                      <div class="ks-stats">
+                        <div class="ks-stat">
+                          <span class="ks-stat-lbl">FPS</span
+                          ><span class="ks-stat-val" id="ks-fps">60</span>
+                        </div>
+                        <div class="ks-stat">
+                          <span class="ks-stat-lbl">MODE</span
+                          ><span class="ks-stat-val">GALAXY</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ks-panel-left">
+                      <div class="ks-panel-lbl">MODE</div>
+                      <div class="ks-mode-btn ks-mode-active">✦ GALAXY</div>
+                      <div class="ks-mode-btn">⬡ WEB</div>
+                      <div class="ks-mode-btn">◈ EXPLOSION</div>
+                      <div class="ks-panel-lbl" style="margin-top: 8px">
+                        PALETTE
+                      </div>
+                      <div class="ks-palette-row">
+                        <span
+                          class="ks-pal"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #ff006e,
+                              #8338ec,
+                              #3a86ff
+                            );
+                          "
+                        ></span
+                        ><span
+                          class="ks-pal"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #00f5d4,
+                              #9b5de5
+                            );
+                          "
+                        ></span
+                        ><span
+                          class="ks-pal ks-pal-active"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #ffbe0b,
+                              #ff006e
+                            );
+                          "
+                        ></span>
+                      </div>
+                    </div>
+                    <div class="ks-panel-right">
+                      <div class="ks-panel-lbl">GRAVITY</div>
+                      <div class="ks-slider-mini">
+                        <div
+                          class="ks-slider-fill-mini"
+                          style="width: 45%"
+                        ></div>
+                      </div>
+                      <div class="ks-panel-lbl">SPEED</div>
+                      <div class="ks-slider-mini">
+                        <div
+                          class="ks-slider-fill-mini"
+                          style="width: 60%"
+                        ></div>
+                      </div>
+                      <div class="ks-panel-lbl">BLOOM</div>
+                      <div class="ks-slider-mini">
+                        <div
+                          class="ks-slider-fill-mini"
+                          style="width: 70%"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Mesin generative art interaktif berbasis canvas — sistem
+                partikel real-time dengan fisika inverse square law, Perlin
+                noise flow field, tiga visual mode (Galaxy, Web, Explosion),
+                efek bloom, dan enam palette warna. Fully adaptive FPS.
+              </p>
+              <p class="pf-desktop-note">
+                🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP
+                untuk pengalaman terbaik.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">✦</span> 3 Visual Modes
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🎨</span> 6 Color Palettes
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">⚡</span> Perlin Noise Physics
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔊</span> Procedural Audio
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Canvas API</span><span>Web Audio API</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/kinetic-soul"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--ks pf-btn-3"
+                  aria-label="Demo Kinetic Soul (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--ks cs-open-btn"
+                  data-project="kinetic"
+                  aria-label="Buka Case Study Kinetic Soul"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/kinetic-soul"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub Kinetic Soul (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-  </div>
-</section>
+        <!-- Lentera Kecil -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <span class="pf-tag pf-tag--lk">Interactive Storytelling</span>
+            <h3 class="pf-title">
+              Lentera
+              <span class="pf-title-accent pf-title-accent--lk">Kecil</span>
+            </h3>
+          </div>
+          <div class="pf-card pf-card--lk">
+            <div class="pf-preview pf-preview--lk" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--lk">
+                <div class="pf-mock-header pf-mock-header--warm">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span class="pf-mock-url pf-mock-url--lk"
+                    >lentera-kecil · dongeng-nusantara</span
+                  >
+                </div>
+                <div class="lk-live-preview">
+                  <div class="lk-lib-preview">
+                    <div class="lk-lib-header">
+                      <span class="lk-lib-logo">🏮 Lentera Kecil</span
+                      ><span class="lk-lib-badge">⭐ 12</span>
+                    </div>
+                    <div class="lk-lib-search">🔍 Cari cerita...</div>
+                    <div class="lk-lib-tags">
+                      <span class="lk-tag lk-tag-active">🌈 Semua</span
+                      ><span class="lk-tag">🐾 Hewan</span
+                      ><span class="lk-tag">🏔️ Legenda</span
+                      ><span class="lk-tag">💛 Kebaikan</span>
+                    </div>
+                    <div class="lk-lib-grid">
+                      <div class="lk-card">
+                        <div class="lk-card-top" style="background: #f59e0b22">
+                          🦌
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Kancil dan Buaya</div>
+                          <span class="lk-diff lk-easy">Easy</span>
+                        </div>
+                      </div>
+                      <div class="lk-card lk-card-done">
+                        <div class="lk-card-top" style="background: #22c55e22">
+                          🥒
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Timun Mas</div>
+                          <span class="lk-diff lk-med">Med</span>
+                        </div>
+                        <div class="lk-done-badge">⭐</div>
+                      </div>
+                      <div class="lk-card lk-card-done">
+                        <div class="lk-card-top" style="background: #ef444422">
+                          🌋
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Sangkuriang</div>
+                          <span class="lk-diff lk-med">Med</span>
+                        </div>
+                        <div class="lk-done-badge">⭐</div>
+                      </div>
+                      <div class="lk-card">
+                        <div class="lk-card-top" style="background: #a855f722">
+                          🧅
+                        </div>
+                        <div class="lk-card-bot">
+                          <div class="lk-card-name">Bawang Merah</div>
+                          <span class="lk-diff lk-easy">Easy</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lk-reader-peek">
+                    <div class="lk-scene-bg">
+                      <div class="lk-sky"></div>
+                      <div class="lk-trees">🌳🌲🌳</div>
+                      <div class="lk-ground"></div>
+                    </div>
+                    <div class="lk-char-peek">
+                      <svg viewBox="0 0 100 140" width="70" height="98">
+                        <ellipse
+                          cx="50"
+                          cy="95"
+                          rx="22"
+                          ry="18"
+                          fill="#d97706"
+                        />
+                        <ellipse
+                          cx="50"
+                          cy="78"
+                          rx="12"
+                          ry="9"
+                          fill="#d97706"
+                        />
+                        <ellipse
+                          cx="50"
+                          cy="60"
+                          rx="18"
+                          ry="16"
+                          fill="#d97706"
+                        />
+                        <ellipse
+                          cx="36"
+                          cy="46"
+                          rx="5"
+                          ry="11"
+                          fill="#92400e"
+                          transform="rotate(-20 36 46)"
+                        />
+                        <ellipse
+                          cx="64"
+                          cy="46"
+                          rx="5"
+                          ry="11"
+                          fill="#92400e"
+                          transform="rotate(20 64 46)"
+                        />
+                        <circle cx="43" cy="59" r="4" fill="#1c1917" />
+                        <circle cx="57" cy="59" r="4" fill="#1c1917" />
+                        <circle cx="44" cy="58" r="1.3" fill="white" />
+                        <circle cx="58" cy="58" r="1.3" fill="white" />
+                        <path
+                          d="M43 67 Q50 74 57 67"
+                          stroke="#92400e"
+                          stroke-width="1.8"
+                          fill="#fca5a5"
+                          stroke-linecap="round"
+                        />
+                      </svg>
+                    </div>
+                    <div class="lk-narr-peek">
+                      <span class="lk-narr-icon">📖</span>
+                      <p>
+                        Di dalam hutan yang lebat, hiduplah seekor Kancil yang
+                        sangat cerdik...
+                      </p>
+                    </div>
+                    <div class="lk-nav-peek">
+                      <span>‹</span>
+                      <div class="lk-dots-peek">
+                        <span class="lk-dot lk-dot-active"></span
+                        ><span class="lk-dot"></span><span class="lk-dot"></span
+                        ><span class="lk-dot"></span>
+                      </div>
+                      <span>›</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Mesin dongeng interaktif untuk anak usia 4–10 tahun — 38 cerita
+                rakyat Nusantara dengan karakter SVG animasi, background dinamis
+                berlayer, ambient sound procedural, sistem bintang &amp;
+                progress, filter &amp; pencarian cerita, serta end-card berisi
+                pesan moral.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">📚</span> 38 Dongeng Nusantara
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🎭</span> Karakter SVG Animasi
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔊</span> Ambient Sound Engine
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">⭐</span> Progress &amp; Reward
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Web Audio API</span><span>SVG</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/lentera-kecil"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--lk pf-btn-3"
+                  aria-label="Demo Lentera Kecil (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--lk cs-open-btn"
+                  data-project="lentera"
+                  aria-label="Buka Case Study Lentera Kecil"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/lentera-kecil"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub Lentera Kecil (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-wrap">
-    <div class="section-label reveal"><span class="label-num">05</span><span class="label-line"></span><span class="label-text">Contact</span></div>
-    <div class="contact-grid">
-      <div class="contact-left reveal">
-        <h2 class="section-title">Mari Bekerja<br /><em>Bersama</em></h2>
-        <p class="contact-desc">Punya proyek menarik atau ingin berkolaborasi? Saya selalu terbuka untuk diskusi dan peluang baru.</p>
-        <a href="mailto:raffisirojudin@gmail.com" class="contact-email-link">raffisirojudin@gmail.com</a>
-        <div class="socials-wrap">
-          <a href="https://github.com/raffisirojudin" class="social-btn" target="_blank" rel="noopener">
-            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.instagram.com/sozudigi/" class="social-btn" target="_blank" rel="noopener">
-            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            Instagram
-          </a>
-          <a href="https://wa.me/62895405424200" class="social-btn" target="_blank" rel="noopener">
-            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            WhatsApp
-          </a>
-          <a href="https://lynk.id/takisozu" class="social-btn social-btn--lynk" target="_blank" rel="noopener">
-            <svg class="social-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Produk Digital
-          </a>
+        <!-- EasySolve -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <span class="pf-tag pf-tag--es">Science Calculator</span>
+            <h3 class="pf-title">
+              Easy<span
+                class="pf-title-accent pf-title-accent--es"
+                style="color: #38d9a9"
+                >Solve</span
+              >
+            </h3>
+          </div>
+          <div class="pf-card pf-card--es">
+            <div class="pf-preview pf-preview--es" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--es">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span
+                    class="pf-mock-url"
+                    style="color: rgba(56, 217, 169, 0.7); font-size: 0.6rem"
+                    >easysolve · kalkulator-sains</span
+                  >
+                </div>
+                <div class="es-live-preview">
+                  <div class="es-sidebar">
+                    <div class="es-logo-mini">∑</div>
+                    <div class="es-subject-list">
+                      <div class="es-subject es-subj-active">📐 Matematika</div>
+                      <div class="es-subject">⚛️ Fisika</div>
+                      <div class="es-subject">🧪 Kimia</div>
+                      <div class="es-subject">🧬 Biologi</div>
+                      <div class="es-subject">🔄 Konversi</div>
+                      <div class="es-subject">💹 Keuangan</div>
+                      <div class="es-subject">🌍 Geografi</div>
+                    </div>
+                  </div>
+                  <div class="es-main">
+                    <div class="es-header-bar">
+                      <span class="es-title">Kalkulator Fisika</span
+                      ><span class="es-counter">100+ Rumus</span>
+                    </div>
+                    <div class="es-formula-card">
+                      <div class="es-formula-name">Hukum Newton II</div>
+                      <div class="es-formula-tex">F = m × a</div>
+                      <div class="es-inputs">
+                        <div class="es-input-group">
+                          <label>Massa (m)</label>
+                          <div class="es-input-box">10 kg</div>
+                        </div>
+                        <div class="es-input-group">
+                          <label>Percepatan (a)</label>
+                          <div class="es-input-box">5 m/s²</div>
+                        </div>
+                      </div>
+                      <div class="es-result">
+                        <span class="es-result-lbl">Hasil</span
+                        ><span class="es-result-val"
+                          >F = <strong>50 N</strong></span
+                        >
+                      </div>
+                    </div>
+                    <div class="es-steps">
+                      <div class="es-steps-title">📝 Langkah Pengerjaan</div>
+                      <div class="es-step">
+                        1. Diketahui: m = 10 kg, a = 5 m/s²
+                      </div>
+                      <div class="es-step">2. Rumus: F = m × a</div>
+                      <div class="es-step es-step-result">
+                        3. F = 10 × 5 = <strong>50 Newton</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Platform kalkulator sains komprehensif dengan 100+ rumus dari 7
+                mata pelajaran — Matematika, Fisika, Kimia, Biologi, Konversi,
+                Keuangan &amp; Geografi. Setiap perhitungan dilengkapi langkah
+                pengerjaan step-by-step yang jelas menggunakan render KaTeX.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔢</span> 100+ Rumus
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">📚</span> 7 Mata Pelajaran
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">📝</span> Step-by-step
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">⚡</span> Render KaTeX
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>KaTeX</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/easysolve/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--es pf-btn-3"
+                  aria-label="Demo EasySolve (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--es cs-open-btn"
+                  data-project="easysolve"
+                  aria-label="Buka Case Study EasySolve"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/easysolve"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub EasySolve (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BaseCalc Insight -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <span class="pf-tag pf-tag--bc">Number Base Converter</span>
+            <h3 class="pf-title">
+              BaseCalc<span class="pf-title-accent pf-title-accent--bc">·</span
+              >Insight
+            </h3>
+          </div>
+          <div class="pf-card pf-card--bc">
+            <div class="pf-preview pf-preview--bc" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--bc">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span
+                    class="pf-mock-url"
+                    style="color: rgba(34, 211, 238, 0.6); font-size: 0.6rem"
+                    >basecalc-insight · konverter-bilangan</span
+                  >
+                </div>
+                <div class="bc-live-preview">
+                  <div class="bc-header">
+                    <span class="bc-logo"
+                      >BASECALC<span class="bc-dot">·</span>INSIGHT</span
+                    ><span class="bc-badge">v1.0</span>
+                  </div>
+                  <div class="bc-status">
+                    <div class="bc-status-dot"></div>
+                    <span
+                      >Konversi berhasil · DEC=255 · BIN=11111111 · OCT=377 ·
+                      HEX=FF</span
+                    >
+                  </div>
+                  <div class="bc-grid">
+                    <div class="bc-card bc-card--bin">
+                      <div class="bc-card-label">
+                        <span>BINER</span
+                        ><span class="bc-base-pill">BASE 2</span>
+                      </div>
+                      <div class="bc-value">11111111</div>
+                      <div class="bc-groups">
+                        <span class="bc-grp">1111</span
+                        ><span class="bc-grp">1111</span>
+                      </div>
+                    </div>
+                    <div class="bc-card bc-card--oct">
+                      <div class="bc-card-label">
+                        <span>OKTAL</span
+                        ><span class="bc-base-pill">BASE 8</span>
+                      </div>
+                      <div class="bc-value">377</div>
+                      <div class="bc-groups">
+                        <span class="bc-grp">011</span
+                        ><span class="bc-grp">111</span
+                        ><span class="bc-grp">111</span>
+                      </div>
+                    </div>
+                    <div class="bc-card bc-card--dec">
+                      <div class="bc-card-label">
+                        <span>DESIMAL ✦</span
+                        ><span class="bc-base-pill">BASE 10</span>
+                      </div>
+                      <div class="bc-value">255</div>
+                    </div>
+                    <div class="bc-card bc-card--hex">
+                      <div class="bc-card-label">
+                        <span>HEKSADESIMAL</span
+                        ><span class="bc-base-pill">BASE 16</span>
+                      </div>
+                      <div class="bc-value">FF</div>
+                      <div class="bc-groups">
+                        <span class="bc-grp">1111</span
+                        ><span class="bc-grp">1111</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bc-steps">
+                    <div class="bc-steps-title">
+                      LANGKAH DEMI LANGKAH · Desimal → Biner (÷2)
+                    </div>
+                    <div class="bc-step-row">
+                      <span class="bc-step-n">1.</span
+                      ><span class="bc-step-txt"
+                        >255 ÷ 2 = 127 sisa <em>1</em></span
+                      >
+                    </div>
+                    <div class="bc-step-row">
+                      <span class="bc-step-n">2.</span
+                      ><span class="bc-step-txt"
+                        >127 ÷ 2 = 63 sisa <em>1</em> &nbsp; · · ·</span
+                      >
+                    </div>
+                    <div class="bc-step-row">
+                      <span class="bc-step-n">↑</span
+                      ><span class="bc-step-txt"
+                        >Baca sisa dari bawah ke atas</span
+                      >
+                    </div>
+                    <div class="bc-step-result">
+                      → &nbsp;11111111<sub>2</sub>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Konverter sistem bilangan 4-basis (Biner, Oktal, Desimal,
+                Heksadesimal) dengan transparansi langkah penuh — menggunakan
+                BigInt JavaScript agar presisi terjaga untuk angka berapapun,
+                dilengkapi visualisasi pengelompokan bit 3-bit dan 4-bit secara
+                otomatis.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔢</span> 4 Sistem Bilangan
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔍</span> Step-by-step Breakdown
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">⚡</span> BigInt Presisi Penuh
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🟦</span> Bit Grouping Visual
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>BigInt API</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/basecalc-insight"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--bc pf-btn-3"
+                  aria-label="Demo BaseCalc Insight (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--bc cs-open-btn"
+                  data-project="basecalc"
+                  aria-label="Buka Case Study BaseCalc Insight"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/basecalc-insight"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub BaseCalc Insight (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Neuro-Shelf -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <div class="pf-meta-top">
+              <span class="pf-tag pf-tag--ns">Knowledge Graph</span
+              ><span class="pf-desktop-badge">🖥 Best on Desktop</span>
+            </div>
+            <h3 class="pf-title">
+              Neuro<span class="pf-title-accent pf-title-accent--ns">·</span
+              >Shelf
+            </h3>
+          </div>
+          <div class="pf-card pf-card--ns">
+            <div class="pf-preview pf-preview--ns" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--ns">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span class="pf-mock-url pf-mock-url--ns"
+                    >neuro-shelf · knowledge-graph · v2.0</span
+                  >
+                </div>
+                <div class="ns-live-preview">
+                  <div class="ns-sidebar">
+                    <div class="ns-logo">NS</div>
+                    <div class="ns-sb-divider"></div>
+                    <div class="ns-sb-label">NODE</div>
+                    <div class="ns-sb-field">JavaScript</div>
+                    <div class="ns-sb-field ns-sb-field--group">Tech</div>
+                    <div class="ns-sb-field ns-sb-field--tags">
+                      javascript, web
+                    </div>
+                    <div class="ns-sb-label" style="margin-top: 8px">LIST</div>
+                    <div class="ns-sb-item ns-sb-item--active">
+                      <div class="ns-dot" style="background: #00d4ff"></div>
+                      JavaScript
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #7c3aed"></div>
+                      Graph Theory
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #10b981"></div>
+                      Neural Net
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #f59e0b"></div>
+                      Algorithm
+                    </div>
+                    <div class="ns-sb-item">
+                      <div class="ns-dot" style="background: #ef4444"></div>
+                      Python
+                    </div>
+                  </div>
+                  <div class="ns-graph-area">
+                    <div class="ns-dot-grid"></div>
+                    <div class="ns-topbar">
+                      <span class="ns-topbar-logo"
+                        >NEURO-SHELF <em>v2.0</em></span
+                      >
+                      <div class="ns-topbar-btns">
+                        <span class="ns-tbtn">↩</span
+                        ><span class="ns-tbtn">↪</span
+                        ><span class="ns-tbtn ns-tbtn--accent">🔗 Path</span
+                        ><span class="ns-tbtn">🖼 PNG</span>
+                      </div>
+                      <div class="ns-stats-mini">
+                        N <b>14</b> &nbsp;L <b>11</b> &nbsp;G <b>5</b>
+                      </div>
+                    </div>
+                    <svg
+                      class="ns-svg"
+                      viewBox="0 0 520 290"
+                      xmlns="http://www.w3.org/2000/svg"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      <defs>
+                        <filter id="glow-ns">
+                          <feGaussianBlur stdDeviation="3.5" result="b" />
+                          <feMerge>
+                            <feMergeNode in="b" />
+                            <feMergeNode in="SourceGraphic" />
+                          </feMerge>
+                        </filter>
+                      </defs>
+                      <ellipse
+                        cx="160"
+                        cy="148"
+                        rx="95"
+                        ry="72"
+                        fill="#00d4ff"
+                        fill-opacity=".05"
+                        stroke="#00d4ff"
+                        stroke-opacity=".09"
+                        stroke-width="20"
+                      />
+                      <ellipse
+                        cx="348"
+                        cy="120"
+                        rx="75"
+                        ry="60"
+                        fill="#7c3aed"
+                        fill-opacity=".05"
+                        stroke="#7c3aed"
+                        stroke-opacity=".09"
+                        stroke-width="20"
+                      />
+                      <ellipse
+                        cx="392"
+                        cy="232"
+                        rx="60"
+                        ry="44"
+                        fill="#10b981"
+                        fill-opacity=".05"
+                        stroke="#10b981"
+                        stroke-opacity=".09"
+                        stroke-width="20"
+                      />
+                      <path
+                        d="M168,138 Q222,132 264,108"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2.8"
+                        stroke-opacity=".85"
+                      />
+                      <path
+                        d="M278,108 Q360,112 430,150"
+                        fill="none"
+                        stroke="#f59e0b"
+                        stroke-width="2.8"
+                        stroke-opacity=".85"
+                      />
+                      <path
+                        d="M160,118 Q180,82 224,90"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M148,158 Q122,188 110,214"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M332,100 Q354,70 392,76"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <path
+                        d="M342,136 Q372,166 386,192"
+                        fill="none"
+                        stroke="#1e3a5f"
+                        stroke-width="1.4"
+                        stroke-opacity=".7"
+                      />
+                      <circle
+                        cx="160"
+                        cy="145"
+                        r="23"
+                        fill="#00d4ff15"
+                        stroke="#00d4ff"
+                        stroke-width="2.5"
+                        filter="url(#glow-ns)"
+                      />
+                      <text
+                        x="160"
+                        y="149"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="8"
+                        fill="#00d4ff"
+                        font-weight="600"
+                      >
+                        JavaScript
+                      </text>
+                      <circle
+                        cx="224"
+                        cy="88"
+                        r="15"
+                        fill="#00d4ff10"
+                        stroke="#00d4ff"
+                        stroke-width="1.8"
+                      />
+                      <text
+                        x="224"
+                        y="92"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        React
+                      </text>
+                      <circle
+                        cx="265"
+                        cy="106"
+                        r="14"
+                        fill="#00d4ff10"
+                        stroke="#00d4ff"
+                        stroke-width="1.8"
+                      />
+                      <text
+                        x="265"
+                        y="110"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#94a3b8"
+                      >
+                        Node.js
+                      </text>
+                      <circle
+                        cx="332"
+                        cy="112"
+                        r="19"
+                        fill="#7c3aed15"
+                        stroke="#7c3aed"
+                        stroke-width="2"
+                      />
+                      <text
+                        x="332"
+                        y="116"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7.5"
+                        fill="#a78bfa"
+                      >
+                        Graph Theory
+                      </text>
+                      <circle
+                        cx="388"
+                        cy="196"
+                        r="16"
+                        fill="#10b98115"
+                        stroke="#10b981"
+                        stroke-width="2"
+                      />
+                      <text
+                        x="388"
+                        y="200"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#34d399"
+                      >
+                        Neural Net
+                      </text>
+                      <circle
+                        cx="434"
+                        cy="152"
+                        r="18"
+                        fill="#f59e0b15"
+                        stroke="#f59e0b"
+                        stroke-width="2.5"
+                      />
+                      <text
+                        x="434"
+                        y="149"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#fbbf24"
+                      >
+                        Machine
+                      </text>
+                      <text
+                        x="434"
+                        y="159"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#fbbf24"
+                      >
+                        Learning
+                      </text>
+                      <circle
+                        cx="300"
+                        cy="238"
+                        r="13"
+                        fill="#ef444415"
+                        stroke="#ef4444"
+                        stroke-width="1.5"
+                      />
+                      <text
+                        x="300"
+                        y="242"
+                        text-anchor="middle"
+                        font-family="Inter,sans-serif"
+                        font-size="7"
+                        fill="#f87171"
+                      >
+                        Algorithm
+                      </text>
+                    </svg>
+                    <div class="ns-legend">
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #00d4ff"></div>
+                        <span>Tech</span>
+                      </div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #7c3aed"></div>
+                        <span>Math</span>
+                      </div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #10b981"></div>
+                        <span>AI</span>
+                      </div>
+                      <div class="ns-leg-item">
+                        <div class="ns-dot" style="background: #f59e0b"></div>
+                        <span>Physics</span>
+                      </div>
+                    </div>
+                    <div class="ns-pf-badge">
+                      🔗 Path: JS → Node.js → ML &nbsp;·&nbsp; 2 hops
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Sistem visualisasi pengetahuan berbasis
+                <strong>Force-Directed Graph</strong> — mengubah catatan dan
+                topik menjadi jaringan node interaktif yang terhubung otomatis
+                lewat keyword matching. Eksplorasi koneksi antar ilmu secara
+                visual dengan BFS path finder, undo/redo, minimap, dan export
+                PNG.
+              </p>
+              <p class="pf-desktop-note">
+                🖥 Gunakan <strong>Mode Situs Desktop</strong> di browser HP
+                untuk pengalaman terbaik.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">🕸</span> Force-Directed Graph
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔗</span> BFS Path Finder
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">✦</span> Auto-Link by Tags
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🗺</span> Minimap + Convex Hull
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">↩</span> Undo / Redo History
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🖼</span> Export PNG &amp; JSON
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>D3.js v7</span><span>localStorage</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/neuro-shelf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--ns pf-btn-3"
+                  aria-label="Demo Neuro Shelf (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--ns cs-open-btn"
+                  data-project="neuroshelf"
+                  aria-label="Buka Case Study Neuro Shelf"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/neuro-shelf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub Neuro Shelf (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STRIVE PRO -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <div class="pf-meta-top">
+              <span class="pf-tag pf-tag--sp">Habit-Building Engine</span>
+            </div>
+            <h3 class="pf-title">
+              Strive<span class="pf-title-accent pf-title-accent--sp">·</span
+              >Pro
+            </h3>
+          </div>
+          <div class="pf-card pf-card--sp">
+            <div class="pf-preview pf-preview--sp" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--sp">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span class="pf-mock-url pf-mock-url--sp"
+                    >strive-pro · habit-engine · v2.0</span
+                  >
+                  <a
+                    href="https://raffisirojudin.github.io/strive-pro"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="sp-open-full"
+                    title="Buka di tab baru"
+                    aria-label="Buka Strive Pro di tab baru"
+                    >⤢</a
+                  >
+                </div>
+                <iframe
+                  src="https://raffisirojudin.github.io/strive-pro"
+                  class="sp-iframe"
+                  loading="lazy"
+                  title="STRIVE PRO — Live Preview"
+                  sandbox="allow-scripts allow-same-origin allow-forms"
+                  tabindex="-1"
+                ></iframe>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Engine perubahan perilaku berbasis
+                <strong>Predictive Analytics &amp; Gamifikasi</strong> —
+                Adaptive Momentum Engine (bukan logika biner), Cognitive Load
+                Guard untuk mencegah overload mental, visualisasi Arboretum SVG
+                dinamis yang tumbuh sesuai konsistensi, dan Ghost Streak
+                Visualizer untuk kompetisi internal melawan diri sendiri.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">⚡</span> Adaptive Momentum Engine
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🧠</span> Cognitive Load Guard
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🌳</span> Dynamic SVG Arboretum
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">👻</span> Ghost Streak Visualizer
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔗</span> Habit Stacking System
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">⏱</span> Focus Timer
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>SVG</span><span>Canvas API</span
+                ><span>LocalStorage</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/strive-pro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--sp pf-btn-3"
+                  aria-label="Demo Strive Pro (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--sp cs-open-btn"
+                  data-project="strivepro"
+                  aria-label="Buka Case Study Strive Pro"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/strive-pro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub Strive Pro (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARNIVAL ARCADE -->
+        <div class="project-featured reveal">
+          <div class="pf-meta">
+            <div class="pf-meta-top">
+              <span class="pf-tag pf-tag--ca">Arcade Game Collection</span
+              ><span class="pf-desktop-badge">🖥 Best on Desktop</span>
+            </div>
+            <h3 class="pf-title">
+              Carnival<span class="pf-title-accent pf-title-accent--ca">·</span
+              >Arcade
+            </h3>
+          </div>
+          <div class="pf-card pf-card--ca">
+            <div class="pf-preview pf-preview--ca" aria-hidden="true">
+              <div class="pf-preview-inner pf-preview-inner--ca">
+                <div class="pf-mock-header pf-mock-header--dark">
+                  <div class="pf-mock-dots">
+                    <span style="background: #ff5f57"></span
+                    ><span style="background: #febc2e"></span
+                    ><span style="background: #28c840"></span>
+                  </div>
+                  <span class="pf-mock-url pf-mock-url--ca"
+                    >carnival-arcade · 12-games</span
+                  >
+                </div>
+                <div class="ca-live-preview">
+                  <div class="ca-lights">
+                    <span class="ca-bulb" style="--c: #e8304a; --d: 0s"></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ffd700; --d: 0.12s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #4ecdc4; --d: 0.24s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ff6b9d; --d: 0.36s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #e8304a; --d: 0.48s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ffd700; --d: 0.6s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #4ecdc4; --d: 0.72s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ff6b9d; --d: 0.84s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #e8304a; --d: 0.96s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ffd700; --d: 1.08s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #4ecdc4; --d: 1.2s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ff6b9d; --d: 1.32s"
+                    ></span>
+                  </div>
+                  <div class="ca-top">
+                    <div class="ca-brand">
+                      <span class="ca-brand-ico">🎪</span
+                      ><span class="ca-brand-txt">CARNIVAL ARCADE</span>
+                    </div>
+                    <div class="ca-ticket-pill">
+                      <span>🎫</span><span class="ca-ticket-num">247</span>
+                    </div>
+                  </div>
+                  <div class="ca-tagline">
+                    // 12 GAMES &nbsp;&middot;&nbsp; STEP RIGHT UP! //
+                  </div>
+                  <div class="ca-grid">
+                    <div class="ca-tile" style="--tc: #e8304a">
+                      <span class="ca-tile-ico">🐍</span
+                      ><span class="ca-tile-lbl">Snake</span
+                      ><span class="ca-tile-tag">📱+🖥</span>
+                    </div>
+                    <div class="ca-tile" style="--tc: #ffd700">
+                      <span class="ca-tile-ico">🧱</span
+                      ><span class="ca-tile-lbl">Breakout</span
+                      ><span class="ca-tile-tag">📱+🖥</span>
+                    </div>
+                    <div class="ca-tile" style="--tc: #4ecdc4">
+                      <span class="ca-tile-ico">🏓</span
+                      ><span class="ca-tile-lbl">Pong</span
+                      ><span class="ca-tile-tag">🖥</span>
+                    </div>
+                    <div class="ca-tile" style="--tc: #a78bfa">
+                      <span class="ca-tile-ico">🚀</span
+                      ><span class="ca-tile-lbl">Space</span
+                      ><span class="ca-tile-tag">🖥</span>
+                    </div>
+                    <div class="ca-tile" style="--tc: #f97316">
+                      <span class="ca-tile-ico">🃏</span
+                      ><span class="ca-tile-lbl">Memory</span
+                      ><span class="ca-tile-tag">📱+🖥</span>
+                    </div>
+                    <div class="ca-tile ca-tile-more" style="--tc: #475569">
+                      <span class="ca-tile-more-txt">+7</span
+                      ><span class="ca-tile-lbl">More</span
+                      ><span class="ca-tile-tag">•••</span>
+                    </div>
+                  </div>
+                  <div class="ca-footer-bar">
+                    <span class="ca-fb-item"
+                      ><span
+                        class="ca-fb-dot"
+                        style="background: #e8304a"
+                      ></span
+                      >🎫 247 Tiket</span
+                    ><span class="ca-fb-item"
+                      ><span
+                        class="ca-fb-dot"
+                        style="background: #ffd700"
+                      ></span
+                      >🏆 1,240 Pts</span
+                    ><span class="ca-fb-live">● LIVE</span>
+                  </div>
+                  <div class="ca-lights ca-lights-bottom">
+                    <span class="ca-bulb" style="--c: #ffd700; --d: 0s"></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #4ecdc4; --d: 0.12s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #e8304a; --d: 0.24s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ff6b9d; --d: 0.36s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ffd700; --d: 0.48s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #4ecdc4; --d: 0.6s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #e8304a; --d: 0.72s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ffd700; --d: 0.84s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #4ecdc4; --d: 0.96s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ff6b9d; --d: 1.08s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #e8304a; --d: 1.2s"
+                    ></span
+                    ><span
+                      class="ca-bulb"
+                      style="--c: #ffd700; --d: 1.32s"
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pf-info">
+              <p class="pf-desc">
+                Koleksi 12 mini-game arcade klasik dalam satu platform berbasis
+                Canvas &mdash; Snake, Breakout, Pong, Space Invaders,
+                Whack-a-mole, Memory Cards, dan lebih banyak lagi. Dilengkapi
+                sistem tiket universal yang terakumulasi lintas game, papan skor
+                persisten, Web Audio FX, serta dukungan penuh kontrol
+                touchscreen dan keyboard.
+              </p>
+              <p class="pf-desktop-note">
+                🖥 Beberapa game memerlukan
+                <strong>Mode Situs Desktop</strong> di browser HP untuk
+                pengalaman terbaik.
+              </p>
+              <div class="pf-highlights">
+                <div class="pf-hl">
+                  <span aria-hidden="true">🎮</span> 12 Mini-Games Klasik
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🎫</span> Sistem Tiket Universal
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">📱</span> Mobile &amp; Desktop
+                </div>
+                <div class="pf-hl">
+                  <span aria-hidden="true">🔊</span> Web Audio Sound FX
+                </div>
+              </div>
+              <div class="pf-stack">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span
+                ><span>Canvas API</span><span>Web Audio API</span>
+              </div>
+              <div class="pf-links pf-links-3">
+                <a
+                  href="https://raffisirojudin.github.io/carnival-arcade/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-link-primary pf-link-primary--ca pf-btn-3"
+                  aria-label="Demo Carnival Arcade (buka tab baru)"
+                  >🚀 Demo</a
+                >
+                <button
+                  class="pf-btn-3 pf-btn-cs pf-btn-cs--ca cs-open-btn"
+                  data-project="carnival"
+                  aria-label="Buka Case Study Carnival Arcade"
+                >
+                  📖 Case Study
+                </button>
+                <a
+                  href="https://github.com/raffisirojudin/carnival-arcade"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="pf-btn-3 pf-btn-gh"
+                  aria-label="GitHub Carnival Arcade (buka tab baru)"
+                  >GitHub ↗</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="contact-right reveal">
-        <form class="contact-form" id="contact-form" novalidate>
-          <div class="form-group"><label for="cf-name">Nama</label><input type="text" id="cf-name" name="name" placeholder="Nama kamu" autocomplete="name" required /></div>
-          <div class="form-group"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" placeholder="raffisirojudin@gmail.com" autocomplete="email" required /></div>
-          <div class="form-group"><label for="cf-msg">Pesan</label><textarea id="cf-msg" name="message" rows="5" placeholder="Ceritakan proyekmu..." required></textarea></div>
-          <button type="submit" class="form-submit">Kirim Pesan <span class="btn-arrow">→</span></button>
-          <p class="form-note" id="form-note"></p>
-        </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-wrap">
+        <div class="section-label reveal" aria-hidden="true">
+          <span class="label-num">05</span><span class="label-line"></span
+          ><span class="label-text">Contact</span>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-left reveal">
+            <h2 class="section-title">Mari Bekerja<br /><em>Bersama</em></h2>
+            <p class="contact-desc">
+              Punya proyek menarik atau ingin berkolaborasi? Saya selalu terbuka
+              untuk diskusi dan peluang baru.
+            </p>
+            <a href="mailto:raffisirojudin@gmail.com" class="contact-email-link"
+              >raffisirojudin@gmail.com</a
+            >
+            <div class="socials-wrap" aria-label="Media sosial">
+              <a
+                href="https://github.com/raffisirojudin"
+                class="social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Rafi Sirojudin (buka tab baru)"
+              >
+                <svg
+                  class="social-svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  />
+                </svg>
+                GitHub
+              </a>
+              <a
+                href="https://www.instagram.com/sozudigi/"
+                class="social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram Rafi Sirojudin (buka tab baru)"
+              >
+                <svg
+                  class="social-svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+                Instagram
+              </a>
+              <a
+                href="https://wa.me/62895405424200"
+                class="social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp Rafi Sirojudin (buka tab baru)"
+              >
+                <svg
+                  class="social-svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  />
+                </svg>
+                WhatsApp
+              </a>
+              <a
+                href="https://lynk.id/takisozu"
+                class="social-btn social-btn--lynk"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Produk Digital Rafi di Lynk.id (buka tab baru)"
+              >
+                <svg
+                  class="social-svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+                Produk Digital
+              </a>
+            </div>
+          </div>
+          <div class="contact-right reveal">
+            <form
+              class="contact-form"
+              id="contact-form"
+              novalidate
+              aria-label="Form kontak"
+            >
+              <div class="form-group">
+                <label for="cf-name">Nama</label>
+                <input
+                  type="text"
+                  id="cf-name"
+                  name="name"
+                  placeholder="Nama kamu"
+                  autocomplete="name"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email</label>
+                <input
+                  type="email"
+                  id="cf-email"
+                  name="email"
+                  placeholder="raffisirojudin@gmail.com"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                />
+              </div>
+              <div class="form-group">
+                <label for="cf-msg">Pesan</label>
+                <textarea
+                  id="cf-msg"
+                  name="message"
+                  rows="5"
+                  placeholder="Ceritakan proyekmu..."
+                  required
+                  aria-required="true"
+                ></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                Kirim Pesan <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+              <p
+                class="form-note"
+                id="form-note"
+                role="alert"
+                aria-live="assertive"
+              ></p>
+            </form>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<button id="back-top-ring" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg class="btr-svg" viewBox="0 0 36 36"><circle class="btr-track" cx="18" cy="18" r="15.9"/><circle class="btr-fill" id="btr-fill" cx="18" cy="18" r="15.9"/></svg>
-  <span class="btr-arrow">↑</span>
-</button>
+    <button
+      id="back-top-ring"
+      aria-label="Kembali ke atas"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      <svg class="btr-svg" viewBox="0 0 36 36" aria-hidden="true">
+        <circle class="btr-track" cx="18" cy="18" r="15.9" />
+        <circle class="btr-fill" id="btr-fill" cx="18" cy="18" r="15.9" />
+      </svg>
+      <span class="btr-arrow" aria-hidden="true">↑</span>
+    </button>
 
-<footer>
-  <div class="footer-inner">
-    <span class="footer-logo">RS.</span>
-    <p>Dibuat dengan ❤️ oleh Rafi Sirojudin · <span id="footer-year"></span></p>
-    <a href="#hero" class="back-top">↑ Top</a>
-  </div>
-</footer>
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-logo" aria-hidden="true">RS.</span>
+        <p>
+          Dibuat dengan ❤️ oleh Rafi Sirojudin · <span id="footer-year"></span>
+        </p>
+        <a
+          href="#hero"
+          class="back-top"
+          aria-label="Kembali ke bagian atas halaman"
+          >↑ Top</a
+        >
+      </div>
+    </footer>
 
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
