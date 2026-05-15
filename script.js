@@ -50,6 +50,7 @@ if (themeBtn) {
 var navbar = document.getElementById("navbar");
 var burger = document.getElementById("burger");
 var mobileMenu = document.getElementById("mobile-menu");
+
 window.addEventListener(
   "scroll",
   function () {
@@ -57,6 +58,7 @@ window.addEventListener(
   },
   { passive: true },
 );
+
 if (burger && mobileMenu) {
   burger.addEventListener("click", function () {
     var isOpen = mobileMenu.classList.toggle("open");
@@ -181,6 +183,7 @@ var SKILLS = {
   },
 };
 
+/* Focus trap helper */
 function trapFocus(el) {
   var focusable = el.querySelectorAll(
     'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
@@ -247,6 +250,7 @@ if (modal && modalClose) {
       }
     });
   });
+
   function closeModal() {
     modal.classList.remove("open");
     document.body.style.overflow = "";
@@ -288,6 +292,7 @@ if (form && note) {
         n > 450 ? "var(--coral)" : n > 350 ? "var(--gold)" : "var(--text-3)";
     });
   }
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = form.querySelector('[name="name"]').value.trim();
@@ -296,11 +301,13 @@ if (form && note) {
     if (!name || !email || !msg) {
       note.style.color = "var(--coral)";
       note.textContent = "Mohon isi semua kolom.";
+      announce("Error: Mohon isi semua kolom.");
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       note.style.color = "var(--coral)";
       note.textContent = "Format email tidak valid.";
+      announce("Error: Format email tidak valid.");
       return;
     }
     var btn = form.querySelector(".form-submit");
@@ -312,6 +319,7 @@ if (form && note) {
       form.reset();
       btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
       btn.disabled = false;
+      announce("Pesan berhasil terkirim. Terima kasih!");
     }, 1200);
   });
 }
@@ -358,17 +366,16 @@ window.addEventListener(
 /* ─── CASE STUDY MODAL ────────────────────────────── */
 (function () {
   var CASE_STUDIES = {
-    /* ══════════ PYQUEST (NEW) ══════════ */
     pyquest: {
-      tag: "Proyek Terbaru & Unggulan",
-      tagColor: "#FFD700",
+      tag: "Game-Based Learning",
+      tagColor: "#69F0AE",
       title: "PyQuest",
       problem:
-        "Belajar Python sering terasa membosankan dan abstrak bagi pemula — tutorial teks panjang tanpa feedback instan, tidak ada motivasi untuk melanjutkan, dan tidak ada narasi yang membuat konsep terasa bermakna.",
+        "Belajar Python sering terasa membosankan bagi pemula — tutorial teks panjang tanpa feedback instan, tidak ada motivasi untuk melanjutkan, dan tidak ada narasi yang membuat konsep terasa bermakna.",
       solution:
-        "Membangun platform belajar Python interaktif bergaya game RPG: 25 quest dengan narasi cerita, editor kode langsung di browser, mini Python interpreter client-side, sistem nyawa + XP + bintang, chapter boss, dan desain Minecraft pixel-art murni CSS.",
+        "Platform belajar Python interaktif bergaya game RPG: 25 quest dengan narasi cerita, editor kode langsung di browser, mini Python interpreter client-side, sistem nyawa + XP + bintang, chapter boss, dan desain Minecraft pixel-art murni CSS.",
       result:
-        "Platform lengkap dengan 5 chapter dan 25 level yang mengajarkan Python dari print() hingga fungsi. Interpreter Python mini berjalan 100% di browser tanpa server — mendukung variabel, loop, kondisi, list, dan fungsi.",
+        "Platform lengkap dengan 5 chapter dan 25 level yang mengajarkan Python dari print() hingga fungsi. Interpreter Python mini berjalan 100% di browser tanpa server.",
       features: [
         "⚔ 25 Quest Level Terstruktur",
         "🐍 Mini Python Interpreter (client-side)",
@@ -392,7 +399,6 @@ window.addEventListener(
       previewBg: "linear-gradient(135deg,#0d1209,#0a0a15,#12090e)",
       previewEmoji: "⚔",
     },
-    /* ══════════ CURTAINBIZ ══════════ */
     curtainbiz: {
       tag: "Featured Project",
       tagColor: "var(--accent)",
@@ -480,6 +486,103 @@ window.addEventListener(
       tech: ["HTML", "CSS", "JavaScript", "KaTeX"],
       previewBg: "linear-gradient(135deg,#0a1a14,#0d1e17)",
       previewEmoji: "∑",
+    },
+    basecalc: {
+      tag: "Number Base Converter",
+      tagColor: "#22d3ee",
+      title: "BaseCalc·Insight",
+      problem:
+        "Pelajar kesulitan memahami konversi antar sistem bilangan karena alat yang tersedia hanya menampilkan hasil akhir tanpa menjelaskan prosesnya.",
+      solution:
+        "Konverter 4-basis (Biner, Oktal, Desimal, Heksadesimal) yang menampilkan setiap langkah perhitungan secara transparan menggunakan BigInt untuk akurasi penuh.",
+      result:
+        "Alat edukasi yang tidak hanya mengkonversi angka secara instan, tapi juga mengajarkan cara berpikirnya. Mendukung angka hingga tak terbatas.",
+      features: [
+        "🔢 Konversi 4 Sistem Bilangan Sekaligus",
+        "🔍 Step-by-step Breakdown Interaktif",
+        "⚡ BigInt — Presisi Tanpa Batas",
+        "🟦 Bit Grouping Visual (3-bit & 4-bit)",
+        "✅ Validasi Input Real-time",
+        "🎨 Terminal / Cyberpunk UI",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "BigInt API"],
+      previewBg: "linear-gradient(135deg,#080b10,#0d1523)",
+      previewEmoji: "⌗",
+    },
+    neuroshelf: {
+      tag: "Knowledge Graph",
+      tagColor: "#00d4ff",
+      title: "Neuro·Shelf",
+      problem:
+        "Pengelolaan catatan tradisional (linear) tidak mencerminkan bagaimana otak manusia benar-benar menyimpan informasi — dalam jaringan koneksi, bukan daftar.",
+      solution:
+        "Sistem visualisasi pengetahuan berbasis Force-Directed Graph menggunakan D3.js dengan auto-linking, BFS path finder, Convex Hull grouping, minimap, undo/redo, dan export PNG.",
+      result:
+        "User dapat memvisualisasikan 100+ node pengetahuan dalam jaringan interaktif dan menemukan koneksi tersembunyi antar topik secara otomatis.",
+      features: [
+        "🕸 Force-Directed Graph D3.js",
+        "🔗 BFS Path Finder",
+        "✦ Auto-Link by Keyword Tags",
+        "🗺 Minimap + Convex Hull",
+        "↩ Undo / Redo 40 Steps",
+        "🖼 Export PNG & JSON",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "D3.js v7", "localStorage"],
+      previewBg: "linear-gradient(135deg,#070b12,#0d1523)",
+      previewEmoji: "🕸",
+    },
+    strivepro: {
+      tag: "Habit-Building Engine",
+      tagColor: "#4a8c62",
+      title: "Strive·Pro",
+      problem:
+        "Mayoritas habit tracker menggunakan logika biner: berhasil atau gagal. Ini menciptakan efek 'ah sudahlah' — sekali gagal, motivasi langsung runtuh.",
+      solution:
+        "Adaptive Momentum Engine berbasis skor 0–100 dengan Pity System, Cognitive Load Guard, Dynamic SVG Arboretum, dan Ghost Streak Visualizer.",
+      result:
+        "Sistem habit yang aktif memprediksi keberhasilan, memitigasi kegagalan, dan memvisualisasikan pertumbuhan karakter.",
+      features: [
+        "⚡ Adaptive Momentum Engine (0–100)",
+        "🛡 Pity System — Cegah Efek 'Ah Sudahlah'",
+        "🧠 Cognitive Load Guard + Alert",
+        "🌳 SVG Arboretum Dinamis",
+        "👻 Ghost Streak Visualizer",
+        "🔗 Habit Stacking System",
+        "⏱ Focus Timer",
+        "💾 LocalStorage Persistence",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "SVG", "Canvas API", "LocalStorage"],
+      previewBg: "linear-gradient(160deg,#1c3329,#2d5040)",
+      previewEmoji: "🌿",
+    },
+    carnival: {
+      tag: "Arcade Game Collection",
+      tagColor: "#e8304a",
+      title: "Carnival·Arcade",
+      problem:
+        "Tidak ada platform browser yang mengumpulkan berbagai mini-game arcade klasik dalam satu tempat dengan sistem reward yang konsisten.",
+      solution:
+        "Platform arcade game kolektif berbasis Canvas dengan 12 mini-game terintegrasi sistem tiket universal, Web Audio FX, dan dukungan penuh touchscreen & keyboard.",
+      result:
+        "Platform arcade lengkap yang bisa dinikmati di mobile maupun desktop, dengan sistem tiket yang mendorong pemain menjelajahi semua 12 game.",
+      features: [
+        "🎮 12 Mini-Games Klasik",
+        "🎫 Sistem Tiket Universal",
+        "📱 Mobile Touch Controls",
+        "🖥 Desktop Keyboard Support",
+        "🔊 Web Audio Sound FX",
+        "🏆 Papan Skor Persisten",
+      ],
+      tech: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Canvas API",
+        "Web Audio API",
+        "localStorage",
+      ],
+      previewBg: "linear-gradient(135deg,#1a0208,#2d0a18)",
+      previewEmoji: "🎪",
     },
   };
 
@@ -612,8 +715,8 @@ window.addEventListener(
     var u = xf * xf * xf * (xf * (xf * 6 - 15) + 10),
       v = yf * yf * yf * (yf * (yf * 6 - 15) + 10);
     var h1 = (X * 374761393 + Y * 668265263) & 0x7fffffff,
-      h2 = ((X + 1) * 374761393 + Y * 668265263) & 0x7fffffff;
-    var h3 = (X * 374761393 + (Y + 1) * 668265263) & 0x7fffffff,
+      h2 = ((X + 1) * 374761393 + Y * 668265263) & 0x7fffffff,
+      h3 = (X * 374761393 + (Y + 1) * 668265263) & 0x7fffffff,
       h4 = ((X + 1) * 374761393 + (Y + 1) * 668265263) & 0x7fffffff;
     var g = function (h, px, py) {
       h = h & 3;
@@ -751,7 +854,9 @@ window.addEventListener(
   );
 })();
 
-/* ─── MICRO-INTERACTIONS ─────────────────────────── */
+/* ═══════════════════════════════════════════════════
+   MICRO-INTERACTIONS & A11Y
+═══════════════════════════════════════════════════ */
 var skipLink = document.createElement("a");
 skipLink.href = "#about";
 skipLink.className = "skip-link";
@@ -815,7 +920,7 @@ function attachRipple(selector) {
   });
 }
 attachRipple(
-  ".btn-primary,.btn-outline,.form-submit,.pf-link-primary,[class*='pf-link-primary--'],.pf-btn-3,.pq-btn-demo,.pq-btn-cs",
+  ".btn-primary,.btn-outline,.form-submit,.pf-link-primary,[class*='pf-link-primary--'],.pf-btn-3",
 );
 
 document.querySelectorAll(".skill-card").forEach(function (card) {
@@ -935,6 +1040,12 @@ liveRegion.setAttribute("aria-atomic", "true");
 liveRegion.style.cssText =
   "position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;";
 document.body.appendChild(liveRegion);
+function announce(msg) {
+  liveRegion.textContent = "";
+  setTimeout(function () {
+    liveRegion.textContent = msg;
+  }, 50);
+}
 
 if (burger) {
   burger.setAttribute("aria-expanded", "false");
