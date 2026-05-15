@@ -691,9 +691,190 @@ section {
   color: var(--accent-2);
   transform: translateY(-2px);
 }
-.about-content p {
+.about-right {
+  display: flex;
+  flex-direction: column;
+}
+.about-content-orbit {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+.about-text-block {
+  display: flex;
+  flex-direction: column;
+}
+.about-text-block p {
   color: var(--text-2);
   margin-bottom: 1rem;
+}
+
+/* ── ORBIT ── */
+.orbit-wrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.orbit-center {
+  position: relative;
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 5px var(--ink-2),
+    0 0 0 6px var(--stroke);
+}
+.orbit-center-txt {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -1px;
+}
+
+/* Rings */
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed var(--stroke-2);
+  top: 50%;
+  left: 50%;
+  animation: orbit-spin linear infinite;
+}
+.orbit-ring-1 {
+  width: 130px;
+  height: 130px;
+  margin-top: -65px;
+  margin-left: -65px;
+  animation-duration: 18s;
+}
+.orbit-ring-2 {
+  width: 214px;
+  height: 214px;
+  margin-top: -107px;
+  margin-left: -107px;
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon on ring: absolute, positioned by transform-origin trick */
+.orbit-icon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink-2);
+  border: 1px solid var(--stroke-2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  margin-top: -16px;
+  margin-left: -16px;
+}
+/* place each icon at its angle on the ring via transform */
+/* ring-1 radius = 65px, ring-2 radius = 107px */
+
+/* ring-1: 4 icons at 0,90,180,270 */
+.orbit-ring-1 .orbit-icon:nth-child(1) {
+  transform: translateY(-65px);
+}
+.orbit-ring-1 .orbit-icon:nth-child(2) {
+  transform: translateX(65px);
+}
+.orbit-ring-1 .orbit-icon:nth-child(3) {
+  transform: translateY(65px);
+}
+.orbit-ring-1 .orbit-icon:nth-child(4) {
+  transform: translateX(-65px);
+}
+
+/* ring-2: 5 icons at 0,72,144,216,288 */
+.orbit-ring-2 .orbit-icon:nth-child(1) {
+  transform: translateY(-107px);
+}
+.orbit-ring-2 .orbit-icon:nth-child(2) {
+  transform: translateX(calc(107px * 0.951)) translateY(calc(-107px * 0.309));
+}
+.orbit-ring-2 .orbit-icon:nth-child(3) {
+  transform: translateX(calc(107px * 0.588)) translateY(calc(107px * 0.809));
+}
+.orbit-ring-2 .orbit-icon:nth-child(4) {
+  transform: translateX(calc(-107px * 0.588)) translateY(calc(107px * 0.809));
+}
+.orbit-ring-2 .orbit-icon:nth-child(5) {
+  transform: translateX(calc(-107px * 0.951)) translateY(calc(-107px * 0.309));
+}
+
+/* Counter-rotate so icons stay upright */
+.orbit-ring-1 .orbit-icon span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: orbit-counter-1 18s linear infinite;
+}
+.orbit-ring-2 .orbit-icon span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: orbit-counter-2 28s linear infinite;
+}
+@keyframes orbit-counter-1 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes orbit-counter-2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.orbit-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .about-content-orbit {
+    grid-template-columns: 1fr;
+  }
+  .orbit-wrap {
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .about-right {
+    margin-top: 0;
+  }
 }
 .about-stats {
   display: flex;
