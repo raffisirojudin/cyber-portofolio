@@ -188,307 +188,278 @@
 
           <!-- RIGHT: teks + stats + orbit -->
           <div class="about-right reveal">
-            <div class="about-content-orbit">
-              <!-- teks & stats -->
-              <div class="about-text-block">
-                <h2 class="section-title">Tentang Saya</h2>
-                <p>
-                  Saya adalah seorang web developer yang sedang berkembang,
-                  dengan fokus pada pembuatan tampilan web yang bersih dan
-                  responsif. Saya percaya kode yang baik adalah kode yang mudah
-                  dibaca dan dipelihara.
-                </p>
-                <p>
-                  Saat ini saya aktif belajar dan terus mengasah kemampuan di
-                  bidang front-end development — dari desain sistem hingga
-                  optimasi performa.
-                </p>
-                <div class="about-stats" aria-label="Statistik">
-                  <div class="stat-box">
-                    <span class="stat-n"
-                      >10<span class="stat-plus">+</span></span
-                    ><span class="stat-l">Proyek</span>
-                  </div>
-                  <div class="stat-box">
-                    <span class="stat-n">3<span class="stat-plus">+</span></span
-                    ><span class="stat-l">Teknologi</span>
-                  </div>
-                  <div class="stat-box">
-                    <span class="stat-n">1<span class="stat-plus">+</span></span
-                    ><span class="stat-l">Tahun</span>
-                  </div>
+            <!-- orbit: posisi absolute di sisi kanan, dipotong separuh -->
+            <div class="orbit-wrap" aria-hidden="true">
+              <div class="orbit-center">
+                <span class="orbit-center-txt">RS</span>
+              </div>
+              <!-- Orbit ring 1 (inner) — 4 icons, 18s -->
+              <div class="orbit-ring orbit-ring-1">
+                <div class="orbit-icon">
+                  <span title="HTML"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M4 2l2.4 27L16 31l9.6-2L28 2H4z"
+                        fill="#E44D26"
+                      />
+                      <path d="M16 29l7.8-2.2L26 5H16v24z" fill="#F16529" />
+                      <path
+                        d="M11.4 13h4.6V10H8.2l.8 9H16v-3h-4l-.6-3zM12 19h-3l.4 5L16 26v-3.1l-3.8-1.1L12 19z"
+                        fill="#EBEBEB"
+                      />
+                      <path
+                        d="M16 13v3h3.8l-.4 4-3.4 1V24l6.2-1.7.1-1 .7-8.3H16zM16 10v3h7.4l.2-3H16z"
+                        fill="#fff"
+                      /></svg
+                  ></span>
+                </div>
+                <div class="orbit-icon">
+                  <span title="CSS3"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M4 2l2.4 27L16 31l9.6-2L28 2H4z"
+                        fill="#1572B6"
+                      />
+                      <path d="M16 29l7.8-2.2L26 5H16v24z" fill="#33A9DC" />
+                      <path
+                        d="M11.6 14H16v-3H8.4l.8 8.6H16V17h-4l-.4-3zM12.2 20h-3l.6 6 6.2 1.7V24.6l-3.4-1-.4-3.6z"
+                        fill="#EBEBEB"
+                      />
+                      <path
+                        d="M16 14v3h3.8l-.4 3.6-3.4 1V24.6l6.2-1.7.1-.8.7-7.1H16zM16 11v3h7.2l.2-3H16z"
+                        fill="#fff"
+                      /></svg
+                  ></span>
+                </div>
+                <div class="orbit-icon">
+                  <span title="JavaScript"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <rect width="32" height="32" rx="3" fill="#F7DF1E" />
+                      <path
+                        d="M9.5 25.3l2.1-1.3c.4.7.8 1.3 1.7 1.3.9 0 1.4-.4 1.4-1.8V15h2.6v8.6c0 2.9-1.7 4.2-4.1 4.2-2.2 0-3.5-1.1-4.1-2.5zM19.3 25l2.1-1.2c.5.9 1.2 1.5 2.4 1.5 1 0 1.7-.5 1.7-1.2 0-.8-.7-1.1-1.8-1.6l-.6-.3c-1.8-.8-3-1.7-3-3.8 0-1.9 1.4-3.3 3.7-3.3 1.6 0 2.7.6 3.5 2l-2 1.3c-.4-.8-.9-1.1-1.5-1.1-.7 0-1.1.4-1.1 1 0 .7.4 1 1.5 1.4l.6.3c2.1.9 3.3 1.8 3.3 3.9 0 2.2-1.7 3.5-4 3.5-2.3 0-3.7-1.1-4.3-2.4z"
+                        fill="#323330"
+                      /></svg
+                  ></span>
+                </div>
+                <div class="orbit-icon">
+                  <span title="React"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <circle cx="16" cy="16" r="3" fill="#61DAFB" />
+                      <ellipse
+                        cx="16"
+                        cy="16"
+                        rx="14"
+                        ry="5.5"
+                        stroke="#61DAFB"
+                        stroke-width="1.5"
+                        fill="none"
+                      />
+                      <ellipse
+                        cx="16"
+                        cy="16"
+                        rx="14"
+                        ry="5.5"
+                        stroke="#61DAFB"
+                        stroke-width="1.5"
+                        fill="none"
+                        transform="rotate(60 16 16)"
+                      />
+                      <ellipse
+                        cx="16"
+                        cy="16"
+                        rx="14"
+                        ry="5.5"
+                        stroke="#61DAFB"
+                        stroke-width="1.5"
+                        fill="none"
+                        transform="rotate(120 16 16)"
+                      /></svg
+                  ></span>
                 </div>
               </div>
-
-              <!-- ORBIT ANIMATION -->
-              <div class="orbit-wrap" aria-hidden="true">
-                <!-- Center node -->
-                <div class="orbit-center">
-                  <span class="orbit-center-txt">RS</span>
+              <!-- Orbit ring 2 (outer) — 5 icons, 28s reverse -->
+              <div class="orbit-ring orbit-ring-2">
+                <div class="orbit-icon">
+                  <span title="Git"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M30.1 14.5L17.5 1.9a2.68 2.68 0 00-3.8 0L11 5.5l3.4 3.4a3.2 3.2 0 014 4.1l3.3 3.3a3.2 3.2 0 11-1.9 1.9l-3.1-3.1v8.1a3.2 3.2 0 11-2.6 0V14.9a3.2 3.2 0 01-1.7-4.2L9 7.3 1.9 14.5a2.68 2.68 0 000 3.8l12.6 12.6a2.68 2.68 0 003.8 0l11.8-11.8a2.68 2.68 0 000-3.6z"
+                        fill="#F05032"
+                      /></svg
+                  ></span>
                 </div>
-
-                <!-- Orbit ring 1 (inner) — 4 icons, 18s -->
-                <div class="orbit-ring orbit-ring-1">
-                  <div class="orbit-icon">
-                    <span title="HTML">
-                      <!-- HTML5 -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <path
-                          d="M4 2l2.4 27L16 31l9.6-2L28 2H4z"
-                          fill="#E44D26"
-                        />
-                        <path d="M16 29l7.8-2.2L26 5H16v24z" fill="#F16529" />
-                        <path
-                          d="M11.4 13h4.6V10H8.2l.8 9H16v-3h-4l-.6-3zM12 19h-3l.4 5L16 26v-3.1l-3.8-1.1L12 19z"
-                          fill="#EBEBEB"
-                        />
-                        <path
-                          d="M16 13v3h3.8l-.4 4-3.4 1V24l6.2-1.7.1-1 .7-8.3H16zM16 10v3h7.4l.2-3H16z"
-                          fill="#fff"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="CSS3">
-                      <!-- CSS3 -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <path
-                          d="M4 2l2.4 27L16 31l9.6-2L28 2H4z"
-                          fill="#1572B6"
-                        />
-                        <path d="M16 29l7.8-2.2L26 5H16v24z" fill="#33A9DC" />
-                        <path
-                          d="M11.6 14H16v-3H8.4l.8 8.6H16V17h-4l-.4-3zM12.2 20h-3l.6 6 6.2 1.7V24.6l-3.4-1-.4-3.6z"
-                          fill="#EBEBEB"
-                        />
-                        <path
-                          d="M16 14v3h3.8l-.4 3.6-3.4 1V24.6l6.2-1.7.1-.8.7-7.1H16zM16 11v3h7.2l.2-3H16z"
-                          fill="#fff"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="JavaScript">
-                      <!-- JS -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <rect width="32" height="32" rx="3" fill="#F7DF1E" />
-                        <path
-                          d="M9.5 25.3l2.1-1.3c.4.7.8 1.3 1.7 1.3.9 0 1.4-.4 1.4-1.8V15h2.6v8.6c0 2.9-1.7 4.2-4.1 4.2-2.2 0-3.5-1.1-4.1-2.5zM19.3 25l2.1-1.2c.5.9 1.2 1.5 2.4 1.5 1 0 1.7-.5 1.7-1.2 0-.8-.7-1.1-1.8-1.6l-.6-.3c-1.8-.8-3-1.7-3-3.8 0-1.9 1.4-3.3 3.7-3.3 1.6 0 2.7.6 3.5 2l-2 1.3c-.4-.8-.9-1.1-1.5-1.1-.7 0-1.1.4-1.1 1 0 .7.4 1 1.5 1.4l.6.3c2.1.9 3.3 1.8 3.3 3.9 0 2.2-1.7 3.5-4 3.5-2.3 0-3.7-1.1-4.3-2.4z"
-                          fill="#323330"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="React">
-                      <!-- React -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <circle cx="16" cy="16" r="3" fill="#61DAFB" />
-                        <ellipse
-                          cx="16"
-                          cy="16"
-                          rx="14"
-                          ry="5.5"
-                          stroke="#61DAFB"
-                          stroke-width="1.5"
-                          fill="none"
-                        />
-                        <ellipse
-                          cx="16"
-                          cy="16"
-                          rx="14"
-                          ry="5.5"
-                          stroke="#61DAFB"
-                          stroke-width="1.5"
-                          fill="none"
-                          transform="rotate(60 16 16)"
-                        />
-                        <ellipse
-                          cx="16"
-                          cy="16"
-                          rx="14"
-                          ry="5.5"
-                          stroke="#61DAFB"
-                          stroke-width="1.5"
-                          fill="none"
-                          transform="rotate(120 16 16)"
-                        />
-                      </svg>
-                    </span>
-                  </div>
+                <div class="orbit-icon">
+                  <span title="Figma"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <rect
+                        x="6"
+                        y="2"
+                        width="10"
+                        height="10"
+                        rx="5"
+                        fill="#F24E1E"
+                      />
+                      <rect
+                        x="6"
+                        y="12"
+                        width="10"
+                        height="10"
+                        rx="5"
+                        fill="#A259FF"
+                      />
+                      <rect
+                        x="6"
+                        y="22"
+                        width="10"
+                        height="10"
+                        rx="5"
+                        fill="#0ACF83"
+                      />
+                      <rect
+                        x="16"
+                        y="2"
+                        width="10"
+                        height="10"
+                        rx="5"
+                        fill="#FF7262"
+                      />
+                      <circle cx="21" cy="17" r="5" fill="#1ABCFE" /></svg
+                  ></span>
                 </div>
-
-                <!-- Orbit ring 2 (outer) — 5 icons, 28s reverse -->
-                <div class="orbit-ring orbit-ring-2">
-                  <div class="orbit-icon">
-                    <span title="Git">
-                      <!-- Git -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
+                <div class="orbit-icon">
+                  <span title="GitHub"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M16 2C8.27 2 2 8.27 2 16c0 6.18 4 11.42 9.58 13.27.7.13.96-.3.96-.67v-2.35c-3.9.85-4.72-1.88-4.72-1.88-.64-1.62-1.55-2.05-1.55-2.05-1.27-.87.1-.85.1-.85 1.4.1 2.14 1.44 2.14 1.44 1.25 2.14 3.27 1.52 4.07 1.16.13-.9.49-1.52.89-1.87-3.11-.35-6.38-1.56-6.38-6.93 0-1.53.55-2.78 1.44-3.76-.14-.35-.62-1.78.14-3.71 0 0 1.17-.38 3.85 1.44a13.4 13.4 0 013.5-.47c1.19.01 2.38.16 3.5.47 2.67-1.82 3.84-1.44 3.84-1.44.76 1.93.28 3.36.14 3.71.9.98 1.44 2.23 1.44 3.76 0 5.38-3.28 6.57-6.4 6.92.5.43.95 1.28.95 2.58v3.83c0 .37.25.81.96.67C26 27.42 30 22.18 30 16 30 8.27 23.73 2 16 2z"
+                        fill="#9d92f8"
+                      /></svg
+                  ></span>
+                </div>
+                <div class="orbit-icon">
+                  <span title="VS Code"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M30.4 6.1L23.5 2.3a2 2 0 00-2.3.4L2 20l8.5 6L30 9.5a2 2 0 00.4-3.4z"
+                        fill="#0065A9"
+                      />
+                      <path
+                        d="M30.4 25.9L23.5 29.7a2 2 0 01-2.3-.4L2 12l8.5-6L30 22.5a2 2 0 01.4 3.4z"
+                        fill="#0065A9"
+                      />
+                      <path
+                        d="M23.5 29.7a2 2 0 01-2.3-.4L2 12v8l19.2 11.7a2 2 0 002.3-.4l7-3.8-7-7.6z"
+                        fill="#007ACC"
+                      />
+                      <path
+                        d="M23.5 2.3a2 2 0 00-2.3.4L2 20v-8L21.2.6a2 2 0 012.3.4l7 3.8-7 7.6z"
+                        fill="#1F9CF0"
+                      /></svg
+                  ></span>
+                </div>
+                <div class="orbit-icon">
+                  <span title="Node.js"
+                    ><svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M16 2L3 9.5v15L16 32l13-7.5V9.5L16 2z"
+                        fill="#339933"
+                      />
+                      <path
+                        d="M16 7.5L8.5 12v9l7.5 4.5 7.5-4.5v-9L16 7.5z"
+                        fill="#fff"
+                        fill-opacity=".15"
+                      />
+                      <text
+                        x="9"
+                        y="22"
+                        font-family="monospace"
+                        font-size="10"
+                        font-weight="bold"
+                        fill="#fff"
                       >
-                        <path
-                          d="M30.1 14.5L17.5 1.9a2.68 2.68 0 00-3.8 0L11 5.5l3.4 3.4a3.2 3.2 0 014 4.1l3.3 3.3a3.2 3.2 0 11-1.9 1.9l-3.1-3.1v8.1a3.2 3.2 0 11-2.6 0V14.9a3.2 3.2 0 01-1.7-4.2L9 7.3 1.9 14.5a2.68 2.68 0 000 3.8l12.6 12.6a2.68 2.68 0 003.8 0l11.8-11.8a2.68 2.68 0 000-3.6z"
-                          fill="#F05032"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="Figma">
-                      <!-- Figma -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <rect
-                          x="6"
-                          y="2"
-                          width="10"
-                          height="10"
-                          rx="5"
-                          fill="#F24E1E"
-                        />
-                        <rect
-                          x="6"
-                          y="12"
-                          width="10"
-                          height="10"
-                          rx="5"
-                          fill="#A259FF"
-                        />
-                        <rect
-                          x="6"
-                          y="22"
-                          width="10"
-                          height="10"
-                          rx="5"
-                          fill="#0ACF83"
-                        />
-                        <rect
-                          x="16"
-                          y="2"
-                          width="10"
-                          height="10"
-                          rx="5"
-                          fill="#FF7262"
-                        />
-                        <circle cx="21" cy="17" r="5" fill="#1ABCFE" />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="GitHub">
-                      <!-- GitHub -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M16 2C8.27 2 2 8.27 2 16c0 6.18 4 11.42 9.58 13.27.7.13.96-.3.96-.67v-2.35c-3.9.85-4.72-1.88-4.72-1.88-.64-1.62-1.55-2.05-1.55-2.05-1.27-.87.1-.85.1-.85 1.4.1 2.14 1.44 2.14 1.44 1.25 2.14 3.27 1.52 4.07 1.16.13-.9.49-1.52.89-1.87-3.11-.35-6.38-1.56-6.38-6.93 0-1.53.55-2.78 1.44-3.76-.14-.35-.62-1.78.14-3.71 0 0 1.17-.38 3.85 1.44a13.4 13.4 0 013.5-.47c1.19.01 2.38.16 3.5.47 2.67-1.82 3.84-1.44 3.84-1.44.76 1.93.28 3.36.14 3.71.9.98 1.44 2.23 1.44 3.76 0 5.38-3.28 6.57-6.4 6.92.5.43.95 1.28.95 2.58v3.83c0 .37.25.81.96.67C26 27.42 30 22.18 30 16 30 8.27 23.73 2 16 2z"
-                          fill="#9d92f8"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="VS Code">
-                      <!-- VS Code -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <path
-                          d="M30.4 6.1L23.5 2.3a2 2 0 00-2.3.4L2 20l8.5 6L30 9.5a2 2 0 00.4-3.4z"
-                          fill="#0065A9"
-                        />
-                        <path
-                          d="M30.4 25.9L23.5 29.7a2 2 0 01-2.3-.4L2 12l8.5-6L30 22.5a2 2 0 01.4 3.4z"
-                          fill="#0065A9"
-                        />
-                        <path
-                          d="M23.5 29.7a2 2 0 01-2.3-.4L2 12v8l19.2 11.7a2 2 0 002.3-.4l7-3.8-7-7.6z"
-                          fill="#007ACC"
-                        />
-                        <path
-                          d="M23.5 2.3a2 2 0 00-2.3.4L2 20v-8L21.2.6a2 2 0 012.3.4l7 3.8-7 7.6z"
-                          fill="#1F9CF0"
-                        />
-                        <path
-                          d="M10.5 26L2 20l8.5-6v12z"
-                          fill="rgba(0,0,0,.25)"
-                        />
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="orbit-icon">
-                    <span title="Node.js">
-                      <!-- Node.js -->
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <path
-                          d="M16 2L3 9.5v15L16 32l13-7.5V9.5L16 2z"
-                          fill="#339933"
-                        />
-                        <path
-                          d="M16 7.5L8.5 12v9l7.5 4.5 7.5-4.5v-9L16 7.5z"
-                          fill="#fff"
-                          fill-opacity=".15"
-                        />
-                        <text
-                          x="9"
-                          y="22"
-                          font-family="monospace"
-                          font-size="10"
-                          font-weight="bold"
-                          fill="#fff"
-                        >
-                          JS
-                        </text>
-                      </svg>
-                    </span>
-                  </div>
+                        JS
+                      </text>
+                    </svg></span
+                  >
                 </div>
               </div>
-              <!-- end orbit-wrap -->
             </div>
-            <!-- end about-content-orbit -->
+
+            <!-- teks & stats -->
+            <div class="about-content">
+              <h2 class="section-title">Tentang Saya</h2>
+              <p>
+                Saya adalah seorang web developer yang sedang berkembang, dengan
+                fokus pada pembuatan tampilan web yang bersih dan responsif.
+                Saya percaya kode yang baik adalah kode yang mudah dibaca dan
+                dipelihara.
+              </p>
+              <p>
+                Saat ini saya aktif belajar dan terus mengasah kemampuan di
+                bidang front-end development — dari desain sistem hingga
+                optimasi performa.
+              </p>
+              <div class="about-stats" aria-label="Statistik">
+                <div class="stat-box reveal">
+                  <span class="stat-n">10<span class="stat-plus">+</span></span
+                  ><span class="stat-l">Proyek</span>
+                </div>
+                <div class="stat-box reveal">
+                  <span class="stat-n">3<span class="stat-plus">+</span></span
+                  ><span class="stat-l">Teknologi</span>
+                </div>
+                <div class="stat-box reveal">
+                  <span class="stat-n">1<span class="stat-plus">+</span></span
+                  ><span class="stat-l">Tahun</span>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- end about-right -->
         </div>
