@@ -776,7 +776,7 @@ section {
   }
 }
 
-/* Icon on ring: absolute, positioned by transform-origin trick */
+/* Icon on ring */
 .orbit-icon {
   position: absolute;
   width: 32px;
@@ -793,8 +793,6 @@ section {
   margin-top: -16px;
   margin-left: -16px;
 }
-/* place each icon at its angle on the ring via transform */
-/* ring-1 radius = 65px, ring-2 radius = 107px */
 
 /* ring-1: 4 icons at 0,90,180,270 */
 .orbit-ring-1 .orbit-icon:nth-child(1) {
@@ -827,7 +825,7 @@ section {
   transform: translateX(calc(-107px * 0.951)) translateY(calc(-107px * 0.309));
 }
 
-/* Counter-rotate so icons stay upright */
+/* Counter-rotate icons to stay upright */
 .orbit-ring-1 .orbit-icon span {
   display: flex;
   align-items: center;
@@ -862,18 +860,40 @@ section {
   height: 18px;
 }
 
-/* Responsive */
-@media (max-width: 1050px) {
+/* ── RESPONSIVE ──
+   Jangan hide orbit — scaling saja agar muat di semua ukuran layar */
+@media (max-width: 1100px) {
   .about-content-orbit {
-    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
   .orbit-wrap {
-    display: none;
+    width: 180px;
+    height: 180px;
+    transform: scale(0.82);
+    transform-origin: center center;
   }
 }
 @media (max-width: 900px) {
-  .about-right {
-    margin-top: 0;
+  /* about-grid sudah 1 kolom, about-right penuh lebar */
+  .about-content-orbit {
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+  .orbit-wrap {
+    transform: scale(0.75);
+    transform-origin: center center;
+  }
+}
+@media (max-width: 640px) {
+  .about-content-orbit {
+    /* stack: teks atas, orbit bawah — tapi tetap tampil */
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .orbit-wrap {
+    transform: scale(0.85);
+    transform-origin: center center;
+    margin-top: 0.5rem;
   }
 }
 .about-stats {
