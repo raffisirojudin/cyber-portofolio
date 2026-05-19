@@ -5621,3 +5621,115 @@ body.kb-nav *:focus-visible {
     display: none;
   }
 }
+/* ═══ SKILLS SCROLL ANIMATION ═══ */
+#skills.skills-scroll-section {
+  height: 160vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  overflow: visible;
+}
+
+.skills-sticky-wrapper {
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  width: 100%;
+  max-width: var(--max-w);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  gap: 1.5rem;
+}
+
+.skills-header-block {
+  width: 100%;
+  will-change: transform, opacity;
+  transform: translateY(0px);
+}
+
+.skills-header-block .section-label,
+.skills-header-block .section-title,
+.skills-header-block .section-sub {
+  margin-bottom: 0.4rem;
+}
+
+.skills-card-3d {
+  width: 100%;
+  height: clamp(300px, 42vw, 480px);
+  border: 3px solid #4a4a6a;
+  border-radius: 24px;
+  background: var(--ink-3);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 60px 120px rgba(0, 0, 0, 0.6),
+    0 20px 40px rgba(var(--accent-rgb), 0.06);
+  will-change: transform;
+  transform-origin: center bottom;
+  overflow: hidden;
+  position: relative;
+  transform: perspective(1200px) rotateX(22deg) scale(0.88);
+}
+
+.skills-brand-mark {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.18);
+  z-index: 5;
+  letter-spacing: 0.1em;
+}
+
+/* Notch dekoratif */
+.skills-card-3d::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.skills-card-inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2rem 1.5rem 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* Override grid di dalam card agar lebih rapat */
+.skills-card-inner .skills-grid {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #skills.skills-scroll-section {
+    height: 140vh;
+  }
+  .skills-card-3d {
+    height: clamp(260px, 55vw, 380px);
+  }
+  .skills-card-inner .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .skills-card-inner .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
