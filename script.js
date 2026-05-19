@@ -125,15 +125,36 @@ if (typedEl) {
 }
 
 /* ─── SKILL BARS ──────────────────────────────────── */
-function animateBars() {
-  document.querySelectorAll(".skill-bar-fill").forEach(function (bar) {
-    if (bar.getBoundingClientRect().top < window.innerHeight) {
-      bar.style.width = bar.dataset.width + "%";
-    }
-  });
-}
-animateBars();
-window.addEventListener("scroll", animateBars, { passive: true });
+/* ─── SKILLS SCROLL 3D ANIMATION ─────────────────────── */
+(function () {
+  var section = document.getElementById("skills");
+  var card3d = document.getElementById("skills-card3d");
+  var header = document.querySelector(".skills-header-block");
+  if (!section || !card3d || !header) return;
+
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
+  function onSkillsScroll() {
+    var rect = section.getBoundingClientRect();
+    var total = section.offsetHeight - window.innerHeight;
+    var prog = Math.max(0, Math.min(1, -rect.top / total));
+
+    var rot = lerp(22, 0, prog);
+    var sc = lerp(0.88, 1, prog);
+    var hY = lerp(0, -50, prog);
+    var hOp = Math.min(1, 0.6 + prog * 0.8);
+
+    card3d.style.transform =
+      "perspective(1200px) rotateX(" + rot + "deg) scale(" + sc + ")";
+    header.style.transform = "translateY(" + hY + "px)";
+    header.style.opacity = hOp;
+  }
+
+  window.addEventListener("scroll", onSkillsScroll, { passive: true });
+  onSkillsScroll();
+})();
 
 /* ─── SKILL MODAL ─────────────────────────────────── */
 var modal = document.getElementById("skill-modal");
