@@ -555,6 +555,7 @@ window.addEventListener(
       previewBg: "linear-gradient(160deg,#1c3329,#2d5040)",
       previewEmoji: "🌿",
     },
+
     carnival: {
       tag: "Arcade Game Collection",
       tagColor: "#e8304a",
@@ -583,6 +584,39 @@ window.addEventListener(
       ],
       previewBg: "linear-gradient(135deg,#1a0208,#2d0a18)",
       previewEmoji: "🎪",
+    },
+    indotextqc: {
+      tag: "Indonesian Language QC",
+      tagColor: "#cf8733",
+      title: "IndoText QC",
+      problem:
+        "Mahasiswa akhir dan pencari kerja kesulitan menyisir kata tidak baku, ejaan salah, " +
+        "dan bahasa informal dalam dokumen formal seperti skripsi atau surat lamaran. " +
+        "Proses manual memakan waktu, rentan terlewat, dan tidak ada standar acuan yang mudah diakses.",
+      solution:
+        "Platform pemeriksa bahasa Indonesia berbasis Claude AI — menganalisis teks secara menyeluruh " +
+        "berdasarkan KBBI Edisi V dan EYD V. Setiap kata diperiksa untuk 6 kategori kesalahan dengan " +
+        "highlight warna berbeda. Koreksi bisa dilakukan satu per satu atau massal sekaligus, dengan " +
+        "tombol Abaikan untuk menolak false positive.",
+      result:
+        "Sistem mampu menganalisis ribuan kata dalam hitungan detik menggunakan Claude AI. " +
+        "Teks diproses sepenuhnya di browser — tidak ada data yang dikirim ke server pihak ketiga. " +
+        "Fallback ke kamus statis (150+ entri) tersedia otomatis saat API tidak dapat diakses.",
+      features: [
+        "✦ Claude AI sebagai mesin analisis utama",
+        "🔴 Merah — kata tidak baku (KBBI & EYD V)",
+        "🟣 Ungu — kemungkinan typo struktural",
+        "🔵 Biru — salah kapitalisasi (hari/bulan/agama)",
+        "🟡 Amber — spasi sebelum tanda baca",
+        "⚡ Koreksi Semua Otomatis (satu klik)",
+        "✕ Tombol Abaikan untuk false positive",
+        "↻ Verifikasi Ulang dengan AI",
+        "📋 Daftar kesalahan bernomor + label kategori",
+        "🔒 Privasi — teks tidak disimpan di server",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "Claude API"],
+      previewBg: "linear-gradient(135deg, #0d1e14, #152b1e)",
+      previewEmoji: "✦",
     },
   };
 
