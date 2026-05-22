@@ -124,7 +124,6 @@ if (typedEl) {
   setTimeout(tick, 1200);
 }
 
-/* ─── SKILL BARS ──────────────────────────────────── */
 /* ─── SKILLS SCROLL 3D ANIMATION ─────────────────────── */
 (function () {
   var section = document.getElementById("skills");
@@ -155,6 +154,17 @@ if (typedEl) {
   window.addEventListener("scroll", onSkillsScroll, { passive: true });
   onSkillsScroll();
 })();
+
+/* ─── SKILL BARS ──────────────────────────────────── */
+function animateBars() {
+  document.querySelectorAll(".skill-bar-fill").forEach(function (bar) {
+    if (bar.getBoundingClientRect().top < window.innerHeight) {
+      bar.style.width = bar.dataset.width + "%";
+    }
+  });
+}
+animateBars();
+window.addEventListener("scroll", animateBars, { passive: true });
 
 /* ─── SKILL MODAL ─────────────────────────────────── */
 var modal = document.getElementById("skill-modal");
@@ -204,7 +214,6 @@ var SKILLS = {
   },
 };
 
-/* Focus trap helper */
 function trapFocus(el) {
   var focusable = el.querySelectorAll(
     'button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])',
@@ -313,7 +322,6 @@ if (form && note) {
         n > 450 ? "var(--coral)" : n > 350 ? "var(--gold)" : "var(--text-3)";
     });
   }
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var name = form.querySelector('[name="name"]').value.trim();
@@ -322,13 +330,11 @@ if (form && note) {
     if (!name || !email || !msg) {
       note.style.color = "var(--coral)";
       note.textContent = "Mohon isi semua kolom.";
-      announce("Error: Mohon isi semua kolom.");
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       note.style.color = "var(--coral)";
       note.textContent = "Format email tidak valid.";
-      announce("Error: Format email tidak valid.");
       return;
     }
     var btn = form.querySelector(".form-submit");
@@ -340,7 +346,6 @@ if (form && note) {
       form.reset();
       btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
       btn.disabled = false;
-      announce("Pesan berhasil terkirim. Terima kasih!");
     }, 1200);
   });
 }
@@ -576,7 +581,6 @@ window.addEventListener(
       previewBg: "linear-gradient(160deg,#1c3329,#2d5040)",
       previewEmoji: "🌿",
     },
-
     carnival: {
       tag: "Arcade Game Collection",
       tagColor: "#e8304a",
@@ -611,18 +615,11 @@ window.addEventListener(
       tagColor: "#cf8733",
       title: "IndoText QC",
       problem:
-        "Mahasiswa akhir dan pencari kerja kesulitan menyisir kata tidak baku, ejaan salah, " +
-        "dan bahasa informal dalam dokumen formal seperti skripsi atau surat lamaran. " +
-        "Proses manual memakan waktu, rentan terlewat, dan tidak ada standar acuan yang mudah diakses.",
+        "Mahasiswa akhir dan pencari kerja kesulitan menyisir kata tidak baku, ejaan salah, dan bahasa informal dalam dokumen formal seperti skripsi atau surat lamaran. Proses manual memakan waktu, rentan terlewat, dan tidak ada standar acuan yang mudah diakses.",
       solution:
-        "Platform pemeriksa bahasa Indonesia berbasis Claude AI — menganalisis teks secara menyeluruh " +
-        "berdasarkan KBBI Edisi V dan EYD V. Setiap kata diperiksa untuk 6 kategori kesalahan dengan " +
-        "highlight warna berbeda. Koreksi bisa dilakukan satu per satu atau massal sekaligus, dengan " +
-        "tombol Abaikan untuk menolak false positive.",
+        "Platform pemeriksa bahasa Indonesia berbasis Claude AI — menganalisis teks secara menyeluruh berdasarkan KBBI Edisi V dan EYD V. Setiap kata diperiksa untuk 6 kategori kesalahan dengan highlight warna berbeda. Koreksi bisa dilakukan satu per satu atau massal sekaligus, dengan tombol Abaikan untuk menolak false positive.",
       result:
-        "Sistem mampu menganalisis ribuan kata dalam hitungan detik menggunakan Claude AI. " +
-        "Teks diproses sepenuhnya di browser — tidak ada data yang dikirim ke server pihak ketiga. " +
-        "Fallback ke kamus statis (150+ entri) tersedia otomatis saat API tidak dapat diakses.",
+        "Sistem mampu menganalisis ribuan kata dalam hitungan detik menggunakan Claude AI. Teks diproses sepenuhnya di browser — tidak ada data yang dikirim ke server pihak ketiga. Fallback ke kamus statis (150+ entri) tersedia otomatis saat API tidak dapat diakses.",
       features: [
         "✦ Claude AI sebagai mesin analisis utama",
         "🔴 Merah — kata tidak baku (KBBI & EYD V)",
@@ -639,14 +636,47 @@ window.addEventListener(
       previewBg: "linear-gradient(135deg, #0d1e14, #152b1e)",
       previewEmoji: "✦",
     },
+    infinityflow: {
+      tag: "Infinite Canvas",
+      tagColor: "#5b4cf5",
+      title: "InfinityFlow",
+      problem:
+        "Tidak ada aplikasi menggambar berbasis browser yang ringan, kaya fitur, " +
+        "sekaligus terintegrasi AI — kebanyakan tool gambar web terlalu sederhana " +
+        "atau terlalu berat, dan tidak ada yang bisa menganalisis serta merekonstruksi " +
+        "karya secara otomatis menggunakan AI.",
+      solution:
+        "Membangun aplikasi kanvas infinite berbasis Canvas API dengan 12 brush & shape mode " +
+        "(Pena, Jaring, Cermin, Neon, Pixel, Spray, Rect, Circle, Line, Arrow, Text, Eraser), " +
+        "sistem layer multi-track, timelapse recorder dengan playback & speed control, " +
+        "pinch-to-zoom untuk mobile, drag-and-drop import gambar, " +
+        "dan integrasi Claude AI untuk analisis estetika serta rekonstruksi karya dalam 5 gaya berbeda.",
+      result:
+        "Aplikasi berjalan smooth di semua browser modern tanpa dependensi library eksternal. " +
+        "Claude AI menganalisis karya dan merekonstruksi ulang dalam hitungan detik dengan " +
+        "5 pilihan gaya: Refined, Geometric, Organic, Constellation, dan Bold.",
+      features: [
+        "✒ 6 Brush Modes: Pena, Jaring, Cermin, Neon, Pixel, Spray",
+        "▭ 4 Shape Tools: Rect, Circle, Line, Arrow + Teks",
+        "⊞ Multi-layer System dengan visibility & opacity control",
+        "▶ Timelapse Recorder — playback & speed control",
+        "📱 Touch & Pinch-to-Zoom untuk mobile",
+        "⬆ Import gambar via klik & drag-and-drop",
+        "✦ Claude AI Analysis — interpretasi estetika karya",
+        "◈ AI Reconstruct — 5 gaya rekonstruksi",
+        "↩ Undo 40 langkah + Catmull-Rom smoothing",
+        "↓ Export PNG",
+      ],
+      tech: ["HTML", "CSS", "JavaScript", "Canvas API", "Claude API"],
+      previewBg: "linear-gradient(135deg, #1a1a2e, #2d2b4e)",
+      previewEmoji: "✦",
+    },
   };
-
   var csModal = document.getElementById("cs-modal");
   var csPanel = document.getElementById("cs-panel");
   var csBackdrop = document.getElementById("cs-backdrop");
   var csClose = document.getElementById("cs-close");
   if (!csModal) return;
-
   var csLastFocused = null;
 
   function openCaseStudy(key) {
@@ -909,9 +939,160 @@ window.addEventListener(
   );
 })();
 
-/* ═══════════════════════════════════════════════════
-   MICRO-INTERACTIONS & A11Y
-═══════════════════════════════════════════════════ */
+/* ═══ EXPERIENCE SECTION — WebGL Meteor Shader Background ═══ */
+(function () {
+  var canvas = document.getElementById("exp-canvas");
+  if (!canvas) return;
+
+  var gl =
+    canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+  if (!gl) return;
+
+  var VS = [
+    "attribute vec2 a_pos;",
+    "void main(){gl_Position=vec4(a_pos,0.0,1.0);}",
+  ].join("\n");
+
+  var FS = [
+    "precision mediump float;",
+    "uniform float iTime;",
+    "uniform vec2 iResolution;",
+
+    "float rand(vec2 n){",
+    "  return fract(sin(dot(n,vec2(12.9898,4.1414)))*43758.5453);",
+    "}",
+
+    "float noise(vec2 p){",
+    "  vec2 ip=floor(p);",
+    "  vec2 u=fract(p);",
+    "  u=u*u*(3.0-2.0*u);",
+    "  return mix(",
+    "    mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),",
+    "    mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);",
+    "}",
+
+    "float fbm(vec2 x){",
+    "  float v=0.0;",
+    "  float a=0.3;",
+    "  vec2 shift=vec2(100.0);",
+    "  mat2 rot=mat2(cos(0.5),sin(0.5),-sin(0.5),cos(0.5));",
+    "  for(int i=0;i<3;i++){",
+    "    v+=a*noise(x);",
+    "    x=rot*x*2.0+shift;",
+    "    a*=0.4;",
+    "  }",
+    "  return v;",
+    "}",
+
+    "void main(){",
+    "  vec2 shake=vec2(sin(iTime*1.2)*0.005,cos(iTime*2.1)*0.005);",
+    "  vec2 p=((gl_FragCoord.xy+shake*iResolution.xy)-iResolution.xy*0.5)/iResolution.y",
+    "         *mat2(6.0,-4.0,4.0,6.0);",
+    "  vec2 v;",
+    "  vec4 o=vec4(0.0);",
+    "  float f=2.0+fbm(p+vec2(iTime*5.0,0.0))*0.5;",
+    "  for(float i=0.0;i<35.0;i++){",
+    "    v=p+cos(i*i+(iTime+p.x*0.08)*0.025+i*vec2(13.0,11.0))*3.5",
+    "      +vec2(sin(iTime*3.0+i)*0.003,cos(iTime*3.5-i)*0.003);",
+    "    float tailNoise=fbm(v+vec2(iTime*0.5,i))*0.3*(1.0-(i/35.0));",
+    "    vec4 col=vec4(",
+    "      0.1+0.3*sin(i*0.2+iTime*0.4),",
+    "      0.3+0.5*cos(i*0.3+iTime*0.5),",
+    "      0.7+0.3*sin(i*0.4+iTime*0.3),",
+    "      1.0);",
+    "    vec4 contrib=col*exp(sin(i*i+iTime*0.8))/length(max(v,vec2(v.x*f*0.015,v.y*1.5)));",
+    "    float thin=smoothstep(0.0,1.0,i/35.0)*0.6;",
+    "    o+=contrib*(1.0+tailNoise*0.8)*thin;",
+    "  }",
+    "  vec4 t=vec4(pow(max(o.r/100.0,0.0),1.6),pow(max(o.g/100.0,0.0),1.6),",
+    "              pow(max(o.b/100.0,0.0),1.6),1.0);",
+    "  gl_FragColor=vec4(tanh(t.r),tanh(t.g),tanh(t.b),1.0)*1.5;",
+    "}",
+  ].join("\n");
+
+  function compile(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.warn("Shader error:", gl.getShaderInfoLog(s));
+      return null;
+    }
+    return s;
+  }
+
+  var prog = gl.createProgram();
+  var vs = compile(gl.VERTEX_SHADER, VS);
+  var fs = compile(gl.FRAGMENT_SHADER, FS);
+  if (!vs || !fs) return;
+  gl.attachShader(prog, vs);
+  gl.attachShader(prog, fs);
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+
+  var buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+    gl.STATIC_DRAW,
+  );
+  var aPos = gl.getAttribLocation(prog, "a_pos");
+  gl.enableVertexAttribArray(aPos);
+  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+  var uTime = gl.getUniformLocation(prog, "iTime");
+  var uRes = gl.getUniformLocation(prog, "iResolution");
+
+  function resize() {
+    var section = document.getElementById("experience");
+    var w = section ? section.offsetWidth : window.innerWidth;
+    var h = section ? section.offsetHeight : window.innerHeight;
+    canvas.width = w;
+    canvas.height = h;
+    gl.viewport(0, 0, w, h);
+    gl.uniform2f(uRes, w, h);
+  }
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+
+  var rafId = null;
+  var t = 0;
+  var running = false;
+
+  function loop() {
+    t += 0.016;
+    gl.uniform1f(uTime, t);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    rafId = requestAnimationFrame(loop);
+  }
+
+  if ("IntersectionObserver" in window) {
+    var expSection = document.getElementById("experience");
+    var obs = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && !running) {
+            running = true;
+            resize();
+            rafId = requestAnimationFrame(loop);
+          } else if (!e.isIntersecting && running) {
+            running = false;
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        });
+      },
+      { threshold: 0.05 },
+    );
+    if (expSection) obs.observe(expSection);
+  } else {
+    resize();
+    rafId = requestAnimationFrame(loop);
+  }
+})();
+
+/* ═══ MICRO-INTERACTIONS & A11Y ═══════════════════════════════════════════════════════ */
 var skipLink = document.createElement("a");
 skipLink.href = "#about";
 skipLink.className = "skip-link";
