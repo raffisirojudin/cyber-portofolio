@@ -5303,6 +5303,235 @@ body.kb-nav *:focus-visible {
     transform: rotate(-25deg) translateY(8px);
   }
 }
+/* ═══ INFINITYFLOW PROJECT CARD ════════════════════ */
+.pf-tag--inf {
+  color: #5b4cf5;
+  border-color: rgba(91, 76, 245, 0.35);
+  background: rgba(91, 76, 245, 0.08);
+}
+.pf-card--inf {
+  border-color: rgba(91, 76, 245, 0.2);
+}
+.pf-card--inf:hover {
+  border-color: #5b4cf5;
+  box-shadow: 0 0 60px rgba(91, 76, 245, 0.14);
+}
+.pf-title-accent--inf {
+  color: #5b4cf5;
+}
+.pf-mock-url--inf {
+  color: rgba(91, 76, 245, 0.65);
+  font-size: 0.6rem;
+}
+.pf-link-primary--inf {
+  background: linear-gradient(135deg, #3d2eb3, #5b4cf5);
+  color: #fff;
+}
+.pf-link-primary--inf:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+.pf-btn-cs--inf:hover {
+  border-color: #5b4cf5 !important;
+  color: #5b4cf5 !important;
+  background: rgba(91, 76, 245, 0.08) !important;
+}
+
+/* Live preview layout */
+.inf-live-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f7;
+  min-height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Top toolbar */
+.inf-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+.inf-logo {
+  font-family: "Syne", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(26, 26, 46, 0.7);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.inf-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+}
+.inf-tool {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(26, 26, 46, 0.4);
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+.inf-tool-active {
+  background: rgba(91, 76, 245, 0.12);
+  border-color: rgba(91, 76, 245, 0.35);
+  color: #5b4cf5;
+}
+.inf-tool-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 0 2px;
+}
+.inf-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+}
+.inf-ai-btn {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  background: rgba(0, 184, 148, 0.1);
+  border: 1px solid rgba(0, 184, 148, 0.3);
+  color: #00b894;
+  border-radius: 5px;
+}
+.inf-live-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  font-weight: 700;
+  color: #00b894;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* Canvas area */
+.inf-canvas-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.inf-grid-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* AI Panel peek */
+.inf-ai-panel {
+  width: 88px;
+  background: rgba(255, 255, 255, 0.97);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 7px 6px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.inf-ai-panhead {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: rgba(26, 26, 46, 0.4);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+.inf-ai-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00b894;
+  flex-shrink: 0;
+  animation: infDotPulse 2s infinite;
+}
+@keyframes infDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.inf-ai-thumb {
+  height: 42px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #f0f0f7, #e4e4ef);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.inf-ai-row {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: #5b4cf5;
+  background: rgba(91, 76, 245, 0.08);
+  border: 1px solid rgba(91, 76, 245, 0.2);
+  border-radius: 4px;
+  padding: 3px 6px;
+  text-align: center;
+  cursor: default;
+}
+.inf-ai-row-dim {
+  color: rgba(26, 26, 46, 0.4);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Bottom bar */
+.inf-bottombar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  flex-shrink: 0;
+}
+.inf-zoom,
+.inf-coords {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: rgba(26, 26, 46, 0.4);
+}
+.inf-rec {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: #e0449a;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .inf-live-preview {
+    min-height: 220px;
+  }
+  .inf-ai-panel {
+    display: none;
+  }
+}
+
 /* ═══ INDOTEXT QC PROJECT CARD ═══════════════════ */
 .pf-tag--itq {
   color: #cf8733;
@@ -5731,5 +5960,235 @@ body.kb-nav *:focus-visible {
 @media (max-width: 480px) {
   .skills-card-inner .skills-grid {
     grid-template-columns: 1fr;
+  }
+}
+/* INSTRUKSI: Paste seluruh isi file ini ke bagian
+   PALING BAWAH style.css (setelah semua CSS yang ada) */
+
+/* ═══ INFINITYFLOW PROJECT CARD ════════════════════════════ */
+.pf-tag--inf {
+  color: #5b4cf5;
+  border-color: rgba(91, 76, 245, 0.35);
+  background: rgba(91, 76, 245, 0.08);
+}
+.pf-card--inf {
+  border-color: rgba(91, 76, 245, 0.2);
+}
+.pf-card--inf:hover {
+  border-color: #5b4cf5;
+  box-shadow: 0 0 60px rgba(91, 76, 245, 0.14);
+}
+.pf-title-accent--inf {
+  color: #5b4cf5;
+}
+.pf-mock-url--inf {
+  color: rgba(91, 76, 245, 0.65);
+  font-size: 0.6rem;
+}
+.pf-link-primary--inf {
+  background: linear-gradient(135deg, #3d2eb3, #5b4cf5);
+  color: #fff;
+}
+.pf-link-primary--inf:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+.pf-btn-cs--inf:hover {
+  border-color: #5b4cf5 !important;
+  color: #5b4cf5 !important;
+  background: rgba(91, 76, 245, 0.08) !important;
+}
+
+/* Live preview */
+.inf-live-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f7;
+  min-height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Topbar */
+.inf-topbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+.inf-logo {
+  font-family: "Syne", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(26, 26, 46, 0.7);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.inf-tools {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+}
+.inf-tool {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(26, 26, 46, 0.4);
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+.inf-tool-active {
+  background: rgba(91, 76, 245, 0.12);
+  border-color: rgba(91, 76, 245, 0.35);
+  color: #5b4cf5;
+}
+.inf-tool-sep {
+  width: 1px;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 0 2px;
+}
+.inf-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+}
+.inf-ai-btn {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  background: rgba(0, 184, 148, 0.1);
+  border: 1px solid rgba(0, 184, 148, 0.3);
+  color: #00b894;
+  border-radius: 5px;
+}
+.inf-live-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  font-weight: 700;
+  color: #00b894;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* Canvas area */
+.inf-canvas-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+.inf-grid-svg {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* AI Panel peek */
+.inf-ai-panel {
+  width: 88px;
+  background: rgba(255, 255, 255, 0.97);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 7px 6px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.inf-ai-panhead {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: rgba(26, 26, 46, 0.4);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+.inf-ai-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #00b894;
+  flex-shrink: 0;
+  animation: infDotPulse 2s infinite;
+}
+@keyframes infDotPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.inf-ai-thumb {
+  height: 42px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #e8e8f5, #d4d4e8);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.inf-ai-row {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: #5b4cf5;
+  background: rgba(91, 76, 245, 0.08);
+  border: 1px solid rgba(91, 76, 245, 0.2);
+  border-radius: 4px;
+  padding: 3px 6px;
+  text-align: center;
+}
+.inf-ai-row-dim {
+  color: rgba(26, 26, 46, 0.4);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Bottom bar */
+.inf-bottombar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  flex-shrink: 0;
+}
+.inf-zoom,
+.inf-coords {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: rgba(26, 26, 46, 0.4);
+}
+.inf-rec {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 7px;
+  color: #e0449a;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .inf-live-preview {
+    min-height: 220px;
+  }
+  .inf-ai-panel {
+    display: none;
   }
 }
