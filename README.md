@@ -1,4 +1,4 @@
-# 🌐 Personal Portfolio Website
+# 🌐 Personal Portofolio Website
 
 > Selamat datang di repository website portofolio pribadi saya. Platform ini dirancang sebagai ruang digital untuk menampilkan keahlian, memamerkan proyek-proyek yang telah saya kembangkan, serta menceritakan perjalanan profesional saya di dunia teknologi.
 
