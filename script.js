@@ -31,18 +31,16 @@
 
 /* ─── THEME TOGGLE ────────────────────────────────── */
 var html = document.documentElement;
-var themeBtn = document.getElementById("theme-toggle");
+var themeSwitch = document.getElementById("theme-switch");
 var saved = localStorage.getItem("theme");
 if (saved) html.setAttribute("data-theme", saved);
-if (themeBtn) {
-  themeBtn.addEventListener("click", function () {
-    var next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
+if (themeSwitch) {
+  // checked = dark, unchecked = light
+  themeSwitch.checked = html.getAttribute("data-theme") !== "light";
+  themeSwitch.addEventListener("change", function () {
+    var next = themeSwitch.checked ? "dark" : "light";
     html.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
-    themeBtn.setAttribute(
-      "aria-label",
-      "Switch to " + (next === "dark" ? "light" : "dark") + " theme",
-    );
   });
 }
 
@@ -1292,34 +1290,3 @@ if (note) {
   note.setAttribute("role", "alert");
   note.setAttribute("aria-live", "assertive");
 }
-/* ─── PROJECT SHELF SWITCHER ──────────────────────── */
-(function () {
-  var shelf = document.getElementById("project-shelf");
-  var stage = document.getElementById("project-stage");
-  if (!shelf || !stage) return;
-
-  var books = Array.prototype.slice.call(shelf.querySelectorAll(".proj-book"));
-  var panels = Array.prototype.slice.call(
-    stage.querySelectorAll(".project-featured"),
-  );
-
-  function activate(key, scroll) {
-    panels.forEach(function (p) {
-      p.classList.toggle("pf-active", p.dataset.project === key);
-    });
-    books.forEach(function (b) {
-      var on = b.dataset.target === key;
-      b.classList.toggle("is-active", on);
-      b.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    if (scroll) stage.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  books.forEach(function (b) {
-    b.addEventListener("click", function () {
-      activate(b.dataset.target, true);
-    });
-  });
-
-  if (books[0]) activate(books[0].dataset.target, false);
-})();
