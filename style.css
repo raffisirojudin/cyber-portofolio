@@ -6192,3 +6192,128 @@ body.kb-nav *:focus-visible {
     display: none;
   }
 }
+/* ═══ PROJECT SHELF — pemilih proyek ala buku ═══ */
+.project-shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+.proj-book {
+  position: relative;
+  width: 106px;
+  height: 144px;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 900px;
+  font: inherit;
+  color: inherit;
+}
+.proj-book-back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-md);
+  background: var(--ink);
+  border: 1px solid var(--stroke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem;
+  text-align: center;
+}
+.proj-book-back span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 1.45;
+  color: var(--text-3);
+}
+.proj-book-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--r-md);
+  background: var(--ink-2);
+  border: 1px solid var(--stroke-2);
+  border-top: 3px solid var(--pc, var(--accent));
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transform-origin: left center;
+  transition:
+    transform 0.5s var(--ease),
+    border-color 0.25s,
+    box-shadow 0.25s;
+  backface-visibility: hidden;
+}
+.proj-book-ico {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.proj-book-name {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0 0.4rem;
+  text-align: center;
+  color: var(--text);
+}
+.proj-book:hover .proj-book-cover,
+.proj-book:focus-visible .proj-book-cover {
+  transform: rotateY(-70deg);
+}
+.proj-book.is-active .proj-book-cover {
+  border-color: var(--pc, var(--accent));
+  box-shadow:
+    0 0 0 1px var(--pc, var(--accent)),
+    0 10px 24px rgba(0, 0, 0, 0.4);
+}
+.proj-book.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pc, var(--accent));
+  transform: translateX(-50%);
+}
+@media (max-width: 640px) {
+  .project-shelf {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: x proximity;
+  }
+  .proj-book {
+    scroll-snap-align: start;
+  }
+}
+
+/* ═══ PROJECT STAGE — hanya 1 proyek yang tampil ═══ */
+.project-stage {
+  position: relative;
+}
+.project-stage .project-featured {
+  display: none;
+  margin-bottom: 0;
+}
+.project-stage .project-featured.pf-active {
+  display: block;
+  animation: pf-stage-in 0.55s var(--ease);
+}
+@keyframes pf-stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) rotateX(3deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
