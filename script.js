@@ -1292,3 +1292,34 @@ if (note) {
   note.setAttribute("role", "alert");
   note.setAttribute("aria-live", "assertive");
 }
+/* ─── PROJECT SHELF SWITCHER ──────────────────────── */
+(function () {
+  var shelf = document.getElementById("project-shelf");
+  var stage = document.getElementById("project-stage");
+  if (!shelf || !stage) return;
+
+  var books = Array.prototype.slice.call(shelf.querySelectorAll(".proj-book"));
+  var panels = Array.prototype.slice.call(
+    stage.querySelectorAll(".project-featured"),
+  );
+
+  function activate(key, scroll) {
+    panels.forEach(function (p) {
+      p.classList.toggle("pf-active", p.dataset.project === key);
+    });
+    books.forEach(function (b) {
+      var on = b.dataset.target === key;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    if (scroll) stage.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  books.forEach(function (b) {
+    b.addEventListener("click", function () {
+      activate(b.dataset.target, true);
+    });
+  });
+
+  if (books[0]) activate(books[0].dataset.target, false);
+})();
