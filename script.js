@@ -958,7 +958,7 @@ window.addEventListener(
     "uniform float iTime;",
     "uniform vec2 iResolution;",
 
-    // Helper fungsi tanh kustom agar support WebGL 1.0 (GLSL ES 1.0)
+    // Helper fungsi myTanh kustom agar kompatibel dengan WebGL 1.0 (GLSL ES 1.0)
     "float myTanh(float x){",
     "  float e1=exp(x);",
     "  float e2=exp(-x);",
