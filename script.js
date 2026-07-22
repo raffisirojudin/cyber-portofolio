@@ -958,6 +958,13 @@ window.addEventListener(
     "uniform float iTime;",
     "uniform vec2 iResolution;",
 
+    // Helper fungsi tanh kustom agar support WebGL 1.0 (GLSL ES 1.0)
+    "float myTanh(float x){",
+    "  float e1=exp(x);",
+    "  float e2=exp(-x);",
+    "  return (e1-e2)/(e1+e2);",
+    "}",
+
     "float rand(vec2 n){",
     "  return fract(sin(dot(n,vec2(12.9898,4.1414)))*43758.5453);",
     "}",
@@ -1006,7 +1013,7 @@ window.addEventListener(
     "  }",
     "  vec4 t=vec4(pow(max(o.r/100.0,0.0),1.6),pow(max(o.g/100.0,0.0),1.6),",
     "              pow(max(o.b/100.0,0.0),1.6),1.0);",
-    "  gl_FragColor=vec4(tanh(t.r),tanh(t.g),tanh(t.b),1.0)*1.5;",
+    "  gl_FragColor=vec4(myTanh(t.r),myTanh(t.g),myTanh(t.b),1.0)*1.5;",
     "}",
   ].join("\n");
 
