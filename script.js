@@ -31,16 +31,18 @@
 
 /* ─── THEME TOGGLE ────────────────────────────────── */
 var html = document.documentElement;
-var themeSwitch = document.getElementById("theme-switch");
+var themeBtn = document.getElementById("theme-toggle");
 var saved = localStorage.getItem("theme");
 if (saved) html.setAttribute("data-theme", saved);
-if (themeSwitch) {
-  // checked = dark, unchecked = light
-  themeSwitch.checked = html.getAttribute("data-theme") !== "light";
-  themeSwitch.addEventListener("change", function () {
-    var next = themeSwitch.checked ? "dark" : "light";
+if (themeBtn) {
+  themeBtn.addEventListener("click", function () {
+    var next = html.getAttribute("data-theme") === "dark" ? "light" : "dark";
     html.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
+    themeBtn.setAttribute(
+      "aria-label",
+      "Switch to " + (next === "dark" ? "light" : "dark") + " theme",
+    );
   });
 }
 
@@ -1290,3 +1292,64 @@ if (note) {
   note.setAttribute("role", "alert");
   note.setAttribute("aria-live", "assertive");
 }
+/* ─── PROJECT SHELF SWITCHER ──────────────────────── */
+(function () {
+  var shelf = document.getElementById("project-shelf");
+  var stage = document.getElementById("project-stage");
+  if (!shelf || !stage) return;
+
+  var books = Array.prototype.slice.call(shelf.querySelectorAll(".proj-book"));
+  var panels = Array.prototype.slice.call(
+    stage.querySelectorAll(".project-featured"),
+  );
+
+  function activate(key, scroll) {
+    panels.forEach(function (p) {
+      p.classList.toggle("pf-active", p.dataset.project === key);
+    });
+    books.forEach(function (b) {
+      var on = b.dataset.target === key;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    if (scroll) stage.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  books.forEach(function (b) {
+    b.addEventListener("click", function () {
+      activate(b.dataset.target, true);
+    });
+  });
+
+  if (books[0]) activate(books[0].dataset.target, false);
+})();
+const shelf = document.querySelector(".project-shelf");
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+shelf.addEventListener("mousedown", (e) => {
+  isDown = true;
+  shelf.style.cursor = "grabbing";
+  startX = e.pageX - shelf.offsetLeft;
+  scrollLeft = shelf.scrollLeft;
+});
+
+shelf.addEventListener("mouseleave", () => {
+  isDown = false;
+  shelf.style.cursor = "pointer";
+});
+
+shelf.addEventListener("mouseup", () => {
+  isDown = false;
+  shelf.style.cursor = "pointer";
+});
+
+shelf.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - shelf.offsetLeft;
+  const walk = (x - startX) * 2; // Kecepatan scroll
+  shelf.scrollLeft = scrollLeft - walk;
+});
