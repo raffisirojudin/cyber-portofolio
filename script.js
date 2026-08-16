@@ -3,30 +3,34 @@
 /* ─── PAGE LOADER ─────────────────────────────────── */
 (function () {
   var loader = document.getElementById("page-loader");
-  var bar = document.querySelector(".loader-bar");
   if (!loader) return;
-  var prog = 0;
-  var iv = setInterval(function () {
-    prog += Math.random() * 18;
-    if (prog > 90) prog = 90;
-    if (bar) bar.style.width = prog + "%";
-  }, 80);
+  var MIN_VISIBLE = 2200; // ms — enough for the cube tower to cascade
+  var MAX_VISIBLE = 5000; // ms — absolute fallback if 'load' never fires
+  var start = Date.now();
+  var hidden = false;
   function hideLoader() {
-    clearInterval(iv);
-    if (bar) bar.style.width = "100%";
+    if (hidden) return;
+    hidden = true;
+    loader.classList.add("loader-done");
     setTimeout(function () {
-      loader.classList.add("loader-done");
-      setTimeout(function () {
-        loader.style.display = "none";
-      }, 600);
-    }, 300);
+      loader.style.display = "none";
+    }, 600);
+  }
+  function attemptHide() {
+    var elapsed = Date.now() - start;
+    var remaining = MIN_VISIBLE - elapsed;
+    if (remaining > 0) {
+      setTimeout(hideLoader, remaining);
+    } else {
+      hideLoader();
+    }
   }
   if (document.readyState === "complete") {
-    hideLoader();
+    attemptHide();
   } else {
-    window.addEventListener("load", hideLoader);
+    window.addEventListener("load", attemptHide);
   }
-  setTimeout(hideLoader, 3000);
+  setTimeout(hideLoader, MAX_VISIBLE);
 })();
 
 /* ─── THEME TOGGLE ────────────────────────────────── */
@@ -211,6 +215,13 @@ var SKILLS = {
     level: "65% — Menengah",
     desc: "Desain UI/UX untuk wireframe, mockup, dan prototipe. Membantu mengimplementasi desain ke kode.",
     tags: ["Wireframe", "Mockup", "Prototipe", "Auto Layout"],
+  },
+  python: {
+    emoji: "🐍",
+    title: "Python",
+    level: "55% — Menengah",
+    desc: "Bahasa serbaguna untuk scripting, otomasi, dan logika pemrograman. Sedang aktif didalami — salah satu hasilnya adalah PyQuest, platform belajar Python interaktif yang saya bangun sendiri.",
+    tags: ["Sintaks Dasar", "OOP", "Scripting", "Automasi"],
   },
 };
 
