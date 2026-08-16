@@ -504,9 +504,13 @@ section {
   line-height: 1;
   letter-spacing: -2px;
   margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--text) 10%, var(--accent) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .name-accent {
-  color: var(--accent);
+  color: inherit;
 }
 .hero-role {
   font-family: var(--font-mono);
@@ -2527,10 +2531,14 @@ section {
 }
 .contact-left .section-title {
   margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--text) 10%, var(--accent) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .contact-left .section-title em {
   font-style: normal;
-  color: var(--accent);
+  color: inherit;
 }
 .contact-desc {
   color: var(--text-2);
