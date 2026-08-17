@@ -159,6 +159,31 @@ if (typedEl) {
   onSkillsScroll();
 })();
 
+/* ─── EXPERIENCE PINWHEEL BLOOM (scroll-driven) ──────── */
+(function () {
+  var section = document.getElementById("experience");
+  var circles = document.querySelectorAll(".exp-circle");
+  if (!section || !circles.length) return;
+
+  function onExpScroll() {
+    var rect = section.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var total = rect.height + vh;
+    var prog = Math.max(0, Math.min(1, (vh - rect.top) / total));
+
+    var amplitude = 24 + prog * 110;
+    var scale = 0.6 + prog * 1.3;
+
+    circles.forEach(function (el) {
+      el.style.setProperty("--amplitude", amplitude + "px");
+      el.style.setProperty("--scale", scale.toFixed(2));
+    });
+  }
+
+  window.addEventListener("scroll", onExpScroll, { passive: true });
+  onExpScroll();
+})();
+
 /* ─── SKILL BARS ──────────────────────────────────── */
 function animateBars() {
   document.querySelectorAll(".skill-bar-fill").forEach(function (bar) {
