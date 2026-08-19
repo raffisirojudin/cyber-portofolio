@@ -333,6 +333,298 @@ if (modal && modalClose) {
   });
 }
 
+/* ─── CONTACT ROBOT COMPANION ─────────────────────── */
+var ContactBot = (function () {
+  var bot = document.getElementById("bot");
+  if (!bot) return null;
+
+  var eyes = document.getElementById("botEyes");
+  var bubble = document.getElementById("botBubble");
+  var bubbleText = document.getElementById("botBubbleText");
+  var head3d = bot.querySelector(".bot-head3d");
+  var nameI = document.getElementById("cf-name");
+  var emailI = document.getElementById("cf-email");
+  var msgI = document.getElementById("cf-msg");
+  var submitBtn = document.getElementById("cf-submit");
+  var card = document.querySelector(".bot-card");
+
+  var reduceMotion =
+    window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var done = false;
+  var lastSaid = "";
+
+  function pick(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+
+  function setMood(mood) {
+    if (!done) bot.dataset.mood = mood;
+  }
+
+  function say(text) {
+    if (text === lastSaid || !bubbleText) return;
+    lastSaid = text;
+    bubbleText.textContent = text;
+    bubble.classList.remove("bot-pop");
+    void bubble.offsetWidth;
+    bubble.classList.add("bot-pop");
+  }
+
+  function look(x, y) {
+    if (eyes) {
+      eyes.style.setProperty("--lx", x + "px");
+      eyes.style.setProperty("--ly", y + "px");
+    }
+  }
+
+  function tilt(ry, rx) {
+    if (!head3d) return;
+    head3d.style.setProperty("--ry", ry + "deg");
+    head3d.style.setProperty("--rx", rx + "deg");
+  }
+
+  function followTyping(input, max) {
+    var ratio = Math.min(input.value.length / (max || 22), 1);
+    look(-6 + 12 * ratio, 5);
+    tilt(-5 + 10 * ratio, -8);
+  }
+
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  if (nameI) {
+    nameI.addEventListener("focus", function () {
+      setMood("watching");
+      say(
+        pick([
+          "Pengunjung baru. Siapa nih?",
+          "Ada yang mengetik, saya perhatikan.",
+        ]),
+      );
+      followTyping(nameI);
+    });
+    nameI.addEventListener("input", function () {
+      followTyping(nameI);
+      var v = nameI.value.trim();
+      if (v.length >= 2) say(v + ". Dicatat.");
+      else if (v.length === 0) say("Terhapus. Sudah saya lupakan (dikit).");
+    });
+  }
+
+  if (emailI) {
+    emailI.addEventListener("focus", function () {
+      setMood("watching");
+      say("Sekarang email. Saya tidak kirim spam.");
+      followTyping(emailI);
+    });
+    emailI.addEventListener("input", function () {
+      followTyping(emailI);
+      if (EMAIL_RE.test(emailI.value.trim())) {
+        setMood("happy");
+        say(pick(["Email valid. Mantap.", "Sensor saya bilang: sah."]));
+      } else {
+        setMood("watching");
+        if (emailI.value.indexOf("@") > -1) say("Dikit lagi, belum pas.");
+      }
+    });
+  }
+
+  if (msgI) {
+    msgI.addEventListener("focus", function () {
+      setMood("watching");
+      say("Ceritain proyeknya, saya dengarkan.");
+      followTyping(msgI, 120);
+    });
+    msgI.addEventListener("input", function () {
+      followTyping(msgI, 120);
+      var n = msgI.value.length;
+      if (n > 200) say("Ceritanya panjang. Saya baca pelan-pelan.");
+      else if (n === 1) say("Oke, saya dengarkan...");
+    });
+  }
+
+  function hype(on) {
+    if (done) return;
+    if (on && bot.classList.contains("is-pressed")) return;
+    bot.classList.toggle("is-hyped", on);
+    if (on) {
+      setMood("excited");
+      say(pick(["Ayo, klik.", "Ini bagian favorit saya."]));
+    } else {
+      setMood("idle");
+      say("Tombolnya kangen kamu.");
+    }
+  }
+
+  if (submitBtn) {
+    submitBtn.addEventListener("mouseenter", function () {
+      hype(true);
+    });
+    submitBtn.addEventListener("mouseleave", function () {
+      hype(false);
+    });
+    submitBtn.addEventListener("focus", function () {
+      hype(true);
+    });
+    submitBtn.addEventListener("blur", function () {
+      hype(false);
+    });
+
+    var pressTimer;
+    submitBtn.addEventListener("pointerdown", function () {
+      clearTimeout(pressTimer);
+      bot.classList.add("is-pressed");
+      bot.dataset.mood = "pressed";
+      say(pick(["Ah, mantap.", "Enak tuh.", "Lakukan lagi."]));
+    });
+    function releasePress() {
+      clearTimeout(pressTimer);
+      pressTimer = setTimeout(function () {
+        bot.classList.remove("is-pressed");
+        if (bot.dataset.mood === "pressed") {
+          bot.dataset.mood = done ? "success" : "excited";
+        }
+      }, 340);
+    }
+    submitBtn.addEventListener("pointerup", releasePress);
+    submitBtn.addEventListener("pointercancel", releasePress);
+    submitBtn.addEventListener("pointerleave", function () {
+      if (bot.classList.contains("is-pressed")) releasePress();
+    });
+  }
+
+  (function blinkLoop() {
+    setTimeout(
+      function () {
+        if (bot.dataset.mood !== "success" && eyes) {
+          eyes.classList.add("bot-blink");
+          setTimeout(function () {
+            eyes.classList.remove("bot-blink");
+          }, 150);
+        }
+        blinkLoop();
+      },
+      2600 + Math.random() * 2600,
+    );
+  })();
+
+  var rafPending = false;
+  document.addEventListener("mousemove", function (e) {
+    var active = document.activeElement;
+    if (
+      done ||
+      (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA"))
+    )
+      return;
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(function () {
+      rafPending = false;
+      var rect = bot.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      var dx = Math.max(-1, Math.min(1, (e.clientX - cx) / 260));
+      var dy = Math.max(-1, Math.min(1, (e.clientY - cy) / 260));
+      look(dx * 7, dy * 6);
+      tilt(dx * 12, -dy * 9);
+    });
+  });
+
+  function confetti() {
+    if (reduceMotion || !submitBtn) return;
+    var cs = getComputedStyle(document.documentElement);
+    var colors = [
+      cs.getPropertyValue("--accent").trim(),
+      cs.getPropertyValue("--accent-2").trim(),
+      cs.getPropertyValue("--teal").trim(),
+      cs.getPropertyValue("--text").trim(),
+    ];
+    var host = document.getElementById("contact");
+    if (!host) return;
+    var origin = submitBtn.getBoundingClientRect();
+    var hostRect = host.getBoundingClientRect();
+    var ox = origin.left - hostRect.left + origin.width / 2;
+    var oy = origin.top - hostRect.top;
+
+    for (var i = 0; i < 46; i++) {
+      var bit = document.createElement("span");
+      bit.className = "confetti";
+      bit.style.background = pick(colors);
+      if (Math.random() > 0.5) bit.style.borderRadius = "50%";
+      host.appendChild(bit);
+
+      var angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.6;
+      var speed = 200 + Math.random() * 320;
+      var tx = Math.cos(angle) * speed;
+      var ty = Math.sin(angle) * speed;
+
+      (function (bitEl, ox2, oy2, tx2, ty2) {
+        var anim = bitEl.animate(
+          [
+            {
+              transform:
+                "translate(" + ox2 + "px," + oy2 + "px) rotate(0deg) scale(1)",
+              opacity: 1,
+            },
+            {
+              transform:
+                "translate(" +
+                (ox2 + tx2) +
+                "px," +
+                (oy2 + ty2 + 280) +
+                "px) rotate(" +
+                540 * (Math.random() > 0.5 ? 1 : -1) +
+                "deg) scale(.6)",
+              opacity: 0,
+            },
+          ],
+          {
+            duration: 1000 + Math.random() * 600,
+            easing: "cubic-bezier(.15,.6,.35,1)",
+          },
+        );
+        anim.onfinish = function () {
+          bitEl.remove();
+        };
+      })(bit, ox, oy, tx, ty);
+    }
+  }
+
+  return {
+    onError: function (message, field) {
+      setMood("watching");
+      say(message);
+      if (card) {
+        card.classList.remove("bot-shake");
+        void card.offsetWidth;
+        card.classList.add("bot-shake");
+      }
+      if (field) field.focus();
+    },
+    onSuccess: function (name) {
+      done = true;
+      bot.classList.remove("is-hyped");
+      setTimeout(function () {
+        bot.dataset.mood = "success";
+        say("Pesan diterima. Makasih, " + name + "!");
+        look(0, 0);
+        tilt(0, 0);
+        if (!reduceMotion) {
+          bot.classList.add("is-spinning");
+          setTimeout(function () {
+            bot.classList.remove("is-spinning");
+          }, 950);
+          confetti();
+        }
+      }, 200);
+    },
+    reset: function () {
+      done = false;
+      bot.dataset.mood = "idle";
+      say("Lagi? Saya bisa begini seharian.");
+    },
+  };
+})();
+
 /* ─── CONTACT FORM ────────────────────────────────── */
 var form = document.getElementById("contact-form");
 var note = document.getElementById("form-note");
@@ -360,17 +652,28 @@ if (form && note) {
   }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var name = form.querySelector('[name="name"]').value.trim();
-    var email = form.querySelector('[name="email"]').value.trim();
-    var msg = form.querySelector('[name="message"]').value.trim();
+    var nameField = form.querySelector('[name="name"]');
+    var emailField = form.querySelector('[name="email"]');
+    var msgField = form.querySelector('[name="message"]');
+    var name = nameField.value.trim();
+    var email = emailField.value.trim();
+    var msg = msgField.value.trim();
     if (!name || !email || !msg) {
       note.style.color = "var(--coral)";
       note.textContent = "Mohon isi semua kolom.";
+      if (ContactBot) {
+        ContactBot.onError(
+          "Masih ada yang kosong nih.",
+          !name ? nameField : !email ? emailField : msgField,
+        );
+      }
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       note.style.color = "var(--coral)";
       note.textContent = "Format email tidak valid.";
+      if (ContactBot)
+        ContactBot.onError("Email-nya kayaknya belum pas.", emailField);
       return;
     }
     var btn = form.querySelector(".form-submit");
@@ -379,9 +682,13 @@ if (form && note) {
     setTimeout(function () {
       note.style.color = "var(--teal)";
       note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
+      if (ContactBot) ContactBot.onSuccess(name);
       form.reset();
       btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
       btn.disabled = false;
+      setTimeout(function () {
+        if (ContactBot) ContactBot.reset();
+      }, 5000);
     }, 1200);
   });
 }
