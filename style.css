@@ -2689,6 +2689,369 @@ section {
     transform: scale(1) rotate(0deg);
   }
 }
+/* ═══ CONTACT ROBOT COMPANION ═══ */
+.bot-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.bot {
+  position: relative;
+  z-index: 1;
+  margin-bottom: -14px;
+  animation: bot-float 4s ease-in-out infinite alternate;
+}
+@keyframes bot-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+.bot-antenna {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+.bot-antenna-rod {
+  width: 3px;
+  height: 18px;
+  background: var(--stroke-2);
+  border-radius: 2px;
+}
+.bot-antenna-tip {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--ink);
+  order: -1;
+  margin-bottom: -2px;
+  position: relative;
+  animation: bot-bob 2.4s ease-in-out infinite;
+}
+.bot-antenna-tip::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+}
+@keyframes bot-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+.bot[data-mood="excited"] .bot-antenna-tip {
+  animation-duration: 0.4s;
+  background: var(--accent-2);
+}
+.bot[data-mood="success"] .bot-antenna-tip {
+  background: var(--teal);
+}
+.bot-head3d {
+  width: 118px;
+  height: 108px;
+  perspective: 600px;
+  transform-style: preserve-3d;
+  transform: translateY(var(--hy, 0px)) scale(var(--hsc, 1))
+    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+.is-hyped .bot-head3d {
+  --hy: 4px;
+  --hsc: 1.04;
+}
+.is-pressed .bot-head3d {
+  --hy: 7px;
+  --hsc: 0.94;
+}
+.bot-head {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.is-spinning .bot-head {
+  animation: bot-victory 0.9s ease-in-out;
+}
+@keyframes bot-victory {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bot-ear {
+  position: absolute;
+  top: 38px;
+  width: 12px;
+  height: 30px;
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  border-radius: 6px;
+}
+.bot-ear--l {
+  left: -8px;
+}
+.bot-ear--r {
+  right: -8px;
+}
+.bot-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.35);
+}
+.bot-visor {
+  position: absolute;
+  inset: 17px 12px 15px;
+  background: var(--ink);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.bot-eyes {
+  display: flex;
+  gap: 22px;
+  transform: translate(var(--lx, 0px), var(--ly, 0px));
+  transition: transform 0.18s ease-out;
+}
+.bot-eyes.bot-blink .bot-eye {
+  transform: scaleY(0.08);
+}
+.bot-eye {
+  width: 15px;
+  height: 20px;
+  border-radius: 7px;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.6);
+  transition: all 0.22s ease;
+}
+[data-mood="happy"] .bot-eye,
+[data-mood="success"] .bot-eye {
+  width: 20px;
+  height: 10px;
+  background: transparent;
+  border: 4px solid var(--accent);
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;
+  box-shadow: none;
+}
+[data-mood="excited"] .bot-eye {
+  transform: scale(1.2);
+  border-radius: 50%;
+  height: 17px;
+}
+[data-mood="pressed"] .bot-eye {
+  width: 19px;
+  height: 10px;
+  background: transparent;
+  border: 4px solid var(--accent);
+  border-top: none;
+  border-radius: 0 0 19px 19px;
+  box-shadow: none;
+}
+.bot-cheek {
+  position: absolute;
+  top: 58%;
+  width: 12px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.bot-cheek--l {
+  left: 12px;
+}
+.bot-cheek--r {
+  right: 12px;
+}
+[data-mood="happy"] .bot-cheek,
+[data-mood="excited"] .bot-cheek,
+[data-mood="pressed"] .bot-cheek,
+[data-mood="success"] .bot-cheek {
+  opacity: 0.6;
+}
+.bot-mouth {
+  width: 12px;
+  height: 4px;
+  border-radius: 3px;
+  background: var(--accent);
+  transition: all 0.25s ease;
+}
+[data-mood="watching"] .bot-mouth {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+[data-mood="happy"] .bot-mouth {
+  width: 24px;
+  height: 10px;
+  border-radius: 0 0 13px 13px;
+}
+[data-mood="excited"] .bot-mouth {
+  width: 18px;
+  height: 13px;
+  border-radius: 0 0 11px 11px;
+}
+[data-mood="pressed"] .bot-mouth {
+  width: 22px;
+  height: 12px;
+  border-radius: 0 0 11px 11px;
+}
+[data-mood="success"] .bot-mouth {
+  width: 30px;
+  height: 14px;
+  border-radius: 0 0 16px 16px;
+}
+.bot-bubble {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 8px 12px;
+  border-radius: 10px;
+  width: max-content;
+  max-width: 220px;
+  text-align: center;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+.bot-bubble::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - 4px);
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: var(--ink-3);
+  border-right: 2px solid var(--stroke-2);
+  border-bottom: 2px solid var(--stroke-2);
+  transform: translateX(-50%) rotate(45deg);
+}
+.bot-bubble.bot-pop {
+  animation: bot-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes bot-pop {
+  from {
+    transform: translateX(-50%) scale(0.8);
+  }
+  to {
+    transform: translateX(-50%) scale(1);
+  }
+}
+.bot-card {
+  position: relative;
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  border-radius: var(--r-xl);
+  padding: 2rem 1.75rem 2.25rem;
+  box-shadow: 6px 7px 0 var(--hard-shadow);
+}
+.bot-hand {
+  position: absolute;
+  top: -14px;
+  width: 34px;
+  height: 24px;
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  border-radius: 8px 8px 12px 12px;
+  z-index: 3;
+  transition: transform 0.25s ease;
+}
+.bot-hand--l {
+  left: 24px;
+}
+.bot-hand--r {
+  right: 24px;
+}
+.is-hyped ~ .bot-card .bot-hand {
+  transform: translateY(-3px) scaleY(1.08);
+}
+.bot-foot {
+  position: absolute;
+  bottom: -18px;
+  width: 40px;
+  height: 24px;
+  background: var(--ink-3);
+  border: 2px solid var(--stroke-2);
+  border-radius: 8px 8px 12px 12px;
+  z-index: -1;
+}
+.bot-foot--l {
+  left: 40px;
+}
+.bot-foot--r {
+  right: 40px;
+}
+.bot-card.bot-shake {
+  animation: bot-shake 0.4s ease;
+}
+@keyframes bot-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+@media (max-width: 520px) {
+  .bot-bubble {
+    max-width: 180px;
+    font-size: 0.68rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bot {
+    animation: none;
+  }
+  .bot-antenna-tip {
+    animation: none;
+  }
+  .is-spinning .bot-head {
+    animation: none;
+  }
+  .bot-bubble.bot-pop {
+    animation: none;
+  }
+  .bot-eyes {
+    transition: none;
+  }
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -2754,8 +3117,9 @@ section {
   letter-spacing: 0.02em;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  align-self: flex-start;
+  width: 100%;
   cursor: pointer;
   box-shadow: 4px 4px 0 var(--hard-shadow);
   transition:
@@ -4805,6 +5169,16 @@ body.kb-nav *:focus-visible {
 
 #contact {
   position: relative;
+}
+.confetti {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 10;
 }
 .contact-bg-shapes {
   position: absolute;
