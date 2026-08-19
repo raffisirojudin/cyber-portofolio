@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500;700&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css?v=2.2" />
+    <link rel="stylesheet" href="./style.css?v=2.5" />
   </head>
   <body>
     <div id="page-loader" role="status" aria-label="Memuat halaman">
@@ -3338,55 +3338,92 @@
             </div>
           </div>
           <div class="contact-right reveal">
-            <form
-              class="contact-form"
-              id="contact-form"
-              novalidate
-              aria-label="Form kontak"
-            >
-              <div class="form-group">
-                <label for="cf-name">Nama</label
-                ><input
-                  type="text"
-                  id="cf-name"
-                  name="name"
-                  placeholder="Nama kamu"
-                  autocomplete="name"
-                  required
-                />
+            <div class="bot-stage">
+              <div class="bot" id="bot" data-mood="idle">
+                <div
+                  class="bot-bubble"
+                  id="botBubble"
+                  role="status"
+                  aria-live="polite"
+                >
+                  <span id="botBubbleText">Hai. Saya jaga form ini.</span>
+                </div>
+                <div class="bot-antenna" aria-hidden="true">
+                  <span class="bot-antenna-rod"></span>
+                  <span class="bot-antenna-tip"></span>
+                </div>
+                <div class="bot-head3d" aria-hidden="true">
+                  <div class="bot-head">
+                    <span class="bot-ear bot-ear--l"></span>
+                    <span class="bot-ear bot-ear--r"></span>
+                    <div class="bot-face">
+                      <div class="bot-visor">
+                        <div class="bot-eyes" id="botEyes">
+                          <span class="bot-eye"></span>
+                          <span class="bot-eye"></span>
+                        </div>
+                        <span class="bot-cheek bot-cheek--l"></span>
+                        <span class="bot-cheek bot-cheek--r"></span>
+                        <span class="bot-mouth"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="cf-email">Email</label
-                ><input
-                  type="email"
-                  id="cf-email"
-                  name="email"
-                  placeholder="raffisirojudin@gmail.com"
-                  autocomplete="email"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="cf-msg">Pesan</label
-                ><textarea
-                  id="cf-msg"
-                  name="message"
-                  rows="5"
-                  placeholder="Ceritakan proyekmu..."
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="form-submit">
-                Kirim Pesan
-                <span class="btn-arrow" aria-hidden="true">&rarr;</span>
-              </button>
-              <p
-                class="form-note"
-                id="form-note"
-                role="alert"
-                aria-live="assertive"
-              ></p>
-            </form>
+              <form
+                class="contact-form bot-card"
+                id="contact-form"
+                novalidate
+                aria-label="Form kontak"
+              >
+                <span class="bot-hand bot-hand--l" aria-hidden="true"></span>
+                <span class="bot-hand bot-hand--r" aria-hidden="true"></span>
+                <div class="form-group">
+                  <label for="cf-name">Nama</label
+                  ><input
+                    type="text"
+                    id="cf-name"
+                    name="name"
+                    placeholder="Nama kamu"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cf-email">Email</label
+                  ><input
+                    type="email"
+                    id="cf-email"
+                    name="email"
+                    placeholder="raffisirojudin@gmail.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cf-msg">Pesan</label
+                  ><textarea
+                    id="cf-msg"
+                    name="message"
+                    rows="5"
+                    placeholder="Ceritakan proyekmu..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="form-submit" id="cf-submit">
+                  Kirim Pesan
+                  <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                </button>
+                <p
+                  class="form-note"
+                  id="form-note"
+                  role="alert"
+                  aria-live="assertive"
+                ></p>
+                <span class="bot-foot bot-foot--l" aria-hidden="true"></span>
+                <span class="bot-foot bot-foot--r" aria-hidden="true"></span>
+              </form>
+            </div>
           </div>
         </div>
       </div>
