@@ -1324,12 +1324,7 @@ section {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 50% 0%,
-    #180f04,
-    #7a4700,
-    var(--accent)
-  );
+  background: radial-gradient(circle at 50% 0%, #180f04, #7a4700, var(--accent));
   --angle: 90deg;
   --amplitude: 30px;
   --scale: 0.7;
@@ -2768,8 +2763,8 @@ section {
   height: 108px;
   perspective: 600px;
   transform-style: preserve-3d;
-  transform: translateY(var(--hy, 0px)) scale(var(--hsc, 1))
-    rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transform: translateY(var(--hy, 0px)) scale(var(--hsc, 1)) rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
   transition: transform 0.25s ease-out;
   will-change: transform;
 }
@@ -3153,6 +3148,8 @@ footer {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 .footer-logo {
@@ -5020,6 +5017,9 @@ body.kb-nav *:focus-visible {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+  .bot-stage {
+    margin-top: 2.5rem;
   }
   .pf-card {
     grid-template-columns: 1fr;
