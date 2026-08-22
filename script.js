@@ -672,45 +672,41 @@ if (form && note) {
     btn.textContent = "Mengirim…";
     btn.disabled = true;
 
-    var payload = Object.fromEntries(new FormData(form));
+    // Ganti baris 'var payload = ...' hingga akhir block fetch kamu dengan ini:
 
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(function (response) {
-        return response.json().then(function (data) {
-          return { ok: response.ok, data: data };
-        });
-      })
-      .then(function (result) {
-        if (result.ok) {
-          note.style.color = "var(--teal)";
-          note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
-          if (ContactBot) ContactBot.onSuccess(name);
-          form.reset();
-          setTimeout(function () {
-            if (ContactBot) ContactBot.reset();
-          }, 5000);
-        } else {
-          note.style.color = "var(--coral)";
-          note.textContent = "Gagal terkirim. Coba lagi sebentar lagi ya.";
-          if (ContactBot) ContactBot.onError("Waduh, gagal terkirim.", null);
-        }
-      })
-      .catch(function () {
-        note.style.color = "var(--coral)";
-        note.textContent = "Gagal terkirim. Cek koneksi internetmu.";
-        if (ContactBot) ContactBot.onError("Sinyalnya putus kayaknya.", null);
-      })
-      .then(function () {
-        btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
-        btn.disabled = false;
-      });
+var formData = new FormData(form);
+
+fetch("https://api.web3forms.com/submit", {
+  method: "POST",
+  body: formData
+})
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    if (data.success) {
+      note.style.color = "var(--teal)";
+      note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
+      if (ContactBot) ContactBot.onSuccess(name);
+      form.reset();
+      setTimeout(function () {
+        if (ContactBot) ContactBot.reset();
+      }, 5000);
+    } else {
+      note.style.color = "var(--coral)";
+      note.textContent = "Gagal terkirim. Coba lagi sebentar lagi ya.";
+      if (ContactBot) ContactBot.onError("Waduh, gagal terkirim.", null);
+    }
+  })
+  .catch(function () {
+    note.style.color = "var(--coral)";
+    note.textContent = "Gagal terkirim. Cek koneksi internetmu.";
+    if (ContactBot) ContactBot.onError("Sinyalnya putus kayaknya.", null);
+  })
+  .then(function () {
+    btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
+    btn.disabled = false;
+  });
   });
 }
 
