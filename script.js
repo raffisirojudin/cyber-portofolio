@@ -349,7 +349,8 @@ var ContactBot = (function () {
   var card = document.querySelector(".bot-card");
 
   var reduceMotion =
-    window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.matchMedia &&
+    matchMedia("(prefers-reduced-motion: reduce)").matches;
   var done = false;
   var lastSaid = "";
 
@@ -394,12 +395,7 @@ var ContactBot = (function () {
   if (nameI) {
     nameI.addEventListener("focus", function () {
       setMood("watching");
-      say(
-        pick([
-          "Pengunjung baru. Siapa nih?",
-          "Ada yang mengetik, saya perhatikan.",
-        ]),
-      );
+      say(pick(["Pengunjung baru. Siapa nih?", "Ada yang mengetik, saya perhatikan."]));
       followTyping(nameI);
     });
     nameI.addEventListener("input", function () {
@@ -493,18 +489,15 @@ var ContactBot = (function () {
   }
 
   (function blinkLoop() {
-    setTimeout(
-      function () {
-        if (bot.dataset.mood !== "success" && eyes) {
-          eyes.classList.add("bot-blink");
-          setTimeout(function () {
-            eyes.classList.remove("bot-blink");
-          }, 150);
-        }
-        blinkLoop();
-      },
-      2600 + Math.random() * 2600,
-    );
+    setTimeout(function () {
+      if (bot.dataset.mood !== "success" && eyes) {
+        eyes.classList.add("bot-blink");
+        setTimeout(function () {
+          eyes.classList.remove("bot-blink");
+        }, 150);
+      }
+      blinkLoop();
+    }, 2600 + Math.random() * 2600);
   })();
 
   var rafPending = false;
@@ -672,24 +665,52 @@ if (form && note) {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       note.style.color = "var(--coral)";
       note.textContent = "Format email tidak valid.";
-      if (ContactBot)
-        ContactBot.onError("Email-nya kayaknya belum pas.", emailField);
+      if (ContactBot) ContactBot.onError("Email-nya kayaknya belum pas.", emailField);
       return;
     }
     var btn = form.querySelector(".form-submit");
     btn.textContent = "Mengirim…";
     btn.disabled = true;
-    setTimeout(function () {
-      note.style.color = "var(--teal)";
-      note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
-      if (ContactBot) ContactBot.onSuccess(name);
-      form.reset();
-      btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
-      btn.disabled = false;
-      setTimeout(function () {
-        if (ContactBot) ContactBot.reset();
-      }, 5000);
-    }, 1200);
+
+    var payload = Object.fromEntries(new FormData(form));
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (response) {
+        return response.json().then(function (data) {
+          return { ok: response.ok, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.ok) {
+          note.style.color = "var(--teal)";
+          note.textContent = "✓ Pesan terkirim! Saya akan segera membalas.";
+          if (ContactBot) ContactBot.onSuccess(name);
+          form.reset();
+          setTimeout(function () {
+            if (ContactBot) ContactBot.reset();
+          }, 5000);
+        } else {
+          note.style.color = "var(--coral)";
+          note.textContent = "Gagal terkirim. Coba lagi sebentar lagi ya.";
+          if (ContactBot) ContactBot.onError("Waduh, gagal terkirim.", null);
+        }
+      })
+      .catch(function () {
+        note.style.color = "var(--coral)";
+        note.textContent = "Gagal terkirim. Cek koneksi internetmu.";
+        if (ContactBot) ContactBot.onError("Sinyalnya putus kayaknya.", null);
+      })
+      .then(function () {
+        btn.innerHTML = 'Kirim Pesan <span class="btn-arrow">→</span>';
+        btn.disabled = false;
+      });
   });
 }
 
