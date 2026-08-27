@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Streamlit Lab — Rafi Sirojudin</title>
+    <meta
+      name="description"
+      content="Enam aplikasi Python & Streamlit — logika di atas tampilan. Dibangun oleh Rafi Sirojudin."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./lab.css?v=1.0" />
+  </head>
+  <body>
+    <div id="scene">
+      <div id="cube">
+        <div class="face" data-face="top" data-i="0"><span class="face-ph">CV BUILDER</span></div>
+        <div class="face" data-face="front" data-i="1"><span class="face-ph">WEB GEN</span></div>
+        <div class="face" data-face="right" data-i="2"><span class="face-ph">HARDENING</span></div>
+        <div class="face" data-face="back" data-i="3"><span class="face-ph">WHITE HAT</span></div>
+        <div class="face" data-face="left" data-i="4"><span class="face-ph">BLUE TEAM</span></div>
+        <div class="face" data-face="bottom" data-i="5"><span class="face-ph">PHOTO LAB</span></div>
+      </div>
+    </div>
+
+    <div id="hud">
+      <div id="hud_pct">000%</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="prog_fill"></div>
+      </div>
+      <div class="scene-label" id="scene_name">CV BUILDER</div>
+    </div>
+
+    <button id="theme_toggle" aria-label="Ganti mode terang/gelap">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+      </svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+      </svg>
+    </button>
+
+    <div id="scene_strip">
+      <a href="#s0" class="scene-dot active"></a>
+      <a href="#s1" class="scene-dot"></a>
+      <a href="#s2" class="scene-dot"></a>
+      <a href="#s3" class="scene-dot"></a>
+      <a href="#s4" class="scene-dot"></a>
+      <a href="#s5" class="scene-dot"></a>
+    </div>
+
+    <div id="face_caption">
+      <div id="face_caption_num">01</div>
+      <div id="face_caption_name">CV BUILDER</div>
+    </div>
+
+    <div id="scroll_container">
+      <section id="s0">
+        <div class="text-card">
+          <div class="tag">Streamlit Lab — Rafi Sirojudin</div>
+          <h1>LOGIKA<br />DI ATAS<br />TAMPILAN</h1>
+          <p class="body-text">
+            Enam aplikasi Python &amp; Streamlit yang saya bangun sendiri.
+            Bukan soal piksel yang sempurna — ini soal logika yang benar-benar
+            jalan. Scroll untuk lihat semuanya.
+          </p>
+          <div class="stat-row">
+            <div class="stat">
+              <span class="stat-num">6</span>
+              <span class="stat-label">Aplikasi</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Python</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">0</span>
+              <span class="stat-label">Build Step</span>
+            </div>
+          </div>
+          <div class="cta-row">
+            <a class="cta" href="#s1">
+              Masuk
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 6h10M6 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="s1">
+        <div class="text-card right">
+          <div class="h-line"></div>
+          <div class="tag">02 — Dev Utility</div>
+          <h2>WEB<br />GENERATOR</h2>
+          <p class="body-text">
+            Eksplorasi dan kustomisasi komponen UI — navigasi, hero, card,
+            form, modal — dengan live preview instan. Semua berjalan di atas
+            Streamlit, tanpa build step.
+          </p>
+          <div class="cta-row">
+            <a class="cta-back" href="#s0">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M11 6H1M6 11L1 6l5-5" />
+              </svg>
+              Kembali
+            </a>
+            <a class="cta" href="#s2">
+              Putar
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 6h10M6 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="s2">
+        <div class="text-card">
+          <div class="h-line"></div>
+          <div class="tag">03 — Security Toolkit</div>
+          <h2>HARDENING<br />SUITE</h2>
+          <p class="body-text">
+            Generator konfigurasi keamanan siap pakai — security header, CSP,
+            proteksi SQLi &amp; XSS, rate limiter — dalam snippet
+            multi-framework: Express, PHP, Python, Nginx.
+          </p>
+          <div class="cta-row">
+            <a class="cta-back" href="#s1">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M11 6H1M6 11L1 6l5-5" />
+              </svg>
+              Kembali
+            </a>
+            <a class="cta" href="#s3">
+              Putar
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 6h10M6 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="s3">
+        <div class="text-card right">
+          <div class="h-line"></div>
+          <div class="tag">04 — Security Academy</div>
+          <h2>WHITE HAT<br />ACADEMY</h2>
+          <p class="body-text">
+            Sepuluh modul edukasi dan audit keamanan, disusun dengan model
+            Pyramid Learning — dari konsep dasar seperti URL safety, sampai
+            analisis lanjut seperti subdomain recon.
+          </p>
+          <div class="cta-row">
+            <a class="cta-back" href="#s2">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M11 6H1M6 11L1 6l5-5" />
+              </svg>
+              Kembali
+            </a>
+            <a class="cta" href="#s4">
+              Putar
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 6h10M6 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="s4">
+        <div class="text-card">
+          <div class="h-line"></div>
+          <div class="tag">05 — Defensive Security</div>
+          <h2>BLUE TEAM<br />SUITE</h2>
+          <p class="body-text">
+            Platform analisis keamanan siber bertahan — bedah header email
+            untuk deteksi phishing, audit HTTP security header &amp; SSL,
+            verifikasi integritas file lewat hash.
+          </p>
+          <div class="cta-row">
+            <a class="cta-back" href="#s3">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M11 6H1M6 11L1 6l5-5" />
+              </svg>
+              Kembali
+            </a>
+            <a class="cta" href="#s5">
+              Putar
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 6h10M6 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="s5">
+        <div class="text-card right">
+          <div class="h-line"></div>
+          <div class="tag">06 — Media Utility</div>
+          <h2>PHOTO<br />STUDIO</h2>
+          <p class="body-text">
+            Pemrosesan foto massal — resize, watermark, hapus background
+            pakai AI, kompresi, konversi PDF — plus pelacak metadata EXIF dan
+            koordinat GPS foto.
+          </p>
+          <div class="cta-row">
+            <a class="cta-back" href="#s4">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M11 6H1M6 11L1 6l5-5" />
+              </svg>
+              Kembali
+            </a>
+            <a class="cta" href="#s0">
+              Mulai lagi
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 6h10M6 1l5 5-5 5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="credit">
+      <a href="./index.html">&larr; Portofolio Utama</a>
+    </div>
+
+    <script src="./lab.js?v=1.0"></script>
+  </body>
+</html>
